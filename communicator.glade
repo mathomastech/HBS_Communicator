@@ -2,8 +2,7 @@
 <!-- Generated with glade 3.16.1 -->
 <interface>
   <requires lib="gtk+" version="3.10"/>
-  <object class="GtkTextBuffer" id="textbuffer1"/>
-  <object class="GtkWindow" id="window1">
+  <object class="GtkWindow" id="communicator">
     <property name="width_request">600</property>
     <property name="height_request">600</property>
     <property name="can_focus">False</property>
@@ -13,13 +12,13 @@
         <property name="visible">True</property>
         <property name="can_focus">True</property>
         <child>
-          <object class="GtkBox" id="box1">
+          <object class="GtkBox" id="buttonNavigation">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="orientation">vertical</property>
             <property name="homogeneous">True</property>
             <child>
-              <object class="GtkLabel" id="label4">
+              <object class="GtkLabel" id="channelLabel">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="label" translatable="yes">Channels</property>
@@ -32,7 +31,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButton" id="button1">
+              <object class="GtkButton" id="generalButton">
                 <property name="label" translatable="yes">General</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
@@ -52,7 +51,7 @@
                 <property name="row_homogeneous">True</property>
                 <property name="column_homogeneous">True</property>
                 <child>
-                  <object class="GtkButton" id="button13">
+                  <object class="GtkButton" id="commandSwitchButton">
                     <property name="label" translatable="yes">Command</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
@@ -66,8 +65,8 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkButton" id="button14">
-                    <property name="label" translatable="yes">button</property>
+                  <object class="GtkButton" id="generalSwitchButton">
+                    <property name="label" translatable="yes">General</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
@@ -87,12 +86,13 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButton" id="button2">
+              <object class="GtkButton" id="centcomButton">
                 <property name="label" translatable="yes">Central Command</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <property name="relief">half</property>
+                <signal name="activate" handler="commandSwitchButton" swapped="yes"/>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -101,7 +101,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButton" id="button3">
+              <object class="GtkButton" id="operationsButton">
                 <property name="label" translatable="yes">Operations</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
@@ -114,7 +114,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButton" id="button4">
+              <object class="GtkButton" id="callofdutyButton">
                 <property name="label" translatable="yes">Call of Duty</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
@@ -127,7 +127,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButton" id="button5">
+              <object class="GtkButton" id="rustButton">
                 <property name="label" translatable="yes">Rust</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
@@ -140,7 +140,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButton" id="button6">
+              <object class="GtkButton" id="guildwarsButton">
                 <property name="label" translatable="yes">Guild Wars 2</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
@@ -153,7 +153,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButton" id="button7">
+              <object class="GtkButton" id="minecraftButton">
                 <property name="label" translatable="yes">Minecraft</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
@@ -166,8 +166,8 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButton" id="button8">
-                <property name="label" translatable="yes">Arma II: DayZ</property>
+              <object class="GtkButton" id="armaButton">
+                <property name="label" translatable="yes">Arma/DayZ</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
@@ -179,7 +179,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButton" id="button9">
+              <object class="GtkButton" id="logisticsButton">
                 <property name="label" translatable="yes">Logistics</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
@@ -193,7 +193,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButton" id="button10">
+              <object class="GtkButton" id="mpButton">
                 <property name="label" translatable="yes">Military Police</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
@@ -206,7 +206,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButton" id="button11">
+              <object class="GtkButton" id="admissionsButton">
                 <property name="label" translatable="yes">Admissions</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
@@ -234,7 +234,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <child>
-                  <object class="GtkEntry" id="entry1">
+                  <object class="GtkEntry" id="chatEntry">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="width_chars">41</property>
@@ -247,7 +247,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkButton" id="button12">
+                  <object class="GtkButton" id="submitButton">
                     <property name="label" translatable="yes">Submit</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
@@ -274,7 +274,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <child>
-                  <object class="GtkTextView" id="textview1">
+                  <object class="GtkTextView" id="infoDisplay">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="hexpand">True</property>
@@ -288,7 +288,7 @@
                   </packing>
                 </child>
                 <child type="tab">
-                  <object class="GtkLabel" id="channelLabel">
+                  <object class="GtkLabel" id="channelTab">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">Channel</property>
@@ -303,7 +303,7 @@
                   <placeholder/>
                 </child>
                 <child type="tab">
-                  <object class="GtkLabel" id="rosterLabel">
+                  <object class="GtkLabel" id="rosterTab">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">Roster</property>
