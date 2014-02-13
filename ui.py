@@ -2,12 +2,11 @@ from gi.repository import Gtk
 # instantiate XML object
 gui = Gtk.Builder()
 gui.add_from_file("communicator.glade")
-# get references to individual widgets
+app = gui.get_object("hbsCommunicator")
 
 class communicator:
    def __init__(self):
-        hbsCommunicatorWindow = gui.get_object("hbsCommunicator")
-        hbsCommunicatorWindow.show_all()
+        hbsCommunicator = gui.get_object("hbsCommunicator")
         comWindow = gui.get_object("comWindow")
         navBox = gui.get_object("navBox")
         channelLabel = gui.get_object("channelLabel")
@@ -44,6 +43,10 @@ class communicator:
         rosterTextView = gui.get_object("rosterTextView")
         rosterTab = gui.get_object("rosterTab")
 
+class Handler:
+    def on_hbsCommunicator_delete_event(self,*args):
+        Gtk.main_quit(*args)
 
-app = communicator()
+gui.connect_signals(Handler())
+app.show_all()
 Gtk.main()
