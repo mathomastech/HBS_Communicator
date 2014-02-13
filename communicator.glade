@@ -2,17 +2,18 @@
 <!-- Generated with glade 3.16.1 -->
 <interface>
   <requires lib="gtk+" version="3.10"/>
-  <object class="GtkWindow" id="communicator">
+  <object class="GtkWindow" id="hbsCommunicator">
     <property name="width_request">600</property>
     <property name="height_request">600</property>
     <property name="can_focus">False</property>
     <property name="title" translatable="yes">Communicator</property>
+    <property name="resizable">False</property>
     <child>
-      <object class="GtkPaned" id="paned1">
+      <object class="GtkPaned" id="comWindow">
         <property name="visible">True</property>
         <property name="can_focus">True</property>
         <child>
-          <object class="GtkBox" id="buttonNavigation">
+          <object class="GtkBox" id="navBox">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="orientation">vertical</property>
@@ -32,156 +33,168 @@
               </packing>
             </child>
             <child>
-              <object class="GtkNotebook" id="notebook2">
+              <object class="GtkNotebook" id="channelNotebook">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <child>
-                  <object class="GtkGrid" id="grid2">
+                  <object class="GtkBox" id="commandNavBox">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="row_homogeneous">True</property>
-                    <property name="column_homogeneous">True</property>
+                    <property name="orientation">vertical</property>
+                    <property name="homogeneous">True</property>
                     <child>
-                      <object class="GtkButton" id="centcomButton">
+                      <object class="GtkButton" id="centralCommandButton">
                         <property name="label" translatable="yes">Central Command</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
-                        <property name="relief">half</property>
-                        <signal name="activate" handler="commandSwitchButton" swapped="yes"/>
+                        <property name="relief">none</property>
                       </object>
                       <packing>
-                        <property name="left_attach">0</property>
-                        <property name="top_attach">0</property>
-                        <property name="width">1</property>
-                        <property name="height">1</property>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">0</property>
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkButton" id="operationsButton">
+                      <object class="GtkButton" id="operationsCommandButton">
                         <property name="label" translatable="yes">Operations</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
+                        <property name="relief">none</property>
+                        <property name="image_position">right</property>
                       </object>
                       <packing>
-                        <property name="left_attach">0</property>
-                        <property name="top_attach">1</property>
-                        <property name="width">1</property>
-                        <property name="height">1</property>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">1</property>
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkButton" id="callofdutyButton">
-                        <property name="label" translatable="yes">Call of Duty</property>
+                      <object class="GtkButton" id="codCommandButton">
+                        <property name="label" translatable="yes">Call Of Duty</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
+                        <property name="relief">none</property>
                       </object>
                       <packing>
-                        <property name="left_attach">0</property>
-                        <property name="top_attach">2</property>
-                        <property name="width">1</property>
-                        <property name="height">1</property>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">2</property>
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkButton" id="rustButton">
+                      <object class="GtkButton" id="rustCommandButton">
                         <property name="label" translatable="yes">Rust</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
+                        <property name="relief">none</property>
                       </object>
                       <packing>
-                        <property name="left_attach">0</property>
-                        <property name="top_attach">3</property>
-                        <property name="width">1</property>
-                        <property name="height">1</property>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">3</property>
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkButton" id="guildwarsButton">
-                        <property name="label" translatable="yes">Guild Wars 2</property>
+                      <object class="GtkButton" id="guildWarsCommandButton">
+                        <property name="label" translatable="yes">Guild Wars</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
+                        <property name="relief">none</property>
                       </object>
                       <packing>
-                        <property name="left_attach">0</property>
-                        <property name="top_attach">4</property>
-                        <property name="width">1</property>
-                        <property name="height">1</property>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">4</property>
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkButton" id="minecraftButton">
+                      <object class="GtkButton" id="wowCommandButton">
+                        <property name="label" translatable="yes">World of Warcraft</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">True</property>
+                        <property name="relief">none</property>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">5</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkButton" id="mcCommandButton">
                         <property name="label" translatable="yes">Minecraft</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
+                        <property name="relief">none</property>
                       </object>
                       <packing>
-                        <property name="left_attach">0</property>
-                        <property name="top_attach">5</property>
-                        <property name="width">1</property>
-                        <property name="height">1</property>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">6</property>
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkButton" id="armaButton">
+                      <object class="GtkButton" id="armaCommandButton">
                         <property name="label" translatable="yes">Arma/DayZ</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
+                        <property name="relief">none</property>
                       </object>
                       <packing>
-                        <property name="left_attach">0</property>
-                        <property name="top_attach">6</property>
-                        <property name="width">1</property>
-                        <property name="height">1</property>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">7</property>
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkButton" id="logisticsButton">
+                      <object class="GtkButton" id="logisticsCommandButton">
                         <property name="label" translatable="yes">Logistics</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
-                        <property name="yalign">0.50999999046325684</property>
+                        <property name="relief">none</property>
                       </object>
                       <packing>
-                        <property name="left_attach">0</property>
-                        <property name="top_attach">7</property>
-                        <property name="width">1</property>
-                        <property name="height">1</property>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">8</property>
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkButton" id="mpButton">
+                      <object class="GtkButton" id="mpCommandButton">
                         <property name="label" translatable="yes">Military Police</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
+                        <property name="relief">none</property>
                       </object>
                       <packing>
-                        <property name="left_attach">0</property>
-                        <property name="top_attach">8</property>
-                        <property name="width">1</property>
-                        <property name="height">1</property>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">9</property>
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkButton" id="admissionsButton">
+                      <object class="GtkButton" id="admissionsCommandButton">
                         <property name="label" translatable="yes">Admissions</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
+                        <property name="relief">none</property>
                       </object>
                       <packing>
-                        <property name="left_attach">0</property>
-                        <property name="top_attach">9</property>
-                        <property name="width">1</property>
-                        <property name="height">1</property>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">10</property>
                       </packing>
                     </child>
                   </object>
@@ -198,38 +211,108 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkGrid" id="grid4">
+                  <object class="GtkBox" id="generalNavBox">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="orientation">vertical</property>
+                    <property name="homogeneous">True</property>
                     <child>
-                      <placeholder/>
+                      <object class="GtkButton" id="generalButton">
+                        <property name="label" translatable="yes">General</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">True</property>
+                        <property name="relief">none</property>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">0</property>
+                      </packing>
                     </child>
                     <child>
-                      <placeholder/>
+                      <object class="GtkButton" id="codGeneralButton">
+                        <property name="label" translatable="yes">Call Of Duty</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">True</property>
+                        <property name="relief">none</property>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">1</property>
+                      </packing>
                     </child>
                     <child>
-                      <placeholder/>
+                      <object class="GtkButton" id="rustGeneralButton">
+                        <property name="label" translatable="yes">Rust</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">True</property>
+                        <property name="relief">none</property>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">2</property>
+                      </packing>
                     </child>
                     <child>
-                      <placeholder/>
+                      <object class="GtkButton" id="guildWarsGeneralButton">
+                        <property name="label" translatable="yes">Guild Wars</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">True</property>
+                        <property name="relief">none</property>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">3</property>
+                      </packing>
                     </child>
                     <child>
-                      <placeholder/>
+                      <object class="GtkButton" id="wowGeneralButton">
+                        <property name="label" translatable="yes">World of Warcraft</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">True</property>
+                        <property name="relief">none</property>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">4</property>
+                      </packing>
                     </child>
                     <child>
-                      <placeholder/>
+                      <object class="GtkButton" id="mcGeneralButton">
+                        <property name="label" translatable="yes">Minecraft</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">True</property>
+                        <property name="relief">none</property>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">5</property>
+                      </packing>
                     </child>
                     <child>
-                      <placeholder/>
-                    </child>
-                    <child>
-                      <placeholder/>
-                    </child>
-                    <child>
-                      <placeholder/>
-                    </child>
-                    <child>
-                      <placeholder/>
+                      <object class="GtkButton" id="armaGeneralButton">
+                        <property name="label" translatable="yes">Arma/DayZ</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">True</property>
+                        <property name="relief">none</property>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">6</property>
+                      </packing>
                     </child>
                   </object>
                   <packing>
@@ -268,12 +351,12 @@
           </packing>
         </child>
         <child>
-          <object class="GtkGrid" id="grid1">
+          <object class="GtkGrid" id="contentGrid">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="column_homogeneous">True</property>
             <child>
-              <object class="GtkGrid" id="grid3">
+              <object class="GtkGrid" id="submitGrid">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <child>
@@ -296,6 +379,7 @@
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
                     <property name="yalign">0.49000000953674316</property>
+                    <property name="image_position">right</property>
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
@@ -313,7 +397,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkNotebook" id="notebook1">
+              <object class="GtkNotebook" id="contentNotebook">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <child>
@@ -339,11 +423,10 @@
                   </object>
                   <packing>
                     <property name="tab_fill">False</property>
-                    <property name="reorderable">True</property>
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkTextView" id="textview1">
+                  <object class="GtkTextView" id="rosterTextView">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                   </object>
@@ -361,7 +444,6 @@
                   <packing>
                     <property name="position">1</property>
                     <property name="tab_fill">False</property>
-                    <property name="reorderable">True</property>
                   </packing>
                 </child>
               </object>
