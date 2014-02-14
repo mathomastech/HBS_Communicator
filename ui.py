@@ -49,11 +49,21 @@ class communicator:
 class Handler:
     def on_hbsCommunicator_delete_event(self,*args):
         Gtk.main_quit(*args)
-    def on_submitButton_button_press_event(self, *args):
+
+    def on_submitButton_clicked(self, *args):
         info_buffer = info_display.get_buffer()
         chat_input = chat_entry.get_text()        
-        info_buffer.set_text(chat_input)
+        chat_input += '\n' 
+        info_buffer.insert(info_buffer.get_end_iter(),chat_input)
+        chat_entry.set_text("")
 
+    def on_chatEntry_activate(self, *args):
+        Handler.on_submitButton_clicked(self, *args)
+        #info_buffer = info_display.get_buffer()
+        #chat_input = chat_entry.get_text()        
+        #chat_input += '\n' 
+        #info_buffer.insert(info_buffer.get_end_iter(),chat_input)
+        #chat_entry.set_text("")
 
 gui.connect_signals(Handler())
 app.show_all()
