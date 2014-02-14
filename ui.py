@@ -42,11 +42,15 @@ roster_text_view = gui.get_object("rosterTextView")
 roster_tab = gui.get_object("rosterTab")
 
 
-class communicator:
-   def __init__(self):    
-    hbs_communicator = gui.get_object("hbsCommunicator")
 
 class Handler:
+    def on_hbsCommunicator_set_focus(self, *args):    
+        f = open('log', 'r')
+        info_buffer = info_display.get_buffer()
+        chat_input = f.read()
+        info_buffer.set_text(chat_input) 
+        f.close()
+
     def on_hbsCommunicator_delete_event(self,*args):
         Gtk.main_quit(*args)
 
@@ -56,6 +60,8 @@ class Handler:
         if (chat_input != ""):        
             chat_input += '\n' 
             info_buffer.insert(info_buffer.get_end_iter(),chat_input)
+            f = open('log', 'a')
+            f.write(chat_input)
             chat_entry.set_text("")
 
     def on_chatEntry_activate(self, *args):
