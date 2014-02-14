@@ -41,16 +41,15 @@ channel_tab = gui.get_object("channelTab")
 roster_text_view = gui.get_object("rosterTextView")
 roster_tab = gui.get_object("rosterTab")
 
+#populate TextView
+f = open('log', 'r')
+info_buffer = info_display.get_buffer()
+chat_input = f.read()
+info_buffer.set_text(chat_input) 
+f.close()
 
 
 class Handler:
-    def on_hbsCommunicator_set_focus(self, *args):    
-        f = open('log', 'r')
-        info_buffer = info_display.get_buffer()
-        chat_input = f.read()
-        info_buffer.set_text(chat_input) 
-        f.close()
-
     def on_hbsCommunicator_delete_event(self,*args):
         Gtk.main_quit(*args)
 
