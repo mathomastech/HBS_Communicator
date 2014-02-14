@@ -9,6 +9,7 @@
     <property name="title" translatable="yes">Communicator</property>
     <property name="resizable">False</property>
     <signal name="delete-event" handler="on_hbsCommunicator_delete_event" swapped="no"/>
+    <signal name="set-focus" handler="on_hbsCommunicator_set_focus" swapped="no"/>
     <child>
       <object class="GtkPaned" id="comWindow">
         <property name="visible">True</property>
