@@ -44,13 +44,14 @@ roster_tab = gui.get_object("rosterTab")
 
 LOG_PATH = "logs/"
 ACTIVE_LOG_PATH = ''
+WELCOME_MESSAGE = LOG_PATH + 'welcomeMessage.txt'
 
-#populate TextView
-#f = open('log', 'r')
-#info_buffer = info_display.get_buffer()
-#chat_input = f.read()
-#info_buffer.set_text(chat_input) 
-#f.close()
+#populate TextView with welcome message
+f = open(WELCOME_MESSAGE, 'r')
+info_buffer = info_display.get_buffer()
+chat_input = f.read()
+info_buffer.set_text(chat_input) 
+f.close()
 
 
 class Handler:
