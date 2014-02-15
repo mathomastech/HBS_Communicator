@@ -1,4 +1,5 @@
 from gi.repository import Gtk
+import os.path
 # instantiate XML object
 gui = Gtk.Builder()
 gui.add_from_file("communicator.glade")
@@ -41,12 +42,15 @@ channel_tab = gui.get_object("channelTab")
 roster_text_view = gui.get_object("rosterTextView")
 roster_tab = gui.get_object("rosterTab")
 
+LOG_PATH = "logs/"
+ACTIVE_LOG_PATH = ''
+
 #populate TextView
-f = open('log', 'r')
-info_buffer = info_display.get_buffer()
-chat_input = f.read()
-info_buffer.set_text(chat_input) 
-f.close()
+#f = open('log', 'r')
+#info_buffer = info_display.get_buffer()
+#chat_input = f.read()
+#info_buffer.set_text(chat_input) 
+#f.close()
 
 
 class Handler:
@@ -59,12 +63,79 @@ class Handler:
         if (chat_input != ""):        
             chat_input += '\n' 
             info_buffer.insert(info_buffer.get_end_iter(),chat_input)
-            f = open('log', 'a')
+            f = open(ACTIVE_LOG_PATH, 'a')
             f.write(chat_input)
+            f.close()
             chat_entry.set_text("")
 
     def on_chatEntry_activate(self, *args):
         Handler.on_submitButton_clicked(self, *args)
+
+    def on_centralCommandButton_clicked(self, *args):
+        log_path = LOG_PATH + 'centralCommandLog.txt'
+        if os.path.isfile(log_path):
+            Communicator.write_to_text_buffer(log_path)
+
+    def on_operationsCommandButton_clicked(self, *args):
+        log_path = LOG_PATH + 'operationsCommandLog.txt'
+        if os.path.isfile(log_path):
+            Communicator.write_to_text_buffer(log_path)
+   
+    def on_codCommandButton_clicked(self, *args):
+        log_path = LOG_PATH + 'codCommandLog.txt'
+        if os.path.isfile(log_path):
+            Communicator.write_to_text_buffer(log_path)
+
+    def on_rustCommandButton_clicked(self, *args):
+        log_path = LOG_PATH + 'rustCommandLog.txt'
+        if os.path.isfile(log_path):
+            Communicator.write_to_text_buffer(log_path)
+    
+    def on_guildWarsCommandButton_clicked(self, *args):
+        log_path = LOG_PATH + 'gwCommandLog.txt'
+        if os.path.isfile(log_path):
+            Communicator.write_to_text_buffer(log_path)
+    
+    def on_wowCommandButton_clicked(self, *args):
+        log_path = LOG_PATH + 'wowCommandLog.txt'
+        if os.path.isfile(log_path):
+            Communicator.write_to_text_buffer(log_path)
+    
+    def on_mcCommandButton_clicked(self, *args):
+        log_path = LOG_PATH + 'mcCommandLog.txt'
+        if os.path.isfile(log_path):
+            Communicator.write_to_text_buffer(log_path)
+    
+    def on_armaCommandButton_clicked(self, *args):
+        log_path = LOG_PATH + 'armaCommandLog.txt'
+        if os.path.isfile(log_path):
+            Communicator.write_to_text_buffer(log_path)
+    
+    def on_logisticsCommandButton_clicked(self, *args):
+        log_path = LOG_PATH + 'logisticsCommandLog.txt'
+        if os.path.isfile(log_path):
+            Communicator.write_to_text_buffer(log_path)
+    
+    def on_mpCommandButton_clicked(self, *args):
+        log_path = LOG_PATH + 'mpCommandLog.txt'
+        if os.path.isfile(log_path):
+            Communicator.write_to_text_buffer(log_path)
+    
+    def on_admissionsCommandButton_clicked(self, *args):
+        log_path = LOG_PATH + 'admissionsCommandLog.txt'
+        if os.path.isfile(log_path):
+            Communicator.write_to_text_buffer(log_path)
+
+class Communicator:
+    def write_to_text_buffer(current_log_path):
+        global ACTIVE_LOG_PATH
+        f = open(current_log_path, 'r')
+        info_buffer = info_display.get_buffer()
+        chat_input = f.read()
+        info_buffer.set_text(chat_input) 
+        f.close()
+        ACTIVE_LOG_PATH = current_log_path
+    
 
 gui.connect_signals(Handler())
 app.show_all()
