@@ -5,12 +5,9 @@ gui = Gtk.Builder()
 gui.add_from_file("communicator.glade")
 app = gui.get_object("hbsCommunicator")
 
+#Window Elements
 hbs_communicator = gui.get_object("hbsCommunicator")
-com_window = gui.get_object("comWindow")
-nav_box = gui.get_object("navBox")
-channel_label = gui.get_object("channelLabel")
-channel_notebook = gui.get_object("channelNotebook")
-command_nav_box = gui.get_object("commandNavBox")
+#Command Buttons
 central_command_button = gui.get_object("centralCommandButton")
 operations_command_button = gui.get_object("operationsCommandButton")
 cod_command_button = gui.get_object("codCommandButton")
@@ -22,8 +19,7 @@ arma_command_button = gui.get_object("armaCommandButton")
 logistics_command_button = gui.get_object("logisticsCommandButton")
 mp_command_button = gui.get_object("mpCommandButton")
 admissions_command_button = gui.get_object("admissionsCommandButton")
-command_tab = gui.get_object("commandTab")
-general_nav_box = gui.get_object("generalNavBox")
+#General Buttons
 general_button = gui.get_object("generalButton")
 cod_general_button = gui.get_object("ccodGeneralButton")
 rust_general_button = gui.get_object("rustGeneralButton")
@@ -31,28 +27,72 @@ gw_general_button = gui.get_object("gwGeneralButton")
 wow_general_button = gui.get_object("wowGeneralButton")
 mc_general_button = gui.get_object("mcGeneralButton")
 arma_general_button = gui.get_object("armaGeneralButton")
-general_tab = gui.get_object("generalTab")
-content_grid = gui.get_object("contentGrid")
-submit_grid = gui.get_object("submitGrid")
+#Channel and Roster Elements
 chat_entry = gui.get_object("chatEntry")
 submit_button = gui.get_object("submitButton")
 content_notebook = gui.get_object("contentNotebook")
 info_display = gui.get_object("infoDisplay")
-channel_tab = gui.get_object("channelTab")
-roster_text_view = gui.get_object("rosterTextView")
-roster_tab = gui.get_object("rosterTab")
+roster_display = gui.get_object("rosterDisplay")
 
+#Global Variables
 LOG_PATH = "logs/"
 ACTIVE_LOG_PATH = ''
 WELCOME_MESSAGE = LOG_PATH + 'welcomeMessage.txt'
+ROSTER_PATH = "roster/"
+ACTIVE_ROSTER_PATH = ''
 
-#populate TextView with welcome message
+USER = "Sniper_Zero"
+
+#populate TextView with Welcome Message
 f = open(WELCOME_MESSAGE, 'r')
 info_buffer = info_display.get_buffer()
 chat_input = f.read()
 info_buffer.set_text(chat_input) 
 f.close()
 
+
+class Communicator:
+    def channel_switch(log_path,roster_path):
+        if os.path.isfile(log_path):
+            Communicator.write_to_channel(log_path)
+        else:
+            Communicator.write_to_channel_no_log(log_path)
+        if os.path.isfile(roster_path):
+            Communicator.write_to_roster(roster_path)
+        else:
+            Communicator.write_to_roster_no_roster(roster_path)
+
+    def write_to_channel(current_log_path):
+        global ACTIVE_LOG_PATH
+        f = open(current_log_path, 'r')
+        info_buffer = info_display.get_buffer()
+        chat_input = f.read()
+        info_buffer.set_text(chat_input) 
+        f.close()
+        ACTIVE_LOG_PATH = current_log_path
+
+    def write_to_channel_no_log(current_log_path):
+        global ACTIVE_LOG_PATH
+        info_buffer = info_display.get_buffer()
+        chat_input = "No logs for this channel yet.\n"
+        info_buffer.set_text(chat_input) 
+        ACTIVE_LOG_PATH = current_log_path
+        
+    def write_to_roster(current_roster_path):
+        global ACTIVE_ROSTER_PATH
+        f = open(current_roster_path, 'r')
+        info_buffer = roster_display.get_buffer()
+        roster_input = f.read()
+        info_buffer.set_text(roster_input)
+        f.close()
+        ACTIVE_ROSTER_PATH = current_roster_path
+    
+    def write_to_roster_no_roster(current_roster_path):
+        global ACTIVE_ROSTER_PATH
+        info_buffer = roster_display.get_buffer()
+        roster_input = "There is currently no roster for this channel\n"
+        info_buffer.set_text(roster_input)
+        ACTIVE_ROSTER_PATH = current_roster_path
 
 class Handler:
     def on_hbsCommunicator_delete_event(self,*args):
@@ -63,80 +103,110 @@ class Handler:
         chat_input = chat_entry.get_text()
         if (chat_input != ""):        
             chat_input += '\n' 
-            info_buffer.insert(info_buffer.get_end_iter(),chat_input)
+            info_buffer.insert(info_buffer.get_end_iter(),USER + ": " +  chat_input)
             f = open(ACTIVE_LOG_PATH, 'a')
-            f.write(chat_input)
+            f.write(USER + ": " + chat_input)
             f.close()
             chat_entry.set_text("")
 
     def on_chatEntry_activate(self, *args):
         Handler.on_submitButton_clicked(self, *args)
 
+    # Command Communication Channels
+    
     def on_centralCommandButton_clicked(self, *args):
-        log_path = LOG_PATH + 'centralCommandLog.txt'
-        if os.path.isfile(log_path):
-            Communicator.write_to_text_buffer(log_path)
+        log_path = LOG_PATH + 'centcomLog.txt'
+        roster_path = ROSTER_PATH + 'centcomRoster.txt'
+        Communicator.channel_switch(log_path,roster_path)
 
     def on_operationsCommandButton_clicked(self, *args):
         log_path = LOG_PATH + 'operationsCommandLog.txt'
-        if os.path.isfile(log_path):
-            Communicator.write_to_text_buffer(log_path)
+        roster_path = ROSTER_PATH + 'operationsCommandRoster.txt'
+        Communicator.channel_switch(log_path,roster_path)
    
     def on_codCommandButton_clicked(self, *args):
         log_path = LOG_PATH + 'codCommandLog.txt'
-        if os.path.isfile(log_path):
-            Communicator.write_to_text_buffer(log_path)
+        roster_path = ROSTER_PATH + 'codCommandRoster.txt'
+        Communicator.channel_switch(log_path,roster_path)
 
     def on_rustCommandButton_clicked(self, *args):
         log_path = LOG_PATH + 'rustCommandLog.txt'
-        if os.path.isfile(log_path):
-            Communicator.write_to_text_buffer(log_path)
+        roster_path = ROSTER_PATH + 'rustCommandRoster.txt'
+        Communicator.channel_switch(log_path,roster_path)
     
     def on_guildWarsCommandButton_clicked(self, *args):
         log_path = LOG_PATH + 'gwCommandLog.txt'
-        if os.path.isfile(log_path):
-            Communicator.write_to_text_buffer(log_path)
+        roster_path = ROSTER_PATH + 'gwCommandRoster.txt'
+        Communicator.channel_switch(log_path,roster_path)
     
     def on_wowCommandButton_clicked(self, *args):
         log_path = LOG_PATH + 'wowCommandLog.txt'
-        if os.path.isfile(log_path):
-            Communicator.write_to_text_buffer(log_path)
+        roster_path = ROSTER_PATH + 'wowCommandRoster.txt'
+        Communicator.channel_switch(log_path,roster_path)
     
     def on_mcCommandButton_clicked(self, *args):
         log_path = LOG_PATH + 'mcCommandLog.txt'
-        if os.path.isfile(log_path):
-            Communicator.write_to_text_buffer(log_path)
+        roster_path = ROSTER_PATH + 'mcCommandRoster.txt'
+        Communicator.channel_switch(log_path,roster_path)
     
     def on_armaCommandButton_clicked(self, *args):
         log_path = LOG_PATH + 'armaCommandLog.txt'
-        if os.path.isfile(log_path):
-            Communicator.write_to_text_buffer(log_path)
+        roster_path = ROSTER_PATH + 'armaCommandRoster.txt'
+        Communicator.channel_switch(log_path,roster_path)
     
     def on_logisticsCommandButton_clicked(self, *args):
         log_path = LOG_PATH + 'logisticsCommandLog.txt'
-        if os.path.isfile(log_path):
-            Communicator.write_to_text_buffer(log_path)
+        roster_path = ROSTER_PATH + 'logisticsCommandRoster.txt'
+        Communicator.channel_switch(log_path,roster_path)
     
     def on_mpCommandButton_clicked(self, *args):
         log_path = LOG_PATH + 'mpCommandLog.txt'
-        if os.path.isfile(log_path):
-            Communicator.write_to_text_buffer(log_path)
+        roster_path = ROSTER_PATH + 'mpCommandRoster.txt'
+        Communicator.channel_switch(log_path,roster_path)
     
     def on_admissionsCommandButton_clicked(self, *args):
         log_path = LOG_PATH + 'admissionsCommandLog.txt'
-        if os.path.isfile(log_path):
-            Communicator.write_to_text_buffer(log_path)
-
-class Communicator:
-    def write_to_text_buffer(current_log_path):
-        global ACTIVE_LOG_PATH
-        f = open(current_log_path, 'r')
-        info_buffer = info_display.get_buffer()
-        chat_input = f.read()
-        info_buffer.set_text(chat_input) 
-        f.close()
-        ACTIVE_LOG_PATH = current_log_path
+        roster_path = ROSTER_PATH + 'admissionsCommandRoster.txt'
+        Communicator.channel_switch(log_path,roster_path)
     
+    # General Communicator Channels
+    
+    def on_generalButton_clicked(self, *args):
+        log_path = LOG_PATH + 'generalLog.txt'
+        roster_path = ROSTER_PATH + 'generalRoster.txt'
+        Communicator.channel_switch(log_path,roster_path)
+
+    def on_codGeneralButton_clicked(self, *args):
+        log_path = LOG_PATH + 'codLog.txt'
+        roster_path = ROSTER_PATH + 'codRoster.txt'
+        Communicator.channel_switch(log_path,roster_path)
+    
+    def on_rustGeneralButton_clicked(self, *args):
+        log_path = LOG_PATH + 'rustLog.txt'
+        roster_path = ROSTER_PATH + 'rustRoster.txt'
+        Communicator.channel_switch(log_path,roster_path)
+
+    def on_guildWarsGeneralButton_clicked(self, *args):
+        log_path = LOG_PATH + 'gwLog.txt'
+        roster_path = ROSTER_PATH + 'gwRoster.txt'
+        Communicator.channel_switch(log_path,roster_path)
+
+    def on_wowGeneralButton_clicked(self, *args):
+        log_path = LOG_PATH + 'wowLog.txt'
+        roster_path = ROSTER_PATH + 'wowRoster.txt'
+        Communicator.channel_switch(log_path,roster_path)
+
+    def on_mcGeneralButton_clicked(self, *args):
+        log_path = LOG_PATH + 'mcLog.txt'
+        roster_path = ROSTER_PATH + 'mcRoster.txt'
+        Communicator.channel_switch(log_path,roster_path)
+
+    def on_armaGeneralButton_clicked(self, *args):
+        log_path = LOG_PATH + 'armaLog.txt'
+        roster_path = ROSTER_PATH + 'armaRoster.txt'
+        Communicator.channel_switch(log_path,roster_path)
+
+
 
 gui.connect_signals(Handler())
 app.show_all()
