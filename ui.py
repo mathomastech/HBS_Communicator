@@ -112,8 +112,10 @@ class Communicator:
             if user[0] == username:
                 if user[4] == password:
                     print("Success!")
+                    break
                 else:
-                    print("Incorrect Password. Try again.")
+                    print("Incorrect Password.")
+                    break
 '''
 Permission Groups:
 
@@ -157,6 +159,12 @@ class Handler:
 
     def on_chatEntry_activate(self, *args):
         Handler.on_submitButton_clicked(self, *args)
+
+    def on_passwordEntry_activate(self, *args):
+        Handler.on_loginButton_clicked(self, *args)
+
+    def on_usernameEntry_activate(self, *args):
+        Handler.on_loginButton_clicked(self, *args)
 
     # Command Communication Channels
     
