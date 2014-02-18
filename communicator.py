@@ -8,6 +8,7 @@ chat_input = f.read()
 info_buffer.set_text(chat_input) 
 f.close()
 
+USER = ''
 
 class Communicator:
     def channel_switch(log_path,roster_path):
@@ -52,21 +53,37 @@ class Communicator:
         info_buffer.set_text(roster_input)
         ACTIVE_ROSTER_PATH = current_roster_path
 
+    def write_chat_to_channel():
+        chat_input = chat_entry.get_text()
+        if (chat_input != ""):
+            chat_input += '\n'
+            info_buffer.insert(info_buffer.get_end_iter(),USER + ": " + chat_input)
+            f = open(ACTIVE_LOG_PATH, 'a')
+            f.write(USER + ": " + chat_input)
+            f.close()
+            chat_entry.set_text("")
+    
     def login(username,password):
         f = open(USER_PATH, 'r')
+        global USER
         while True:
             line = f.readline()
             if len(line) == 0:
-                print("No user found")
+                login_status_label.set_label("No user found")
                 break
-            user = line.split(",")
-            if user[0] == username:
-                if user[4] == password:
-                    print("Success!")
+            data = line.split(",")
+            if data[0] == username:
+                if data[4] == password:
+                    login_status_label.set_label("Success!")
+                    USER = username
+                    authorize.close()
                     break
                 else:
-                    print("Incorrect Password.")
+                    login_status_label.set_label("Incorrect Password.")
                     break
+        if USER != '':
+            login_button.set_label(username)
+        
 '''
 Permission Groups:
 
