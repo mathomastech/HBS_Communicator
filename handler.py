@@ -15,14 +15,7 @@ class Handler:
 
     def on_submitButton_clicked(self, *args):
         info_buffer = info_display.get_buffer()
-        chat_input = chat_entry.get_text()
-        if (chat_input != ""):        
-            chat_input += '\n' 
-            info_buffer.insert(info_buffer.get_end_iter(),USER + ": " +  chat_input)
-            f = open(ACTIVE_LOG_PATH, 'a')
-            f.write(USER + ": " + chat_input)
-            f.close()
-            chat_entry.set_text("")
+        Communicator.write_chat_to_channel()
 
     def on_chatEntry_activate(self, *args):
         Handler.on_submitButton_clicked(self, *args)
