@@ -41,17 +41,26 @@ password_entry = loginWindow.get_object("passwordEntry")
 
 
 #Global Variables
-LOG_PATH = "logs/"
-ACTIVE_LOG_PATH = ''
-WELCOME_MESSAGE = LOG_PATH + 'welcomeMessage.txt'
-ROSTER_PATH = "roster/"
-ACTIVE_ROSTER_PATH = ''
-USER_PATH = "users.txt"
+f = open("config.txt", 'r')
+configs = f.readline()
+f.close()
+config = configs.split(",")
+LOG_PATH = config[0]
+ACTIVE_LOG_PATH = config[1]
+ROSTER_PATH = config[2]
+ACTIVE_ROSTER_PATH = config[3]
+USER_PATH = config[4]
+USER = config[5]
 
-USER = "Sniper_Zero"
+#LOG_PATH.str()
+#ACTIVE_LOG_PATH.str()
+#ROSTER_PATH.str()
+#ACTIVE_ROSTER_PATH.str()
+#USER_PATH.str()
+#USER.str()
 
 #populate TextView with Welcome Message
-f = open(WELCOME_MESSAGE, 'r')
+f = open(LOG_PATH + "welcomeMessage.txt", 'r')
 info_buffer = info_display.get_buffer()
 chat_input = f.read()
 info_buffer.set_text(chat_input) 
@@ -134,6 +143,7 @@ Permission Groups:
 5: Member
 6: Unregistered
 '''
+
 class Handler:
     def on_hbsCommunicator_delete_event(self,*args):
         Gtk.main_quit(*args)
@@ -188,7 +198,7 @@ class Handler:
         roster_path = ROSTER_PATH + 'rustCommandRoster.txt'
         Communicator.channel_switch(log_path,roster_path)
     
-    def on_guildWarsCommandButton_clicked(self, *args):
+    def on_gwCommandButton_clicked(self, *args):
         log_path = LOG_PATH + 'gwCommandLog.txt'
         roster_path = ROSTER_PATH + 'gwCommandRoster.txt'
         Communicator.channel_switch(log_path,roster_path)
@@ -239,30 +249,28 @@ class Handler:
         log_path = LOG_PATH + 'rustLog.txt'
         roster_path = ROSTER_PATH + 'rustRoster.txt'
         Communicator.channel_switch(log_path,roster_path)
-
-    def on_guildWarsGeneralButton_clicked(self, *args):
+    
+    def on_gwGeneralButton_clicked(self, *args):
         log_path = LOG_PATH + 'gwLog.txt'
         roster_path = ROSTER_PATH + 'gwRoster.txt'
         Communicator.channel_switch(log_path,roster_path)
-
+    
     def on_wowGeneralButton_clicked(self, *args):
         log_path = LOG_PATH + 'wowLog.txt'
         roster_path = ROSTER_PATH + 'wowRoster.txt'
         Communicator.channel_switch(log_path,roster_path)
-
+    
     def on_mcGeneralButton_clicked(self, *args):
         log_path = LOG_PATH + 'mcLog.txt'
         roster_path = ROSTER_PATH + 'mcRoster.txt'
         Communicator.channel_switch(log_path,roster_path)
-
+    
     def on_armaGeneralButton_clicked(self, *args):
         log_path = LOG_PATH + 'armaLog.txt'
         roster_path = ROSTER_PATH + 'armaRoster.txt'
         Communicator.channel_switch(log_path,roster_path)
 
-
-
-gui.connect_signals(Handler())
-loginWindow.connect_signals(Handler())
-main_app.show_all()
-Gtk.main()
+#gui.connect_signals(Handler())
+#loginWindow.connect_signals(Handler())
+#main_app.show_all()
+#Gtk.main()
