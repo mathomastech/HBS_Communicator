@@ -10,4 +10,5 @@ def main():
 gui.connect_signals(Handler())
 loginWindow.connect_signals(Handler())
 main_app.show_all()
+authorize.show_all()
 Gtk.main()
