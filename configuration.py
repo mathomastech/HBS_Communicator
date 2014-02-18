@@ -36,9 +36,10 @@ submit_button = gui.get_object("submitButton")
 info_display = gui.get_object("infoDisplay")
 roster_display = gui.get_object("rosterDisplay")
 #Login Window Text Entrys
+login_button = gui.get_object("loginWindowButton")
 username_entry = loginWindow.get_object("usernameEntry")
 password_entry = loginWindow.get_object("passwordEntry")
-
+login_status_label = loginWindow.get_object("loginStatusLabel")
 #Global Variables Import
 f = open("config.txt", 'r')
 configs = f.readline()
@@ -50,4 +51,3 @@ ACTIVE_LOG_PATH = config[1]
 ROSTER_PATH = config[2]
 ACTIVE_ROSTER_PATH = config[3]
 USER_PATH = config[4]
-USER = config[5]
