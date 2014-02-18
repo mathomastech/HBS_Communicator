@@ -1,12 +1,15 @@
 from gi.repository import Gtk
 import os.path
-# instantiate XML object
+#Initialize communicator XML objects
 gui = Gtk.Builder()
 gui.add_from_file("communicator.glade")
-app = gui.get_object("hbsCommunicator")
+main_app = gui.get_object("hbsCommunicator")
 
-#Window Elements
-hbs_communicator = gui.get_object("hbsCommunicator")
+#Initialize loginWindow XML objects
+loginWindow = Gtk.Builder()
+loginWindow.add_from_file("loginWindow.glade")
+authorize = loginWindow.get_object("loginWindow")
+
 #Command Buttons
 central_command_button = gui.get_object("centralCommandButton")
 operations_command_button = gui.get_object("operationsCommandButton")
@@ -30,9 +33,12 @@ arma_general_button = gui.get_object("armaGeneralButton")
 #Channel and Roster Elements
 chat_entry = gui.get_object("chatEntry")
 submit_button = gui.get_object("submitButton")
-content_notebook = gui.get_object("contentNotebook")
 info_display = gui.get_object("infoDisplay")
 roster_display = gui.get_object("rosterDisplay")
+#Login Window Text Entrys
+username_entry = loginWindow.get_object("usernameEntry")
+password_entry = loginWindow.get_object("passwordEntry")
+
 
 #Global Variables
 LOG_PATH = "logs/"
@@ -40,6 +46,7 @@ ACTIVE_LOG_PATH = ''
 WELCOME_MESSAGE = LOG_PATH + 'welcomeMessage.txt'
 ROSTER_PATH = "roster/"
 ACTIVE_ROSTER_PATH = ''
+USER_PATH = "users.txt"
 
 USER = "Sniper_Zero"
 
@@ -94,9 +101,48 @@ class Communicator:
         info_buffer.set_text(roster_input)
         ACTIVE_ROSTER_PATH = current_roster_path
 
+    def login(username,password):
+        f = open(USER_PATH, 'r')
+        while True:
+            line = f.readline()
+            if len(line) == 0:
+                print("No user found")
+                break
+            user = line.split(",")
+            if user[0] == username:
+                if user[4] == password:
+                    print("Success!")
+                else:
+                    print("Incorrect Password. Try again.")
+'''
+Permission Groups:
+
+1: Central Command
+2: Operations Command
+3: Logistics Command
+100: Regiment Command
+101: Call of Duty
+102: Rust
+103: World of Warcraft
+104: Guild Wars
+105: League of Legends
+106: Minecraft
+107: DayZ
+108: CS:GO
+5: Member
+6: Unregistered
+'''
 class Handler:
     def on_hbsCommunicator_delete_event(self,*args):
         Gtk.main_quit(*args)
+
+    def on_loginWindowButton_clicked(self, *args):
+        authorize.show_all()
+
+    def on_loginButton_clicked(self, *args):
+        username = username_entry.get_text()
+        password = password_entry.get_text()
+        Communicator.login(username,password)
 
     def on_submitButton_clicked(self, *args):
         info_buffer = info_display.get_buffer()
@@ -209,5 +255,6 @@ class Handler:
 
 
 gui.connect_signals(Handler())
-app.show_all()
+loginWindow.connect_signals(Handler())
+main_app.show_all()
 Gtk.main()
