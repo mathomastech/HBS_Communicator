@@ -106,13 +106,13 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkButton" id="guildWarsCommandButton">
+                      <object class="GtkButton" id="gwCommandButton">
                         <property name="label" translatable="yes">Guild Wars</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
                         <property name="relief">none</property>
-                        <signal name="clicked" handler="on_guildWarsCommandButton_clicked" swapped="no"/>
+                        <signal name="clicked" handler="on_gwCommandButton_clicked" swapped="no"/>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -275,13 +275,13 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkButton" id="guildWarsGeneralButton">
+                      <object class="GtkButton" id="gwGeneralButton">
                         <property name="label" translatable="yes">Guild Wars</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
                         <property name="relief">none</property>
-                        <signal name="clicked" handler="on_guildWarsGeneralButton_clicked" swapped="no"/>
+                        <signal name="clicked" handler="on_gwGeneralButton_clicked" swapped="no"/>
                       </object>
                       <packing>
                         <property name="expand">False</property>
