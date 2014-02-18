@@ -19,13 +19,14 @@
             <property name="can_focus">False</property>
             <property name="orientation">vertical</property>
             <child>
-              <object class="GtkLabel" id="channelLabel">
+              <object class="GtkButton" id="loginWindowButton">
+                <property name="label" translatable="yes">User Login</property>
                 <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="label" translatable="yes">Channels</property>
-                <property name="angle">0.050000000000000003</property>
-                <property name="max_width_chars">6</property>
-                <property name="lines">0</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="relief">none</property>
+                <property name="xalign">0.50000005960464478</property>
+                <signal name="clicked" handler="on_loginWindowButton_clicked" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
