@@ -56,7 +56,10 @@
           <object class="GtkEntry" id="passwordEntry">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
+            <property name="visibility">False</property>
+            <property name="invisible_char">*</property>
             <property name="width_chars">30</property>
+            <property name="input_purpose">password</property>
             <signal name="activate" handler="on_passwordEntry_activate" swapped="no"/>
           </object>
           <packing>
@@ -80,6 +83,21 @@
             <property name="width">1</property>
             <property name="height">1</property>
           </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="loginStatusLabel">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">3</property>
+            <property name="width">1</property>
+            <property name="height">1</property>
+          </packing>
+        </child>
+        <child>
+          <placeholder/>
         </child>
         <child>
           <placeholder/>
