@@ -29,59 +29,91 @@ class Handler:
     # Command Communication Channels
     
     def on_centralCommandButton_clicked(self, *args):
-        log_path = LOG_PATH + 'centcomLog.txt'
-        roster_path = ROSTER_PATH + 'centcomRoster.txt'
-        Communicator.channel_switch(log_path,roster_path)
-
+        if Communicator.check_user_permissions("Central Command"):
+            log_path = LOG_PATH + 'centcomLog.txt'
+            roster_path = ROSTER_PATH + 'centcomRoster.txt'
+            Communicator.channel_switch(log_path,roster_path)
+        else: 
+            Communicator.invalid_permissions()
     def on_operationsCommandButton_clicked(self, *args):
-        log_path = LOG_PATH + 'operationsCommandLog.txt'
-        roster_path = ROSTER_PATH + 'operationsCommandRoster.txt'
-        Communicator.channel_switch(log_path,roster_path)
+        if Communicator.check_user_permissions("Operations Command"):
+            log_path = LOG_PATH + 'operationsCommandLog.txt'
+            roster_path = ROSTER_PATH + 'operationsCommandRoster.txt'
+            Communicator.channel_switch(log_path,roster_path)
+        else: 
+            Communicator.invalid_permissions()
    
     def on_codCommandButton_clicked(self, *args):
-        log_path = LOG_PATH + 'codCommandLog.txt'
-        roster_path = ROSTER_PATH + 'codCommandRoster.txt'
-        Communicator.channel_switch(log_path,roster_path)
+        if Communicator.check_user_permissions("Call of Duty Command"):
+            log_path = LOG_PATH + 'codCommandLog.txt'
+            roster_path = ROSTER_PATH + 'codCommandRoster.txt'
+            Communicator.channel_switch(log_path,roster_path)
+        else: 
+            Communicator.invalid_permissions()
 
     def on_rustCommandButton_clicked(self, *args):
-        log_path = LOG_PATH + 'rustCommandLog.txt'
-        roster_path = ROSTER_PATH + 'rustCommandRoster.txt'
-        Communicator.channel_switch(log_path,roster_path)
+        if Communicator.check_user_permissions("Rust Command"):
+            log_path = LOG_PATH + 'rustCommandLog.txt'
+            roster_path = ROSTER_PATH + 'rustCommandRoster.txt'
+            Communicator.channel_switch(log_path,roster_path)
+        else: 
+            Communicator.invalid_permissions()
     
     def on_gwCommandButton_clicked(self, *args):
-        log_path = LOG_PATH + 'gwCommandLog.txt'
-        roster_path = ROSTER_PATH + 'gwCommandRoster.txt'
-        Communicator.channel_switch(log_path,roster_path)
+        if Communicator.check_user_permissions("Guild Wars Command"):
+            log_path = LOG_PATH + 'gwCommandLog.txt'
+            roster_path = ROSTER_PATH + 'gwCommandRoster.txt'
+            Communicator.channel_switch(log_path,roster_path)
+        else: 
+            Communicator.invalid_permissions()
     
     def on_wowCommandButton_clicked(self, *args):
-        log_path = LOG_PATH + 'wowCommandLog.txt'
-        roster_path = ROSTER_PATH + 'wowCommandRoster.txt'
-        Communicator.channel_switch(log_path,roster_path)
+        if Communicator.check_user_permissions("World of Warcraft Command"):
+            log_path = LOG_PATH + 'wowCommandLog.txt'
+            roster_path = ROSTER_PATH + 'wowCommandRoster.txt'
+            Communicator.channel_switch(log_path,roster_path)
+        else: 
+            Communicator.invalid_permissions()
     
     def on_mcCommandButton_clicked(self, *args):
-        log_path = LOG_PATH + 'mcCommandLog.txt'
-        roster_path = ROSTER_PATH + 'mcCommandRoster.txt'
-        Communicator.channel_switch(log_path,roster_path)
+        if Communicator.check_user_permissions("Minecraft Command"):
+            log_path = LOG_PATH + 'mcCommandLog.txt'
+            roster_path = ROSTER_PATH + 'mcCommandRoster.txt'
+            Communicator.channel_switch(log_path,roster_path)
+        else: 
+            Communicator.invalid_permissions()
     
     def on_armaCommandButton_clicked(self, *args):
-        log_path = LOG_PATH + 'armaCommandLog.txt'
-        roster_path = ROSTER_PATH + 'armaCommandRoster.txt'
-        Communicator.channel_switch(log_path,roster_path)
+        if Communicator.check_user_permissions("DayZ Command"):
+            log_path = LOG_PATH + 'armaCommandLog.txt'
+            roster_path = ROSTER_PATH + 'armaCommandRoster.txt'
+            Communicator.channel_switch(log_path,roster_path)
+        else: 
+            Communicator.invalid_permissions()
     
     def on_logisticsCommandButton_clicked(self, *args):
-        log_path = LOG_PATH + 'logisticsCommandLog.txt'
-        roster_path = ROSTER_PATH + 'logisticsCommandRoster.txt'
-        Communicator.channel_switch(log_path,roster_path)
+        if Communicator.check_user_permissions("Logistics Command"):
+            log_path = LOG_PATH + 'logisticsCommandLog.txt'
+            roster_path = ROSTER_PATH + 'logisticsCommandRoster.txt'
+            Communicator.channel_switch(log_path,roster_path)
+        else: 
+            Communicator.invalid_permissions()
     
     def on_mpCommandButton_clicked(self, *args):
-        log_path = LOG_PATH + 'mpCommandLog.txt'
-        roster_path = ROSTER_PATH + 'mpCommandRoster.txt'
-        Communicator.channel_switch(log_path,roster_path)
+        if Communicator.check_user_permissions("Military Police"):
+            log_path = LOG_PATH + 'mpCommandLog.txt'
+            roster_path = ROSTER_PATH + 'mpCommandRoster.txt'
+            Communicator.channel_switch(log_path,roster_path)
+        else: 
+            Communicator.invalid_permissions()
     
     def on_admissionsCommandButton_clicked(self, *args):
-        log_path = LOG_PATH + 'admissionsCommandLog.txt'
-        roster_path = ROSTER_PATH + 'admissionsCommandRoster.txt'
-        Communicator.channel_switch(log_path,roster_path)
+        if Communicator.check_user_permissions("Admissions"):
+            log_path = LOG_PATH + 'admissionsCommandLog.txt'
+            roster_path = ROSTER_PATH + 'admissionsCommandRoster.txt'
+            Communicator.channel_switch(log_path,roster_path)
+        else: 
+            Communicator.invalid_permissions()
     
     # General Communicator Channels
     
