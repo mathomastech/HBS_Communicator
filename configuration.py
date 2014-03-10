@@ -47,7 +47,9 @@ f.close()
 config = configs.split(",")
 
 LOG_PATH = config[0]
-ACTIVE_LOG_PATH = config[1]
-ROSTER_PATH = config[2]
-ACTIVE_ROSTER_PATH = config[3]
-USER_PATH = config[4]
+ROSTER_PATH = config[1]
+USER_PATH = config[2]
+DB_IP = config[3]
+DB_NAME = config[4]
+DB_USER = config[5]
+DB_PASSWORD = config[6]
