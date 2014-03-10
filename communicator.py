@@ -1,4 +1,5 @@
 from configuration import *
+from database import *
 import os.path
 
 #populate TextView with Welcome Message
@@ -9,6 +10,7 @@ info_buffer.set_text(chat_input)
 f.close()
 
 USER = ''
+USER_PERMISSIONS = []
 
 class Communicator:
     def channel_switch(log_path,roster_path):
@@ -64,48 +66,50 @@ class Communicator:
             chat_entry.set_text("")
     
     def login(username,password):
-        f = open(USER_PATH, 'r')
-        global USER
-        while True:
-            line = f.readline()
-            if len(line) == 0:
-                login_status_label.set_label("No user found")
-                break
-            data = line.split(",")
-            if data[0] == username:
-                if data[4] == password:
-                    login_status_label.set_label("Success!")
-                    USER = username
-                    authorize.close()
-                    break
-                else:
-                    login_status_label.set_label("Incorrect Password.")
-                    break
-        if USER != '':
-            login_button.set_label(username)
+        flag, userPermissions, channelPermissions = Database.login(username,password)
         
-'''
-Permission Groups:
-
-1: Central Command
-2: Operations Command
-3: Logistics Command
-100: Regiment Command
-101: Call of Duty
-102: Rust
-103: World of Warcraft
-104: Guild Wars
-105: League of Legends
-106: Minecraft
-107: DayZ
-108: CS:GO
-5: Member
-6: Unregistered
-'''
-
-
-
-#gui.connect_signals(Handler())
-#loginWindow.connect_signals(Handler())
-#main_app.show_all()
-#Gtk.main()
+        if flag:
+            global USER
+            global USER_PERMISSIONS
+            USER = username
+            USER_PERMISSIONS = userPermissions
+    
+    def check_user_permissions(channel):
+        if channel == "Central Command":
+            permissions = [9,10,54]
+        if channel == "Operations Command":
+            permissions = [9,10,54,57,62,63]
+        if channel == "Call of Duty Command":
+            permissions = [9,10,57]
+        if channel == "Rust Command":
+            permissions = [9,10,62]
+        if channel == "Guild Wars Command":
+            permissions = [9,10]
+            # Need GW command group on forums
+        if channel == "World of Warcraft Command":
+            permissions = [9,10,63]
+        if channel == "Minecraft Command":
+            permissions = [9,10]
+            # Need MC command group on forums
+        if channel == "DayZ Command":
+            permissions = [9,10]
+            # Need DayZ group of forums
+        if channel == "Logistics Command": 
+            permissions = [9,10,54,58,17]
+        if channel == "Military Police":
+            permissions = [9,10,58,17] 
+        if channel == "Admissions":
+            permissions = [9,10,58]
+            #Need admissions group of forums
+        
+        print(permissions)
+        print(USER_PERMISSIONS)
+        for i in range(0,len(USER_PERMISSIONS)):
+            for j in range(0,len(permissions)):
+                if USER_PERMISSIONS[i] == permissions[j]:
+                    return True
+        return False
+    
+    def invalid_permissions():
+        info_buffer = info_display.get_buffer()
+        info_buffer.set_text("You do not have sufficient privaledges to view this channel. If you feel this is in error, please contact an administrator")
