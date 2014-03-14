@@ -9,10 +9,13 @@ chat_input = f.read()
 info_buffer.set_text(chat_input) 
 f.close()
 
-USER = ''
-USER_PERMISSIONS = []
+#USER = ''
+#USER_PERMISSIONS = []
 
 class Communicator:
+    USER = ""
+    USER_PERMISSIONS = []
+    
     def channel_switch(log_path,roster_path):
         if os.path.isfile(log_path):
             Communicator.write_to_channel(log_path)
@@ -59,9 +62,9 @@ class Communicator:
         chat_input = chat_entry.get_text()
         if (chat_input != ""):
             chat_input += '\n'
-            info_buffer.insert(info_buffer.get_end_iter(),USER + ": " + chat_input)
+            info_buffer.insert(info_buffer.get_end_iter(),Communicator.USER + ": " + chat_input)
             f = open(ACTIVE_LOG_PATH, 'a')
-            f.write(USER + ": " + chat_input)
+            f.write(Communicator.USER + ": " + chat_input)
             f.close()
             chat_entry.set_text("")
     
@@ -69,10 +72,10 @@ class Communicator:
         flag, userPermissions, channelPermissions = Database.login(username,password)
         
         if flag:
-            global USER
-            global USER_PERMISSIONS
-            USER = username
-            USER_PERMISSIONS = userPermissions
+           # global USER
+           # global USER_PERMISSIONS
+            Communicator.USER = username
+            Communicator.USER_PERMISSIONS = userPermissions
     
     def check_user_permissions(channel):
         if channel == "Central Command":
@@ -103,10 +106,10 @@ class Communicator:
             #Need admissions group of forums
         
         print(permissions)
-        print(USER_PERMISSIONS)
-        for i in range(0,len(USER_PERMISSIONS)):
+        print(Communicator.USER_PERMISSIONS)
+        for i in range(0,len(Communicator.USER_PERMISSIONS)):
             for j in range(0,len(permissions)):
-                if USER_PERMISSIONS[i] == permissions[j]:
+                if Communicator.USER_PERMISSIONS[i] == permissions[j]:
                     return True
         return False
     
