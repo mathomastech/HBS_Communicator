@@ -1,4 +1,5 @@
 from gi.repository import Gtk
+from config import Configuration
 
 #Initialize communicator XML objects
 gui = Gtk.Builder()
@@ -40,16 +41,10 @@ login_button = gui.get_object("loginWindowButton")
 username_entry = loginWindow.get_object("usernameEntry")
 password_entry = loginWindow.get_object("passwordEntry")
 login_status_label = loginWindow.get_object("loginStatusLabel")
-#Global Variables Import
-f = open("config.txt", 'r')
-configs = f.readline()
-f.close()
-config = configs.split(",")
 
-LOG_PATH = config[0]
-ROSTER_PATH = config[1]
-USER_PATH = config[2]
-DB_IP = config[3]
-DB_NAME = config[4]
-DB_USER = config[5]
-DB_PASSWORD = config[6]
+LOG_PATH = Configuration.c['Logs']
+ROSTER_PATH = Configuration.c['Rosters']
+DB_IP = Configuration.c['DB IP']
+DB_NAME = Configuration.c['DB Name']
+DB_USER = Configuration.c['DB User']
+DB_PASSWORD = Configuration.c['DB Password']
