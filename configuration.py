@@ -3,12 +3,12 @@ from config import Configuration
 
 #Initialize communicator XML objects
 gui = Gtk.Builder()
-gui.add_from_file("communicator.glade")
+gui.add_from_file("glade/communicator.glade")
 main_app = gui.get_object("hbsCommunicator")
 
 #Initialize loginWindow XML objects
 loginWindow = Gtk.Builder()
-loginWindow.add_from_file("loginWindow.glade")
+loginWindow.add_from_file("glade/loginWindow.glade")
 authorize = loginWindow.get_object("loginWindow")
 
 #Command Buttons
