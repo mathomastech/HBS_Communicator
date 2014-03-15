@@ -2,6 +2,7 @@ from configuration import *
 from communicator import *
 
 class Handler:
+    
     def on_hbsCommunicator_delete_event(self,*args):
         Gtk.main_quit(*args)
 
