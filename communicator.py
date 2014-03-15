@@ -1,5 +1,6 @@
 from configuration import *
 from database import *
+
 import os.path
 
 #populate TextView with Welcome Message
@@ -9,13 +10,12 @@ chat_input = f.read()
 info_buffer.set_text(chat_input) 
 f.close()
 
-#USER = ''
-#USER_PERMISSIONS = []
-
 class Communicator:
     USER = ""
     USER_PERMISSIONS = []
-    
+    ACTIVE_LOG_PATH = ""
+    ACTIVE_ROSTER_PATH = ""
+
     def channel_switch(log_path,roster_path):
         if os.path.isfile(log_path):
             Communicator.write_to_channel(log_path)
@@ -27,43 +27,39 @@ class Communicator:
             Communicator.write_to_roster_no_roster(roster_path)
 
     def write_to_channel(current_log_path):
-        global ACTIVE_LOG_PATH
         f = open(current_log_path, 'r')
         info_buffer = info_display.get_buffer()
         chat_input = f.read()
         info_buffer.set_text(chat_input) 
         f.close()
-        ACTIVE_LOG_PATH = current_log_path
+        Communicator.ACTIVE_LOG_PATH = current_log_path
 
     def write_to_channel_no_log(current_log_path):
-        global ACTIVE_LOG_PATH
         info_buffer = info_display.get_buffer()
         chat_input = "No logs for this channel yet.\n"
         info_buffer.set_text(chat_input) 
-        ACTIVE_LOG_PATH = current_log_path
+        Communicator.ACTIVE_LOG_PATH = current_log_path
         
     def write_to_roster(current_roster_path):
-        global ACTIVE_ROSTER_PATH
         f = open(current_roster_path, 'r')
         info_buffer = roster_display.get_buffer()
         roster_input = f.read()
         info_buffer.set_text(roster_input)
         f.close()
-        ACTIVE_ROSTER_PATH = current_roster_path
+        Communicator.ACTIVE_ROSTER_PATH = current_roster_path
     
     def write_to_roster_no_roster(current_roster_path):
-        global ACTIVE_ROSTER_PATH
         info_buffer = roster_display.get_buffer()
         roster_input = "There is currently no roster for this channel\n"
         info_buffer.set_text(roster_input)
-        ACTIVE_ROSTER_PATH = current_roster_path
+        Communicator.ACTIVE_ROSTER_PATH = current_roster_path
 
     def write_chat_to_channel():
         chat_input = chat_entry.get_text()
         if (chat_input != ""):
             chat_input += '\n'
             info_buffer.insert(info_buffer.get_end_iter(),Communicator.USER + ": " + chat_input)
-            f = open(ACTIVE_LOG_PATH, 'a')
+            f = open(Communicator.ACTIVE_LOG_PATH, 'a')
             f.write(Communicator.USER + ": " + chat_input)
             f.close()
             chat_entry.set_text("")
@@ -72,8 +68,6 @@ class Communicator:
         flag, userPermissions, channelPermissions = Database.login(username,password)
         
         if flag:
-           # global USER
-           # global USER_PERMISSIONS
             Communicator.USER = username
             Communicator.USER_PERMISSIONS = userPermissions
     
