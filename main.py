@@ -1,14 +1,13 @@
-from configuration import *
+from gui import *
 from communicator import *
 from handler import *
 
 def main():
-    print("success")
+    GUI.APP.connect_signals(Handler())
+    GUI.LOGIN_WINDOW.connect_signals(Handler())
+    GUI.MAIN_APP.show_all()
+    GUI.AUTHORIZE_WINDOW.show_all()
+    Gtk.main()
 
 
-
-gui.connect_signals(Handler())
-loginWindow.connect_signals(Handler())
-main_app.show_all()
-authorize.show_all()
-Gtk.main()
+main()

@@ -1,24 +1,26 @@
-from configuration import *
+from gui import *
 from database import *
 from ssh import *
+from config import *
 
 import os.path
 
-#populate TextView with Welcome Message
-#f = open(LOG_PATH + "welcomeMessage.txt", 'r')
-#info_buffer = info_display.get_buffer()
-#chat_input = f.read()
-#info_buffer.set_text(chat_input) 
-#f.close()
 
 class Communicator:
+    #Communicator Class Level Variables 
     USER = ""
     USER_PERMISSIONS = []
     ACTIVE_LOG_PATH = ""
     ACTIVE_ROSTER_PATH = ""
     SSH_CONNECTION = SSH.connect_to_ssh()
 
-    def channel_switch(log_path,roster_path):
+    def update_channel():
+        # Call this function to refresh the currently selected channel
+        Communicator.populate_channel(Communicator.ACTIVE_LOG_PATH,
+                            Communicator.ACTIVE_ROSTER_PATH)
+    
+    def populate_channel(log_path,roster_path):
+        # Populate the channel with both logs and rosters
         log = SSH.get_log(Communicator.SSH_CONNECTION, log_path)
         Communicator.write_to_channel(log_path,log)
         if os.path.isfile(roster_path):
@@ -27,42 +29,50 @@ class Communicator:
             Communicator.write_to_roster_no_roster(roster_path)
 
     def write_to_channel(current_log_path,log):
-        info_buffer = info_display.get_buffer()
+        # Write log to the currently selected channel
+        info_buffer = GUI.INFO_DISPLAY.get_buffer()
         info_buffer.set_text(log) 
         Communicator.ACTIVE_LOG_PATH = current_log_path
 
     def write_to_roster(current_roster_path):
+        # Write roster to the currently selected channel
         f = open(current_roster_path, 'r')
-        info_buffer = roster_display.get_buffer()
+        info_buffer = GUI.ROSTER_DISPLAY.get_buffer()
         roster_input = f.read()
         info_buffer.set_text(roster_input)
         f.close()
         Communicator.ACTIVE_ROSTER_PATH = current_roster_path
     
     def write_to_roster_no_roster(current_roster_path):
-        info_buffer = roster_display.get_buffer()
+        info_buffer = GUI.ROSTER_DISPLAY.get_buffer()
         roster_input = "There is currently no roster for this channel\n"
         info_buffer.set_text(roster_input)
         Communicator.ACTIVE_ROSTER_PATH = current_roster_path
 
     def write_chat_to_channel():
-        chat_input = chat_entry.get_text()
+        # Take chat box text and write it to channel and log.
+        chat_input = GUI.CHAT_ENTRY.get_text()
         if (chat_input != ""):
-            chat_input += '\n'
-            info_buffer.insert(info_buffer.get_end_iter(),Communicator.USER + ": " + chat_input)
-            f = open(Communicator.ACTIVE_LOG_PATH, 'a')
-            f.write(Communicator.USER + ": " + chat_input)
-            f.close()
-            chat_entry.set_text("")
+            log = Communicator.USER + ": " + chat_input
+            SSH.write_to_log(Communicator.SSH_CONNECTION,
+                                Communicator.ACTIVE_LOG_PATH, log)
+            Communicator.update_channel()
+            GUI.CHAT_ENTRY.set_text("")
+
     
     def login(username,password):
+        # Set user login and permissions
         flag, userPermissions, channelPermissions = Database.login(username,password)
         
         if flag:
             Communicator.USER = username
             Communicator.USER_PERMISSIONS = userPermissions
+            #populate TextView with Welcome Message
+            Communicator.populate_channel(Config.c['Logs'] + 'welcomeMessage.txt', Config.c['Rosters'] + 'generalRoster.txt')
+            
     
     def check_user_permissions(channel):
+        # Check if currently logged in user has permissions to view selected channel
         if channel == "Central Command":
             permissions = [9,10,54]
         if channel == "Operations Command":
@@ -90,8 +100,6 @@ class Communicator:
             permissions = [9,10,58]
             #Need admissions group of forums
         
-        print(permissions)
-        print(Communicator.USER_PERMISSIONS)
         for i in range(0,len(Communicator.USER_PERMISSIONS)):
             for j in range(0,len(permissions)):
                 if Communicator.USER_PERMISSIONS[i] == permissions[j]:
@@ -99,5 +107,6 @@ class Communicator:
         return False
     
     def invalid_permissions():
-        info_buffer = info_display.get_buffer()
+        # If user does not have appropriate permissions, print out message.
+        info_buffer = GUI.INFO_DISPLAY.get_buffer()
         info_buffer.set_text("You do not have sufficient privaledges to view this channel. If you feel this is in error, please contact an administrator")

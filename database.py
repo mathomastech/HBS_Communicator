@@ -1,15 +1,15 @@
-from configuration import *
+from config import *
+from gui import *
 import mysql.connector
 
-DB = ""
 
 class Database:
+    DB = ""
     def establish_connection():
-        global DB 
-        DB = mysql.connector.connect(host=DB_IP,
-                            user=DB_USER,
-                            password=DB_PASSWORD,
-                            db=DB_NAME
+        Database.DB = mysql.connector.connect(host=Config.c['DB IP'],
+                            user=Config.c['DB User'],
+                            password=Config.c['DB Password'],
+                            db=Config.c['DB Name']
                             )
     
     def login(uname,passwd):
@@ -27,19 +27,19 @@ class Database:
             return flag, "", ""
 
     def check_user(uname, passwd):
-        cur = DB.cursor()
+        cur = Database.DB.cursor()
         query = ("SELECT username, password FROM gbgraphi_vbulletin.user WHERE user.username = '" + uname + "' and password = md5( concat(md5('" + passwd + "'), salt))")
         cur.execute(query)
            
         for (username, password) in cur:
-            login_status_label.set_label("Success!")
-            login_button.set_label(username)
-            authorize.close()
+            GUI.LOGIN_STATUS_LABEL.set_label("Success!")
+            GUI.LOGIN_BTN.set_label(username)
+            GUI.AUTHORIZE_WINDOW.close()
             return True
         return False
 
     def get_user_permissions(uname):
-        cur = DB.cursor()
+        cur = Database.DB.cursor()
         query = ("SELECT usergroupid, membergroupids FROM gbgraphi_vbulletin.user WHERE user.username = '" + uname + "'")
         cur.execute(query)
         for (usergroupid, membergroupids) in cur:
@@ -50,7 +50,7 @@ class Database:
     
     def get_channel_permissions():
         Database.establish_connection()
-        cur = DB.cursor()
+        cur = Database.DB.cursor()
         query = ("select usergroupid, usertitle from usergroup")
         cur.execute(query)
         queryString = ""

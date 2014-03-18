@@ -1,5 +1,5 @@
 import paramiko
-from configuration import *
+from config import *
 from communicator import *
 
 class SSH():
@@ -7,9 +7,9 @@ class SSH():
         ssh = paramiko.SSHClient()
         ssh.set_missing_host_key_policy(
             paramiko.AutoAddPolicy())
-        ssh.connect(Configuration.c['SSH IP'], 
-                    username=Configuration.c['SSH User'], 
-                    password=Configuration.c['SSH Password'])
+        ssh.connect(Config.c['SSH IP'], 
+                    username=Config.c['SSH User'], 
+                    password=Config.c['SSH Password'])
         return ssh
 
     def get_log(ssh,log_path):
@@ -22,3 +22,9 @@ class SSH():
         #    return stdin
         #else
         #    return False
+
+    def write_to_log(ssh,log_path,log):
+        query = "echo '" + log + "' >> " + log_path
+        print(query)
+        ssh.exec_command(query)
+        #Communicator.update_channel()
