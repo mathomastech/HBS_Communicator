@@ -3,7 +3,6 @@ from config import *
 from communicator import *
 
 class Handler:
-    
     def on_hbsCommunicator_delete_event(self,*args):
         Gtk.main_quit(*args)
 
@@ -153,3 +152,4 @@ class Handler:
         log_path = Config.c['Logs'] + 'armaLog.txt'
         roster_path = Config.c['Rosters'] + 'armaRoster.txt'
         Communicator.populate_channel(log_path,roster_path)
+

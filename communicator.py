@@ -2,9 +2,7 @@ from gui import *
 from database import *
 from ssh import *
 from config import *
-
 import os.path
-
 
 class Communicator:
     #Communicator Class Level Variables 
@@ -59,7 +57,6 @@ class Communicator:
             Communicator.update_channel()
             GUI.CHAT_ENTRY.set_text("")
 
-    
     def login(username,password):
         # Set user login and permissions
         flag, userPermissions, channelPermissions = Database.login(username,password)
@@ -69,7 +66,6 @@ class Communicator:
             Communicator.USER_PERMISSIONS = userPermissions
             #populate TextView with Welcome Message
             Communicator.populate_channel(Config.c['Logs'] + 'welcomeMessage.txt', Config.c['Rosters'] + 'generalRoster.txt')
-            
     
     def check_user_permissions(channel):
         # Check if currently logged in user has permissions to view selected channel
@@ -110,3 +106,4 @@ class Communicator:
         # If user does not have appropriate permissions, print out message.
         info_buffer = GUI.INFO_DISPLAY.get_buffer()
         info_buffer.set_text("You do not have sufficient privaledges to view this channel. If you feel this is in error, please contact an administrator")
+

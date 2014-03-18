@@ -1,6 +1,6 @@
 import paramiko
 from config import *
-from communicator import *
+#from communicator import *
 
 class SSH():
     def connect_to_ssh():
@@ -25,6 +25,5 @@ class SSH():
 
     def write_to_log(ssh,log_path,log):
         query = "echo '" + log + "' >> " + log_path
-        print(query)
         ssh.exec_command(query)
         #Communicator.update_channel()
