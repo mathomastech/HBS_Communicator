@@ -1,6 +1,13 @@
-from gi.repository import Gtk
 
 class GUI():
+    CHANNEL_DISPLAY = ""
+    ROSTER_DISPLAY = ""
+    CHAT_ENTRY = ""
+    LOGIN_STATUS_LABEL = ""
+    LOGIN_BTN = ""    
+
+
+'''
     #Initialize communicator XML objects
     APP = Gtk.Builder()
     APP.add_from_file("glade/communicator.glade")
@@ -50,4 +57,6 @@ class GUI():
     #DB_IP = Configuration.c['DB IP']
     #DB_NAME = Configuration.c['DB Name']
     #DB_USER = Configuration.c['DB User']
-    #DB_PASSWORD = Configuration.c['DB Password']
+    #DB_PASSWORD = Configuration.c['DB Password']i
+
+'''

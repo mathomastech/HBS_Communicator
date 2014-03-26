@@ -1,21 +1,41 @@
+import sys
+from PyQt4 import QtGui
+from designer.communicator import Ui_hbsCommunicator #, Ui_loginWindow
 from gui import *
 from config import *
 from communicator import *
 
-class Handler:
-    def on_hbsCommunicator_delete_event(self,*args):
-        Gtk.main_quit(*args)
+
+class Handler(QtGui.QMainWindow):
+    #Handler Class Level Variables
+    USERNAME_ENTRY = ""
+    PASSWORD_ENTRY = ""
+
+    def __init__(self):
+        super(Handler,self).__init__()
+        com=Ui_hbsCommunicator()
+        com.setupUi(self)
+    
+        Handler.USERNAME_ENTRY = com.usernameEntry
+        Handler.PASSWORD_ENTRY = com.passwordEntry
+        GUI.CHANNEL_DISPLAY = com.channelDisplay
+        GUI.CHAT_ENTRY = com.chatEntry
+        GUI.ROSTER_DISPLAY = com.rosterDisplay
+        GUI.LOGIN_STATUS_LABEL = com.loginStatusLabel
+        GUI.USER_LABEL = com.userLabel
+
+        self.show()
 
     def on_loginWindowButton_clicked(self, *args):
         authorize.show_all()
 
     def on_loginButton_clicked(self, *args):
-        username = GUI.USERNAME_ENTRY.get_text()
-        password = GUI.PASSWORD_ENTRY.get_text()
+        username = Handler.USERNAME_ENTRY.text()
+        password = Handler.PASSWORD_ENTRY.text()
+        print(username)
         Communicator.login(username,password)
 
     def on_submitButton_clicked(self, *args):
-        info_buffer = GUI.INFO_DISPLAY.get_buffer()
         Communicator.write_chat_to_channel()
 
     def on_chatEntry_activate(self, *args):
@@ -34,6 +54,7 @@ class Handler:
             log_path = Config.c['Logs'] + 'centcomLog.txt'
             roster_path = Config.c['Rosters'] + 'centcomRoster.txt'
             Communicator.populate_channel(log_path,roster_path)
+
         else: 
             Communicator.invalid_permissions()
     def on_operationsCommandButton_clicked(self, *args):
@@ -84,7 +105,7 @@ class Handler:
         else: 
             Communicator.invalid_permissions()
     
-    def on_armaCommandButton_clicked(self, *args):
+    def on_dayzCommandButton_clicked(self, *args):
         if Communicator.check_user_permissions("DayZ Command"):
             log_path = Config.c['Logs'] + 'armaCommandLog.txt'
             roster_path = Config.c['Rosters'] + 'armaCommandRoster.txt'
@@ -153,3 +174,10 @@ class Handler:
         roster_path = Config.c['Rosters'] + 'armaRoster.txt'
         Communicator.populate_channel(log_path,roster_path)
 
+def main():
+    app = QtGui.QApplication(sys.argv)
+    ex = Handler()
+    sys.exit(app.exec_())
+
+if __name__=='__main__':
+    main()

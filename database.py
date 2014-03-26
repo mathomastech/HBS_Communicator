@@ -1,5 +1,5 @@
-from config import *
 from gui import *
+from config import *
 import mysql.connector
 
 
@@ -32,9 +32,9 @@ class Database:
         cur.execute(query)
            
         for (username, password) in cur:
-            GUI.LOGIN_STATUS_LABEL.set_label("Success!")
-            GUI.LOGIN_BTN.set_label(username)
-            GUI.AUTHORIZE_WINDOW.close()
+            GUI.LOGIN_STATUS_LABEL.setText("Success!")
+            GUI.USER_LABEL.setText(username)
+            #GUI.AUTHORIZE_WINDOW.close()
             return True
         return False
 

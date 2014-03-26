@@ -1,3 +1,6 @@
+import sys
+from PyQt4 import QtGui
+from handler import *
 from gui import *
 from database import *
 from ssh import *
@@ -11,6 +14,7 @@ class Communicator:
     ACTIVE_LOG_PATH = ""
     ACTIVE_ROSTER_PATH = ""
     SSH_CONNECTION = SSH.connect_to_ssh()
+
 
     def update_channel():
         # Call this function to refresh the currently selected channel
@@ -28,34 +32,28 @@ class Communicator:
 
     def write_to_channel(current_log_path,log):
         # Write log to the currently selected channel
-        info_buffer = GUI.INFO_DISPLAY.get_buffer()
-        info_buffer.set_text(log) 
+        GUI.CHANNEL_DISPLAY.setPlainText(log)
         Communicator.ACTIVE_LOG_PATH = current_log_path
 
     def write_to_roster(current_roster_path):
-        # Write roster to the currently selected channel
         f = open(current_roster_path, 'r')
-        info_buffer = GUI.ROSTER_DISPLAY.get_buffer()
-        roster_input = f.read()
-        info_buffer.set_text(roster_input)
         f.close()
+        GUI.ROSTER_DISPLAY.setPlainText(log)
         Communicator.ACTIVE_ROSTER_PATH = current_roster_path
     
     def write_to_roster_no_roster(current_roster_path):
-        info_buffer = GUI.ROSTER_DISPLAY.get_buffer()
-        roster_input = "There is currently no roster for this channel\n"
-        info_buffer.set_text(roster_input)
+        GUI.ROSTER_DISPLAY.setPlainText("There is currently no roster for this channel\n")
         Communicator.ACTIVE_ROSTER_PATH = current_roster_path
 
     def write_chat_to_channel():
         # Take chat box text and write it to channel and log.
-        chat_input = GUI.CHAT_ENTRY.get_text()
+        chat_input = GUI.CHAT_ENTRY.text()
         if (chat_input != ""):
             log = Communicator.USER + ": " + chat_input
             SSH.write_to_log(Communicator.SSH_CONNECTION,
                                 Communicator.ACTIVE_LOG_PATH, log)
             Communicator.update_channel()
-            GUI.CHAT_ENTRY.set_text("")
+            GUI.CHAT_ENTRY.setText("")
 
     def login(username,password):
         # Set user login and permissions
@@ -104,6 +102,16 @@ class Communicator:
     
     def invalid_permissions():
         # If user does not have appropriate permissions, print out message.
-        info_buffer = GUI.INFO_DISPLAY.get_buffer()
-        info_buffer.set_text("You do not have sufficient privaledges to view this channel. If you feel this is in error, please contact an administrator")
+        GUI.CHANNEL_DISPLAY.setPlainText("You do not have sufficient privaledges to view this channel. If you feel this is in error, please contact an administrator")
+        #info_buffer = GUI.INFO_DISPLAY.get_buffer()
+        #info_buffer.set_text("You do not have sufficient privaledges to view this channel. If you feel this is in error, please contact an administrator")
+
+
+def main():
+    app = QtGui.QApplication(sys.argv)
+    ex = Handler()
+    sys.exit(app.exec_())
+
+if __name__=='__main__':
+    main()
 
