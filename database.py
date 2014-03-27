@@ -23,7 +23,7 @@ class Database:
             return flag, userPermissions, channelPermissions
 
         else:
-            login_status_label.set_label("Incorrect Username or Password")
+            GUI.LOGIN_STATUS_LABEL.setText("Incorrect Username or Password")
             return flag, "", ""
 
     def check_user(uname, passwd):
