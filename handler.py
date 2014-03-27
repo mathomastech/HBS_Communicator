@@ -23,16 +23,21 @@ class Handler(QtGui.QMainWindow):
         GUI.ROSTER_DISPLAY = com.rosterDisplay
         GUI.LOGIN_STATUS_LABEL = com.loginStatusLabel
         GUI.USER_LABEL = com.userLabel
+        
+        # Login Window Widgets
+        GUI.LOGIN_GROUP_BOX = com.loginGroupBox
+        GUI.USERNAME_LABEL = com.usernameLabel
+        GUI.USERNAME_ENTRY = com.usernameEntry
+        GUI.PASSWORD_LABEL = com.passwordLabel
+        GUI.PASSWORD_ENTRY = com.passwordEntry
+        GUI.LOGIN_BTN = com.loginButton
+
 
         self.show()
-
-    def on_loginWindowButton_clicked(self, *args):
-        authorize.show_all()
 
     def on_loginButton_clicked(self, *args):
         username = Handler.USERNAME_ENTRY.text()
         password = Handler.PASSWORD_ENTRY.text()
-        print(username)
         Communicator.login(username,password)
 
     def on_submitButton_clicked(self, *args):
