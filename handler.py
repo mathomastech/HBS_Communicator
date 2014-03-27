@@ -43,10 +43,10 @@ class Handler(QtGui.QMainWindow):
     def on_submitButton_clicked(self, *args):
         Communicator.write_chat_to_channel()
 
-    def on_chatEntry_activate(self, *args):
+    def on_chatEntry_returnPressed(self, *args):
         Handler.on_submitButton_clicked(self, *args)
 
-    def on_passwordEntry_activate(self, *args):
+    def on_passwordEntry_returnPressed(self, *args):
         Handler.on_loginButton_clicked(self, *args)
 
     def on_usernameEntry_activate(self, *args):
