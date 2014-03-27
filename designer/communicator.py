@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'communicator.ui'
 #
-# Created: Wed Mar 26 20:49:15 2014
+# Created: Wed Mar 26 22:37:23 2014
 #      by: PyQt4 UI code generator 4.10.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -26,7 +26,7 @@ except AttributeError:
 class Ui_hbsCommunicator(object):
     def setupUi(self, hbsCommunicator):
         hbsCommunicator.setObjectName(_fromUtf8("hbsCommunicator"))
-        hbsCommunicator.resize(777, 475)
+        hbsCommunicator.resize(777, 604)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Maximum, QtGui.QSizePolicy.Maximum)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -59,6 +59,7 @@ class Ui_hbsCommunicator(object):
         self.channelTab.setObjectName(_fromUtf8("channelTab"))
         self.channelDisplay = QtGui.QPlainTextEdit(self.channelTab)
         self.channelDisplay.setGeometry(QtCore.QRect(-1, -1, 611, 421))
+        self.channelDisplay.setReadOnly(True)
         self.channelDisplay.setObjectName(_fromUtf8("channelDisplay"))
         self.loginGroupBox = QtGui.QGroupBox(self.channelTab)
         self.loginGroupBox.setGeometry(QtCore.QRect(10, 10, 581, 351))
@@ -95,6 +96,7 @@ class Ui_hbsCommunicator(object):
         self.rosterTab.setObjectName(_fromUtf8("rosterTab"))
         self.rosterDisplay = QtGui.QPlainTextEdit(self.rosterTab)
         self.rosterDisplay.setGeometry(QtCore.QRect(-1, -1, 611, 421))
+        self.rosterDisplay.setReadOnly(True)
         self.rosterDisplay.setObjectName(_fromUtf8("rosterDisplay"))
         self.contentNotebook.addTab(self.rosterTab, _fromUtf8(""))
         self.verticalLayout.addWidget(self.contentNotebook)
@@ -169,7 +171,7 @@ class Ui_hbsCommunicator(object):
         self.generalTab = QtGui.QWidget()
         self.generalTab.setObjectName(_fromUtf8("generalTab"))
         self.layoutWidget_2 = QtGui.QWidget(self.generalTab)
-        self.layoutWidget_2.setGeometry(QtCore.QRect(20, 10, 97, 315))
+        self.layoutWidget_2.setGeometry(QtCore.QRect(20, 10, 138, 315))
         self.layoutWidget_2.setObjectName(_fromUtf8("layoutWidget_2"))
         self.verticalLayout_3 = QtGui.QVBoxLayout(self.layoutWidget_2)
         self.verticalLayout_3.setSpacing(6)
@@ -208,7 +210,7 @@ class Ui_hbsCommunicator(object):
         self.formLayout.setWidget(2, QtGui.QFormLayout.LabelRole, self.channelNotebook)
         hbsCommunicator.setCentralWidget(self.centralwidget)
         self.menubar = QtGui.QMenuBar(hbsCommunicator)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 777, 21))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 777, 27))
         self.menubar.setObjectName(_fromUtf8("menubar"))
         hbsCommunicator.setMenuBar(self.menubar)
         self.statusbar = QtGui.QStatusBar(hbsCommunicator)
