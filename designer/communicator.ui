@@ -241,9 +241,29 @@
            </widget>
           </item>
           <item>
+           <widget class="QPushButton" name="logisticsCommandButton">
+            <property name="text">
+             <string>Logistics</string>
+            </property>
+            <property name="flat">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
            <widget class="QPushButton" name="codCommandButton">
             <property name="text">
              <string>Call of Duty</string>
+            </property>
+            <property name="flat">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="tfCommandButton">
+            <property name="text">
+             <string>Titan Fall</string>
             </property>
             <property name="flat">
              <bool>true</bool>
@@ -271,6 +291,26 @@
            </widget>
           </item>
           <item>
+           <widget class="QPushButton" name="csCommandButton">
+            <property name="text">
+             <string>Counter Strike</string>
+            </property>
+            <property name="flat">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="lolCommandButton">
+            <property name="text">
+             <string>League of Legends</string>
+            </property>
+            <property name="flat">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
            <widget class="QPushButton" name="mcCommandButton">
             <property name="text">
              <string>Minecraft</string>
@@ -284,16 +324,6 @@
            <widget class="QPushButton" name="dayzCommandButton">
             <property name="text">
              <string>DayZ</string>
-            </property>
-            <property name="flat">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="logisticsCommandButton">
-            <property name="text">
-             <string>Logistics</string>
             </property>
             <property name="flat">
              <bool>true</bool>
@@ -343,8 +373,8 @@
          <rect>
           <x>20</x>
           <y>10</y>
-          <width>138</width>
-          <height>315</height>
+          <width>143</width>
+          <height>366</height>
          </rect>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -378,6 +408,16 @@
           </widget>
          </item>
          <item>
+          <widget class="QPushButton" name="tfGeneralButton">
+           <property name="text">
+            <string>Titan Fall</string>
+           </property>
+           <property name="flat">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
           <widget class="QPushButton" name="wowGeneralButton">
            <property name="text">
             <string>World of Warcraft</string>
@@ -391,6 +431,26 @@
           <widget class="QPushButton" name="gwGeneralButton">
            <property name="text">
             <string>Guild Wars</string>
+           </property>
+           <property name="flat">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="csGeneralButton">
+           <property name="text">
+            <string>Counter Strike</string>
+           </property>
+           <property name="flat">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="lolGeneralButton">
+           <property name="text">
+            <string>League of Legends</string>
            </property>
            <property name="flat">
             <bool>true</bool>

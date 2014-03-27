@@ -77,6 +77,30 @@ class Handler(QtGui.QMainWindow):
             Communicator.populate_channel(log_path,roster_path)
         else: 
             Communicator.invalid_permissions()
+    
+    def on_tfCommandButton_clicked(self, *args):
+        if Communicator.check_user_permissions("Titan Fall Command"):
+            log_path = Config.c['Logs'] + 'tfCommandLog.txt'
+            roster_path = Config.c['Rosters'] + 'tfCommandRoster.txt'
+            Communicator.populate_channel(log_path,roster_path)
+        else: 
+            Communicator.invalid_permissions()
+    
+    def on_csCommandButton_clicked(self, *args):
+        if Communicator.check_user_permissions("Counter Strike Command"):
+            log_path = Config.c['Logs'] + 'csCommandLog.txt'
+            roster_path = Config.c['Rosters'] + 'csCommandRoster.txt'
+            Communicator.populate_channel(log_path,roster_path)
+        else: 
+            Communicator.invalid_permissions()
+    
+    def on_lolCommandButton_clicked(self, *args):
+        if Communicator.check_user_permissions("League of Legends Command"):
+            log_path = Config.c['Logs'] + 'lolCommandLog.txt'
+            roster_path = Config.c['Rosters'] + 'lolCommandRoster.txt'
+            Communicator.populate_channel(log_path,roster_path)
+        else: 
+            Communicator.invalid_permissions()
 
     def on_rustCommandButton_clicked(self, *args):
         if Communicator.check_user_permissions("Rust Command"):
@@ -152,6 +176,21 @@ class Handler(QtGui.QMainWindow):
     def on_codGeneralButton_clicked(self, *args):
         log_path = Config.c['Logs'] + 'codLog.txt'
         roster_path = Config.c['Rosters'] + 'codRoster.txt'
+        Communicator.populate_channel(log_path,roster_path)
+    
+    def on_tfGeneralButton_clicked(self, *args):
+        log_path = Config.c['Logs'] + 'tfLog.txt'
+        roster_path = Config.c['Rosters'] + 'tfRoster.txt'
+        Communicator.populate_channel(log_path,roster_path)
+    
+    def on_csGeneralButton_clicked(self, *args):
+        log_path = Config.c['Logs'] + 'csLog.txt'
+        roster_path = Config.c['Rosters'] + 'csRoster.txt'
+        Communicator.populate_channel(log_path,roster_path)
+    
+    def on_lolGeneralButton_clicked(self, *args):
+        log_path = Config.c['Logs'] + 'lolLog.txt'
+        roster_path = Config.c['Rosters'] + 'lolRoster.txt'
         Communicator.populate_channel(log_path,roster_path)
     
     def on_rustGeneralButton_clicked(self, *args):

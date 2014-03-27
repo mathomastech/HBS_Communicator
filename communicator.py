@@ -78,6 +78,15 @@ class Communicator:
             permissions = [9,10,54,57,62,63]
         if channel == "Call of Duty Command":
             permissions = [9,10,57]
+        if channel == "Titan Fall Command":
+            permissions = [9,10,57]
+            # Need to fix permissions
+        if channel == "Counter Strike Command":
+            permissions = [9,10,57]
+            # Need to fix permissions
+        if channel == "League of Legends Command":
+            permissions = [9,10,57]
+            # Need to fix permissions
         if channel == "Rust Command":
             permissions = [9,10,62]
         if channel == "Guild Wars Command":
