@@ -174,7 +174,7 @@ class Handler(QtGui.QMainWindow):
         roster_path = Config.c['Rosters'] + 'mcRoster.txt'
         Communicator.populate_channel(log_path,roster_path)
     
-    def on_armaGeneralButton_clicked(self, *args):
+    def on_dayzGeneralButton_clicked(self, *args):
         log_path = Config.c['Logs'] + 'armaLog.txt'
         roster_path = Config.c['Rosters'] + 'armaRoster.txt'
         Communicator.populate_channel(log_path,roster_path)
