@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>610</height>
+    <width>777</width>
+    <height>475</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -53,8 +53,11 @@
      <layout class="QVBoxLayout" name="verticalLayout">
       <item>
        <widget class="QTabWidget" name="contentNotebook">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
         <property name="currentIndex">
-         <number>1</number>
+         <number>0</number>
         </property>
         <widget class="QWidget" name="channelTab">
          <attribute name="title">
@@ -63,10 +66,10 @@
          <widget class="QPlainTextEdit" name="channelDisplay">
           <property name="geometry">
            <rect>
-            <x>-7</x>
-            <y>-6</y>
-            <width>621</width>
-            <height>431</height>
+            <x>-1</x>
+            <y>-1</y>
+            <width>611</width>
+            <height>421</height>
            </rect>
           </property>
          </widget>
@@ -82,10 +85,10 @@
           <widget class="QGroupBox" name="gridGroupBox">
            <property name="geometry">
             <rect>
-             <x>39</x>
-             <y>-1</y>
-             <width>491</width>
-             <height>311</height>
+             <x>70</x>
+             <y>0</y>
+             <width>461</width>
+             <height>241</height>
             </rect>
            </property>
            <layout class="QGridLayout" name="gridLayout_2">
@@ -97,7 +100,11 @@
              </widget>
             </item>
             <item row="0" column="1">
-             <widget class="QLineEdit" name="usernameEntry"/>
+             <widget class="QLineEdit" name="usernameEntry">
+              <property name="enabled">
+               <bool>true</bool>
+              </property>
+             </widget>
             </item>
             <item row="1" column="1">
              <widget class="QLineEdit" name="passwordEntry">
@@ -122,7 +129,7 @@
            <property name="geometry">
             <rect>
              <x>313</x>
-             <y>320</y>
+             <y>261</y>
              <width>211</width>
              <height>31</height>
             </rect>
@@ -135,7 +142,7 @@
            <property name="geometry">
             <rect>
              <x>40</x>
-             <y>320</y>
+             <y>261</y>
              <width>261</width>
              <height>31</height>
             </rect>
@@ -325,16 +332,25 @@
        <attribute name="title">
         <string>General</string>
        </attribute>
-       <widget class="QWidget" name="verticalLayoutWidget_2">
+       <widget class="QWidget" name="layoutWidget_2">
         <property name="geometry">
          <rect>
-          <x>-2</x>
-          <y>0</y>
-          <width>161</width>
-          <height>421</height>
+          <x>20</x>
+          <y>10</y>
+          <width>97</width>
+          <height>315</height>
          </rect>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_3">
+         <property name="spacing">
+          <number>6</number>
+         </property>
+         <property name="sizeConstraint">
+          <enum>QLayout::SetDefaultConstraint</enum>
+         </property>
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
          <item>
           <widget class="QPushButton" name="generalButton">
            <property name="text">
@@ -356,9 +372,9 @@
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="rustGeneralButton">
+          <widget class="QPushButton" name="wowGeneralButton">
            <property name="text">
-            <string>Rust</string>
+            <string>World of Warcraft</string>
            </property>
            <property name="flat">
             <bool>true</bool>
@@ -376,9 +392,19 @@
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="wowGeneralButton">
+          <widget class="QPushButton" name="mcGeneralButton">
            <property name="text">
-            <string>World of Warcraft</string>
+            <string>Minecraft</string>
+           </property>
+           <property name="flat">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="rustGeneralButton">
+           <property name="text">
+            <string>Rust</string>
            </property>
            <property name="flat">
             <bool>true</bool>
@@ -389,16 +415,6 @@
           <widget class="QPushButton" name="dayzGeneralButton">
            <property name="text">
             <string>DayZ</string>
-           </property>
-           <property name="flat">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="mcGeneralButton">
-           <property name="text">
-            <string>Minecraft</string>
            </property>
            <property name="flat">
             <bool>true</bool>
@@ -417,8 +433,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
-     <height>27</height>
+     <width>777</width>
+     <height>21</height>
     </rect>
    </property>
   </widget>
