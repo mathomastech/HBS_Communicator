@@ -57,14 +57,19 @@ class Communicator:
 
     def login(username,password):
         # Set user login and permissions
+        GUI.LOGIN_STATUS_LABEL.setText("Authenticating...")
         flag, userPermissions, channelPermissions = Database.login(username,password)
-        
         if flag:
             Communicator.USER = username
             Communicator.USER_PERMISSIONS = userPermissions
+            Communicator.hide_login()
             #populate TextView with Welcome Message
             Communicator.populate_channel(Config.c['Logs'] + 'welcomeMessage.txt', Config.c['Rosters'] + 'generalRoster.txt')
     
+    def hide_login():
+        GUI.LOGIN_GROUP_BOX.resize(0,0)
+        
+
     def check_user_permissions(channel):
         # Check if currently logged in user has permissions to view selected channel
         if channel == "Central Command":
