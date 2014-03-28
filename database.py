@@ -1,3 +1,4 @@
+#!/usr/bin/python3.3
 from gui import *
 from config import *
 import mysql.connector

@@ -1,6 +1,6 @@
 import sys
 from PyQt4 import QtGui
-from designer.communicator import Ui_hbsCommunicator #, Ui_loginWindow
+from ui_communicator import Ui_hbsCommunicator #, Ui_loginWindow
 from gui import *
 from config import *
 from communicator import *
