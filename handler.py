@@ -1,5 +1,6 @@
 import sys
-from PyQt4 import QtGui
+import time
+from PyQt4 import QtGui, QtCore
 from ui_communicator import Ui_hbsCommunicator #, Ui_loginWindow
 from gui import *
 from config import *
@@ -31,8 +32,7 @@ class Handler(QtGui.QMainWindow):
         GUI.PASSWORD_LABEL = com.passwordLabel
         GUI.PASSWORD_ENTRY = com.passwordEntry
         GUI.LOGIN_BTN = com.loginButton
-
-
+        
         self.show()
 
     def on_loginButton_clicked(self, *args):
@@ -62,6 +62,7 @@ class Handler(QtGui.QMainWindow):
 
         else: 
             Communicator.invalid_permissions()
+
     def on_operationsCommandButton_clicked(self, *args):
         if Communicator.check_user_permissions("Operations Command"):
             log_path = Config.c['Logs'] + 'operationsCommandLog.txt'

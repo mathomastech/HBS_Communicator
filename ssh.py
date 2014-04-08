@@ -10,6 +10,7 @@ class SSH():
         ssh.connect(Config.c['SSH IP'], 
                     username=Config.c['SSH User'], 
                     password=Config.c['SSH Password'])
+	#SSH.connect_to_chat_server(ssh)
         return ssh
 
     def get_log(ssh,log_path):
@@ -27,3 +28,7 @@ class SSH():
         query = "echo '" + log + "' >> " + log_path
         ssh.exec_command(query)
         #Communicator.update_channel()
+    
+    #def connect_to_chat_server(ssh)
+    #    query = "python client.py localhost 5000"
+	#ssh.exec_command(query) 

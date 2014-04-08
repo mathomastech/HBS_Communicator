@@ -1,11 +1,12 @@
-#!/usr/bin/python3.3
 import sys
-from PyQt4 import QtGui
+import time
+from PyQt4 import QtGui, QtCore
 from handler import *
 from gui import *
 from database import *
 from ssh import *
 from config import *
+from worker import *
 import os.path
 
 class Communicator:
@@ -16,12 +17,11 @@ class Communicator:
     ACTIVE_ROSTER_PATH = ""
     SSH_CONNECTION = SSH.connect_to_ssh()
 
-
     def update_channel():
         # Call this function to refresh the currently selected channel
         Communicator.populate_channel(Communicator.ACTIVE_LOG_PATH,
                             Communicator.ACTIVE_ROSTER_PATH)
-    
+        
     def populate_channel(log_path,roster_path):
         # Populate the channel with both logs and rosters
         log = SSH.get_log(Communicator.SSH_CONNECTION, log_path)
@@ -39,7 +39,7 @@ class Communicator:
     def write_to_roster(current_roster_path):
         f = open(current_roster_path, 'r')
         f.close()
-        GUI.ROSTER_DISPLAY.setPlainText(log)
+        #GUI.ROSTER_DISPLAY.setPlainText(log)
         Communicator.ACTIVE_ROSTER_PATH = current_roster_path
     
     def write_to_roster_no_roster(current_roster_path):
@@ -66,10 +66,11 @@ class Communicator:
             Communicator.hide_login()
             #populate TextView with Welcome Message
             Communicator.populate_channel(Config.c['Logs'] + 'welcomeMessage.txt', Config.c['Rosters'] + 'generalRoster.txt')
-    
+            worker = Worker()
+            worker.start()    
+
     def hide_login():
         GUI.LOGIN_GROUP_BOX.resize(0,0)
-        
 
     def check_user_permissions(channel):
         # Check if currently logged in user has permissions to view selected channel
@@ -122,7 +123,30 @@ class Communicator:
         #info_buffer.set_text("You do not have sufficient privaledges to view this channel. If you feel this is in error, please contact an administrator")
 
 
+class Worker(QtCore.QThread):
+    def __init__(self, parent=None):
+        QtCore.QThread.__init__(self,parent)
+
+    def run (self):
+        #time.sleep(5)
+        for i in range (0,10):
+            print(i)
+            if(Communicator.ACTIVE_LOG_PATH != "" and 
+                Communicator.ACTIVE_LOG_PATH != "logs/welcomeMessage.txt"):
+                print(Communicator.ACTIVE_LOG_PATH)
+                #Communicator.update_channel()
+            i += 1
+            time.sleep(2)
+        return
+
+    def __del__(self):
+        self.wait()
+
+
+
 def main():
+    #loop = threading.Thread(target=Communicator.refresh_logs, name="refresh_logs")
+    #loop.start()
     app = QtGui.QApplication(sys.argv)
     ex = Handler()
     sys.exit(app.exec_())
