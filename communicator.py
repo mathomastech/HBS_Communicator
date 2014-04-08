@@ -18,7 +18,7 @@ class Worker(QtCore.QThread):
             if(Communicator.ACTIVE_LOG_PATH != "" and 
                 Communicator.ACTIVE_LOG_PATH != "logs/welcomeMessage.txt"):
                 print(Communicator.ACTIVE_LOG_PATH)
- #               QApplication.sendEvent(Ui_hbsCommunicator(), Communicator.update_channel())
+        #        QApplication.sendEvent(QtGui.QMainWindow, Communicator.update_channel())
             time.sleep(1)
         
         return
