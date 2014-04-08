@@ -217,11 +217,3 @@ class Handler(QtGui.QMainWindow):
         log_path = Config.c['Logs'] + 'armaLog.txt'
         roster_path = Config.c['Rosters'] + 'armaRoster.txt'
         Communicator.populate_channel(log_path,roster_path)
-
-def main():
-    app = QtGui.QApplication(sys.argv)
-    ex = Handler()
-    sys.exit(app.exec_())
-
-if __name__=='__main__':
-    main()
