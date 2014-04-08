@@ -1,13 +1,10 @@
-import sys
-import time
+import sys, time, os.path
 from PyQt4 import QtGui, QtCore
 from handler import *
-from gui import *
-from database import *
-from ssh import *
-from config import *
-from worker import *
-import os.path
+from gui import GUI
+from database import Database
+from ssh import SSH
+from config import Config
 
 class Communicator:
     #Communicator Class Level Variables 
@@ -61,19 +58,21 @@ class Communicator:
         GUI.LOGIN_STATUS_LABEL.setText("Authenticating...")
         flag, userPermissions, channelPermissions = Database.login(username,password)
         if flag:
+            # If True, set the username and user permissions. Hide the login and set 
+            # the welcome message. Begin the worker loop to check channels for updates. 
             Communicator.USER = username
             Communicator.USER_PERMISSIONS = userPermissions
             Communicator.hide_login()
-            #populate TextView with Welcome Message
             Communicator.populate_channel(Config.c['Logs'] + 'welcomeMessage.txt', Config.c['Rosters'] + 'generalRoster.txt')
             worker = Worker()
             worker.start()    
 
     def hide_login():
+        #Hide the login box my giving it a 0,0 size. 
         GUI.LOGIN_GROUP_BOX.resize(0,0)
 
     def check_user_permissions(channel):
-        # Check if currently logged in user has permissions to view selected channel
+        # Check if currently logged in user has permissions to view requested channel
         if channel == "Central Command":
             permissions = [9,10,54]
         if channel == "Operations Command":
@@ -108,7 +107,7 @@ class Communicator:
             permissions = [9,10,58,17] 
         if channel == "Admissions":
             permissions = [9,10,58]
-            #Need admissions group of forums
+            #Need admissions group on forums
         
         for i in range(0,len(Communicator.USER_PERMISSIONS)):
             for j in range(0,len(permissions)):
@@ -119,8 +118,6 @@ class Communicator:
     def invalid_permissions():
         # If user does not have appropriate permissions, print out message.
         GUI.CHANNEL_DISPLAY.setPlainText("You do not have sufficient privaledges to view this channel. If you feel this is in error, please contact an administrator")
-        #info_buffer = GUI.INFO_DISPLAY.get_buffer()
-        #info_buffer.set_text("You do not have sufficient privaledges to view this channel. If you feel this is in error, please contact an administrator")
 
 
 class Worker(QtCore.QThread):
@@ -136,17 +133,14 @@ class Worker(QtCore.QThread):
                 print(Communicator.ACTIVE_LOG_PATH)
                 #Communicator.update_channel()
             i += 1
-            time.sleep(2)
+            time.sleep(1)
         return
 
     def __del__(self):
         self.wait()
 
 
-
 def main():
-    #loop = threading.Thread(target=Communicator.refresh_logs, name="refresh_logs")
-    #loop.start()
     app = QtGui.QApplication(sys.argv)
     ex = Handler()
     sys.exit(app.exec_())
