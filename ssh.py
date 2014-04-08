@@ -1,5 +1,5 @@
 import paramiko
-from config import *
+from config import Config
 #from communicator import *
 
 class SSH():
