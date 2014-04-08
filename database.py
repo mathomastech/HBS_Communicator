@@ -1,6 +1,6 @@
 #!/usr/bin/python3.3
-from gui import *
-from config import *
+from gui import GUI
+from config import Config
 import mysql.connector
 
 
