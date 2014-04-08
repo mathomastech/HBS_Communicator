@@ -126,7 +126,7 @@ class Worker(QtCore.QThread):
 
     def run (self):
         #time.sleep(5)
-        for i in range (0,10):
+        for i in range (0,5):
             print(i)
             if(Communicator.ACTIVE_LOG_PATH != "" and 
                 Communicator.ACTIVE_LOG_PATH != "logs/welcomeMessage.txt"):
