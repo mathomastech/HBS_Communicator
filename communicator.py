@@ -1,10 +1,30 @@
 import sys, time, os.path
 from PyQt4 import QtGui, QtCore
+#from PyQt4 import QCoreApplication
+#from PyQt4.QtCore import QCoreApplication
+from PyQt4.Qt import QApplication
 from handler import *
 from gui import GUI
 from database import Database
 from ssh import SSH
 from config import Config
+
+class Worker(QtCore.QThread):
+    def __init__(self, parent=None):
+        QtCore.QThread.__init__(self)
+
+    def run (self):
+        while True:
+            if(Communicator.ACTIVE_LOG_PATH != "" and 
+                Communicator.ACTIVE_LOG_PATH != "logs/welcomeMessage.txt"):
+                print(Communicator.ACTIVE_LOG_PATH)
+ #               QApplication.sendEvent(Ui_hbsCommunicator(), Communicator.update_channel())
+            time.sleep(1)
+        
+        return
+
+    def __del__(self):
+        self.wait()
 
 class Communicator:
     #Communicator Class Level Variables 
@@ -13,7 +33,15 @@ class Communicator:
     ACTIVE_LOG_PATH = ""
     ACTIVE_ROSTER_PATH = ""
     SSH_CONNECTION = SSH.connect_to_ssh()
+    thread = QtCore.QThread()
+    worker = Worker()
+    worker.moveToThread(thread)
+    worker.start()    
 
+    #def __init__(self):
+    #    super(Communicator,self).__init__()
+    #    Communicator.start_worker()
+    
     def update_channel():
         # Call this function to refresh the currently selected channel
         Communicator.populate_channel(Communicator.ACTIVE_LOG_PATH,
@@ -64,12 +92,16 @@ class Communicator:
             Communicator.USER_PERMISSIONS = userPermissions
             Communicator.hide_login()
             Communicator.populate_channel(Config.c['Logs'] + 'welcomeMessage.txt', Config.c['Rosters'] + 'generalRoster.txt')
-            worker = Worker()
-            worker.start()    
+
+    #def start_worker():
+    #        worker = Worker()
+    #        #worker.moveToThread(Worker())
+    #        worker.start()    
 
     def hide_login():
         #Hide the login box my giving it a 0,0 size. 
         GUI.LOGIN_GROUP_BOX.resize(0,0)
+        return
 
     def check_user_permissions(channel):
         # Check if currently logged in user has permissions to view requested channel
@@ -120,24 +152,6 @@ class Communicator:
         GUI.CHANNEL_DISPLAY.setPlainText("You do not have sufficient privaledges to view this channel. If you feel this is in error, please contact an administrator")
 
 
-class Worker(QtCore.QThread):
-    def __init__(self, parent=None):
-        QtCore.QThread.__init__(self,parent)
-
-    def run (self):
-        #time.sleep(5)
-        for i in range (0,5):
-            print(i)
-            if(Communicator.ACTIVE_LOG_PATH != "" and 
-                Communicator.ACTIVE_LOG_PATH != "logs/welcomeMessage.txt"):
-                print(Communicator.ACTIVE_LOG_PATH)
-                #Communicator.update_channel()
-            i += 1
-            time.sleep(1)
-        return
-
-    def __del__(self):
-        self.wait()
 
 
 def main():
