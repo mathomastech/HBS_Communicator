@@ -1,10 +1,9 @@
-import sys
-import time
+import sys, time
 from PyQt4 import QtGui, QtCore
 from ui_communicator import Ui_hbsCommunicator #, Ui_loginWindow
-from gui import *
-from config import *
-from communicator import *
+from gui import GUI
+from config import Config
+from communicator import Communicator
 
 
 class Handler(QtGui.QMainWindow):
