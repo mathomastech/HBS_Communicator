@@ -1,30 +1,12 @@
 import sys, time, os.path
 from PyQt4 import QtGui, QtCore
-#from PyQt4 import QCoreApplication
-#from PyQt4.QtCore import QCoreApplication
+from ui_communicator import Ui_hbsCommunicator
 from PyQt4.Qt import QApplication
 from handler import *
 from gui import GUI
 from database import Database
 from ssh import SSH
 from config import Config
-
-class Worker(QtCore.QThread):
-    def __init__(self, parent=None):
-        QtCore.QThread.__init__(self)
-
-    def run (self):
-        while True:
-            if(Communicator.ACTIVE_LOG_PATH != "" and 
-                Communicator.ACTIVE_LOG_PATH != "logs/welcomeMessage.txt"):
-                print(Communicator.ACTIVE_LOG_PATH)
-        #        QApplication.sendEvent(QtGui.QMainWindow, Communicator.update_channel())
-            time.sleep(1)
-        
-        return
-
-    def __del__(self):
-        self.wait()
 
 class Communicator:
     #Communicator Class Level Variables 
@@ -33,15 +15,10 @@ class Communicator:
     ACTIVE_LOG_PATH = ""
     ACTIVE_ROSTER_PATH = ""
     SSH_CONNECTION = SSH.connect_to_ssh()
-    thread = QtCore.QThread()
-    worker = Worker()
-    worker.moveToThread(thread)
-    worker.start()    
 
-    #def __init__(self):
-    #    super(Communicator,self).__init__()
-    #    Communicator.start_worker()
-    
+    def __init__(self):
+        super(Communicator,self).__init__()
+  
     def update_channel():
         # Call this function to refresh the currently selected channel
         Communicator.populate_channel(Communicator.ACTIVE_LOG_PATH,
@@ -93,13 +70,8 @@ class Communicator:
             Communicator.hide_login()
             Communicator.populate_channel(Config.c['Logs'] + 'welcomeMessage.txt', Config.c['Rosters'] + 'generalRoster.txt')
 
-    #def start_worker():
-    #        worker = Worker()
-    #        #worker.moveToThread(Worker())
-    #        worker.start()    
-
     def hide_login():
-        #Hide the login box my giving it a 0,0 size. 
+        # Hide the login box my giving it a 0,0 size. 
         GUI.LOGIN_GROUP_BOX.resize(0,0)
         return
 
@@ -139,7 +111,7 @@ class Communicator:
             permissions = [9,10,58,17] 
         if channel == "Admissions":
             permissions = [9,10,58]
-            #Need admissions group on forums
+            # Need admissions group on forums
         
         for i in range(0,len(Communicator.USER_PERMISSIONS)):
             for j in range(0,len(permissions)):
@@ -156,7 +128,8 @@ class Communicator:
 
 def main():
     app = QtGui.QApplication(sys.argv)
-    ex = Handler()
+    hand = Handler()
+    com = Communicator()
     sys.exit(app.exec_())
 
 if __name__=='__main__':

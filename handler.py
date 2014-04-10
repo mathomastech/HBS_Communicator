@@ -1,21 +1,29 @@
 import sys, time
 from PyQt4 import QtGui, QtCore
-from ui_communicator import Ui_hbsCommunicator #, Ui_loginWindow
+from ui_communicator import Ui_hbsCommunicator
 from gui import GUI
 from config import Config
 from communicator import Communicator
-
+from worker import Worker
 
 class Handler(QtGui.QMainWindow):
-    #Handler Class Level Variables
+    # Handler Class Level Variables
     USERNAME_ENTRY = ""
     PASSWORD_ENTRY = ""
 
+    # Threading
+    QtCore.QThread.currentThread().setObjectName("MAIN")
+    thread = QtCore.QThread()
+    thread.name = "auto_refresh"
+    worker = Worker()
+    worker.moveToThread(thread)
+    worker.start()
+    thread.connect(thread, QtCore.SIGNAL('refresh'), Communicator.update_channel)
+    
     def __init__(self):
         super(Handler,self).__init__()
         com=Ui_hbsCommunicator()
         com.setupUi(self)
-    
         Handler.USERNAME_ENTRY = com.usernameEntry
         Handler.PASSWORD_ENTRY = com.passwordEntry
         GUI.CHANNEL_DISPLAY = com.channelDisplay
@@ -23,6 +31,7 @@ class Handler(QtGui.QMainWindow):
         GUI.ROSTER_DISPLAY = com.rosterDisplay
         GUI.LOGIN_STATUS_LABEL = com.loginStatusLabel
         GUI.USER_LABEL = com.userLabel
+        GUI.REFRESH_BUTTON = com.refreshButton
         
         # Login Window Widgets
         GUI.LOGIN_GROUP_BOX = com.loginGroupBox
@@ -50,6 +59,9 @@ class Handler(QtGui.QMainWindow):
 
     def on_usernameEntry_activate(self, *args):
         Handler.on_loginButton_clicked(self, *args)
+
+    def on_refreshButton_clicked(self, *args):
+        Communicator.update_channel()
 
     # Command Communication Channels
     
