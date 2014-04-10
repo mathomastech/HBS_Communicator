@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'communicatorui.ui'
+# Form implementation generated from reading ui file 'ui_communicator.ui'
 #
-# Created: Fri Mar 28 14:58:05 2014
-#      by: PyQt4 UI code generator 4.10.4
+# Created: Wed Apr  9 09:20:30 2014
+#      by: PyQt4 UI code generator 4.10.2
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -26,7 +26,7 @@ except AttributeError:
 class Ui_hbsCommunicator(object):
     def setupUi(self, hbsCommunicator):
         hbsCommunicator.setObjectName(_fromUtf8("hbsCommunicator"))
-        hbsCommunicator.resize(777, 604)
+        hbsCommunicator.resize(777, 715)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Maximum, QtGui.QSizePolicy.Maximum)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -232,6 +232,10 @@ class Ui_hbsCommunicator(object):
         self.verticalLayout_3.addWidget(self.dayzGeneralButton)
         self.channelNotebook.addTab(self.generalTab, _fromUtf8(""))
         self.formLayout.setWidget(2, QtGui.QFormLayout.LabelRole, self.channelNotebook)
+        self.refreshButton = QtGui.QPushButton(self.centralwidget)
+        self.refreshButton.setMaximumSize(QtCore.QSize(0, 0))
+        self.refreshButton.setObjectName(_fromUtf8("refreshButton"))
+        self.formLayout.setWidget(3, QtGui.QFormLayout.LabelRole, self.refreshButton)
         hbsCommunicator.setCentralWidget(self.centralwidget)
         self.menubar = QtGui.QMenuBar(hbsCommunicator)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 777, 27))
@@ -281,4 +285,5 @@ class Ui_hbsCommunicator(object):
         self.rustGeneralButton.setText(_translate("hbsCommunicator", "Rust", None))
         self.dayzGeneralButton.setText(_translate("hbsCommunicator", "DayZ", None))
         self.channelNotebook.setTabText(self.channelNotebook.indexOf(self.generalTab), _translate("hbsCommunicator", "General", None))
+        self.refreshButton.setText(_translate("hbsCommunicator", "Refresh", None))
 
