@@ -1,3 +1,4 @@
+from PyQt4 import QtGui
 
 class GUI():
     CHANNEL_DISPLAY = ""
