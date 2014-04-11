@@ -25,9 +25,15 @@ class SSH():
         #    return False
 
     def write_to_log(ssh,log_path,log):
-        query = "echo 'date + <%m/%d-%H:%M>"  + log + "' >> " + log_path
+        # Get and parse timestamp from server
+        stdin,stdout,stderr = ssh.exec_command('date +"<%m/%d-%H:%M>"')
+        timestamp = stdout.readlines()
+        timestamp = timestamp[0]
+        timestamp = timestamp.rstrip()
+
+        # Write timestamp and log to appropriate path
+        query = 'echo "' + timestamp + ' ' + log + '" >> ' + log_path
         ssh.exec_command(query)
-        #Communicator.update_channel()
     
     #def connect_to_chat_server(ssh)
     #    query = "python client.py localhost 5000"
