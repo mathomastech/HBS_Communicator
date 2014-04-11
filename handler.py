@@ -107,14 +107,6 @@ class Handler(QtGui.QMainWindow):
         else: 
             Communicator.invalid_permissions()
     
-    def on_csCommandButton_clicked(self, *args):
-        if Communicator.check_user_permissions("Counter Strike Command"):
-            log_path = Config.c['Logs'] + 'csCommandLog.txt'
-            roster_path = Config.c['Rosters'] + 'csCommandRoster.txt'
-            Communicator.populate_channel(log_path,roster_path)
-        else: 
-            Communicator.invalid_permissions()
-    
     def on_lolCommandButton_clicked(self, *args):
         if Communicator.check_user_permissions("League of Legends Command"):
             log_path = Config.c['Logs'] + 'lolCommandLog.txt'
@@ -123,14 +115,6 @@ class Handler(QtGui.QMainWindow):
         else: 
             Communicator.invalid_permissions()
 
-    def on_rustCommandButton_clicked(self, *args):
-        if Communicator.check_user_permissions("Rust Command"):
-            log_path = Config.c['Logs'] + 'rustCommandLog.txt'
-            roster_path = Config.c['Rosters'] + 'rustCommandRoster.txt'
-            Communicator.populate_channel(log_path,roster_path)
-        else: 
-            Communicator.invalid_permissions()
-    
     def on_gwCommandButton_clicked(self, *args):
         if Communicator.check_user_permissions("Guild Wars Command"):
             log_path = Config.c['Logs'] + 'gwCommandLog.txt'
@@ -186,6 +170,19 @@ class Handler(QtGui.QMainWindow):
             Communicator.populate_channel(log_path,roster_path)
         else: 
             Communicator.invalid_permissions()
+    
+    def on_betaTestButton_clicked(self, *args):
+        log_path = Config.c['Logs'] + 'betaTestLog.txt'
+        roster_path = Config.c['Rosters'] + 'betaTestRoster.txt'
+        Communicator.populate_channel(log_path,roster_path)
+    
+    #def on_csCommandButton_clicked(self, *args):
+    #    if Communicator.check_user_permissions("Counter Strike Command"):
+    #        log_path = Config.c['Logs'] + 'csCommandLog.txt'
+    #        roster_path = Config.c['Rosters'] + 'csCommandRoster.txt'
+    #        Communicator.populate_channel(log_path,roster_path)
+    #    else: 
+    #        Communicator.invalid_permissions()
     
     # General Communicator Channels
     

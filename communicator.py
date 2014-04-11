@@ -93,14 +93,9 @@ class Communicator:
         if channel == "Titan Fall Command":
             permissions = [9,10,57]
             # Need to fix permissions
-        if channel == "Counter Strike Command":
-            permissions = [9,10,57]
-            # Need to fix permissions
         if channel == "League of Legends Command":
             permissions = [9,10,57]
             # Need to fix permissions
-        if channel == "Rust Command":
-            permissions = [9,10,62]
         if channel == "Guild Wars Command":
             permissions = [9,10]
             # Need GW command group on forums
@@ -118,7 +113,8 @@ class Communicator:
             permissions = [9,10,58,17] 
         if channel == "Admissions":
             permissions = [9,10,58]
-            # Need admissions group on forums
+
+    # Need admissions group on forums
         
         for i in range(0,len(Communicator.USER_PERMISSIONS)):
             for j in range(0,len(permissions)):
