@@ -25,7 +25,7 @@ class SSH():
         #    return False
 
     def write_to_log(ssh,log_path,log):
-        query = "echo '" + log + "' >> " + log_path
+        query = "echo 'date + <%m/%d-%H:%M>"  + log + "' >> " + log_path
         ssh.exec_command(query)
         #Communicator.update_channel()
     
