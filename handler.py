@@ -10,7 +10,7 @@ class Handler(QtGui.QMainWindow):
     # Handler Class Level Variables
     USERNAME_ENTRY = ""
     PASSWORD_ENTRY = ""
-    refresh = QtCore.pyqtSignal()
+    refresh_signal = QtCore.pyqtSignal()
 
     # Threading
     QtCore.QThread.currentThread().setObjectName("MAIN")
@@ -19,7 +19,7 @@ class Handler(QtGui.QMainWindow):
     worker = Worker()
     worker.moveToThread(thread)
     worker.start()
-    thread.connect(thread, QtCore.SIGNAL('refresh'), Communicator.update_channel)
+    thread.connect(thread, QtCore.SIGNAL('refresh_signal'), Communicator.update_channel)
     
     def __init__(self):
         super(Handler,self).__init__()
