@@ -3,13 +3,14 @@ from PyQt4 import QtCore
 from communicator import Communicator
 
 class Worker(QtCore.QThread):
+    refresh = QtCore.pyqtSignal()
     def __init__(self, parent=None):
         QtCore.QThread.__init__(self)
 
     def refresh(self):
         # Send signal to refresh the chat logs.
         print("Refresh")
-        QtCore.QThread.emit(self,QtCore.SIGNAL('refresh'))
+        QtCore.QThread.emit(QtCore.SIGNAL('refresh'))
 
     def run (self):
         while True:

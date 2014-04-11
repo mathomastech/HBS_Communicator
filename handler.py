@@ -10,6 +10,7 @@ class Handler(QtGui.QMainWindow):
     # Handler Class Level Variables
     USERNAME_ENTRY = ""
     PASSWORD_ENTRY = ""
+    refresh = QtCore.pyqtSignal()
 
     # Threading
     QtCore.QThread.currentThread().setObjectName("MAIN")
