@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>777</width>
-    <height>715</height>
+    <height>721</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -24,8 +24,42 @@
     <property name="fieldGrowthPolicy">
      <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
     </property>
+    <item row="1" column="0">
+     <widget class="QLabel" name="userLabel">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>164</width>
+        <height>0</height>
+       </size>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
+      </property>
+      <property name="text">
+       <string>User</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
     <item row="2" column="0">
      <widget class="QTabWidget" name="channelNotebook">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="sizePolicy">
        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
         <horstretch>0</horstretch>
@@ -117,16 +151,6 @@
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="gwCommandButton">
-            <property name="text">
-             <string>Guild Wars</string>
-            </property>
-            <property name="flat">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-          <item>
            <widget class="QPushButton" name="wowCommandButton">
             <property name="text">
              <string>World of Warcraft</string>
@@ -137,9 +161,19 @@
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="csCommandButton">
+           <widget class="QPushButton" name="gwCommandButton">
             <property name="text">
-             <string>Counter Strike</string>
+             <string>Guild Wars</string>
+            </property>
+            <property name="flat">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="dayzCommandButton">
+            <property name="text">
+             <string>DayZ</string>
             </property>
             <property name="flat">
              <bool>true</bool>
@@ -160,26 +194,6 @@
            <widget class="QPushButton" name="mcCommandButton">
             <property name="text">
              <string>Minecraft</string>
-            </property>
-            <property name="flat">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="dayzCommandButton">
-            <property name="text">
-             <string>DayZ</string>
-            </property>
-            <property name="flat">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="rustCommandButton">
-            <property name="text">
-             <string>Rust</string>
             </property>
             <property name="flat">
              <bool>true</bool>
@@ -217,10 +231,10 @@
        <widget class="QWidget" name="layoutWidget_2">
         <property name="geometry">
          <rect>
-          <x>20</x>
-          <y>10</y>
+          <x>9</x>
+          <y>9</y>
           <width>143</width>
-          <height>366</height>
+          <height>431</height>
          </rect>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -284,9 +298,9 @@
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="csGeneralButton">
+          <widget class="QPushButton" name="dayzGeneralButton">
            <property name="text">
-            <string>Counter Strike</string>
+            <string>DayZ</string>
            </property>
            <property name="flat">
             <bool>true</bool>
@@ -313,26 +327,6 @@
            </property>
           </widget>
          </item>
-         <item>
-          <widget class="QPushButton" name="rustGeneralButton">
-           <property name="text">
-            <string>Rust</string>
-           </property>
-           <property name="flat">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="dayzGeneralButton">
-           <property name="text">
-            <string>DayZ</string>
-           </property>
-           <property name="flat">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
         </layout>
        </widget>
       </widget>
@@ -347,6 +341,9 @@
         </property>
         <property name="currentIndex">
          <number>0</number>
+        </property>
+        <property name="tabsClosable">
+         <bool>false</bool>
         </property>
         <widget class="QWidget" name="channelTab">
          <attribute name="title">
@@ -481,9 +478,12 @@
      </widget>
     </item>
     <item row="4" column="1">
-     <layout class="QHBoxLayout" name="horizontalLayout_3">
+     <layout class="QHBoxLayout" name="submitLayout">
       <item>
        <widget class="QLineEdit" name="chatEntry">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
         <property name="autoFillBackground">
          <bool>true</bool>
         </property>
@@ -491,43 +491,15 @@
       </item>
       <item>
        <widget class="QPushButton" name="submitButton">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
         <property name="text">
          <string>Submit</string>
         </property>
        </widget>
       </item>
      </layout>
-    </item>
-    <item row="1" column="0">
-     <widget class="QLabel" name="userLabel">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="minimumSize">
-       <size>
-        <width>164</width>
-        <height>0</height>
-       </size>
-      </property>
-      <property name="focusPolicy">
-       <enum>Qt::NoFocus</enum>
-      </property>
-      <property name="autoFillBackground">
-       <bool>false</bool>
-      </property>
-      <property name="frameShape">
-       <enum>QFrame::NoFrame</enum>
-      </property>
-      <property name="text">
-       <string>User</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
     </item>
    </layout>
   </widget>
