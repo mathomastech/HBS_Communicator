@@ -17,7 +17,7 @@ class Worker(QtCore.QThread):
             if(Communicator.ACTIVE_LOG_PATH != "" and
                 Communicator.ACTIVE_LOG_PATH != "logs/welcomeMessage.txt"):
                 self.refresh()
-            time.sleep(1)
+            time.sleep(10)
         return
 
     #def __del__(self):
