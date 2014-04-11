@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui_communicator.ui'
 #
-# Created: Fri Apr 11 08:53:04 2014
+# Created: Fri Apr 11 13:03:06 2014
 #      by: PyQt4 UI code generator 4.10.2
 #
 # WARNING! All changes made in this file will be lost!
@@ -26,7 +26,7 @@ except AttributeError:
 class Ui_hbsCommunicator(object):
     def setupUi(self, hbsCommunicator):
         hbsCommunicator.setObjectName(_fromUtf8("hbsCommunicator"))
-        hbsCommunicator.resize(777, 721)
+        hbsCommunicator.resize(805, 732)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Maximum, QtGui.QSizePolicy.Maximum)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -120,12 +120,16 @@ class Ui_hbsCommunicator(object):
         self.admissionsCommandButton.setFlat(True)
         self.admissionsCommandButton.setObjectName(_fromUtf8("admissionsCommandButton"))
         self.verticalLayout_2.addWidget(self.admissionsCommandButton)
+        self.betaTestButton = QtGui.QPushButton(self.commandTab)
+        self.betaTestButton.setFlat(True)
+        self.betaTestButton.setObjectName(_fromUtf8("betaTestButton"))
+        self.verticalLayout_2.addWidget(self.betaTestButton)
         self.gridLayout.addLayout(self.verticalLayout_2, 0, 0, 1, 1)
         self.channelNotebook.addTab(self.commandTab, _fromUtf8(""))
         self.generalTab = QtGui.QWidget()
         self.generalTab.setObjectName(_fromUtf8("generalTab"))
         self.layoutWidget_2 = QtGui.QWidget(self.generalTab)
-        self.layoutWidget_2.setGeometry(QtCore.QRect(9, 9, 143, 431))
+        self.layoutWidget_2.setGeometry(QtCore.QRect(9, 9, 143, 461))
         self.layoutWidget_2.setObjectName(_fromUtf8("layoutWidget_2"))
         self.verticalLayout_3 = QtGui.QVBoxLayout(self.layoutWidget_2)
         self.verticalLayout_3.setSpacing(6)
@@ -175,7 +179,7 @@ class Ui_hbsCommunicator(object):
         self.channelTab = QtGui.QWidget()
         self.channelTab.setObjectName(_fromUtf8("channelTab"))
         self.channelDisplay = QtGui.QPlainTextEdit(self.channelTab)
-        self.channelDisplay.setGeometry(QtCore.QRect(-1, -1, 611, 421))
+        self.channelDisplay.setGeometry(QtCore.QRect(-1, -1, 611, 501))
         self.channelDisplay.setReadOnly(True)
         self.channelDisplay.setObjectName(_fromUtf8("channelDisplay"))
         self.loginGroupBox = QtGui.QGroupBox(self.channelTab)
@@ -234,9 +238,16 @@ class Ui_hbsCommunicator(object):
         self.submitButton.setObjectName(_fromUtf8("submitButton"))
         self.submitLayout.addWidget(self.submitButton)
         self.formLayout.setLayout(4, QtGui.QFormLayout.FieldRole, self.submitLayout)
+        self.annoucementLabel = QtGui.QLabel(self.centralwidget)
+        self.annoucementLabel.setAutoFillBackground(False)
+        self.annoucementLabel.setAlignment(QtCore.Qt.AlignCenter)
+        self.annoucementLabel.setIndent(0)
+        self.annoucementLabel.setOpenExternalLinks(True)
+        self.annoucementLabel.setObjectName(_fromUtf8("annoucementLabel"))
+        self.formLayout.setWidget(5, QtGui.QFormLayout.SpanningRole, self.annoucementLabel)
         hbsCommunicator.setCentralWidget(self.centralwidget)
         self.menubar = QtGui.QMenuBar(hbsCommunicator)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 777, 27))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 805, 27))
         self.menubar.setObjectName(_fromUtf8("menubar"))
         hbsCommunicator.setMenuBar(self.menubar)
         self.statusbar = QtGui.QStatusBar(hbsCommunicator)
@@ -249,7 +260,7 @@ class Ui_hbsCommunicator(object):
         QtCore.QMetaObject.connectSlotsByName(hbsCommunicator)
 
     def retranslateUi(self, hbsCommunicator):
-        hbsCommunicator.setWindowTitle(_translate("hbsCommunicator", "MainWindow", None))
+        hbsCommunicator.setWindowTitle(_translate("hbsCommunicator", "HBS Communicator", None))
         self.userLabel.setText(_translate("hbsCommunicator", "User", None))
         self.centralCommandButton.setText(_translate("hbsCommunicator", "Central Command", None))
         self.operationsCommandButton.setText(_translate("hbsCommunicator", "Operations", None))
@@ -263,6 +274,7 @@ class Ui_hbsCommunicator(object):
         self.mcCommandButton.setText(_translate("hbsCommunicator", "Minecraft", None))
         self.mpCommandButton.setText(_translate("hbsCommunicator", "Military Police", None))
         self.admissionsCommandButton.setText(_translate("hbsCommunicator", "Admissions", None))
+        self.betaTestButton.setText(_translate("hbsCommunicator", "Beta Testing", None))
         self.channelNotebook.setTabText(self.channelNotebook.indexOf(self.commandTab), _translate("hbsCommunicator", "Command", None))
         self.generalButton.setText(_translate("hbsCommunicator", "General", None))
         self.codGeneralButton.setText(_translate("hbsCommunicator", "Call of Duty", None))
@@ -280,4 +292,10 @@ class Ui_hbsCommunicator(object):
         self.contentNotebook.setTabText(self.contentNotebook.indexOf(self.rosterTab), _translate("hbsCommunicator", "Roster", None))
         self.refreshButton.setText(_translate("hbsCommunicator", "Refresh", None))
         self.submitButton.setText(_translate("hbsCommunicator", "Submit", None))
+        self.annoucementLabel.setText(_translate("hbsCommunicator", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'Cantarell\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">HBS Communicator Version 0.5 - Beta</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Please report all bugs and features <a href=\"http://www.hellboundsoldiers.org\"><span style=\" text-decoration: underline; color:#0000ff;\">here</span></a></p></body></html>", None))
 
