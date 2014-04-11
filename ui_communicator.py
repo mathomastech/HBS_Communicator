@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui_communicator.ui'
 #
-# Created: Fri Apr 11 13:30:49 2014
+# Created: Fri Apr 11 17:07:35 2014
 #      by: PyQt4 UI code generator 4.10.2
 #
 # WARNING! All changes made in this file will be lost!
@@ -27,7 +27,7 @@ class Ui_hbsCommunicator(object):
     def setupUi(self, hbsCommunicator):
         hbsCommunicator.setObjectName(_fromUtf8("hbsCommunicator"))
         hbsCommunicator.setEnabled(True)
-        hbsCommunicator.resize(805, 732)
+        hbsCommunicator.resize(805, 739)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Maximum, QtGui.QSizePolicy.Maximum)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -172,6 +172,7 @@ class Ui_hbsCommunicator(object):
         self.channelDisplay.setAutoFillBackground(False)
         self.channelDisplay.setFrameShadow(QtGui.QFrame.Sunken)
         self.channelDisplay.setReadOnly(True)
+        self.channelDisplay.setCenterOnScroll(True)
         self.channelDisplay.setObjectName(_fromUtf8("channelDisplay"))
         self.loginGroupBox = QtGui.QGroupBox(self.channelTab)
         self.loginGroupBox.setGeometry(QtCore.QRect(10, 10, 581, 351))
@@ -229,13 +230,13 @@ class Ui_hbsCommunicator(object):
         self.submitButton.setObjectName(_fromUtf8("submitButton"))
         self.submitLayout.addWidget(self.submitButton)
         self.formLayout.setLayout(4, QtGui.QFormLayout.FieldRole, self.submitLayout)
-        self.annoucementLabel = QtGui.QLabel(self.centralwidget)
-        self.annoucementLabel.setAutoFillBackground(False)
-        self.annoucementLabel.setAlignment(QtCore.Qt.AlignCenter)
-        self.annoucementLabel.setIndent(0)
-        self.annoucementLabel.setOpenExternalLinks(True)
-        self.annoucementLabel.setObjectName(_fromUtf8("annoucementLabel"))
-        self.formLayout.setWidget(5, QtGui.QFormLayout.SpanningRole, self.annoucementLabel)
+        self.announcementLabel = QtGui.QLabel(self.centralwidget)
+        self.announcementLabel.setAutoFillBackground(False)
+        self.announcementLabel.setAlignment(QtCore.Qt.AlignCenter)
+        self.announcementLabel.setIndent(0)
+        self.announcementLabel.setOpenExternalLinks(True)
+        self.announcementLabel.setObjectName(_fromUtf8("announcementLabel"))
+        self.formLayout.setWidget(5, QtGui.QFormLayout.SpanningRole, self.announcementLabel)
         self.userButton = QtGui.QPushButton(self.centralwidget)
         self.userButton.setEnabled(False)
         self.userButton.setMinimumSize(QtCore.QSize(165, 28))
@@ -289,7 +290,7 @@ class Ui_hbsCommunicator(object):
         self.contentNotebook.setTabText(self.contentNotebook.indexOf(self.rosterTab), _translate("hbsCommunicator", "Roster", None))
         self.refreshButton.setText(_translate("hbsCommunicator", "Refresh", None))
         self.submitButton.setText(_translate("hbsCommunicator", "Submit", None))
-        self.annoucementLabel.setText(_translate("hbsCommunicator", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+        self.announcementLabel.setText(_translate("hbsCommunicator", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'Cantarell\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"

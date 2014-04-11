@@ -10,7 +10,7 @@
     <x>0</x>
     <y>0</y>
     <width>805</width>
-    <height>732</height>
+    <height>739</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -352,6 +352,9 @@
           <property name="readOnly">
            <bool>true</bool>
           </property>
+          <property name="centerOnScroll">
+           <bool>true</bool>
+          </property>
          </widget>
          <widget class="QGroupBox" name="loginGroupBox">
           <property name="geometry">
@@ -493,7 +496,7 @@
      </layout>
     </item>
     <item row="5" column="0" colspan="2">
-     <widget class="QLabel" name="annoucementLabel">
+     <widget class="QLabel" name="announcementLabel">
       <property name="autoFillBackground">
        <bool>false</bool>
       </property>
