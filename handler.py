@@ -33,7 +33,7 @@ class Handler(QtGui.QMainWindow):
         GUI.SUBMIT_BTN = com.submitButton
         GUI.ROSTER_DISPLAY = com.rosterDisplay
         GUI.LOGIN_STATUS_LABEL = com.loginStatusLabel
-        GUI.USER_LABEL = com.userLabel
+        GUI.USER_BTN = com.userButton
         GUI.REFRESH_BUTTON = com.refreshButton        
         GUI.CHANNEL_NOTEBOOK = com.channelNotebook
         GUI.CONTENT_NOTEBOOK = com.contentNotebook
