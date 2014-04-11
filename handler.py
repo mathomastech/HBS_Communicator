@@ -30,11 +30,21 @@ class Handler(QtGui.QMainWindow):
         Handler.PASSWORD_ENTRY = com.passwordEntry
         GUI.CHANNEL_DISPLAY = com.channelDisplay
         GUI.CHAT_ENTRY = com.chatEntry
+        GUI.SUBMIT_BTN = com.submitButton
         GUI.ROSTER_DISPLAY = com.rosterDisplay
         GUI.LOGIN_STATUS_LABEL = com.loginStatusLabel
         GUI.USER_LABEL = com.userLabel
-        GUI.REFRESH_BUTTON = com.refreshButton
-        
+        GUI.REFRESH_BUTTON = com.refreshButton        
+        GUI.CHANNEL_NOTEBOOK = com.channelNotebook
+        GUI.CONTENT_NOTEBOOK = com.contentNotebook
+       
+        # Disabled the Roster tab. 
+        # Move this line into ui_communicator.py either manually or
+        # through QTDesigner somehow. Qt Designer does not appear
+        # to allow me to disable individual tabs in a notebook,
+        # only the notebook as a while.
+        GUI.CONTENT_NOTEBOOK.setTabEnabled(1, False)
+
         # Login Window Widgets
         GUI.LOGIN_GROUP_BOX = com.loginGroupBox
         GUI.USERNAME_LABEL = com.usernameLabel
