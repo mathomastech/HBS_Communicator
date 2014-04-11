@@ -15,6 +15,7 @@ class Communicator:
     ACTIVE_LOG_PATH = ""
     ACTIVE_ROSTER_PATH = ""
     SSH_CONNECTION = SSH.connect_to_ssh()
+    #LOG_ARRAY = [][]     
 
     def __init__(self):
         super(Communicator,self).__init__()
@@ -37,6 +38,9 @@ class Communicator:
         # Write log to the currently selected channel
         GUI.CHANNEL_DISPLAY.setPlainText(log)
         Communicator.ACTIVE_LOG_PATH = current_log_path
+        cursor = QtGui.QTextCursor(GUI.CHANNEL_DISPLAY.textCursor())
+        cursor.movePosition(QtGui.QTextCursor.End)
+        GUI.CHANNEL_DISPLAY.setTextCursor(cursor) 
 
     def write_to_roster(current_roster_path):
         f = open(current_roster_path, 'r')
@@ -64,17 +68,14 @@ class Communicator:
         flag, userPermissions, channelPermissions = Database.login(username,password)
         if flag:
             # If True, set the username and user permissions. Hide the login and set 
-            # the welcome message. Begin the worker loop to check channels for updates. 
+            # the welcome message and announcement. 
             Communicator.USER = username
             Communicator.USER_PERMISSIONS = userPermissions
-            Communicator.hide_login()
+            GUI.LOGIN_GROUP_BOX.resize(0,0)
             Communicator.populate_channel(Config.c['Logs'] + 'welcomeMessage.txt', Config.c['Rosters'] + 'generalRoster.txt')
             Communicator.enable_widgets()
-
-    def hide_login():
-        # Hide the login box my giving it a 0,0 size. 
-        GUI.LOGIN_GROUP_BOX.resize(0,0)
-        return
+            #announcement = SSH.get_log(Communicator.SSH_CONNECTION, Config.c['Logs'] + 'announcement.html')
+            #GUI.ANNOUNCEMENT_LABEL.setText(announcement)
 
     def enable_widgets():
         GUI.CHAT_ENTRY.setEnabled(True)
