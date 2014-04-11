@@ -10,14 +10,12 @@ class Worker(QtCore.QThread):
 
     def refresh(self):
         # Send signal to refresh the chat logs.
-        print("Refresh")
         self.refresh_signal.emit()
 
     def run (self):
         while True:
             if(Communicator.ACTIVE_LOG_PATH != "" and
                 Communicator.ACTIVE_LOG_PATH != "logs/welcomeMessage.txt"):
-                print(Communicator.ACTIVE_LOG_PATH)
                 self.refresh()
             time.sleep(1)
         return
