@@ -81,6 +81,7 @@ class Communicator:
         GUI.SUBMIT_BTN.setEnabled(True)
         GUI.CHANNEL_NOTEBOOK.setEnabled(True)
         GUI.CONTENT_NOTEBOOK.setTabEnabled(1, True)
+        GUI.USER_BTN.setEnabled(True)
 
     def check_user_permissions(channel):
         # Check if currently logged in user has permissions to view requested channel

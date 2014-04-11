@@ -7,7 +7,7 @@ class GUI():
     SUBMIT_BTN = ""
     CHANNEL_NOTEBOOK = ""
     CONTENT_NOTEBOOK = ""
-    
+    USER_BTN = ""
     # Login Window Widgets
     #LOGIN_GROUP_BOX = ""
     

@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui_communicator.ui'
 #
-# Created: Fri Apr 11 13:03:06 2014
+# Created: Fri Apr 11 13:30:49 2014
 #      by: PyQt4 UI code generator 4.10.2
 #
 # WARNING! All changes made in this file will be lost!
@@ -26,6 +26,7 @@ except AttributeError:
 class Ui_hbsCommunicator(object):
     def setupUi(self, hbsCommunicator):
         hbsCommunicator.setObjectName(_fromUtf8("hbsCommunicator"))
+        hbsCommunicator.setEnabled(True)
         hbsCommunicator.resize(805, 732)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Maximum, QtGui.QSizePolicy.Maximum)
         sizePolicy.setHorizontalStretch(0)
@@ -37,19 +38,6 @@ class Ui_hbsCommunicator(object):
         self.formLayout = QtGui.QFormLayout(self.centralwidget)
         self.formLayout.setFieldGrowthPolicy(QtGui.QFormLayout.AllNonFixedFieldsGrow)
         self.formLayout.setObjectName(_fromUtf8("formLayout"))
-        self.userLabel = QtGui.QLabel(self.centralwidget)
-        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Preferred, QtGui.QSizePolicy.Preferred)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.userLabel.sizePolicy().hasHeightForWidth())
-        self.userLabel.setSizePolicy(sizePolicy)
-        self.userLabel.setMinimumSize(QtCore.QSize(164, 0))
-        self.userLabel.setFocusPolicy(QtCore.Qt.NoFocus)
-        self.userLabel.setAutoFillBackground(False)
-        self.userLabel.setFrameShape(QtGui.QFrame.NoFrame)
-        self.userLabel.setAlignment(QtCore.Qt.AlignCenter)
-        self.userLabel.setObjectName(_fromUtf8("userLabel"))
-        self.formLayout.setWidget(1, QtGui.QFormLayout.LabelRole, self.userLabel)
         self.channelNotebook = QtGui.QTabWidget(self.centralwidget)
         self.channelNotebook.setEnabled(False)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding)
@@ -180,6 +168,9 @@ class Ui_hbsCommunicator(object):
         self.channelTab.setObjectName(_fromUtf8("channelTab"))
         self.channelDisplay = QtGui.QPlainTextEdit(self.channelTab)
         self.channelDisplay.setGeometry(QtCore.QRect(-1, -1, 611, 501))
+        self.channelDisplay.setAcceptDrops(False)
+        self.channelDisplay.setAutoFillBackground(False)
+        self.channelDisplay.setFrameShadow(QtGui.QFrame.Sunken)
         self.channelDisplay.setReadOnly(True)
         self.channelDisplay.setObjectName(_fromUtf8("channelDisplay"))
         self.loginGroupBox = QtGui.QGroupBox(self.channelTab)
@@ -245,6 +236,13 @@ class Ui_hbsCommunicator(object):
         self.annoucementLabel.setOpenExternalLinks(True)
         self.annoucementLabel.setObjectName(_fromUtf8("annoucementLabel"))
         self.formLayout.setWidget(5, QtGui.QFormLayout.SpanningRole, self.annoucementLabel)
+        self.userButton = QtGui.QPushButton(self.centralwidget)
+        self.userButton.setEnabled(False)
+        self.userButton.setMinimumSize(QtCore.QSize(165, 28))
+        self.userButton.setText(_fromUtf8(""))
+        self.userButton.setFlat(True)
+        self.userButton.setObjectName(_fromUtf8("userButton"))
+        self.formLayout.setWidget(1, QtGui.QFormLayout.LabelRole, self.userButton)
         hbsCommunicator.setCentralWidget(self.centralwidget)
         self.menubar = QtGui.QMenuBar(hbsCommunicator)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 805, 27))
@@ -261,7 +259,6 @@ class Ui_hbsCommunicator(object):
 
     def retranslateUi(self, hbsCommunicator):
         hbsCommunicator.setWindowTitle(_translate("hbsCommunicator", "HBS Communicator", None))
-        self.userLabel.setText(_translate("hbsCommunicator", "User", None))
         self.centralCommandButton.setText(_translate("hbsCommunicator", "Central Command", None))
         self.operationsCommandButton.setText(_translate("hbsCommunicator", "Operations", None))
         self.logisticsCommandButton.setText(_translate("hbsCommunicator", "Logistics", None))
