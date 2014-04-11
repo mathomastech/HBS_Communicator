@@ -8,6 +8,7 @@ class GUI():
     CHANNEL_NOTEBOOK = ""
     CONTENT_NOTEBOOK = ""
     USER_BTN = ""
+    ANNOUNCEMENT_LABEL = ""
     # Login Window Widgets
     #LOGIN_GROUP_BOX = ""
     
