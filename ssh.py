@@ -1,6 +1,5 @@
 import paramiko
 from config import Config
-#from communicator import *
 
 class SSH():
     def connect_to_ssh():
@@ -14,15 +13,13 @@ class SSH():
         return ssh
 
     def get_log(ssh,log_path):
+        # Get log for current channel and return to communicator.
         query = 'cat ' + log_path
         stdin, stdout, stderr = ssh.exec_command(query)
         log = stdout.readlines()
         log = ''.join(log)
+
         return log
-        #if stdin != "null"
-        #    return stdin
-        #else
-        #    return False
 
     def write_to_log(ssh,log_path,log):
         # Get and parse timestamp from server
@@ -31,10 +28,6 @@ class SSH():
         timestamp = timestamp[0]
         timestamp = timestamp.rstrip()
 
-        # Write timestamp and log to appropriate path
+        # Write timestamp and log to appropriate file
         query = 'echo "' + timestamp + ' ' + log + '" >> ' + log_path
         ssh.exec_command(query)
-    
-    #def connect_to_chat_server(ssh)
-    #    query = "python client.py localhost 5000"
-	#ssh.exec_command(query) 
