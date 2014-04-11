@@ -62,9 +62,6 @@ class Handler(QtGui.QMainWindow):
     def on_usernameEntry_activate(self, *args):
         Handler.on_loginButton_clicked(self, *args)
 
-    def on_refreshButton_clicked(self, *args):
-        Communicator.update_channel()
-
     # Command Communication Channels
     
     def on_centralCommandButton_clicked(self, *args):
