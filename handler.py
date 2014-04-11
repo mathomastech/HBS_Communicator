@@ -19,7 +19,8 @@ class Handler(QtGui.QMainWindow):
     worker = Worker()
     worker.moveToThread(thread)
     worker.start()
-    thread.connect(thread, QtCore.SIGNAL('refresh_signal'), Communicator.update_channel)
+    worker.refresh_signal.connect(Communicator.update_channel)
+    #thread.connect(thread, QtCore.SIGNAL('refresh_signal'), Communicator.update_channel)
     
     def __init__(self):
         super(Handler,self).__init__()

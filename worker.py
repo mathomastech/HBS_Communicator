@@ -4,6 +4,7 @@ from communicator import Communicator
 
 class Worker(QtCore.QThread):
     refresh_signal = QtCore.pyqtSignal()
+    
     def __init__(self, parent=None):
         QtCore.QThread.__init__(self)
 
