@@ -23,7 +23,7 @@ class SSH():
 
     def write_to_log(ssh,log_path,log):
         # Get and parse timestamp from server
-        stdin,stdout,stderr = ssh.exec_command('date +"<%m/%d-%H:%M>"')
+        stdin,stdout,stderr = ssh.exec_command('date +"%H:%M:%S |"')
         timestamp = stdout.readlines()
         timestamp = timestamp[0]
         timestamp = timestamp.rstrip()
@@ -31,3 +31,4 @@ class SSH():
         # Write timestamp and log to appropriate file
         query = 'echo "' + timestamp + ' ' + log + '" >> ' + log_path
         ssh.exec_command(query)
+    
