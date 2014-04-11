@@ -69,11 +69,18 @@ class Communicator:
             Communicator.USER_PERMISSIONS = userPermissions
             Communicator.hide_login()
             Communicator.populate_channel(Config.c['Logs'] + 'welcomeMessage.txt', Config.c['Rosters'] + 'generalRoster.txt')
+            Communicator.enable_widgets()
 
     def hide_login():
         # Hide the login box my giving it a 0,0 size. 
         GUI.LOGIN_GROUP_BOX.resize(0,0)
         return
+
+    def enable_widgets():
+        GUI.CHAT_ENTRY.setEnabled(True)
+        GUI.SUBMIT_BTN.setEnabled(True)
+        GUI.CHANNEL_NOTEBOOK.setEnabled(True)
+        GUI.CONTENT_NOTEBOOK.setTabEnabled(1, True)
 
     def check_user_permissions(channel):
         # Check if currently logged in user has permissions to view requested channel
