@@ -20,7 +20,6 @@ class Handler(QtGui.QMainWindow):
     worker.moveToThread(thread)
     worker.start()
     worker.refresh_signal.connect(Communicator.update_channel)
-    #thread.connect(thread, QtCore.SIGNAL('refresh_signal'), Communicator.update_channel)
     
     def __init__(self):
         super(Handler,self).__init__()
@@ -37,7 +36,7 @@ class Handler(QtGui.QMainWindow):
         GUI.REFRESH_BUTTON = com.refreshButton        
         GUI.CHANNEL_NOTEBOOK = com.channelNotebook
         GUI.CONTENT_NOTEBOOK = com.contentNotebook
-       
+        GUI.ANNOUNCEMENT_LABEL = com.announcementLabel
         # Disabled the Roster tab. 
         # Move this line into ui_communicator.py either manually or
         # through QTDesigner somehow. Qt Designer does not appear
