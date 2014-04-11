@@ -4,6 +4,9 @@ class GUI():
     CHANNEL_DISPLAY = ""
     ROSTER_DISPLAY = ""
     CHAT_ENTRY = ""
+    SUBMIT_BTN = ""
+    CHANNEL_NOTEBOOK = ""
+    CONTENT_NOTEBOOK = ""
     
     # Login Window Widgets
     #LOGIN_GROUP_BOX = ""
