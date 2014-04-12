@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'ui_communicator.ui'
 #
-# Created: Fri Apr 11 17:07:35 2014
-#      by: PyQt4 UI code generator 4.10.2
+# Created: Fri Apr 11 19:54:22 2014
+#      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -27,8 +27,8 @@ class Ui_hbsCommunicator(object):
     def setupUi(self, hbsCommunicator):
         hbsCommunicator.setObjectName(_fromUtf8("hbsCommunicator"))
         hbsCommunicator.setEnabled(True)
-        hbsCommunicator.resize(805, 739)
-        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Maximum, QtGui.QSizePolicy.Maximum)
+        hbsCommunicator.resize(805, 742)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(hbsCommunicator.sizePolicy().hasHeightForWidth())
@@ -40,7 +40,7 @@ class Ui_hbsCommunicator(object):
         self.formLayout.setObjectName(_fromUtf8("formLayout"))
         self.channelNotebook = QtGui.QTabWidget(self.centralwidget)
         self.channelNotebook.setEnabled(False)
-        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.channelNotebook.sizePolicy().hasHeightForWidth())
@@ -175,10 +175,10 @@ class Ui_hbsCommunicator(object):
         self.channelDisplay.setCenterOnScroll(True)
         self.channelDisplay.setObjectName(_fromUtf8("channelDisplay"))
         self.loginGroupBox = QtGui.QGroupBox(self.channelTab)
-        self.loginGroupBox.setGeometry(QtCore.QRect(10, 10, 581, 351))
+        self.loginGroupBox.setGeometry(QtCore.QRect(10, 10, 581, 461))
         self.loginGroupBox.setObjectName(_fromUtf8("loginGroupBox"))
         self.gridGroupBox = QtGui.QGroupBox(self.loginGroupBox)
-        self.gridGroupBox.setGeometry(QtCore.QRect(70, 0, 461, 241))
+        self.gridGroupBox.setGeometry(QtCore.QRect(70, 0, 461, 361))
         self.gridGroupBox.setObjectName(_fromUtf8("gridGroupBox"))
         self.gridLayout_2 = QtGui.QGridLayout(self.gridGroupBox)
         self.gridLayout_2.setObjectName(_fromUtf8("gridLayout_2"))
@@ -198,10 +198,10 @@ class Ui_hbsCommunicator(object):
         self.usernameLabel.setObjectName(_fromUtf8("usernameLabel"))
         self.gridLayout_2.addWidget(self.usernameLabel, 0, 0, 1, 1)
         self.loginButton = QtGui.QPushButton(self.loginGroupBox)
-        self.loginButton.setGeometry(QtCore.QRect(313, 261, 211, 31))
+        self.loginButton.setGeometry(QtCore.QRect(310, 381, 211, 31))
         self.loginButton.setObjectName(_fromUtf8("loginButton"))
         self.loginStatusLabel = QtGui.QLabel(self.loginGroupBox)
-        self.loginStatusLabel.setGeometry(QtCore.QRect(40, 261, 261, 31))
+        self.loginStatusLabel.setGeometry(QtCore.QRect(40, 379, 261, 31))
         self.loginStatusLabel.setText(_fromUtf8(""))
         self.loginStatusLabel.setObjectName(_fromUtf8("loginStatusLabel"))
         self.contentNotebook.addTab(self.channelTab, _fromUtf8(""))

@@ -10,11 +10,11 @@
     <x>0</x>
     <y>0</y>
     <width>805</width>
-    <height>739</height>
+    <height>742</height>
    </rect>
   </property>
   <property name="sizePolicy">
-   <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
     <horstretch>0</horstretch>
     <verstretch>0</verstretch>
    </sizepolicy>
@@ -33,7 +33,7 @@
        <bool>false</bool>
       </property>
       <property name="sizePolicy">
-       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
         <horstretch>0</horstretch>
         <verstretch>0</verstretch>
        </sizepolicy>
@@ -362,7 +362,7 @@
             <x>10</x>
             <y>10</y>
             <width>581</width>
-            <height>351</height>
+            <height>461</height>
            </rect>
           </property>
           <widget class="QGroupBox" name="gridGroupBox">
@@ -371,7 +371,7 @@
              <x>70</x>
              <y>0</y>
              <width>461</width>
-             <height>241</height>
+             <height>361</height>
             </rect>
            </property>
            <layout class="QGridLayout" name="gridLayout_2">
@@ -411,8 +411,8 @@
           <widget class="QPushButton" name="loginButton">
            <property name="geometry">
             <rect>
-             <x>313</x>
-             <y>261</y>
+             <x>310</x>
+             <y>381</y>
              <width>211</width>
              <height>31</height>
             </rect>
@@ -425,7 +425,7 @@
            <property name="geometry">
             <rect>
              <x>40</x>
-             <y>261</y>
+             <y>379</y>
              <width>261</width>
              <height>31</height>
             </rect>
