@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui_communicator_windows.ui'
 #
-# Created: Sat Apr 12 09:40:36 2014
+# Created: Sat Apr 12 10:10:19 2014
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -86,7 +86,6 @@ class Ui_hbsCommunicator(object):
         self.loginButton.setObjectName(_fromUtf8("loginButton"))
         self.loginStatusLabel = QtGui.QLabel(self.loginGroupBox)
         self.loginStatusLabel.setGeometry(QtCore.QRect(40, 295, 261, 31))
-        self.loginStatusLabel.setText(_fromUtf8(""))
         self.loginStatusLabel.setObjectName(_fromUtf8("loginStatusLabel"))
         self.contentNotebook.addTab(self.channelTab, _fromUtf8(""))
         self.rosterTab = QtGui.QWidget()
@@ -267,6 +266,7 @@ class Ui_hbsCommunicator(object):
         self.passwordLabel.setText(_translate("hbsCommunicator", "Password:", None))
         self.usernameLabel.setText(_translate("hbsCommunicator", "Username:", None))
         self.loginButton.setText(_translate("hbsCommunicator", "Login", None))
+        self.loginStatusLabel.setText(_translate("hbsCommunicator", "Hint: Same as forum", None))
         self.contentNotebook.setTabText(self.contentNotebook.indexOf(self.channelTab), _translate("hbsCommunicator", "Channel", None))
         self.contentNotebook.setTabText(self.contentNotebook.indexOf(self.rosterTab), _translate("hbsCommunicator", "Roster", None))
         self.refreshButton.setText(_translate("hbsCommunicator", "Refresh", None))
