@@ -53,6 +53,8 @@ class Handler(QtGui.QMainWindow):
         GUI.PASSWORD_ENTRY = com.passwordEntry
         GUI.LOGIN_BTN = com.loginButton
         
+        self.setWindowIcon(QtGui.QIcon('Com-Headset.png'))
+        
         self.show()
 
     def on_loginButton_clicked(self, *args):
