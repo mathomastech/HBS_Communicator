@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui_communicator_windows.ui'
 #
-# Created: Fri Apr 11 20:41:40 2014
+# Created: Sat Apr 12 09:40:36 2014
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -27,7 +27,7 @@ class Ui_hbsCommunicator(object):
     def setupUi(self, hbsCommunicator):
         hbsCommunicator.setObjectName(_fromUtf8("hbsCommunicator"))
         hbsCommunicator.setEnabled(True)
-        hbsCommunicator.resize(788, 600)
+        hbsCommunicator.resize(788, 742)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -47,12 +47,12 @@ class Ui_hbsCommunicator(object):
         self.channelTab = QtGui.QWidget()
         self.channelTab.setObjectName(_fromUtf8("channelTab"))
         self.channelDisplay = QtGui.QPlainTextEdit(self.channelTab)
-        self.channelDisplay.setGeometry(QtCore.QRect(-1, -1, 621, 401))
+        self.channelDisplay.setGeometry(QtCore.QRect(-1, -1, 620, 401))
         self.channelDisplay.setAcceptDrops(False)
         self.channelDisplay.setAutoFillBackground(False)
         self.channelDisplay.setFrameShadow(QtGui.QFrame.Sunken)
         self.channelDisplay.setReadOnly(True)
-        self.channelDisplay.setCenterOnScroll(True)
+        self.channelDisplay.setCenterOnScroll(False)
         self.channelDisplay.setObjectName(_fromUtf8("channelDisplay"))
         self.loginGroupBox = QtGui.QGroupBox(self.channelTab)
         self.loginGroupBox.setGeometry(QtCore.QRect(-1, -1, 591, 391))
@@ -207,7 +207,7 @@ class Ui_hbsCommunicator(object):
         self.generalTab = QtGui.QWidget()
         self.generalTab.setObjectName(_fromUtf8("generalTab"))
         self.layoutWidget_2 = QtGui.QWidget(self.generalTab)
-        self.layoutWidget_2.setGeometry(QtCore.QRect(5, 5, 121, 381))
+        self.layoutWidget_2.setGeometry(QtCore.QRect(5, 5, 143, 381))
         self.layoutWidget_2.setObjectName(_fromUtf8("layoutWidget_2"))
         self.verticalLayout_3 = QtGui.QVBoxLayout(self.layoutWidget_2)
         self.verticalLayout_3.setSpacing(6)
@@ -276,12 +276,12 @@ class Ui_hbsCommunicator(object):
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'Cantarell\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">HBS Communicator Version 0.5 - Beta</p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Please report all bugs and features <a href=\"http://www.hellboundsoldiers.org\"><span style=\" text-decoration: underline; color:#0000ff;\">here</span></a></p></body></html>", None))
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Please report all bugs and features <a href=\"http://hellboundsoldiers.org/forums/forumdisplay.php?150-HBS-COMMUNICATOR\"><span style=\" text-decoration: underline; color:#0000ff;\">here</span></a></p></body></html>", None))
         self.centralCommandButton.setText(_translate("hbsCommunicator", "Central Command", None))
         self.operationsCommandButton.setText(_translate("hbsCommunicator", "Operations", None))
         self.logisticsCommandButton.setText(_translate("hbsCommunicator", "Logistics", None))
         self.codCommandButton.setText(_translate("hbsCommunicator", "Call of Duty", None))
-        self.tfCommandButton.setText(_translate("hbsCommunicator", "Titan Fall", None))
+        self.tfCommandButton.setText(_translate("hbsCommunicator", "Titanfall", None))
         self.wowCommandButton.setText(_translate("hbsCommunicator", "World of Warcraft", None))
         self.gwCommandButton.setText(_translate("hbsCommunicator", "Guild Wars", None))
         self.dayzCommandButton.setText(_translate("hbsCommunicator", "DayZ", None))
@@ -293,7 +293,7 @@ class Ui_hbsCommunicator(object):
         self.channelNotebook.setTabText(self.channelNotebook.indexOf(self.commandTab), _translate("hbsCommunicator", "Command", None))
         self.generalButton.setText(_translate("hbsCommunicator", "General", None))
         self.codGeneralButton.setText(_translate("hbsCommunicator", "Call of Duty", None))
-        self.tfGeneralButton.setText(_translate("hbsCommunicator", "Titan Fall", None))
+        self.tfGeneralButton.setText(_translate("hbsCommunicator", "Titanfall", None))
         self.wowGeneralButton.setText(_translate("hbsCommunicator", "World of Warcraft", None))
         self.gwGeneralButton.setText(_translate("hbsCommunicator", "Guild Wars", None))
         self.dayzGeneralButton.setText(_translate("hbsCommunicator", "DayZ", None))

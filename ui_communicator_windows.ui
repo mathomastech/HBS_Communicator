@@ -10,7 +10,7 @@
     <x>0</x>
     <y>0</y>
     <width>788</width>
-    <height>600</height>
+    <height>742</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -49,7 +49,7 @@
            <rect>
             <x>-1</x>
             <y>-1</y>
-            <width>621</width>
+            <width>620</width>
             <height>401</height>
            </rect>
           </property>
@@ -66,7 +66,7 @@
            <bool>true</bool>
           </property>
           <property name="centerOnScroll">
-           <bool>true</bool>
+           <bool>false</bool>
           </property>
          </widget>
          <widget class="QGroupBox" name="loginGroupBox">
@@ -231,7 +231,7 @@
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Cantarell'; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;HBS Communicator Version 0.5 - Beta&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Please report all bugs and features &lt;a href=&quot;http://www.hellboundsoldiers.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;here&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Please report all bugs and features &lt;a href=&quot;http://hellboundsoldiers.org/forums/forumdisplay.php?150-HBS-COMMUNICATOR&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;here&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
@@ -351,7 +351,7 @@ p, li { white-space: pre-wrap; }
           <item>
            <widget class="QPushButton" name="tfCommandButton">
             <property name="text">
-             <string>Titan Fall</string>
+             <string>Titanfall</string>
             </property>
             <property name="flat">
              <bool>true</bool>
@@ -451,7 +451,7 @@ p, li { white-space: pre-wrap; }
          <rect>
           <x>5</x>
           <y>5</y>
-          <width>121</width>
+          <width>143</width>
           <height>381</height>
          </rect>
         </property>
@@ -488,7 +488,7 @@ p, li { white-space: pre-wrap; }
          <item>
           <widget class="QPushButton" name="tfGeneralButton">
            <property name="text">
-            <string>Titan Fall</string>
+            <string>Titanfall</string>
            </property>
            <property name="flat">
             <bool>true</bool>
