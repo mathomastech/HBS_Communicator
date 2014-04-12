@@ -90,12 +90,11 @@ class Communicator:
         if channel == "Central Command":
             permissions = [9,10,54]
         if channel == "Operations Command":
-            permissions = [9,10,54,57,62,63]
+            permissions = [9,10,54]
         if channel == "Call of Duty Command":
             permissions = [9,10,57]
         if channel == "Titan Fall Command":
-            permissions = [9,10,57]
-            # Need to fix permissions
+            permissions = [9,10,64]
         if channel == "League of Legends Command":
             permissions = [9,10,57]
             # Need to fix permissions
@@ -105,11 +104,9 @@ class Communicator:
         if channel == "World of Warcraft Command":
             permissions = [9,10,63]
         if channel == "Minecraft Command":
-            permissions = [9,10]
-            # Need MC command group on forums
+            permissions = [9,10,59]
         if channel == "DayZ Command":
-            permissions = [9,10]
-            # Need DayZ group of forums
+            permissions = [9,10,11]
         if channel == "Logistics Command": 
             permissions = [9,10,54,58,17]
         if channel == "Military Police":
