@@ -36,11 +36,52 @@ class Communicator:
         Communicator.populate_channel(log_path,Communicator.ACTIVE_ROSTER_PATH)        
 
     def update_selected_channels():   
-        print(Communicator.DELTA)
-        #if delta:
-        #    for i in range(0,len(delta)):
-        #        Communicator.update_channel(Config.LOG_PATHS[delta[i]])
- 
+        for i in range(0,len(Communicator.DELTA)):
+            if Communicator.DELTA[i] == Config.CHANNELS[0]:
+                GUI.CENTCOM_BTN.setStyleSheet("color:red")
+            elif Communicator.DELTA[i] == Config.CHANNELS[1]:
+                GUI.OP_CMD_BTN.setStyleSheet("color:red")
+            elif Communicator.DELTA[i] == Config.CHANNELS[2]:
+                GUI.COD_CMD_BTN.setStyleSheet("color:red")
+            elif Communicator.DELTA[i] == Config.CHANNELS[3]:
+                GUI.TF_CMD_BTN.setStyleSheet("color:red")
+            elif Communicator.DELTA[i] == Config.CHANNELS[4]:
+                GUI.LOL_CMD_BTN.setStyleSheet("color:red")
+            elif Communicator.DELTA[i] == Config.CHANNELS[5]:
+                GUI.GW_CMD_BTN.setStyleSheet("color:red")
+            elif Communicator.DELTA[i] == Config.CHANNELS[6]:
+                GUI.WOW_CMD_BTN.setStyleSheet("color:red")
+            elif Communicator.DELTA[i] == Config.CHANNELS[7]:
+                GUI.MC_CMD_BTN.setStyleSheet("color:red")
+            elif Communicator.DELTA[i] == Config.CHANNELS[8]:
+                GUI.DAYZ_CMD_BTN.setStyleSheet("color:red")
+            elif Communicator.DELTA[i] == Config.CHANNELS[9]:
+                GUI.LOG_CMD_BTN.setStyleSheet("color:red")
+            elif Communicator.DELTA[i] == Config.CHANNELS[10]:
+                GUI.MP_CMD_BTN.setStyleSheet("color:red")
+            elif Communicator.DELTA[i] == Config.CHANNELS[11]:
+                GUI.ADM_CMD_BTN.setStyleSheet("color:red")
+            elif Communicator.DELTA[i] == Config.CHANNELS[12]:
+                GUI.BETA_BTN.setStyleSheet("color:red")
+            elif Communicator.DELTA[i] == Config.CHANNELS[13]:
+                GUI.GEN_BTN.setStyleSheet("color:red")
+            elif Communicator.DELTA[i] == Config.CHANNELS[14]:
+                GUI.COD_BTN.setStyleSheet("color:red")
+            elif Communicator.DELTA[i] == Config.CHANNELS[15]:
+                GUI.TF_BTN.setStyleSheet("color:red")
+            elif Communicator.DELTA[i] == Config.CHANNELS[16]:
+                GUI.LOL_BTN.setStyleSheet("color:red")
+            elif Communicator.DELTA[i] == Config.CHANNELS[17]:
+                GUI.GW_BTN.setStyleSheet("color:red")
+            elif Communicator.DELTA[i] == Config.CHANNELS[18]:
+                GUI.WOW_BTN.setStyleSheet("color:red")
+            elif Communicator.DELTA[i] == Config.CHANNELS[19]:
+                GUI.MC_BTN.setStyleSheet("color:red")
+            elif Communicator.DELTA[i] == Config.CHANNELS[20]:
+                GUI.DAYZ_BTN.setStyleSheet("color:red")
+            elif Communicator.DELTA[i] == Config.CHANNELS[21]:
+                GUI.SM_BTN.setStyleSheet("color:red")
+
     def populate_channel(log_path,roster_path):
         # Populate the channel with both logs and rosters
         log = SSH.get_active_log(Communicator.SSH_CONNECTION, log_path)
@@ -49,11 +90,6 @@ class Communicator:
             Communicator.write_to_roster(roster_path)
         else:
             Communicator.write_to_roster_no_roster(roster_path)
-
-    #def populate_logs():
-        #print(Communicator.LOCAL_LOGS)
-        #print(Communicator.REMOTE_LOGS)
-        #print('Testing')
 
     def write_to_channel(current_log_path,log):
         # Write log to the currently selected channel
