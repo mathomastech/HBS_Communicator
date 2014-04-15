@@ -8,12 +8,19 @@ Crossplatform communicator app for the Hellbound Soldiers gaming community.
 
 -- Connects to a remote server via ssh
 
--- Currently under development. Alpha has been released. Beta version expected soon.
+-- Currently under development. Beta version has been released. 1.0 is under development
 
--- Expected features in Beta:
 
--- Auto Refresh of channels
+Required Features and Fixes for 1.0
 
--- GUI Improvements
+-- Improved performance and bug fixes to the Auto Refresh and Notify features
 
--- Various Bugs
+-- Remember Login
+
+-- Bugs
+
+-- In app upgrading
+
+Optional:
+
+-- Admin Panel (?)
