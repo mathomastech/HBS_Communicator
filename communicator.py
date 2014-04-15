@@ -30,7 +30,12 @@ class Communicator:
         # Call this function to refresh the currently selected channel
         Communicator.populate_channel(Communicator.ACTIVE_LOG_PATH,
                             Communicator.ACTIVE_ROSTER_PATH)
-        
+        Communicator.LOCAL_LOGS, Communicator.REMOTE_LOGS = SSH.get_logs(
+                                    Communicator.SSH_CONNECTION, 
+                                    Communicator.LOCAL_LOGS, 
+                                    Communicator.REMOTE_LOGS)
+        #print(Communicator.REMOTE_LOGS)  
+ 
     def populate_channel(log_path,roster_path):
         # Populate the channel with both logs and rosters
         log = SSH.get_log(Communicator.SSH_CONNECTION, log_path)
@@ -40,10 +45,10 @@ class Communicator:
         else:
             Communicator.write_to_roster_no_roster(roster_path)
 
-    def populate_logs():
-        print(Communicator.LOCAL_LOGS)
-        print(Communicator.REMOTE_LOGS)
-        print('Testing')
+    #def populate_logs():
+        #print(Communicator.LOCAL_LOGS)
+        #print(Communicator.REMOTE_LOGS)
+        #print('Testing')
 
     def write_to_channel(current_log_path,log):
         # Write log to the currently selected channel
@@ -78,7 +83,7 @@ class Communicator:
         # Set user login and permissions
         GUI.LOGIN_STATUS_LABEL.setText("Authenticating...")
         flag, userPermissions, channelPermissions = Database.login(username,password)
-        Communicator.populate_logs()
+        #Communicator.populate_logs()
         if flag:
             # If True, set the username and user permissions. Hide the login and set 
             # the welcome message and announcement. 
