@@ -21,6 +21,17 @@ class SSH():
 
         return log
 
+
+    def get_logs(ssh,log_path):
+        # Get remote logs for all channels and return to communicator.
+        query = 'cat ' + log_path
+        stdin, stdout, stderr = ssh.exec_command(query)
+        log = stdout.readlines()
+        log = ''.join(log)
+
+        return log
+
+
     def write_to_log(ssh,log_path,log):
         # Get and parse timestamp from server
         stdin,stdout,stderr = ssh.exec_command('date +"%H:%M:%S |"')

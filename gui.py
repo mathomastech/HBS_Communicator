@@ -9,12 +9,4 @@ class GUI():
     CONTENT_NOTEBOOK = ""
     USER_BTN = ""
     ANNOUNCEMENT_LABEL = ""
-    # Login Window Widgets
-    #LOGIN_GROUP_BOX = ""
-    
-    #LOGIN_STATUS_LABEL = ""
-    #LOGIN_BTN = ""    
-    #USERNAME_LABEL = ""
-    #USERNAME_ENTRY = ""
-    #PASSWORD_LABEL = ""
-    #PASSWORD_ENTRY = ""
+    LOGIN_GROUP_BOX = ""

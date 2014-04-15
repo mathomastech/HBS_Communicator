@@ -16,7 +16,12 @@ class Communicator:
     ACTIVE_LOG_PATH = ""
     ACTIVE_ROSTER_PATH = ""
     SSH_CONNECTION = SSH.connect_to_ssh()
-    #LOG_ARRAY = [][]     
+    LOCAL_CONFIG_DIR_LINUX = "~/.hbs/"
+    LOCAL_CONFIG_DIR_WINDOWS = ""
+    # This is creating 2 variables that point to the same source.
+    # Need to make these 2 variables unique!
+    LOCAL_LOGS = Config.LOCAL_LOGS
+    REMOTE_LOGS = Config.REMOTE_LOGS
 
     def __init__(self):
         super(Communicator,self).__init__()
@@ -35,10 +40,16 @@ class Communicator:
         else:
             Communicator.write_to_roster_no_roster(roster_path)
 
+    def populate_logs():
+        print(Communicator.LOCAL_LOGS)
+        print(Communicator.REMOTE_LOGS)
+        print('Testing')
+
     def write_to_channel(current_log_path,log):
         # Write log to the currently selected channel
         GUI.CHANNEL_DISPLAY.setPlainText(log)
         Communicator.ACTIVE_LOG_PATH = current_log_path
+
         cursor = QtGui.QTextCursor(GUI.CHANNEL_DISPLAY.textCursor())
         cursor.movePosition(QtGui.QTextCursor.End)
         GUI.CHANNEL_DISPLAY.setTextCursor(cursor) 
@@ -63,10 +74,11 @@ class Communicator:
             Communicator.update_channel()
             GUI.CHAT_ENTRY.setText("")
 
-    def login(username,password):
+    def login(username,password,remember):
         # Set user login and permissions
         GUI.LOGIN_STATUS_LABEL.setText("Authenticating...")
         flag, userPermissions, channelPermissions = Database.login(username,password)
+        Communicator.populate_logs()
         if flag:
             # If True, set the username and user permissions. Hide the login and set 
             # the welcome message and announcement. 
@@ -75,8 +87,20 @@ class Communicator:
             GUI.LOGIN_GROUP_BOX.resize(0,0)
             Communicator.populate_channel(Config.c['Logs'] + 'welcomeMessage.txt', Config.c['Rosters'] + 'generalRoster.txt')
             Communicator.enable_widgets()
+
+            #Code for an automatic login option
+            #Communicator.check_dir(Communicator.LOCAL_CONFIG_DIR_LINUX)
+                 
+
+            #Code for dynamically applying announcements
             #announcement = SSH.get_log(Communicator.SSH_CONNECTION, Config.c['Logs'] + 'announcement.html')
             #GUI.ANNOUNCEMENT_LABEL.setText(announcement)
+
+    #Code for a "Remember Login" option
+    #def check_dir(f):
+    #    d = os.path.dirname(f)
+    #    if not os.path.exists(d):
+    #        os.makedirs(d)
 
     def enable_widgets():
         GUI.CHAT_ENTRY.setEnabled(True)
