@@ -112,6 +112,9 @@
               <property name="enabled">
                <bool>true</bool>
               </property>
+              <property name="focusPolicy">
+               <enum>Qt::StrongFocus</enum>
+              </property>
              </widget>
             </item>
             <item row="1" column="1">
@@ -145,6 +148,9 @@
            <property name="text">
             <string>Login</string>
            </property>
+           <property name="autoDefault">
+            <bool>false</bool>
+           </property>
           </widget>
           <widget class="QLabel" name="loginStatusLabel">
            <property name="geometry">
@@ -156,7 +162,23 @@
             </rect>
            </property>
            <property name="text">
-            <string/>
+            <string>Hint: Same as forum</string>
+           </property>
+          </widget>
+          <widget class="QCheckBox" name="rememberLoginCheck">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="geometry">
+            <rect>
+             <x>373</x>
+             <y>340</y>
+             <width>141</width>
+             <height>26</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>Remember Login</string>
            </property>
           </widget>
          </widget>
@@ -310,8 +332,17 @@ p, li { white-space: pre-wrap; }
           </property>
           <item>
            <widget class="QPushButton" name="centralCommandButton">
+            <property name="acceptDrops">
+             <bool>false</bool>
+            </property>
             <property name="text">
              <string>Central Command</string>
+            </property>
+            <property name="autoDefault">
+             <bool>true</bool>
+            </property>
+            <property name="default">
+             <bool>false</bool>
             </property>
             <property name="flat">
              <bool>true</bool>
@@ -323,6 +354,12 @@ p, li { white-space: pre-wrap; }
             <property name="text">
              <string>Operations</string>
             </property>
+            <property name="autoDefault">
+             <bool>true</bool>
+            </property>
+            <property name="default">
+             <bool>false</bool>
+            </property>
             <property name="flat">
              <bool>true</bool>
             </property>
@@ -332,6 +369,9 @@ p, li { white-space: pre-wrap; }
            <widget class="QPushButton" name="logisticsCommandButton">
             <property name="text">
              <string>Logistics</string>
+            </property>
+            <property name="autoDefault">
+             <bool>true</bool>
             </property>
             <property name="flat">
              <bool>true</bool>
@@ -343,6 +383,9 @@ p, li { white-space: pre-wrap; }
             <property name="text">
              <string>Call of Duty</string>
             </property>
+            <property name="autoDefault">
+             <bool>true</bool>
+            </property>
             <property name="flat">
              <bool>true</bool>
             </property>
@@ -352,6 +395,9 @@ p, li { white-space: pre-wrap; }
            <widget class="QPushButton" name="tfCommandButton">
             <property name="text">
              <string>Titanfall</string>
+            </property>
+            <property name="autoDefault">
+             <bool>true</bool>
             </property>
             <property name="flat">
              <bool>true</bool>
@@ -363,6 +409,9 @@ p, li { white-space: pre-wrap; }
             <property name="text">
              <string>World of Warcraft</string>
             </property>
+            <property name="autoDefault">
+             <bool>true</bool>
+            </property>
             <property name="flat">
              <bool>true</bool>
             </property>
@@ -372,6 +421,9 @@ p, li { white-space: pre-wrap; }
            <widget class="QPushButton" name="gwCommandButton">
             <property name="text">
              <string>Guild Wars</string>
+            </property>
+            <property name="autoDefault">
+             <bool>true</bool>
             </property>
             <property name="flat">
              <bool>true</bool>
@@ -383,6 +435,9 @@ p, li { white-space: pre-wrap; }
             <property name="text">
              <string>DayZ</string>
             </property>
+            <property name="autoDefault">
+             <bool>true</bool>
+            </property>
             <property name="flat">
              <bool>true</bool>
             </property>
@@ -392,6 +447,9 @@ p, li { white-space: pre-wrap; }
            <widget class="QPushButton" name="lolCommandButton">
             <property name="text">
              <string>League of Legends</string>
+            </property>
+            <property name="autoDefault">
+             <bool>true</bool>
             </property>
             <property name="flat">
              <bool>true</bool>
@@ -403,6 +461,9 @@ p, li { white-space: pre-wrap; }
             <property name="text">
              <string>Minecraft</string>
             </property>
+            <property name="autoDefault">
+             <bool>true</bool>
+            </property>
             <property name="flat">
              <bool>true</bool>
             </property>
@@ -412,6 +473,9 @@ p, li { white-space: pre-wrap; }
            <widget class="QPushButton" name="mpCommandButton">
             <property name="text">
              <string>Military Police</string>
+            </property>
+            <property name="autoDefault">
+             <bool>true</bool>
             </property>
             <property name="flat">
              <bool>true</bool>
@@ -423,6 +487,9 @@ p, li { white-space: pre-wrap; }
             <property name="text">
              <string>Admissions</string>
             </property>
+            <property name="autoDefault">
+             <bool>true</bool>
+            </property>
             <property name="flat">
              <bool>true</bool>
             </property>
@@ -432,6 +499,9 @@ p, li { white-space: pre-wrap; }
            <widget class="QPushButton" name="betaTestButton">
             <property name="text">
              <string>Beta Testing</string>
+            </property>
+            <property name="autoDefault">
+             <bool>true</bool>
             </property>
             <property name="flat">
              <bool>true</bool>
@@ -470,6 +540,9 @@ p, li { white-space: pre-wrap; }
            <property name="text">
             <string>General</string>
            </property>
+           <property name="autoDefault">
+            <bool>true</bool>
+           </property>
            <property name="flat">
             <bool>true</bool>
            </property>
@@ -479,6 +552,9 @@ p, li { white-space: pre-wrap; }
           <widget class="QPushButton" name="codGeneralButton">
            <property name="text">
             <string>Call of Duty</string>
+           </property>
+           <property name="autoDefault">
+            <bool>true</bool>
            </property>
            <property name="flat">
             <bool>true</bool>
@@ -490,6 +566,9 @@ p, li { white-space: pre-wrap; }
            <property name="text">
             <string>Titanfall</string>
            </property>
+           <property name="autoDefault">
+            <bool>true</bool>
+           </property>
            <property name="flat">
             <bool>true</bool>
            </property>
@@ -499,6 +578,9 @@ p, li { white-space: pre-wrap; }
           <widget class="QPushButton" name="wowGeneralButton">
            <property name="text">
             <string>World of Warcraft</string>
+           </property>
+           <property name="autoDefault">
+            <bool>true</bool>
            </property>
            <property name="flat">
             <bool>true</bool>
@@ -510,6 +592,9 @@ p, li { white-space: pre-wrap; }
            <property name="text">
             <string>Guild Wars</string>
            </property>
+           <property name="autoDefault">
+            <bool>true</bool>
+           </property>
            <property name="flat">
             <bool>true</bool>
            </property>
@@ -519,6 +604,9 @@ p, li { white-space: pre-wrap; }
           <widget class="QPushButton" name="dayzGeneralButton">
            <property name="text">
             <string>DayZ</string>
+           </property>
+           <property name="autoDefault">
+            <bool>true</bool>
            </property>
            <property name="flat">
             <bool>true</bool>
@@ -530,6 +618,9 @@ p, li { white-space: pre-wrap; }
            <property name="text">
             <string>League of Legends</string>
            </property>
+           <property name="autoDefault">
+            <bool>true</bool>
+           </property>
            <property name="flat">
             <bool>true</bool>
            </property>
@@ -539,6 +630,22 @@ p, li { white-space: pre-wrap; }
           <widget class="QPushButton" name="mcGeneralButton">
            <property name="text">
             <string>Minecraft</string>
+           </property>
+           <property name="autoDefault">
+            <bool>true</bool>
+           </property>
+           <property name="flat">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="socialMediaButton">
+           <property name="text">
+            <string>Social Media</string>
+           </property>
+           <property name="autoDefault">
+            <bool>true</bool>
            </property>
            <property name="flat">
             <bool>true</bool>
@@ -558,12 +665,47 @@ p, li { white-space: pre-wrap; }
      <x>0</x>
      <y>0</y>
      <width>788</width>
-     <height>21</height>
+     <height>27</height>
     </rect>
    </property>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
+ <tabstops>
+  <tabstop>usernameEntry</tabstop>
+  <tabstop>passwordEntry</tabstop>
+  <tabstop>loginButton</tabstop>
+  <tabstop>channelNotebook</tabstop>
+  <tabstop>centralCommandButton</tabstop>
+  <tabstop>operationsCommandButton</tabstop>
+  <tabstop>logisticsCommandButton</tabstop>
+  <tabstop>codCommandButton</tabstop>
+  <tabstop>tfCommandButton</tabstop>
+  <tabstop>wowCommandButton</tabstop>
+  <tabstop>gwCommandButton</tabstop>
+  <tabstop>dayzCommandButton</tabstop>
+  <tabstop>lolCommandButton</tabstop>
+  <tabstop>mcCommandButton</tabstop>
+  <tabstop>mpCommandButton</tabstop>
+  <tabstop>admissionsCommandButton</tabstop>
+  <tabstop>betaTestButton</tabstop>
+  <tabstop>chatEntry</tabstop>
+  <tabstop>submitButton</tabstop>
+  <tabstop>contentNotebook</tabstop>
+  <tabstop>refreshButton</tabstop>
+  <tabstop>rosterDisplay</tabstop>
+  <tabstop>userButton</tabstop>
+  <tabstop>generalButton</tabstop>
+  <tabstop>codGeneralButton</tabstop>
+  <tabstop>tfGeneralButton</tabstop>
+  <tabstop>wowGeneralButton</tabstop>
+  <tabstop>gwGeneralButton</tabstop>
+  <tabstop>dayzGeneralButton</tabstop>
+  <tabstop>lolGeneralButton</tabstop>
+  <tabstop>channelDisplay</tabstop>
+  <tabstop>mcGeneralButton</tabstop>
+  <tabstop>socialMediaButton</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>
