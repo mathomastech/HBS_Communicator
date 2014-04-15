@@ -10,3 +10,4 @@ class GUI():
     USER_BTN = ""
     ANNOUNCEMENT_LABEL = ""
     LOGIN_GROUP_BOX = ""
+    USERNAME_ENTRY = ""
