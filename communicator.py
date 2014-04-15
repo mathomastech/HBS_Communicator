@@ -18,27 +18,32 @@ class Communicator:
     SSH_CONNECTION = SSH.connect_to_ssh()
     LOCAL_CONFIG_DIR_LINUX = "~/.hbs/"
     LOCAL_CONFIG_DIR_WINDOWS = ""
-    # This is creating 2 variables that point to the same source.
-    # Need to make these 2 variables unique!
+    
+    # Channel Update Variables
     LOCAL_LOGS = Config.LOCAL_LOGS
     REMOTE_LOGS = Config.REMOTE_LOGS
+    DELTA = []    
 
     def __init__(self):
         super(Communicator,self).__init__()
   
-    def update_channel():
+    def update_active_channel():
         # Call this function to refresh the currently selected channel
         Communicator.populate_channel(Communicator.ACTIVE_LOG_PATH,
                             Communicator.ACTIVE_ROSTER_PATH)
-        Communicator.LOCAL_LOGS, Communicator.REMOTE_LOGS = SSH.get_logs(
-                                    Communicator.SSH_CONNECTION, 
-                                    Communicator.LOCAL_LOGS, 
-                                    Communicator.REMOTE_LOGS)
-        #print(Communicator.REMOTE_LOGS)  
+    
+    def update_channel(log_path):
+        Communicator.populate_channel(log_path,Communicator.ACTIVE_ROSTER_PATH)        
+
+    def update_selected_channels():   
+        print(Communicator.DELTA)
+        #if delta:
+        #    for i in range(0,len(delta)):
+        #        Communicator.update_channel(Config.LOG_PATHS[delta[i]])
  
     def populate_channel(log_path,roster_path):
         # Populate the channel with both logs and rosters
-        log = SSH.get_log(Communicator.SSH_CONNECTION, log_path)
+        log = SSH.get_active_log(Communicator.SSH_CONNECTION, log_path)
         Communicator.write_to_channel(log_path,log)
         if os.path.isfile(roster_path):
             Communicator.write_to_roster(roster_path)
@@ -76,7 +81,7 @@ class Communicator:
             log = Communicator.USER + ": " + chat_input
             SSH.write_to_log(Communicator.SSH_CONNECTION,
                                 Communicator.ACTIVE_LOG_PATH, log)
-            Communicator.update_channel()
+            Communicator.update_active_channel()
             GUI.CHAT_ENTRY.setText("")
 
     def login(username,password,remember):
@@ -122,7 +127,7 @@ class Communicator:
             permissions = [9,10,54]
         if channel == "Call of Duty Command":
             permissions = [9,10,57]
-        if channel == "Titan Fall Command":
+        if channel == "Titanfall Command":
             permissions = [9,10,64]
         if channel == "League of Legends Command":
             permissions = [9,10,57]

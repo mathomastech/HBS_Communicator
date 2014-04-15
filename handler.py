@@ -13,13 +13,8 @@ class Handler(QtGui.QMainWindow):
     PASSWORD_ENTRY = ""
     REMEMBER_LOGIN = "False"
     refresh_signal = QtCore.pyqtSignal()
+    channel_notification = QtCore.pyqtSignal()
     
-    #Communicator Test
-    #Communicator.LOCAL_LOGS.append(('Beta2','Testin!2'))
-    #print(Communicator.LOCAL_LOGS)
-    #Communicator.REMOTE_LOGS.append(('Beta3','Testin!3'))
-    #print(Communicator.REMOTE_LOGS)
-
     # Threading
     QtCore.QThread.currentThread().setObjectName("MAIN")
     thread = QtCore.QThread()
@@ -27,10 +22,8 @@ class Handler(QtGui.QMainWindow):
     worker = Worker()
     worker.moveToThread(thread)
     worker.start()
-    worker.refresh_signal.connect(Communicator.update_channel)
-    
-
-
+    worker.refresh_signal.connect(Communicator.update_active_channel)
+    worker.channel_notification.connect(Communicator.update_selected_channels)
     def __init__(self):
         super(Handler,self).__init__()
         com=Ui_hbsCommunicator()
@@ -59,7 +52,7 @@ class Handler(QtGui.QMainWindow):
         self.setWindowIcon(QtGui.QIcon('Com-Headset.png'))
         
         self.show()
-
+    
     def on_loginButton_pressed(self, *args):
         username = Handler.USERNAME_ENTRY.text()
         password = Handler.PASSWORD_ENTRY.text()
@@ -86,153 +79,106 @@ class Handler(QtGui.QMainWindow):
             Handler.REMEMBER_LOGIN = 'True'
 
     # Command Communication Channels
-    
-    def on_centralCommandButton_clicked(self, *args):
-        if Communicator.check_user_permissions("Central Command"):
-            log_path = Config.LOG_PATHS['Central Command Log']
-            roster_path = Config.ROSTER_PATHS['Central Command Roster']
+   
+    def switch_command_channel(channel):
+        if Communicator.check_user_permissions(channel):
+            log_path = Config.LOG_PATHS[channel]
+            roster_path = Config.ROSTER_PATHS[channel]
             Communicator.populate_channel(log_path,roster_path)
-
         else: 
             Communicator.invalid_permissions()
+    
+    def switch_general_channel(channel):
+        log_path = Config.LOG_PATHS[channel]
+        roster_path = Config.ROSTER_PATHS[channel]
+        Communicator.populate_channel(log_path,roster_path)
+   
+    def on_centralCommandButton_clicked(self, *args):
+        channel = "Central Command"
+        Handler.switch_command_channel(channel)
 
     def on_operationsCommandButton_clicked(self, *args):
-        if Communicator.check_user_permissions("Operations Command"):
-            log_path = Config.LOG_PATHS['Operations Command Log']
-            roster_path = Config.ROSTER_PATHS['Operations Command Roster']
-            Communicator.populate_channel(log_path,roster_path)
-        else: 
-            Communicator.invalid_permissions()
+        channel = "Operations Command"
+        Handler.switch_command_channel(channel)
    
     def on_codCommandButton_clicked(self, *args):
-        if Communicator.check_user_permissions("Call of Duty Command"):
-            log_path = Config.LOG_PATHS['Call of Duty Command Log']
-            roster_path = Config.ROSTER_PATHS['Call of Duty Command Roster']
-            Communicator.populate_channel(log_path,roster_path)
-        else: 
-            Communicator.invalid_permissions()
+        channel = "Call of Duty Command"
+        Handler.switch_command_channel(channel)
  
     def on_tfCommandButton_clicked(self, *args):
-        if Communicator.check_user_permissions("Titan Fall Command"):
-            log_path = Config.LOG_PATHS['Titanfall Command Log']
-            roster_path = Config.ROSTER_PATHS['Titanfall Command Roster']
-            Communicator.populate_channel(log_path,roster_path)
-        else: 
-            Communicator.invalid_permissions()
+        channel = "Titanfall Command"
+        Handler.switch_command_channel(channel)
     
     def on_lolCommandButton_clicked(self, *args):
-        if Communicator.check_user_permissions("League of Legends Command"):
-            log_path = Config.LOG_PATHS['League of Legends Command Log']
-            roster_path = Config.ROSTER_PATHS['League of Legends Command Roster']
-            Communicator.populate_channel(log_path,roster_path)
-        else: 
-            Communicator.invalid_permissions()
+        channel = "League of Legends Command"
+        Handler.switch_command_channel(channel)
 
     def on_gwCommandButton_clicked(self, *args):
-        if Communicator.check_user_permissions("Guild Wars Command"):
-            log_path = Config.LOG_PATHS['Guild Wars Command Log']
-            roster_path = Config.ROSTER_PATHS['Guild Wars Command Roster']
-            Communicator.populate_channel(log_path,roster_path)
-        else: 
-            Communicator.invalid_permissions()
+        channel = "Guild Wars Command"
+        Handler.switch_command_channel(channel)
     
     def on_wowCommandButton_clicked(self, *args):
-        if Communicator.check_user_permissions("World of Warcraft Command"):
-            log_path = Config.LOG_PATHS['World of Warcraft Command Log']
-            roster_path = Config.ROSTER_PATHS['World of Warcraft Command Roster']
-            Communicator.populate_channel(log_path,roster_path)
-        else: 
-            Communicator.invalid_permissions()
+        channel = "World of Warcraft Command"
+        Handler.switch_command_channel(channel)
     
     def on_mcCommandButton_clicked(self, *args):
-        if Communicator.check_user_permissions("Minecraft Command"):
-            log_path = Config.LOG_PATHS['Minecraft Command Log']
-            roster_path = Config.ROSTER_PATHS['Minecraft Command Roster']
-            
-            Communicator.populate_channel(log_path,roster_path)
-        else: 
-            Communicator.invalid_permissions()
+        channel = "Minecraft Command"
+        Handler.switch_command_channel(channel)
     
     def on_dayzCommandButton_clicked(self, *args):
-        if Communicator.check_user_permissions("DayZ Command"):
-            log_path = Config.LOG_PATHS['DayZ Command Log']
-            roster_path = Config.ROSTER_PATHS['DayZ Command Roster']
-            Communicator.populate_channel(log_path,roster_path)
-        else: 
-            Communicator.invalid_permissions()
-    
+        channel = "DayZ Command"
+        Handler.switch_command_channel(channel)
+   
     def on_logisticsCommandButton_clicked(self, *args):
-        if Communicator.check_user_permissions("Logistics Command"):
-            log_path = Config.LOG_PATHS['Logistics Command Log']
-            roster_path = Config.ROSTER_PATHS['Logistics Command Roster']
-            Communicator.populate_channel(log_path,roster_path)
-        else: 
-            Communicator.invalid_permissions()
+        channel = "Logistics Command"
+        Handler.switch_command_channel(channel)
     
     def on_mpCommandButton_clicked(self, *args):
-        if Communicator.check_user_permissions("Military Police"):
-            log_path = Config.LOG_PATHS['Military Police Command Log']
-            roster_path = Config.ROSTER_PATHS['Military Police Command Roster']
-            Communicator.populate_channel(log_path,roster_path)
-        else: 
-            Communicator.invalid_permissions()
+        channel = "Military Police"
+        Handler.switch_command_channel(channel)
     
     def on_admissionsCommandButton_clicked(self, *args):
-        if Communicator.check_user_permissions("Admissions"):
-            log_path = Config.LOG_PATHS['Admissions Command Log']
-            roster_path = Config.ROSTER_PATHS['Admissions Command Roster']
-            Communicator.populate_channel(log_path,roster_path)
-        else: 
-            Communicator.invalid_permissions()
+        channel = "Admissions"
+        Handler.switch_command_channel(channel)
    
     def on_betaTestButton_clicked(self, *args):
-        log_path = Config.LOG_PATHS['Beta Test Command Log']
-        roster_path = Config.ROSTER_PATHS['Beta Test Command Roster']
-        Communicator.populate_channel(log_path,roster_path)
+        channel = "Beta Test"
+        Handler.switch_general_channel(channel)
     
     # General Communicator Channels
     
     def on_generalButton_clicked(self, *args):
-        log_path = Config.LOG_PATHS['General Log']
-        roster_path = Config.ROSTER_PATHS['General Roster']
-        Communicator.populate_channel(log_path,roster_path)
+        channel = "General"
+        Handler.switch_general_channel(channel)
 
     def on_codGeneralButton_clicked(self, *args):
-        log_path = Config.LOG_PATHS['Call of Duty Log']
-        roster_path = Config.ROSTER_PATHS['Call of Duty Roster']
-        Communicator.populate_channel(log_path,roster_path)
+        channel = "Call of Duty"
+        Handler.switch_general_channel(channel)
 
     def on_tfGeneralButton_clicked(self, *args):
-        log_path = Config.LOG_PATHS['Titanfall Log']
-        roster_path = Config.ROSTER_PATHS['Titanfall Roster']
-        Communicator.populate_channel(log_path,roster_path)
+        channel = "Titanfall"
+        Handler.switch_general_channel(channel)
 
     def on_lolGeneralButton_clicked(self, *args):
-        log_path = Config.LOG_PATHS['League of Legends Log']
-        roster_path = Config.ROSTER_PATHS['League of Legends Roster']
-        Communicator.populate_channel(log_path,roster_path)
-
+        channel = "League of Legends"
+        Handler.switch_general_channel(channel)
+    
     def on_gwGeneralButton_clicked(self, *args):
-        log_path = Config.LOG_PATHS['Guild Wars Log']
-        roster_path = Config.ROSTER_PATHS['Guild Wars Roster']
-        Communicator.populate_channel(log_path,roster_path)
+        channel = "Guild Wars"
+        Handler.switch_general_channel(channel)
 
     def on_wowGeneralButton_clicked(self, *args):
-        log_path = Config.LOG_PATHS['World of Warcraft Log']
-        roster_path = Config.ROSTER_PATHS['World of Warcraft Roster']
-        Communicator.populate_channel(log_path,roster_path)
+        channel = "World of Warcraft"
+        Handler.switch_general_channel(channel)
 
     def on_mcGeneralButton_clicked(self, *args):
-        log_path = Config.LOG_PATHS['Minecraft Log']
-        roster_path = Config.ROSTER_PATHS['Minecraft Roster']
-        Communicator.populate_channel(log_path,roster_path)
+        channel = "Minecraft"
+        Handler.switch_general_channel(channel)
 
     def on_dayzGeneralButton_clicked(self, *args):
-        log_path = Config.LOG_PATHS['DayZ Log']
-        roster_path = Config.ROSTER_PATHS['DayZ Roster']
-        Communicator.populate_channel(log_path,roster_path)
+        channel = "DayZ"
+        Handler.switch_general_channel(channel)
 
     def on_socialMediaButton_clicked(self, *args):
-        log_path = Config.LOG_PATHS['Social Media Log']
-        roster_path = Config.ROSTER_PATHS['Social Media Roster']
-        Communicator.populate_channel(log_path,roster_path)
+        channel = "Social Media"
+        Handler.switch_general_channel(channel)
