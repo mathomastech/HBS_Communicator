@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'ui_communicator_windows.ui'
 #
-# Created: Mon Apr 14 19:06:21 2014
-#      by: PyQt4 UI code generator 4.10.4
+# Created: Tue Apr 15 16:35:44 2014
+#      by: PyQt4 UI code generator 4.10.2
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -84,7 +84,7 @@ class Ui_hbsCommunicator(object):
         self.gridLayout_2.addWidget(self.usernameLabel, 0, 0, 1, 1)
         self.loginButton = QtGui.QPushButton(self.loginGroupBox)
         self.loginButton.setGeometry(QtCore.QRect(310, 295, 211, 31))
-        self.loginButton.setAutoDefault(True)
+        self.loginButton.setAutoDefault(False)
         self.loginButton.setObjectName(_fromUtf8("loginButton"))
         self.loginStatusLabel = QtGui.QLabel(self.loginGroupBox)
         self.loginStatusLabel.setGeometry(QtCore.QRect(40, 295, 261, 31))
@@ -343,7 +343,7 @@ class Ui_hbsCommunicator(object):
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'Cantarell\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">HBS Communicator Version 0.5 - Beta</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">HBS Communicator Version 0.6 - Beta</p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Please report all bugs and features <a href=\"http://hellboundsoldiers.org/forums/forumdisplay.php?150-HBS-COMMUNICATOR\"><span style=\" text-decoration: underline; color:#0000ff;\">here</span></a></p></body></html>", None))
         self.centralCommandButton.setText(_translate("hbsCommunicator", "Central Command", None))
         self.operationsCommandButton.setText(_translate("hbsCommunicator", "Operations", None))
