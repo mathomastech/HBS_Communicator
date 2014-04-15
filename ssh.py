@@ -52,6 +52,6 @@ class SSH():
         timestamp = timestamp.rstrip()
 
         # Write timestamp and log to appropriate file
-        query = 'echo "' + timestamp + ' ' + log + '" >> ' + log_path
+        query = 'echo "' + timestamp + ' ' + log + "\n" + '" >> ' + log_path
         ssh.exec_command(query)
     
