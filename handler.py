@@ -75,6 +75,7 @@ class Handler(QtGui.QMainWindow):
         GUI.CHANNELS[19][3] = com.mcGeneralButton
         GUI.CHANNELS[20][3] = com.dayzGeneralButton
         GUI.CHANNELS[21][3] = com.socialMediaButton
+     
         self.show()
     
     def on_loginButton_pressed(self, *args):

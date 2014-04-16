@@ -24,7 +24,15 @@ class Communicator:
 
     def __init__(self):
         super(Communicator,self).__init__()
-    
+   
+    def load_local_logs():
+        for i in range(0,len(GUI.CHANNELS)):
+            if(os.path.isfile(GUI.CHANNELS[i][1])):
+                f = open(GUI.CHANNELS[i][1],'r')
+                log = f.read()
+                GUI.CHANNELS[i][5] = log
+                f.close()
+     
     def switch_command_channel(channel):
         if Communicator.check_user_permissions(channel):
             for i in range(0,len(GUI.CHANNELS)):
@@ -106,6 +114,7 @@ class Communicator:
             # the welcome message and announcement. 
             Communicator.USER = username
             Communicator.USER_PERMISSIONS = userPermissions
+            Communicator.load_local_logs()
             GUI.LOGIN_GROUP_BOX.resize(0,0)
             Communicator.populate_channel(GUI.WELCOME_LOG, GUI.WELCOME_LOG )
             Communicator.enable_widgets()

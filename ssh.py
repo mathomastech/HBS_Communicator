@@ -1,6 +1,7 @@
 import paramiko
 from config import Config
 from gui import GUI
+import os.path
 
 class SSH():
     def connect_to_ssh():
@@ -33,6 +34,12 @@ class SSH():
             if (GUI.CHANNELS[i][5] != log):
                 delta.append(GUI.CHANNELS[i][0])
                 GUI.CHANNELS[i][5] = log
+                if not os.path.exists(GUI.LOG_PATH):
+                    os.makedirs(GUI.LOG_PATH)
+                f = open(GUI.CHANNELS[i][1],'w')
+                f.write(log)
+                f.close()
+                
         return delta
 
 
@@ -46,4 +53,3 @@ class SSH():
         # Write timestamp and log to appropriate file
         query = 'echo "' + timestamp + ' ' + log + "\n" + '" >> ' + log_path
         ssh.exec_command(query)
-    
