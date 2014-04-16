@@ -131,7 +131,7 @@ class Communicator:
             Communicator.USER = username
             Communicator.USER_PERMISSIONS = userPermissions
             GUI.LOGIN_GROUP_BOX.resize(0,0)
-            Communicator.populate_channel(Config.c['Logs'] + 'welcomeMessage.txt', Config.c['Rosters'] + 'generalRoster.txt')
+            Communicator.populate_channel(Config.CHANNELS2[0][1],Config.CHANNELS2[0][2])
             Communicator.enable_widgets()
 
             #Code for an automatic login option
@@ -158,19 +158,17 @@ class Communicator:
     def check_user_permissions(channel):
         # Check if currently logged in user has permissions to view requested channel
         if channel == "Central Command":
-            permissions = [9,10,54]
+            permissions = [9,10]
         if channel == "Operations Command":
-            permissions = [9,10,54]
+            permissions = [9,10]
         if channel == "Call of Duty Command":
             permissions = [9,10,57]
         if channel == "Titanfall Command":
             permissions = [9,10,64]
         if channel == "League of Legends Command":
-            permissions = [9,10,57]
-            # Need to fix permissions
+            permissions = [9,10,67]
         if channel == "Guild Wars Command":
-            permissions = [9,10]
-            # Need GW command group on forums
+            permissions = [9,10,66]
         if channel == "World of Warcraft Command":
             permissions = [9,10,63]
         if channel == "Minecraft Command":
@@ -178,11 +176,11 @@ class Communicator:
         if channel == "DayZ Command":
             permissions = [9,10,11]
         if channel == "Logistics Command": 
-            permissions = [9,10,54,58,17]
-        if channel == "Military Police":
-            permissions = [9,10,58,17] 
-        if channel == "Admissions":
             permissions = [9,10,58]
+        if channel == "Military Police":
+            permissions = [9,10,58,17,18] 
+        if channel == "Admissions":
+            permissions = [9,10,58,16,56]
 
     # Need admissions group on forums
         
@@ -194,7 +192,7 @@ class Communicator:
     
     def invalid_permissions():
         # If user does not have appropriate permissions, print out message.
-        GUI.CHANNEL_DISPLAY.setPlainText("You do not have sufficient privaledges to view this channel. If you feel this is in error, please contact an administrator")
+        GUI.CHANNEL_DISPLAY.setPlainText("You do not have sufficient privileges to view this channel. If you feel this is in error, please contact an administrator")
 
 
 

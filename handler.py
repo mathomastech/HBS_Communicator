@@ -106,16 +106,20 @@ class Handler(QtGui.QMainWindow):
    
     def switch_command_channel(channel):
         if Communicator.check_user_permissions(channel):
-            log_path = Config.LOG_PATHS[channel]
-            roster_path = Config.ROSTER_PATHS[channel]
-            Communicator.populate_channel(log_path,roster_path)
+            for i in range(0,len(Config.CHANNELS2)):
+                if Config.CHANNELS2[i][0] == channel: 
+                    log_path = Config.CHANNELS2[i][1]
+                    roster_path = Config.CHANNELS2[i][2]
+                    Communicator.populate_channel(log_path,roster_path)
         else: 
             Communicator.invalid_permissions()
     
     def switch_general_channel(channel):
-        log_path = Config.LOG_PATHS[channel]
-        roster_path = Config.ROSTER_PATHS[channel]
-        Communicator.populate_channel(log_path,roster_path)
+        for i in range(0,len(Config.CHANNELS2)):
+            if Config.CHANNELS2[i][0] == channel: 
+                log_path = Config.CHANNELS2[i][1]
+                roster_path = Config.CHANNELS2[i][2]
+                Communicator.populate_channel(log_path,roster_path)
    
     def on_centralCommandButton_clicked(self, *args):
         channel = "Central Command"
