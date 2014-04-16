@@ -107,7 +107,7 @@ class Communicator:
             Communicator.USER = username
             Communicator.USER_PERMISSIONS = userPermissions
             GUI.LOGIN_GROUP_BOX.resize(0,0)
-            Communicator.populate_channel(GUI.CHANNELS[0][1],GUI.CHANNELS[0][2])
+            Communicator.populate_channel(GUI.WELCOME_LOG, GUI.WELCOME_LOG )
             Communicator.enable_widgets()
 
             #Code for an automatic login option
