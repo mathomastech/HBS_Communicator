@@ -15,13 +15,9 @@ class Worker(QtCore.QThread):
         self.refresh_signal.emit()
 
     def update_all_channels(self):
-        local_logs, remote_logs, Communicator.DELTA = SSH.get_all_logs(
-                                        Communicator.SSH_CONNECTION,
-                                        Communicator.LOCAL_LOGS,
-                                        Communicator.REMOTE_LOGS)
+        Communicator.DELTA = SSH.get_all_logs(Communicator.SSH_CONNECTION)
         if Communicator.DELTA:
             self.channel_notification.emit()
-            #print(delta)
         return
 
     def run (self):

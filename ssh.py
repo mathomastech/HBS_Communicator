@@ -10,7 +10,6 @@ class SSH():
         ssh.connect(Config.c['SSH IP'], 
                     username=Config.c['SSH User'], 
                     password=Config.c['SSH Password'])
-	#SSH.connect_to_chat_server(ssh)
         return ssh
 
     def get_active_log(ssh,log_path):
@@ -23,23 +22,18 @@ class SSH():
         return log
 
 
-    def get_all_logs(ssh, LOCAL_LOGS, REMOTE_LOGS):
+    def get_all_logs(ssh):
         # Get remote logs for all channels and return to communicator.
-        for i in range(0, len(GUI.CHANNELS)):
-            for j in range(0,len(GUI.CHANNELS)):
-                if (GUI.CHANNELS[i][0] == REMOTE_LOGS[j][0]):
-                    query = 'cat ' + GUI.CHANNELS[j][1]
-                    stdin, stdout, stderr = ssh.exec_command(query)
-                    log = stdout.readlines()
-                    log = ''.join(log)
-                    REMOTE_LOGS[j][1] = log
-
         delta = []
         for i in range(0, len(GUI.CHANNELS)):
-            if(REMOTE_LOGS[i][1] != LOCAL_LOGS[i][1]):
-                delta.append(LOCAL_LOGS[i][0])
-                LOCAL_LOGS[i][1] = REMOTE_LOGS[i][1]
-        return LOCAL_LOGS, REMOTE_LOGS, delta
+            query = 'cat ' + GUI.CHANNELS[i][1]
+            stdin, stdout, stderr = ssh.exec_command(query)
+            log = stdout.readlines()
+            log = ''.join(log)
+            if (GUI.CHANNELS[i][5] != log):
+                delta.append(GUI.CHANNELS[i][0])
+                GUI.CHANNELS[i][5] = log
+        return delta
 
 
     def write_to_log(ssh,log_path,log):

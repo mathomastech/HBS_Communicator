@@ -20,8 +20,6 @@ class Communicator:
     LOCAL_CONFIG_DIR_WINDOWS = ""
     
     # Channel Update Variables
-    LOCAL_LOGS = Config.LOCAL_LOGS
-    REMOTE_LOGS = Config.REMOTE_LOGS
     DELTA = []    
 
     def __init__(self):
