@@ -26,7 +26,26 @@ class Communicator:
 
     def __init__(self):
         super(Communicator,self).__init__()
-  
+    
+    def switch_command_channel(channel):
+        if Communicator.check_user_permissions(channel):
+            for i in range(0,len(GUI.CHANNELS)):
+                if GUI.CHANNELS[i][0] == channel: 
+                    log_path = GUI.CHANNELS[i][1]
+                    roster_path = GUI.CHANNELS[i][2]
+                    GUI.CHANNELS[i][3].setStyleSheet("color:black")
+                    Communicator.populate_channel(log_path,roster_path)
+        else: 
+            Communicator.invalid_permissions()
+    
+    def switch_general_channel(channel):
+        for i in range(0,len(GUI.CHANNELS)):
+            if GUI.CHANNELS[i][0] == channel: 
+                log_path = GUI.CHANNELS[i][1]
+                roster_path = GUI.CHANNELS[i][2]
+                GUI.CHANNELS[i][3].setStyleSheet("color:black")
+                Communicator.populate_channel(log_path,roster_path)
+
     def update_active_channel():
         # Call this function to refresh the currently selected channel
         Communicator.populate_channel(Communicator.ACTIVE_LOG_PATH,

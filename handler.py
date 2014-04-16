@@ -103,112 +103,77 @@ class Handler(QtGui.QMainWindow):
             Handler.REMEMBER_LOGIN = 'True'
 
     # Command Communication Channels
-   
-    def switch_command_channel(channel):
-        if Communicator.check_user_permissions(channel):
-            for i in range(0,len(GUI.CHANNELS)):
-                if GUI.CHANNELS[i][0] == channel: 
-                    log_path = GUI.CHANNELS[i][1]
-                    roster_path = GUI.CHANNELS[i][2]
-                    GUI.CHANNELS[i][3].setStyleSheet("color:black")
-                    Communicator.populate_channel(log_path,roster_path)
-        else: 
-            Communicator.invalid_permissions()
-    
-    def switch_general_channel(channel):
-        for i in range(0,len(GUI.CHANNELS)):
-            if GUI.CHANNELS[i][0] == channel: 
-                log_path = GUI.CHANNELS[i][1]
-                roster_path = GUI.CHANNELS[i][2]
-                GUI.CHANNELS[i][3].setStyleSheet("color:black")
-                Communicator.populate_channel(log_path,roster_path)
-                
+                    
     def on_centralCommandButton_clicked(self, *args):
-        channel = "Central Command"
-        Handler.switch_command_channel(channel)
+        Communicator.switch_command_channel("Central Command")
         
     def on_operationsCommandButton_clicked(self, *args):
-        channel = "Operations Command"
-        Handler.switch_command_channel(channel)
+        Communicator.switch_command_channel("Operations Command")
    
     def on_codCommandButton_clicked(self, *args):
-        channel = "Call of Duty Command"
-        Handler.switch_command_channel(channel)
+        Communicator.switch_command_channel("Call of Duty Command")
  
     def on_tfCommandButton_clicked(self, *args):
-        channel = "Titanfall Command"
-        Handler.switch_command_channel(channel)
+        Communicator.switch_command_channel("Titanfall Command")
     
     def on_lolCommandButton_clicked(self, *args):
-        channel = "League of Legends Command"
-        Handler.switch_command_channel(channel)
+        Communicator.switch_command_channel("League of Legends Command")
 
     def on_gwCommandButton_clicked(self, *args):
-        channel = "Guild Wars Command"
-        Handler.switch_command_channel(channel)
+        Communicator.switch_command_channel("Guild Wars Command")
     
     def on_wowCommandButton_clicked(self, *args):
-        channel = "World of Warcraft Command"
-        Handler.switch_command_channel(channel)
+        Communicator.switch_command_channel("World of Warcraft Command")
+
+    def on_tfGeneralButton_clicked(self, *args):
+        Communicator.switch_general_channel("Titanfall")
+
+    def on_lolGeneralButton_clicked(self, *args):
+        Communicator.switch_general_channel("League of Legends")
     
     def on_mcCommandButton_clicked(self, *args):
-        channel = "Minecraft Command"
-        Handler.switch_command_channel(channel)
+        Communicator.switch_command_channel("Minecraft Command")
     
     def on_dayzCommandButton_clicked(self, *args):
-        channel = "DayZ Command"
-        Handler.switch_command_channel(channel)
+        Communicator.switch_command_channel("DayZ Command")
    
     def on_logisticsCommandButton_clicked(self, *args):
-        channel = "Logistics Command"
-        Handler.switch_command_channel(channel)
+        Communicator.switch_command_channel("Logistics Command")
     
     def on_mpCommandButton_clicked(self, *args):
-        channel = "Military Police"
-        Handler.switch_command_channel(channel)
+        Communicator.switch_command_channel("Military Police")
     
     def on_admissionsCommandButton_clicked(self, *args):
-        channel = "Admissions"
-        Handler.switch_command_channel(channel)
+        Communicator.switch_command_channel("Admissions")
    
     def on_betaTestButton_clicked(self, *args):
-        channel = "Beta Test"
-        Handler.switch_general_channel(channel)
+        Communicator.switch_general_channel("Beta Test")
     
     # General Communicator Channels
     
     def on_generalButton_clicked(self, *args):
-        channel = "General"
-        Handler.switch_general_channel(channel)
+        Communicator.switch_general_channel("General")
 
     def on_codGeneralButton_clicked(self, *args):
-        channel = "Call of Duty"
-        Handler.switch_general_channel(channel)
+        Communicator.switch_general_channel("Call of Duty")
 
     def on_tfGeneralButton_clicked(self, *args):
-        channel = "Titanfall"
-        Handler.switch_general_channel(channel)
+        Communicator.switch_general_channel("Titanfall")
 
     def on_lolGeneralButton_clicked(self, *args):
-        channel = "League of Legends"
-        Handler.switch_general_channel(channel)
+        Communicator.switch_general_channel("League of Legends")
     
     def on_gwGeneralButton_clicked(self, *args):
-        channel = "Guild Wars"
-        Handler.switch_general_channel(channel)
+        Communicator.switch_general_channel("Guild Wars")
 
     def on_wowGeneralButton_clicked(self, *args):
-        channel = "World of Warcraft"
-        Handler.switch_general_channel(channel)
+        Communicator.switch_general_channel("World of Warcraft")
 
     def on_mcGeneralButton_clicked(self, *args):
-        channel = "Minecraft"
-        Handler.switch_general_channel(channel)
+        Communicator.switch_general_channel("Minecraft")
 
     def on_dayzGeneralButton_clicked(self, *args):
-        channel = "DayZ"
-        Handler.switch_general_channel(channel)
+        Communicator.switch_general_channel("DayZ")
 
     def on_socialMediaButton_clicked(self, *args):
-        channel = "Social Media"
-        Handler.switch_general_channel(channel)
+        Communicator.switch_general_channel("Social Media")
