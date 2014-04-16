@@ -21,6 +21,7 @@ class Communicator:
     
     # Channel Update Variables
     DELTA = []    
+    ACTIVE_CHANNEL = ""
 
     def __init__(self):
         super(Communicator,self).__init__()
@@ -41,6 +42,7 @@ class Communicator:
                     roster_path = GUI.CHANNELS[i][2]
                     GUI.CHANNELS[i][3].setStyleSheet("color:black")
                     Communicator.populate_channel(log_path,roster_path)
+                    Communicator.ACTIVE_CHANNEL = channel
         else: 
             Communicator.invalid_permissions()
     
@@ -51,6 +53,7 @@ class Communicator:
                 roster_path = GUI.CHANNELS[i][2]
                 GUI.CHANNELS[i][3].setStyleSheet("color:black")
                 Communicator.populate_channel(log_path,roster_path)
+                Communicator.ACTIVE_CHANNEL = channel
 
     def update_active_channel():
         # Call this function to refresh the currently selected channel

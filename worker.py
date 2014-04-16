@@ -2,6 +2,7 @@ import time
 from PyQt4 import QtCore
 from communicator import Communicator
 from ssh import SSH
+from gui import GUI
 
 class Worker(QtCore.QThread):
     refresh_signal = QtCore.pyqtSignal()
@@ -11,22 +12,26 @@ class Worker(QtCore.QThread):
         QtCore.QThread.__init__(self)
 
     def refresh(self):
-        # Send signal to refresh the chat logs.   
-        self.refresh_signal.emit()
+        # Send signal to refresh the chat logs.
+        for i in range(0,len(GUI.CHANNELS)):
+            if (Communicator.ACTIVE_CHANNEL == GUI.CHANNELS[i][0]):
+                for i in range(0,len(Communicator.DELTA)):
+                    if Communicator.DELTA[i] == Communicator.ACTIVE_CHANNEL:
+                        self.refresh_signal.emit()
 
     def update_all_channels(self):
         Communicator.DELTA = SSH.get_all_logs(Communicator.SSH_CONNECTION)
         if Communicator.DELTA:
             self.channel_notification.emit()
+            self.refresh()
         return
 
     def run (self):
         while True:
             if(Communicator.ACTIVE_LOG_PATH != "" and
                 Communicator.ACTIVE_LOG_PATH != "logs/welcomeMessage.txt"):
-                self.refresh()
                 self.update_all_channels()
-            time.sleep(5)
+            #time.sleep(1)
         return
 
    # def __del__(self):
