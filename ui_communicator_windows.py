@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'ui_communicator_windows.ui'
 #
-# Created: Tue Apr 15 19:21:24 2014
-#      by: PyQt4 UI code generator 4.10.4
+# Created: Wed Apr 16 16:38:54 2014
+#      by: PyQt4 UI code generator 4.10.2
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -27,7 +27,7 @@ class Ui_hbsCommunicator(object):
     def setupUi(self, hbsCommunicator):
         hbsCommunicator.setObjectName(_fromUtf8("hbsCommunicator"))
         hbsCommunicator.setEnabled(True)
-        hbsCommunicator.resize(788, 597)
+        hbsCommunicator.resize(788, 742)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -90,7 +90,7 @@ class Ui_hbsCommunicator(object):
         self.loginStatusLabel.setGeometry(QtCore.QRect(40, 295, 261, 31))
         self.loginStatusLabel.setObjectName(_fromUtf8("loginStatusLabel"))
         self.rememberLoginCheck = QtGui.QCheckBox(self.loginGroupBox)
-        self.rememberLoginCheck.setEnabled(False)
+        self.rememberLoginCheck.setEnabled(True)
         self.rememberLoginCheck.setGeometry(QtCore.QRect(373, 340, 141, 26))
         self.rememberLoginCheck.setObjectName(_fromUtf8("rememberLoginCheck"))
         self.contentNotebook.addTab(self.channelTab, _fromUtf8(""))
@@ -284,7 +284,7 @@ class Ui_hbsCommunicator(object):
         self.formLayout.setWidget(2, QtGui.QFormLayout.LabelRole, self.channelNotebook)
         hbsCommunicator.setCentralWidget(self.centralwidget)
         self.menubar = QtGui.QMenuBar(hbsCommunicator)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 788, 21))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 788, 27))
         self.menubar.setObjectName(_fromUtf8("menubar"))
         hbsCommunicator.setMenuBar(self.menubar)
         self.statusbar = QtGui.QStatusBar(hbsCommunicator)
@@ -343,7 +343,7 @@ class Ui_hbsCommunicator(object):
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'Cantarell\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">HBS Communicator Version 0.6 - Beta</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">HBS Communicator Version 0.7 - Beta</p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Please report all bugs and features <a href=\"http://hellboundsoldiers.org/forums/forumdisplay.php?150-HBS-COMMUNICATOR\"><span style=\" text-decoration: underline; color:#0000ff;\">here</span></a></p></body></html>", None))
         self.centralCommandButton.setText(_translate("hbsCommunicator", "Central Command", None))
         self.operationsCommandButton.setText(_translate("hbsCommunicator", "Operations", None))
