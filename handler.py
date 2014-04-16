@@ -51,30 +51,30 @@ class Handler(QtGui.QMainWindow):
         GUI.CONTENT_NOTEBOOK.setTabEnabled(1, False)
 
         # Command Buttons        
-        GUI.CENTCOM_BTN = com.centralCommandButton
-        GUI.OP_CMD_BTN = com.operationsCommandButton
-        GUI.COD_CMD_BTN = com.codCommandButton 
-        GUI.TF_CMD_BTN = com.tfCommandButton
-        GUI.LOL_CMD_BTN = com.lolCommandButton
-        GUI.GW_CMD_BTN = com.gwCommandButton
-        GUI.WOW_CMD_BTN = com.wowCommandButton
-        GUI.MC_CMD_BTN = com.mcCommandButton
-        GUI.DAYZ_CMD_BTN = com.dayzCommandButton
-        GUI.LOG_CMD_BTN = com.logisticsCommandButton
-        GUI.MP_CMD_BTN = com.mpCommandButton
-        GUI.ADM_CMD_BTN = com.admissionsCommandButton
-        GUI.BETA_BTN = com.betaTestButton
+        GUI.CHANNELS[0][3] = com.centralCommandButton
+        GUI.CHANNELS[1][3] = com.operationsCommandButton
+        GUI.CHANNELS[2][3] = com.codCommandButton 
+        GUI.CHANNELS[3][3] = com.tfCommandButton
+        GUI.CHANNELS[4][3] = com.lolCommandButton
+        GUI.CHANNELS[5][3] = com.gwCommandButton
+        GUI.CHANNELS[6][3] = com.wowCommandButton
+        GUI.CHANNELS[7][3] = com.mcCommandButton
+        GUI.CHANNELS[8][3] = com.dayzCommandButton
+        GUI.CHANNELS[9][3] = com.logisticsCommandButton
+        GUI.CHANNELS[10][3] = com.mpCommandButton
+        GUI.CHANNELS[11][3] = com.admissionsCommandButton
+        GUI.CHANNELS[12][3] = com.betaTestButton
         
         # General Buttons
-        GUI.GEN_BTN = com.generalButton
-        GUI.COD_BTN = com.codGeneralButton
-        GUI.TF_BTN = com.tfGeneralButton
-        GUI.LOL_BTN = com.lolGeneralButton
-        GUI.GW_BTN = com.gwGeneralButton
-        GUI.WOW_BTN = com.wowGeneralButton
-        GUI.MC_BTN = com.mcGeneralButton
-        GUI.DAYZ_BTN = com.dayzGeneralButton
-        GUI.SM_BTN = com.socialMediaButton
+        GUI.CHANNELS[13][3] = com.generalButton
+        GUI.CHANNELS[14][3] = com.codGeneralButton
+        GUI.CHANNELS[15][3] = com.tfGeneralButton
+        GUI.CHANNELS[16][3] = com.lolGeneralButton
+        GUI.CHANNELS[17][3] = com.gwGeneralButton
+        GUI.CHANNELS[18][3] = com.wowGeneralButton
+        GUI.CHANNELS[19][3] = com.mcGeneralButton
+        GUI.CHANNELS[20][3] = com.dayzGeneralButton
+        GUI.CHANNELS[21][3] = com.socialMediaButton
         self.show()
     
     def on_loginButton_pressed(self, *args):
@@ -106,129 +106,109 @@ class Handler(QtGui.QMainWindow):
    
     def switch_command_channel(channel):
         if Communicator.check_user_permissions(channel):
-            for i in range(0,len(Config.CHANNELS2)):
-                if Config.CHANNELS2[i][0] == channel: 
-                    log_path = Config.CHANNELS2[i][1]
-                    roster_path = Config.CHANNELS2[i][2]
+            for i in range(0,len(GUI.CHANNELS)):
+                if GUI.CHANNELS[i][0] == channel: 
+                    log_path = GUI.CHANNELS[i][1]
+                    roster_path = GUI.CHANNELS[i][2]
+                    GUI.CHANNELS[i][3].setStyleSheet("color:black")
                     Communicator.populate_channel(log_path,roster_path)
         else: 
             Communicator.invalid_permissions()
     
     def switch_general_channel(channel):
-        for i in range(0,len(Config.CHANNELS2)):
-            if Config.CHANNELS2[i][0] == channel: 
-                log_path = Config.CHANNELS2[i][1]
-                roster_path = Config.CHANNELS2[i][2]
+        for i in range(0,len(GUI.CHANNELS)):
+            if GUI.CHANNELS[i][0] == channel: 
+                log_path = GUI.CHANNELS[i][1]
+                roster_path = GUI.CHANNELS[i][2]
+                GUI.CHANNELS[i][3].setStyleSheet("color:black")
                 Communicator.populate_channel(log_path,roster_path)
-   
+                
     def on_centralCommandButton_clicked(self, *args):
         channel = "Central Command"
         Handler.switch_command_channel(channel)
-        GUI.CENTCOM_BTN.setStyleSheet("color:black")
         
     def on_operationsCommandButton_clicked(self, *args):
         channel = "Operations Command"
         Handler.switch_command_channel(channel)
-        GUI.OP_CMD_BTN.setStyleSheet("color:black")
    
     def on_codCommandButton_clicked(self, *args):
         channel = "Call of Duty Command"
         Handler.switch_command_channel(channel)
-        GUI.COD_CMD_BTN.setStyleSheet("color:black")
  
     def on_tfCommandButton_clicked(self, *args):
         channel = "Titanfall Command"
         Handler.switch_command_channel(channel)
-        GUI.TF_CMD_BTN.setStyleSheet("color:black")
     
     def on_lolCommandButton_clicked(self, *args):
         channel = "League of Legends Command"
         Handler.switch_command_channel(channel)
-        GUI.LOL_CMD_BTN.setStyleSheet("color:black")
 
     def on_gwCommandButton_clicked(self, *args):
         channel = "Guild Wars Command"
         Handler.switch_command_channel(channel)
-        GUI.GW_CMD_BTN.setStyleSheet("color:black")
     
     def on_wowCommandButton_clicked(self, *args):
         channel = "World of Warcraft Command"
         Handler.switch_command_channel(channel)
-        GUI.WOW_CMD_BTN.setStyleSheet("color:black")
     
     def on_mcCommandButton_clicked(self, *args):
         channel = "Minecraft Command"
         Handler.switch_command_channel(channel)
-        GUI.MC_CMD_BTN.setStyleSheet("color:black")
     
     def on_dayzCommandButton_clicked(self, *args):
         channel = "DayZ Command"
         Handler.switch_command_channel(channel)
-        GUI.DAYZ_CMD_BTN.setStyleSheet("color:black")
    
     def on_logisticsCommandButton_clicked(self, *args):
         channel = "Logistics Command"
         Handler.switch_command_channel(channel)
-        GUI.LOG_CMD_BTN.setStyleSheet("color:black")
     
     def on_mpCommandButton_clicked(self, *args):
         channel = "Military Police"
         Handler.switch_command_channel(channel)
-        GUI.MP_CMD_BTN.setStyleSheet("color:black")
     
     def on_admissionsCommandButton_clicked(self, *args):
         channel = "Admissions"
         Handler.switch_command_channel(channel)
-        GUI.ADM_CMD_BTN.setStyleSheet("color:black")
    
     def on_betaTestButton_clicked(self, *args):
         channel = "Beta Test"
         Handler.switch_general_channel(channel)
-        GUI.BETA_BTN.setStyleSheet("color:black")
     
     # General Communicator Channels
     
     def on_generalButton_clicked(self, *args):
         channel = "General"
         Handler.switch_general_channel(channel)
-        GUI.GEN_BTN.setStyleSheet("color:black")
 
     def on_codGeneralButton_clicked(self, *args):
         channel = "Call of Duty"
         Handler.switch_general_channel(channel)
-        GUI.COD_BTN.setStyleSheet("color:black")
 
     def on_tfGeneralButton_clicked(self, *args):
         channel = "Titanfall"
         Handler.switch_general_channel(channel)
-        GUI.TF_BTN.setStyleSheet("color:black")
 
     def on_lolGeneralButton_clicked(self, *args):
         channel = "League of Legends"
         Handler.switch_general_channel(channel)
-        GUI.LOL_BTN.setStyleSheet("color:black")
     
     def on_gwGeneralButton_clicked(self, *args):
         channel = "Guild Wars"
         Handler.switch_general_channel(channel)
-        GUI.GW_BTN.setStyleSheet("color:black")
 
     def on_wowGeneralButton_clicked(self, *args):
         channel = "World of Warcraft"
         Handler.switch_general_channel(channel)
-        GUI.WOW_BTN.setStyleSheet("color:black")
 
     def on_mcGeneralButton_clicked(self, *args):
         channel = "Minecraft"
         Handler.switch_general_channel(channel)
-        GUI.MC_BTN.setStyleSheet("color:black")
 
     def on_dayzGeneralButton_clicked(self, *args):
         channel = "DayZ"
         Handler.switch_general_channel(channel)
-        GUI.DAYZ_BTN.setStyleSheet("color:black")
 
     def on_socialMediaButton_clicked(self, *args):
         channel = "Social Media"
         Handler.switch_general_channel(channel)
-        GUI.SM_BTN.setStyleSheet("color:black")

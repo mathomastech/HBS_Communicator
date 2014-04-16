@@ -35,52 +35,11 @@ class Communicator:
     def update_channel(log_path):
         Communicator.populate_channel(log_path,Communicator.ACTIVE_ROSTER_PATH)        
 
-    def update_selected_channels():   
+    def update_selected_channels():  
         for i in range(0,len(Communicator.DELTA)):
-            if Communicator.DELTA[i] == Config.CHANNELS[0]:
-                GUI.CENTCOM_BTN.setStyleSheet("color:red")
-            elif Communicator.DELTA[i] == Config.CHANNELS[1]:
-                GUI.OP_CMD_BTN.setStyleSheet("color:red")
-            elif Communicator.DELTA[i] == Config.CHANNELS[2]:
-                GUI.COD_CMD_BTN.setStyleSheet("color:red")
-            elif Communicator.DELTA[i] == Config.CHANNELS[3]:
-                GUI.TF_CMD_BTN.setStyleSheet("color:red")
-            elif Communicator.DELTA[i] == Config.CHANNELS[4]:
-                GUI.LOL_CMD_BTN.setStyleSheet("color:red")
-            elif Communicator.DELTA[i] == Config.CHANNELS[5]:
-                GUI.GW_CMD_BTN.setStyleSheet("color:red")
-            elif Communicator.DELTA[i] == Config.CHANNELS[6]:
-                GUI.WOW_CMD_BTN.setStyleSheet("color:red")
-            elif Communicator.DELTA[i] == Config.CHANNELS[7]:
-                GUI.MC_CMD_BTN.setStyleSheet("color:red")
-            elif Communicator.DELTA[i] == Config.CHANNELS[8]:
-                GUI.DAYZ_CMD_BTN.setStyleSheet("color:red")
-            elif Communicator.DELTA[i] == Config.CHANNELS[9]:
-                GUI.LOG_CMD_BTN.setStyleSheet("color:red")
-            elif Communicator.DELTA[i] == Config.CHANNELS[10]:
-                GUI.MP_CMD_BTN.setStyleSheet("color:red")
-            elif Communicator.DELTA[i] == Config.CHANNELS[11]:
-                GUI.ADM_CMD_BTN.setStyleSheet("color:red")
-            elif Communicator.DELTA[i] == Config.CHANNELS[12]:
-                GUI.BETA_BTN.setStyleSheet("color:red")
-            elif Communicator.DELTA[i] == Config.CHANNELS[13]:
-                GUI.GEN_BTN.setStyleSheet("color:red")
-            elif Communicator.DELTA[i] == Config.CHANNELS[14]:
-                GUI.COD_BTN.setStyleSheet("color:red")
-            elif Communicator.DELTA[i] == Config.CHANNELS[15]:
-                GUI.TF_BTN.setStyleSheet("color:red")
-            elif Communicator.DELTA[i] == Config.CHANNELS[16]:
-                GUI.LOL_BTN.setStyleSheet("color:red")
-            elif Communicator.DELTA[i] == Config.CHANNELS[17]:
-                GUI.GW_BTN.setStyleSheet("color:red")
-            elif Communicator.DELTA[i] == Config.CHANNELS[18]:
-                GUI.WOW_BTN.setStyleSheet("color:red")
-            elif Communicator.DELTA[i] == Config.CHANNELS[19]:
-                GUI.MC_BTN.setStyleSheet("color:red")
-            elif Communicator.DELTA[i] == Config.CHANNELS[20]:
-                GUI.DAYZ_BTN.setStyleSheet("color:red")
-            elif Communicator.DELTA[i] == Config.CHANNELS[21]:
-                GUI.SM_BTN.setStyleSheet("color:red")
+            for j in range(0,len(GUI.CHANNELS)):
+                if(Communicator.DELTA[i] == GUI.CHANNELS[j][0]):
+                    GUI.CHANNELS[j][3].setStyleSheet("color:red")
 
     def populate_channel(log_path,roster_path):
         # Populate the channel with both logs and rosters
@@ -131,7 +90,7 @@ class Communicator:
             Communicator.USER = username
             Communicator.USER_PERMISSIONS = userPermissions
             GUI.LOGIN_GROUP_BOX.resize(0,0)
-            Communicator.populate_channel(Config.CHANNELS2[0][1],Config.CHANNELS2[0][2])
+            Communicator.populate_channel(GUI.CHANNELS[0][1],GUI.CHANNELS[0][2])
             Communicator.enable_widgets()
 
             #Code for an automatic login option
@@ -156,38 +115,12 @@ class Communicator:
         GUI.USER_BTN.setEnabled(True)
 
     def check_user_permissions(channel):
-        # Check if currently logged in user has permissions to view requested channel
-        if channel == "Central Command":
-            permissions = [9,10]
-        if channel == "Operations Command":
-            permissions = [9,10]
-        if channel == "Call of Duty Command":
-            permissions = [9,10,57]
-        if channel == "Titanfall Command":
-            permissions = [9,10,64]
-        if channel == "League of Legends Command":
-            permissions = [9,10,67]
-        if channel == "Guild Wars Command":
-            permissions = [9,10,66]
-        if channel == "World of Warcraft Command":
-            permissions = [9,10,63]
-        if channel == "Minecraft Command":
-            permissions = [9,10,59]
-        if channel == "DayZ Command":
-            permissions = [9,10,11]
-        if channel == "Logistics Command": 
-            permissions = [9,10,58]
-        if channel == "Military Police":
-            permissions = [9,10,58,17,18] 
-        if channel == "Admissions":
-            permissions = [9,10,58,16,56]
-
-    # Need admissions group on forums
-        
-        for i in range(0,len(Communicator.USER_PERMISSIONS)):
-            for j in range(0,len(permissions)):
-                if Communicator.USER_PERMISSIONS[i] == permissions[j]:
-                    return True
+        for i in range(0,len(GUI.CHANNELS)):
+            if channel == GUI.CHANNELS[i][0]:
+                for j in range(len(Communicator.USER_PERMISSIONS)):
+                    for k in range(len(GUI.CHANNELS[i][4])):
+                        if Communicator.USER_PERMISSIONS[j] == GUI.CHANNELS[i][4][k]:
+                            return True
         return False
     
     def invalid_permissions():
