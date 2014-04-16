@@ -11,7 +11,7 @@ class GUI():
     ANNOUNCEMENT_LABEL = ""
     LOGIN_GROUP_BOX = ""
     USERNAME_ENTRY = ""
-
+    REMEMBER_LOGIN_CHECK = ""
     # Command Buttons
     CENTCOM = ""
     OP_CMD = ""

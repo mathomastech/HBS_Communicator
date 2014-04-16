@@ -1,4 +1,4 @@
-import sys, time
+import sys, time, os.path
 from PyQt4 import QtGui, QtCore
 #from ui_communicator import Ui_hbsCommunicator
 from ui_communicator_windows import Ui_hbsCommunicator
@@ -11,7 +11,6 @@ class Handler(QtGui.QMainWindow):
     # Handler Class Level Variables
     USERNAME_ENTRY = ""
     PASSWORD_ENTRY = ""
-    REMEMBER_LOGIN = "False"
     refresh_signal = QtCore.pyqtSignal()
     channel_notification = QtCore.pyqtSignal()
     
@@ -42,6 +41,8 @@ class Handler(QtGui.QMainWindow):
         GUI.ANNOUNCEMENT_LABEL = com.announcementLabel
         GUI.LOGIN_GROUP_BOX = com.loginGroupBox
         GUI.USERNAME_ENTRY = com.usernameEntry 
+        GUI.PASSWORD_ENTRY = com.passwordEntry
+        GUI.REMEMBER_LOGIN_CHECK = com.rememberLoginCheck
         # Disabled the Roster tab. 
         # Move this line into ui_communicator.py either manually or
         # through QTDesigner somehow. Qt Designer does not appear
@@ -75,14 +76,21 @@ class Handler(QtGui.QMainWindow):
         GUI.CHANNELS[19][3] = com.mcGeneralButton
         GUI.CHANNELS[20][3] = com.dayzGeneralButton
         GUI.CHANNELS[21][3] = com.socialMediaButton
-     
+    
+        if os.path.exists('credentials.txt'):
+            f = open('credentials.txt', 'r')
+            username = f.readline()
+            password = f.readline()
+            Communicator.REMEMBER_LOGIN = True
+            GUI.REMEMBER_LOGIN_CHECK.setChecked(True)            
+            GUI.USERNAME_ENTRY.setText(username)
+            GUI.PASSWORD_ENTRY.setText(password) 
         self.show()
     
     def on_loginButton_pressed(self, *args):
         username = Handler.USERNAME_ENTRY.text()
         password = Handler.PASSWORD_ENTRY.text()
-        remember = Handler.REMEMBER_LOGIN #.checkState()
-        Communicator.login(username,password,remember)
+        Communicator.login(username,password)
 
     def on_submitButton_clicked(self, *args):
         Communicator.write_chat_to_channel()
@@ -99,9 +107,9 @@ class Handler(QtGui.QMainWindow):
     def on_rememberLoginCheck_stateChanged(self, *args):
         flag = args
         if flag[0] == 0:
-            Handler.REMEMBER_LOGIN = 'False'
+            Communicator.REMEMBER_LOGIN = False
         else:
-            Handler.REMEMBER_LOGIN = 'True'
+            Communicator.REMEMBER_LOGIN = True
 
     # Command Communication Channels
                     

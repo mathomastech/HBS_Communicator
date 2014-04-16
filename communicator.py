@@ -16,9 +16,8 @@ class Communicator:
     ACTIVE_LOG_PATH = ""
     ACTIVE_ROSTER_PATH = ""
     SSH_CONNECTION = SSH.connect_to_ssh()
-    LOCAL_CONFIG_DIR_LINUX = "~/.hbs/"
-    LOCAL_CONFIG_DIR_WINDOWS = ""
-    
+    REMEMBER_LOGIN = False   
+
     # Channel Update Variables
     DELTA = []    
     ACTIVE_CHANNEL = ""
@@ -107,8 +106,10 @@ class Communicator:
             Communicator.update_active_channel()
             GUI.CHAT_ENTRY.setText("")
 
-    def login(username,password,remember):
+    def login(username,password):
         # Set user login and permissions
+        username = username.strip()
+        password = password.strip()
         GUI.LOGIN_STATUS_LABEL.setText("Authenticating...")
         flag, userPermissions, channelPermissions = Database.login(username,password)
         #Communicator.populate_logs()
@@ -121,7 +122,13 @@ class Communicator:
             GUI.LOGIN_GROUP_BOX.resize(0,0)
             Communicator.populate_channel(GUI.WELCOME_LOG, GUI.WELCOME_LOG )
             Communicator.enable_widgets()
-
+            if Communicator.REMEMBER_LOGIN: 
+                f = open('credentials.txt', 'w')
+                username = username.strip()
+                f.write(username + "\n" + password) 
+                f.close()
+            elif os.path.exists('credentials.txt'):
+                os.remove('credentials.txt')
             #Code for an automatic login option
             #Communicator.check_dir(Communicator.LOCAL_CONFIG_DIR_LINUX)
                  
