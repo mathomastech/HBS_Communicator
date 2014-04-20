@@ -37,8 +37,8 @@ class GUI():
     MC = ""
     DAYZ = ""
     SM = ""
-    LOG_PATH = Config.c['Logs']
-    ROSTER_PATH = Config.c['Rosters']
+    LOG_PATH = Config.LOG_PATH
+    ROSTER_PATH = Config.ROSTER_PATH
     WELCOME_LOG = LOG_PATH + "welcomeMessage.txt" 
     # [0] = Channel Name, [1] = Log Path, [2] = Roster Path, [3] = GUI Element, [4] = Permissions,  [5] = Local Log, [6] = Remote Log 
     CHANNELS = [
