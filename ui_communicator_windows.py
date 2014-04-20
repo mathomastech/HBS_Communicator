@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'ui_communicator_windows.ui'
 #
-# Created: Wed Apr 16 16:38:54 2014
-#      by: PyQt4 UI code generator 4.10.2
+# Created: Wed Apr 16 17:48:53 2014
+#      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -27,7 +27,7 @@ class Ui_hbsCommunicator(object):
     def setupUi(self, hbsCommunicator):
         hbsCommunicator.setObjectName(_fromUtf8("hbsCommunicator"))
         hbsCommunicator.setEnabled(True)
-        hbsCommunicator.resize(788, 742)
+        hbsCommunicator.resize(788, 596)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -47,7 +47,7 @@ class Ui_hbsCommunicator(object):
         self.channelTab = QtGui.QWidget()
         self.channelTab.setObjectName(_fromUtf8("channelTab"))
         self.channelDisplay = QtGui.QPlainTextEdit(self.channelTab)
-        self.channelDisplay.setGeometry(QtCore.QRect(-1, -1, 622, 401))
+        self.channelDisplay.setGeometry(QtCore.QRect(-1, -1, 621, 392))
         self.channelDisplay.setAcceptDrops(False)
         self.channelDisplay.setAutoFillBackground(False)
         self.channelDisplay.setFrameShadow(QtGui.QFrame.Sunken)
@@ -284,7 +284,7 @@ class Ui_hbsCommunicator(object):
         self.formLayout.setWidget(2, QtGui.QFormLayout.LabelRole, self.channelNotebook)
         hbsCommunicator.setCentralWidget(self.centralwidget)
         self.menubar = QtGui.QMenuBar(hbsCommunicator)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 788, 27))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 788, 21))
         self.menubar.setObjectName(_fromUtf8("menubar"))
         hbsCommunicator.setMenuBar(self.menubar)
         self.statusbar = QtGui.QStatusBar(hbsCommunicator)
