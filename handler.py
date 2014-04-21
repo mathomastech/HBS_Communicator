@@ -52,30 +52,30 @@ class Handler(QtGui.QMainWindow):
         GUI.CONTENT_NOTEBOOK.setTabEnabled(1, False)
 
         # Command Buttons        
-        GUI.CHANNELS[0][3] = com.centralCommandButton
-        GUI.CHANNELS[1][3] = com.operationsCommandButton
-        GUI.CHANNELS[2][3] = com.codCommandButton 
-        GUI.CHANNELS[3][3] = com.tfCommandButton
-        GUI.CHANNELS[4][3] = com.lolCommandButton
-        GUI.CHANNELS[5][3] = com.gwCommandButton
-        GUI.CHANNELS[6][3] = com.wowCommandButton
-        GUI.CHANNELS[7][3] = com.mcCommandButton
-        GUI.CHANNELS[8][3] = com.dayzCommandButton
-        GUI.CHANNELS[9][3] = com.logisticsCommandButton
-        GUI.CHANNELS[10][3] = com.mpCommandButton
-        GUI.CHANNELS[11][3] = com.admissionsCommandButton
-        GUI.CHANNELS[12][3] = com.betaTestButton
+        GUI.CHANNELS[0][GUI.GUI_ELEMENT] = com.centralCommandButton
+        GUI.CHANNELS[1][GUI.GUI_ELEMENT] = com.operationsCommandButton
+        GUI.CHANNELS[2][GUI.GUI_ELEMENT] = com.codCommandButton 
+        GUI.CHANNELS[3][GUI.GUI_ELEMENT] = com.tfCommandButton
+        GUI.CHANNELS[4][GUI.GUI_ELEMENT] = com.lolCommandButton
+        GUI.CHANNELS[5][GUI.GUI_ELEMENT] = com.gwCommandButton
+        GUI.CHANNELS[6][GUI.GUI_ELEMENT] = com.wowCommandButton
+        GUI.CHANNELS[7][GUI.GUI_ELEMENT] = com.mcCommandButton
+        GUI.CHANNELS[8][GUI.GUI_ELEMENT] = com.dayzCommandButton
+        GUI.CHANNELS[9][GUI.GUI_ELEMENT] = com.logisticsCommandButton
+        GUI.CHANNELS[10][GUI.GUI_ELEMENT] = com.mpCommandButton
+        GUI.CHANNELS[11][GUI.GUI_ELEMENT] = com.admissionsCommandButton
+        GUI.CHANNELS[12][GUI.GUI_ELEMENT] = com.betaTestButton
         
         # General Buttons
-        GUI.CHANNELS[13][3] = com.generalButton
-        GUI.CHANNELS[14][3] = com.codGeneralButton
-        GUI.CHANNELS[15][3] = com.tfGeneralButton
-        GUI.CHANNELS[16][3] = com.lolGeneralButton
-        GUI.CHANNELS[17][3] = com.gwGeneralButton
-        GUI.CHANNELS[18][3] = com.wowGeneralButton
-        GUI.CHANNELS[19][3] = com.mcGeneralButton
-        GUI.CHANNELS[20][3] = com.dayzGeneralButton
-        GUI.CHANNELS[21][3] = com.socialMediaButton
+        GUI.CHANNELS[13][GUI.GUI_ELEMENT] = com.generalButton
+        GUI.CHANNELS[14][GUI.GUI_ELEMENT] = com.codGeneralButton
+        GUI.CHANNELS[15][GUI.GUI_ELEMENT] = com.tfGeneralButton
+        GUI.CHANNELS[16][GUI.GUI_ELEMENT] = com.lolGeneralButton
+        GUI.CHANNELS[17][GUI.GUI_ELEMENT] = com.gwGeneralButton
+        GUI.CHANNELS[18][GUI.GUI_ELEMENT] = com.wowGeneralButton
+        GUI.CHANNELS[19][GUI.GUI_ELEMENT] = com.mcGeneralButton
+        GUI.CHANNELS[20][GUI.GUI_ELEMENT] = com.dayzGeneralButton
+        GUI.CHANNELS[21][GUI.GUI_ELEMENT] = com.socialMediaButton
     
         if os.path.exists('credentials.txt'):
             f = open('credentials.txt', 'r')

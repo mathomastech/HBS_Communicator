@@ -27,19 +27,19 @@ class Communicator:
    
     def load_local_logs():
         for i in range(0,len(GUI.CHANNELS)):
-            if(os.path.isfile(GUI.CHANNELS[i][1])):
-                f = open(GUI.CHANNELS[i][1],'r')
+            if(os.path.isfile(GUI.CHANNELS[i][GUI.SERVER_LOG_PATH])):
+                f = open(GUI.CHANNELS[i][GUI.SERVER_LOG_PATH],'r')
                 log = f.read()
-                GUI.CHANNELS[i][5] = log
+                GUI.CHANNELS[i][GUI.STORED_LOG] = log
                 f.close()
      
     def switch_command_channel(channel):
         if Communicator.check_user_permissions(channel):
             for i in range(0,len(GUI.CHANNELS)):
-                if GUI.CHANNELS[i][0] == channel: 
-                    log_path = GUI.CHANNELS[i][1]
-                    roster_path = GUI.CHANNELS[i][2]
-                    GUI.CHANNELS[i][3].setStyleSheet("color:black")
+                if GUI.CHANNELS[i][GUI.CHANNEL_NAME] == channel: 
+                    log_path = GUI.CHANNELS[i][GUI.SERVER_LOG_PATH]
+                    roster_path = GUI.CHANNELS[i][GUI.SERVER_ROSTER_PATH]
+                    GUI.CHANNELS[i][GUI.GUI_ELEMENT].setStyleSheet("color:black")
                     Communicator.populate_channel(log_path,roster_path)
                     Communicator.ACTIVE_CHANNEL = channel
         else: 
@@ -47,10 +47,10 @@ class Communicator:
     
     def switch_general_channel(channel):
         for i in range(0,len(GUI.CHANNELS)):
-            if GUI.CHANNELS[i][0] == channel: 
-                log_path = GUI.CHANNELS[i][1]
-                roster_path = GUI.CHANNELS[i][2]
-                GUI.CHANNELS[i][3].setStyleSheet("color:black")
+            if GUI.CHANNELS[i][GUI.CHANNEL_NAME] == channel: 
+                log_path = GUI.CHANNELS[i][GUI.SERVER_LOG_PATH]
+                roster_path = GUI.CHANNELS[i][GUI.SERVER_ROSTER_PATH]
+                GUI.CHANNELS[i][GUI.GUI_ELEMENT].setStyleSheet("color:black")
                 Communicator.populate_channel(log_path,roster_path)
                 Communicator.ACTIVE_CHANNEL = channel
 
@@ -65,8 +65,8 @@ class Communicator:
     def update_selected_channels():  
         for i in range(0,len(Communicator.DELTA)):
             for j in range(0,len(GUI.CHANNELS)):
-                if(Communicator.DELTA[i] == GUI.CHANNELS[j][0]):
-                    GUI.CHANNELS[j][3].setStyleSheet("color:red")
+                if(Communicator.DELTA[i] == GUI.CHANNELS[j][GUI.CHANNEL_NAME]):
+                    GUI.CHANNELS[j][GUI.GUI_ELEMENT].setStyleSheet("color:red")
 
     def populate_channel(log_path,roster_path):
         # Populate the channel with both logs and rosters
@@ -152,10 +152,10 @@ class Communicator:
 
     def check_user_permissions(channel):
         for i in range(0,len(GUI.CHANNELS)):
-            if channel == GUI.CHANNELS[i][0]:
+            if channel == GUI.CHANNELS[i][GUI.CHANNEL_NAME]:
                 for j in range(len(Communicator.USER_PERMISSIONS)):
-                    for k in range(len(GUI.CHANNELS[i][4])):
-                        if Communicator.USER_PERMISSIONS[j] == GUI.CHANNELS[i][4][k]:
+                    for k in range(len(GUI.CHANNELS[i][GUI.PERMISSIONS])):
+                        if Communicator.USER_PERMISSIONS[j] == GUI.CHANNELS[i][GUI.PERMISSIONS][k]:
                             return True
         return False
     

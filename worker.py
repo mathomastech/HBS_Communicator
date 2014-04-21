@@ -14,7 +14,7 @@ class Worker(QtCore.QThread):
     def refresh(self):
         # Send signal to refresh the chat logs.
         for i in range(0,len(GUI.CHANNELS)):
-            if (Communicator.ACTIVE_CHANNEL == GUI.CHANNELS[i][0]):
+            if (Communicator.ACTIVE_CHANNEL == GUI.CHANNELS[i][GUI.CHANNEL_NAME]):
                 for i in range(0,len(Communicator.DELTA)):
                     if Communicator.DELTA[i] == Communicator.ACTIVE_CHANNEL:
                         self.refresh_signal.emit()

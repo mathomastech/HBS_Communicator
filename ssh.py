@@ -29,7 +29,7 @@ class SSH():
         user_path = Config.USERS_PATH + user + '/'
         
         
-        query = 'python ' + Config.SERVER_PATH + ' ' + '"' + GUI.CHANNELS[12][0] + '"' + ' ' + GUI.CHANNELS[12][1] + ' ' + user_path +  'betaTestLog.txt'
+        query = 'python ' + Config.SERVER_PATH + ' ' + '"' + GUI.CHANNELS[12][GUI.CHANNEL_NAME] + '"' + ' ' + GUI.CHANNELS[12][1] + ' ' + user_path +  'betaTestLog.txt'
         #print(query)
         stdin, stdout, stderr = ssh.exec_command(query) 
         log = stdout.readlines()
@@ -38,16 +38,16 @@ class SSH():
 
         '''
         for i in range(0, len(GUI.CHANNELS)):
-            query = 'cat ' + GUI.CHANNELS[i][1]
+            query = 'cat ' + GUI.CHANNELS[i][GUI.SERVER_LOG_PATH]
             stdin, stdout, stderr = ssh.exec_command(query)
             log = stdout.readlines()
             log = ''.join(log)
-            if (GUI.CHANNELS[i][5] != log):
-                delta.append(GUI.CHANNELS[i][0])
-                GUI.CHANNELS[i][5] = log
-                if not os.path.exists(GUI.LOG_PATH):
-                    os.makedirs(GUI.LOG_PATH)
-                f = open(GUI.CHANNELS[i][1],'w')
+            if (GUI.CHANNELS[i][GUI.STORED_LOG] != log):
+                delta.append(GUI.CHANNELS[i][GUI.CHANNEL_NAME])
+                GUI.CHANNELS[i][GUI.STORED_LOG] = log
+                if not os.path.exists(GUI.LOGS):
+                    os.makedirs(GUI.LOGS)
+                f = open(GUI.CHANNELS[i][GUI.LOCAL_LOG_PATH],'w')
                 f.write(log)
                 f.close()
         '''        
