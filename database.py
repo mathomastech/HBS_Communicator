@@ -35,7 +35,6 @@ class Database:
         for (username, password) in cur:
             GUI.LOGIN_STATUS_LABEL.setText("Success!")
             GUI.USER_BTN.setText(username)
-            #GUI.AUTHORIZE_WINDOW.close()
             return True
         return False
 
