@@ -18,6 +18,16 @@ class Handler(QtGui.QMainWindow):
     QtCore.QThread.currentThread().setObjectName("MAIN")
     thread = QtCore.QThread()
     thread.name = "auto_refresh"
+   
+    '''
+    for i in range(0,len(GUI.CHANNELS)):    
+        worker = Worker()
+        worker.moveToThread(thread)
+        worker.start()
+        worker.refresh_signal.connect(Communicator.update_active_channel)
+        worker.channel_notification.connect(Communicator.update_selected_channels)
+    '''
+
     worker = Worker()
     worker.moveToThread(thread)
     worker.start()

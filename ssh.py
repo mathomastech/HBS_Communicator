@@ -23,13 +23,13 @@ class SSH():
         return log
 
 
-    def get_all_logs(ssh, user):
+    def get_all_logs(ssh, user, i):
         # Get remote logs for all channels and return to communicator.
         delta = []
         user_path = Config.USERS_PATH + user + '/'
         
         
-        query = 'python ' + Config.SERVER_PATH + ' ' + '"' + GUI.CHANNELS[12][GUI.CHANNEL_NAME] + '"' + ' ' + GUI.CHANNELS[12][1] + ' ' + user_path +  'betaTestLog.txt'
+        query = 'python ' + Config.SERVER_PATH + ' ' + '"' + GUI.CHANNELS[i][GUI.CHANNEL_NAME] + '"' + ' ' + GUI.CHANNELS[12][1] + ' ' + user_path +  'betaTestLog.txt'
         #print(query)
         stdin, stdout, stderr = ssh.exec_command(query) 
         log = stdout.readlines()

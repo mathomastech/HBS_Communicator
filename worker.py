@@ -4,6 +4,27 @@ from communicator import Communicator
 from ssh import SSH
 from gui import GUI
 
+'''
+class Worker(QtCore.Qthread, index):
+    refresh_signal = QtCore.pyqtSignal()
+    channel_notification = QtCore.pyqtSignal()
+
+    def run(self, index):
+        white True:
+            if(Communicator.ACTIVE_LOG_PATH != "" and
+                Communicator.ACTIVE_LOG_PATH != "logs/welcomeMessage.txt"):
+                self.update_all_channels(index)
+
+    def update_all_channels(self):
+        Communicator.DELTA = SSH.get_all_logs(Communicator.SSH_CONNECTION, Communicator.USER, index)
+        #if Communicator.DELTA:
+        self.channel_notification.emit()
+        self.refresh(index)
+
+    def refresh(self, index):
+        if Communicator.ACTIVE_CHANNEL == GUI.CHANNELS[index][CHANNEL_NAME]:
+            self.refresh_signal.emit()
+'''  
 class Worker(QtCore.QThread):
     refresh_signal = QtCore.pyqtSignal()
     channel_notification = QtCore.pyqtSignal()
@@ -31,7 +52,6 @@ class Worker(QtCore.QThread):
             if(Communicator.ACTIVE_LOG_PATH != "" and
                 Communicator.ACTIVE_LOG_PATH != "logs/welcomeMessage.txt"):
                 self.update_all_channels()
-            #time.sleep(1)
         return
 
    # def __del__(self):
