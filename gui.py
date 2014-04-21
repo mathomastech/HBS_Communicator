@@ -52,9 +52,8 @@ class GUI():
     PERMISSIONS = 4
     STORED_LOG = 5
     LOCAL_LOG_PATH = 6
-    # [0] = Channel Name, [1] = Log Path, [2] = Roster Path, [3] = GUI Element, [4] = Permissions,  [5] = Local Log, [6] = Remote Log 
+    
     CHANNELS = [
-       # ['Welcome Message',(LOG_PATH + 'welcomeMessage.txt'),(ROSTER_PATH + 'generalRoster.txt'),(),(),()],
         ['Central Command',(LOG_PATH + 'centcomLog.txt'),(ROSTER_PATH + 'centcomRoster.txt'),(CENTCOM),[9,10],(""),(LOGS + 'centcomLog.txt')],
         ['Operations Command',(LOG_PATH + 'operationsCommandLog.txt'),(ROSTER_PATH + 'operationsCommandRoster.txt'),(OP_CMD),[9,10],(""),(LOGS + 'operationsCommandLog.txt')],
         ['Call of Duty Command',(LOG_PATH + 'codCommandLog.txt'),(ROSTER_PATH + 'codCommandRoster.txt'),(COD_CMD),[9,10,57],(""),(LOGS + 'codCommandLog.txt')],
