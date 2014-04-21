@@ -9,11 +9,16 @@ overall
 
 import sys, os.path, time
 
-#argv[0] = Channel Name, argv[1] = Log Path, argv[2] = Client Log
+#argv[0] = Channel Name, argv[1] = Log Path, argv[2] = Client Log, argv[3] = User Path
 
 def main(argv):
     flag = True
     count = 0
+    if not os.path.exists(argv[3]):
+        os.makedirs(argv[3])
+    if not os.path.exists(argv[2]):
+        f = write("Fresh Log")
+        f.close()
     while flag:
         try:
             time.sleep(1)
