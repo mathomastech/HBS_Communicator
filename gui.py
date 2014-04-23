@@ -50,30 +50,30 @@ class GUI():
     SERVER_ROSTER_PATH = 2
     GUI_ELEMENT = 3
     PERMISSIONS = 4
-    STORED_LOG = 5
+    LOCAL_TIME_STAMP = 5
     LOCAL_LOG_PATH = 6
-    
+    CHANNEL_FILE = 7 
     CHANNELS = [
-        ['Central Command',(LOG_PATH + 'centcomLog.txt'),(ROSTER_PATH + 'centcomRoster.txt'),(CENTCOM),[9,10],(""),(LOGS + 'centcomLog.txt')],
-        ['Operations Command',(LOG_PATH + 'operationsCommandLog.txt'),(ROSTER_PATH + 'operationsCommandRoster.txt'),(OP_CMD),[9,10],(""),(LOGS + 'operationsCommandLog.txt')],
-        ['Call of Duty Command',(LOG_PATH + 'codCommandLog.txt'),(ROSTER_PATH + 'codCommandRoster.txt'),(COD_CMD),[9,10,57],(""),(LOGS + 'codCommandLog.txt')],
-        ['Titanfall Command',(LOG_PATH + 'tfCommandLog.txt'),(ROSTER_PATH + 'tfCommandRoster.txt'),(TF_CMD),[9,10,54],(""),(LOGS + 'tfCommandLog.txt')],
-        ['League of Legends Command',(LOG_PATH + 'lolCommandLog.txt'),(ROSTER_PATH + 'lolCommandRoster.txt'),(LOL_CMD),[9,10,67],(""),(LOGS + 'lolCommandLog.txt')],
-        ['Guild Wars Command',(LOG_PATH + 'gwCommandLog.txt'),(ROSTER_PATH + 'gwCommandRoster.txt'),(GW_CMD),[9,10,66],(""),(LOGS + 'gwCommandLog.txt')],
-        ['World of Warcraft Command',(LOG_PATH + 'wowCommandLog.txt'),(ROSTER_PATH + 'wowCommandRoster.txt'),(WOW_CMD),[9,10,63],(""),(LOGS + 'wowCommandLog.txt')],
-        ['Minecraft Command',(LOG_PATH + 'mcCommandLog.txt'),(ROSTER_PATH + 'mcCommandRoster.txt'),(MC_CMD),[9,10,59],(""),(LOGS + 'mcCommandLog.txt')],
-        ['DayZ Command',(LOG_PATH + 'dayzCommandLog.txt'),(ROSTER_PATH + 'dayzCommandLog.txt'),(DAYZ_CMD),[9,10,11],(""),(LOGS + 'dayzCommandLog.txt')],
-        ['Logistics Command',(LOG_PATH + 'logisticsCommandLog.txt'),(ROSTER_PATH + 'logisticsCommandRoster.txt'),(LOG_CMD),[9,10,58],(""),(LOGS + 'logisticsCommandLog.txt')],
-        ['Military Police',(LOG_PATH + 'mpCommandLog.txt'),(ROSTER_PATH + 'mpCommandRoster.txt'),(MP_CMD),[9,10,58,17,18],(""),(LOGS + 'mpCommandLog.txt')],
-        ['Admissions',(LOG_PATH + 'admissionsCommandLog.txt'),(ROSTER_PATH + 'admissionsCommandRoster.txt'),(ADM),[9,10,58,16,56],(""),(LOGS + 'admissionsCommandLog.txt')],
-        ['Beta Test',(LOG_PATH + 'betaTestLog.txt'),(ROSTER_PATH + 'betaTestRoster.txt'),(BETA),(),(""),(LOGS + 'betaTestCommandLog.txt')],
-        ['General',(LOG_PATH + 'generalLog.txt'),(ROSTER_PATH + 'generalRoster.txt'),(GEN),(),(""),(LOGS + 'generalLog.txt')],
-        ['Call of Duty',(LOG_PATH + 'codLog.txt'),(ROSTER_PATH + 'codRoster.txt'),(COD),(),(""),(LOGS + 'codLog.txt')],
-        ['Titanfall',(LOG_PATH + 'tfLog.txt'), (ROSTER_PATH + 'tfRoster.txt'),(TF),(),(""),(LOGS + 'tfLog.txt')],
-        ['League of Legends',(LOG_PATH + 'lolLog.txt'),(ROSTER_PATH + 'lolRoster.txt'),(LOL),(),(""),(LOGS + 'lolLog.txt')],
-        ['Guild Wars',(LOG_PATH + 'gwLog.txt'),(ROSTER_PATH + 'gwRoster.txt'),(GW),(),(""),(LOGS + 'gwLog.txt')],
-        ['World of Warcraft',(LOG_PATH + 'wowLog.txt'),(ROSTER_PATH + 'wowRoster.txt'),(WOW),(),(""),(LOGS + 'wowLog.txt')],
-        ['Minecraft',(LOG_PATH + 'mcLog.txt'),(ROSTER_PATH + 'mcRoster.txt'),(MC),(),(""),(LOGS + 'mcLog.txt')],
-        ['DayZ',(LOG_PATH + 'dayzLog.txt'),(ROSTER_PATH + 'dayzLog.txt'),(DAYZ),(),(""),(LOGS + 'dayzLog.txt')],
-        ['Social Media',(LOG_PATH + 'smLog.txt'),(ROSTER_PATH + 'smRoster.txt'),(SM),(),(""),(LOGS + 'smLog.txt')]
+        ['Central Command',(LOG_PATH + 'centcom.txt'),(ROSTER_PATH + 'centcom.txt'),(CENTCOM),[9,10],(""),(LOGS + 'centcom.txt'),('centcom.txt')],
+        ['Operations Command',(LOG_PATH + 'operationsCommand.txt'),(ROSTER_PATH + 'operationsCommand.txt'),(OP_CMD),[9,10],(""),(LOGS + 'operationsCommand.txt'),('operationsCommand.txt')],
+        ['Call of Duty Command',(LOG_PATH + 'codCommand.txt'),(ROSTER_PATH + 'codCommand.txt'),(COD_CMD),[9,10,57],(""),(LOGS + 'codCommand.txt'),('codCommand.txt')],
+        ['Titanfall Command',(LOG_PATH + 'tfCommand.txt'),(ROSTER_PATH + 'tfCommand.txt'),(TF_CMD),[9,10,54],(""),(LOGS + 'tfCommand.txt'),('tfCommand.txt')],
+        ['League of Legends Command',(LOG_PATH + 'lolCommand.txt'),(ROSTER_PATH + 'lolCommand.txt'),(LOL_CMD),[9,10,67],(""),(LOGS + 'lolCommand.txt'),('lolCommand.txt')],
+        ['Guild Wars Command',(LOG_PATH + 'gwCommand.txt'),(ROSTER_PATH + 'gwCommand.txt'),(GW_CMD),[9,10,66],(""),(LOGS + 'gwCommand.txt'),('gwCommand.txt')],
+        ['World of Warcraft Command',(LOG_PATH + 'wowCommand.txt'),(ROSTER_PATH + 'wowCommand.txt'),(WOW_CMD),[9,10,63],(""),(LOGS + 'wowCommand.txt'),('wowCommand.txt')],
+        ['Minecraft Command',(LOG_PATH + 'mcCommand.txt'),(ROSTER_PATH + 'mcCommand.txt'),(MC_CMD),[9,10,59],(""),(LOGS + 'mcCommand.txt'),('mcCommand.txt')],
+        ['DayZ Command',(LOG_PATH + 'dayzCommand.txt'),(ROSTER_PATH + 'dayzCommand.txt'),(DAYZ_CMD),[9,10,11],(""),(LOGS + 'dayzCommand.txt'),('dayzCommand.txt')],
+        ['Logistics Command',(LOG_PATH + 'logisticsCommand.txt'),(ROSTER_PATH + 'logisticsCommand.txt'),(LOG_CMD),[9,10,58],(""),(LOGS + 'logisticsCommand.txt'),('logisticsCommand.txt')],
+        ['Military Police',(LOG_PATH + 'mp.txt'),(ROSTER_PATH + 'mp.txt'),(MP_CMD),[9,10,58,17,18],(""),(LOGS + 'mp.txt'),('mp.txt')],
+        ['Admissions',(LOG_PATH + 'admissions.txt'),(ROSTER_PATH + 'admissions.txt'),(ADM),[9,10,58,16,56],(""),(LOGS + 'admissions.txt'),('admissions.txt')],
+        ['Beta Test',(LOG_PATH + 'betaTest.txt'),(ROSTER_PATH + 'betaTest.txt'),(BETA),(),(""),(LOGS + 'betaTest.txt'),('betaTest.txt')],
+        ['General',(LOG_PATH + 'general.txt'),(ROSTER_PATH + 'general.txt'),(GEN),(),(""),(LOGS + 'general.txt'),('general.txt')],
+        ['Call of Duty',(LOG_PATH + 'cod.txt'),(ROSTER_PATH + 'cod.txt'),(COD),(),(""),(LOGS + 'cod.txt'),('cod.txt')],
+        ['Titanfall',(LOG_PATH + 'tf.txt'), (ROSTER_PATH + 'tf.txt'),(TF),(),(""),(LOGS + 'tf.txt'),('tf.txt')],
+        ['League of Legends',(LOG_PATH + 'lol.txt'),(ROSTER_PATH + 'lol.txt'),(LOL),(),(""),(LOGS + 'lol.txt'),('lol.txt')],
+        ['Guild Wars',(LOG_PATH + 'gw.txt'),(ROSTER_PATH + 'gw.txt'),(GW),(),(""),(LOGS + 'gw.txt'),('gw.txt')],
+        ['World of Warcraft',(LOG_PATH + 'wow.txt'),(ROSTER_PATH + 'wow.txt'),(WOW),(),(""),(LOGS + 'wow.txt'),('wow.txt')],
+        ['Minecraft',(LOG_PATH + 'mc.txt'),(ROSTER_PATH + 'mc.txt'),(MC),(),(""),(LOGS + 'mc.txt'),('mc.txt')],
+        ['DayZ',(LOG_PATH + 'dayz.txt'),(ROSTER_PATH + 'dayz.txt'),(DAYZ),(),(""),(LOGS + 'dayz.txt'),('dayz.txt')],
+        ['Social Media',(LOG_PATH + 'sm.txt'),(ROSTER_PATH + 'sm.txt'),(SM),(),(""),(LOGS + 'sm.txt'),('sm.txt')]
         ]

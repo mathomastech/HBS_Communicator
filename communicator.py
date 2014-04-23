@@ -17,7 +17,8 @@ class Communicator:
     ACTIVE_ROSTER_PATH = ""
     SSH_CONNECTION = SSH.connect_to_ssh()
     REMEMBER_LOGIN = False   
-
+    TCP_HOST = Config.c['TCP Host']
+    TCP_PORT = Config.c['TCP Port']
     # Channel Update Variables
     DELTA = []    
     ACTIVE_CHANNEL = ""
@@ -47,10 +48,10 @@ class Communicator:
     
     def load_local_logs():
         for i in range(0,len(GUI.CHANNELS)):
-            if(os.path.isfile(GUI.CHANNELS[i][GUI.SERVER_LOG_PATH])):
-                f = open(GUI.CHANNELS[i][GUI.SERVER_LOG_PATH],'r')
+            if(os.path.isfile(GUI.CHANNELS[i][GUI.LOCAL_LOG_PATH])):
+                f = open(GUI.CHANNELS[i][GUI.LOCAL_LOG_PATH],'r')
                 log = f.read()
-                GUI.CHANNELS[i][GUI.STORED_LOG] = log
+                GUI.CHANNELS[i][GUI.LOCAL_TIME_STAMP] = log
                 f.close()
     
     def login(username,password):

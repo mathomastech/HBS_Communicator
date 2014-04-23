@@ -1,7 +1,7 @@
 import paramiko
 from config import Config
 from gui import GUI
-import os.path
+import os.path, socket
 
 class SSH():
     def connect_to_ssh():
@@ -23,35 +23,37 @@ class SSH():
         return log
 
 
-    def get_all_logs(ssh, user):
+    def get_all_logs(ssh, user, tcp_host, tcp_port): #, index):
         # Get remote logs for all channels and return to communicator.
         delta = []
-        user_path = Config.USERS_PATH + user + '/'
-        
-        query = 'python ' + Config.SERVER_PATH + ' ' + '"' + GUI.CHANNELS[12][GUI.CHANNEL_NAME] + '"' + ' ' + GUI.CHANNELS[12][GUI.SERVER_LOG_PATH] + ' ' + user_path +  'betaTestLog.txt' + ' ' + user_path
-        #print(query)
-        stdin, stdout, stderr = ssh.exec_command(query) 
-        log = stdout.readlines()
-        log = log[0].rstrip('\n')
-        print(log)
+        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-        '''
-        for i in range(0, len(GUI.CHANNELS)):
-            query = 'cat ' + GUI.CHANNELS[i][GUI.SERVER_LOG_PATH]
-            stdin, stdout, stderr = ssh.exec_command(query)
-            log = stdout.readlines()
-            log = ''.join(log)
-            if (GUI.CHANNELS[i][GUI.STORED_LOG] != log):
+        try:
+            sock.connect((tcp_host, tcp_port))
+            data = ""
+            for i in range(0, len(GUI.CHANNELS)):
+                data += GUI.CHANNELS[i][GUI.SERVER_LOG_PATH] + ","
+            data = data[:-1]
+            
+            sock.sendall(bytes(data + "\n", "utf-8"))
+            received = str(sock.recv(1024),"utf-8")
+        finally:
+            sock.close()
+       
+        data = received.rstrip().split(',')
+
+        for i in range(0,len(GUI.CHANNELS)):
+            if GUI.CHANNELS[i][GUI.LOCAL_TIME_STAMP] != data[i]:
                 delta.append(GUI.CHANNELS[i][GUI.CHANNEL_NAME])
-                GUI.CHANNELS[i][GUI.STORED_LOG] = log
+                GUI.CHANNELS[i][GUI.LOCAL_TIME_STAMP] = data[i]
                 if not os.path.exists(GUI.LOGS):
                     os.makedirs(GUI.LOGS)
                 f = open(GUI.CHANNELS[i][GUI.LOCAL_LOG_PATH],'w')
-                f.write(log)
+                f.write(data[i])
                 f.close()
-        '''        
-        return delta
 
+        print(delta)
+        return delta
 
     def write_to_log(ssh,log_path,log):
         # Get and parse timestamp from server
