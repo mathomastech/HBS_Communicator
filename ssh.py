@@ -23,7 +23,7 @@ class SSH():
         return log
 
 
-    def get_all_logs(ssh, user, tcp_host, tcp_port): #, index):
+    def get_all_logs(ssh, user, tcp_host, tcp_port):
         # Get remote logs for all channels and return to communicator.
         delta = []
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -52,7 +52,6 @@ class SSH():
                 f.write(data[i])
                 f.close()
 
-        print(delta)
         return delta
 
     def write_to_log(ssh,log_path,log):

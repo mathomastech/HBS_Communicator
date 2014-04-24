@@ -119,8 +119,9 @@ class Communicator:
     def update_selected_channels():  
         for i in range(0,len(Communicator.DELTA)):
             for j in range(0,len(GUI.CHANNELS)):
-                if(Communicator.DELTA[i] == GUI.CHANNELS[j][GUI.CHANNEL_NAME]):
+                if(Communicator.DELTA[i][0] == GUI.CHANNELS[j][GUI.CHANNEL_NAME]):
                     GUI.CHANNELS[j][GUI.GUI_ELEMENT].setStyleSheet("color:red")
+        Communicator.DELTA = []
 
     def write_chat_to_channel():
         # Take chat box text and write it to channel and log.

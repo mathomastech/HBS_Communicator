@@ -4,32 +4,6 @@ from communicator import Communicator
 from ssh import SSH
 from gui import GUI
 
-'''
-class Worker(QtCore.QThread):
-    refresh_signal = QtCore.pyqtSignal()
-    channel_notification = QtCore.pyqtSignal()
-    index = 0
- 
-    def __init__(self):
-        QtCore.QThread.__init__(self)
-
-    def update_all_channels(self):
-        Communicator.DELTA = SSH.get_all_logs(Communicator.SSH_CONNECTION, Communicator.USER, self.index)
-        #if Communicator.DELTA:
-        self.channel_notification.emit()
-        self.refresh(index)
-
-    def refresh(self):
-        if Communicator.ACTIVE_CHANNEL == GUI.CHANNELS[index][CHANNEL_NAME]:
-            self.refresh_signal.emit()
-    
-    def run (self):
-        while True:
-            if(Communicator.ACTIVE_LOG_PATH != "" and
-                Communicator.ACTIVE_LOG_PATH != "logs/welcomeMessage.txt"):
-                self.update_all_channels()
-        return
-'''  
 class Worker(QtCore.QThread):
     refresh_signal = QtCore.pyqtSignal()
     channel_notification = QtCore.pyqtSignal()
@@ -42,13 +16,14 @@ class Worker(QtCore.QThread):
         for i in range(0,len(GUI.CHANNELS)):
             if (Communicator.ACTIVE_CHANNEL == GUI.CHANNELS[i][GUI.CHANNEL_NAME]):
                 for i in range(0,len(Communicator.DELTA)):
-                    if Communicator.DELTA[i] == Communicator.ACTIVE_CHANNEL:
+                    if Communicator.DELTA[i][0] == Communicator.ACTIVE_CHANNEL:
                         self.refresh_signal.emit()
 
     def update_all_channels(self):
-        Communicator.DELTA = SSH.get_all_logs(Communicator.SSH_CONNECTION, Communicator.USER, 
-                                                Communicator.TCP_HOST, Communicator.TCP_PORT)
-        if Communicator.DELTA:
+        delta = (SSH.get_all_logs(Communicator.SSH_CONNECTION, Communicator.USER, 
+                                  Communicator.TCP_HOST, Communicator.TCP_PORT))
+        if delta:
+            Communicator.DELTA.append(delta)
             self.channel_notification.emit()
             self.refresh()
         return

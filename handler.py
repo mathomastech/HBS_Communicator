@@ -112,9 +112,12 @@ class Handler(QtGui.QMainWindow):
 
     def on_passwordEntry_returnPressed(self, *args):
         Handler.on_loginButton_pressed(self, *args)
-
-    def on_usernameEntry_activate(self, *args):
+    
+    def on_usernameEntry_returnPressed(self, *args):
         Handler.on_loginButton_pressed(self, *args)
+
+    #def on_usernameEntry_activate(self, *args):
+    #    Handler.on_loginButton_pressed(self, *args)
 
     def on_rememberLoginCheck_stateChanged(self, *args):
         flag = args
