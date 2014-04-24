@@ -23,8 +23,9 @@ class SSH():
         return log
 
 
-    def get_all_logs(ssh, user, tcp_host, tcp_port):
+    def get_all_logs(ssh, user, tcp_host, tcp_port, online_users):
         # Get remote logs for all channels and return to communicator.
+        users = []
         delta = []
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
@@ -33,15 +34,18 @@ class SSH():
             data = user
             for i in range(0, len(GUI.CHANNELS)):
                 data += "," + GUI.CHANNELS[i][GUI.SERVER_LOG_PATH]
-            data = data[:-1]
+            #data = data[:-1]
             
             sock.sendall(bytes(data + "\n", "utf-8"))
             received = str(sock.recv(1024),"utf-8")
         finally:
             sock.close()
-       
+        
         data = received.rstrip().split(',')
-
+        for i in range(0,len(data)-len(GUI.CHANNELS)-1):
+            users.append(data[0])
+            data.pop(0)
+        data.pop(len(data)-1)
         for i in range(0,len(GUI.CHANNELS)):
             if GUI.CHANNELS[i][GUI.LOCAL_TIME_STAMP] != data[i]:
                 delta.append(GUI.CHANNELS[i][GUI.CHANNEL_NAME])
@@ -51,8 +55,11 @@ class SSH():
                 f = open(GUI.CHANNELS[i][GUI.LOCAL_LOG_PATH],'w')
                 f.write(data[i])
                 f.close()
+        
+        if(users != online_users):
+            return delta, users
 
-        return delta
+        return delta, online_users
 
     def write_to_log(ssh,log_path,log):
         # Get and parse timestamp from server

@@ -21,6 +21,7 @@ class Communicator:
     TCP_PORT = Config.c['TCP Port']
     # Channel Update Variables
     DELTA = []    
+    ONLINE_USERS = []
     ACTIVE_CHANNEL = ""
 
     def __init__(self):

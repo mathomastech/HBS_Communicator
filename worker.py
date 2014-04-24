@@ -26,10 +26,14 @@ class Worker(QtCore.QThread):
         return
 
     def update_all_channels(self):
-        delta = (SSH.get_all_logs(Communicator.SSH_CONNECTION, Communicator.USER, 
-                                  Communicator.TCP_HOST, Communicator.TCP_PORT))
+        delta,users = (SSH.get_all_logs(Communicator.SSH_CONNECTION, Communicator.USER, 
+                                  Communicator.TCP_HOST, Communicator.TCP_PORT,Communicator.ONLINE_USERS))
         if delta:
             Communicator.DELTA.append(delta)
             self.channel_notification.emit()
             self.refresh()
+        if users != Communicator.ONLINE_USERS:
+            Communicator.ONLINE_USERS = users
+        print(Communicator.ONLINE_USERS)
+
         return
