@@ -18,6 +18,12 @@ class Worker(QtCore.QThread):
                 for i in range(0,len(Communicator.DELTA)):
                     if Communicator.DELTA[i][0] == Communicator.ACTIVE_CHANNEL:
                         self.refresh_signal.emit()
+    def run (self):
+        while True:
+            if(Communicator.ACTIVE_LOG_PATH != "" and
+                Communicator.ACTIVE_LOG_PATH != "logs/welcomeMessage.txt"):
+                self.update_all_channels()
+        return
 
     def update_all_channels(self):
         delta = (SSH.get_all_logs(Communicator.SSH_CONNECTION, Communicator.USER, 
@@ -27,14 +33,3 @@ class Worker(QtCore.QThread):
             self.channel_notification.emit()
             self.refresh()
         return
-
-    def run (self):
-        while True:
-            if(Communicator.ACTIVE_LOG_PATH != "" and
-                Communicator.ACTIVE_LOG_PATH != "logs/welcomeMessage.txt"):
-                self.update_all_channels()
-        return
- 
-   # def __del__(self):
-   #     self.wait()
-

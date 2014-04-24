@@ -30,9 +30,9 @@ class SSH():
 
         try:
             sock.connect((tcp_host, tcp_port))
-            data = ""
+            data = user
             for i in range(0, len(GUI.CHANNELS)):
-                data += GUI.CHANNELS[i][GUI.SERVER_LOG_PATH] + ","
+                data += "," + GUI.CHANNELS[i][GUI.SERVER_LOG_PATH]
             data = data[:-1]
             
             sock.sendall(bytes(data + "\n", "utf-8"))
