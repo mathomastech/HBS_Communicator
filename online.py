@@ -12,8 +12,8 @@ class Online():
         if flag == False:
             ts = time.time()
             Online.users.append([user,ts])
-
-        print(Online.users)
+        Online.remove()
+        return Online.users
 
     def remove():
         ts = time.time()
