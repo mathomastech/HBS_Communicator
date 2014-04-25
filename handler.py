@@ -13,12 +13,13 @@ class Handler(QtGui.QMainWindow):
     PASSWORD_ENTRY = ""
     refresh_signal = QtCore.pyqtSignal()
     channel_notification = QtCore.pyqtSignal()
-    
+    update_online_list = QtCore.pyqtSignal()
     # Threading
     QtCore.QThread.currentThread().setObjectName("MAIN")
     thread = QtCore.QThread()
     thread.name = "auto_refresh"
    
+
     ''' 
     for i in range(0,len(GUI.CHANNELS)):    
         worker = Worker()
@@ -34,7 +35,8 @@ class Handler(QtGui.QMainWindow):
     worker.start()
     worker.refresh_signal.connect(Communicator.update_active_channel)
     worker.channel_notification.connect(Communicator.update_selected_channels)
-    
+    worker.update_online_list.connect(Communicator.online_list)
+
     def __init__(self):
         super(Handler,self).__init__()
         com=Ui_hbsCommunicator()
@@ -55,6 +57,7 @@ class Handler(QtGui.QMainWindow):
         GUI.USERNAME_ENTRY = com.usernameEntry 
         GUI.PASSWORD_ENTRY = com.passwordEntry
         GUI.REMEMBER_LOGIN_CHECK = com.rememberLoginCheck
+        GUI.ONLINE_LIST = com.onlineList
         # Disabled the Roster tab. 
         # Move this line into ui_communicator.py either manually or
         # through QTDesigner somehow. Qt Designer does not appear
@@ -62,7 +65,6 @@ class Handler(QtGui.QMainWindow):
         # only the notebook as a while.
         GUI.USERNAME_ENTRY.setFocus()
         GUI.CONTENT_NOTEBOOK.setTabEnabled(1, False)
-
         # Command Buttons        
         GUI.CHANNELS[0][GUI.GUI_ELEMENT] = com.centralCommandButton
         GUI.CHANNELS[1][GUI.GUI_ELEMENT] = com.operationsCommandButton
@@ -97,6 +99,15 @@ class Handler(QtGui.QMainWindow):
             GUI.REMEMBER_LOGIN_CHECK.setChecked(True)            
             GUI.USERNAME_ENTRY.setText(username)
             GUI.PASSWORD_ENTRY.setText(password) 
+        
+        app_icon = QtGui.QIcon()
+        app_icon.addFile('icons/comms16x16.ico', QtCore.QSize(16,16))
+        app_icon.addFile('icons/comms24x24.ico', QtCore.QSize(24,24))
+        app_icon.addFile('icons/comms32x32.ico', QtCore.QSize(32,32))
+        app_icon.addFile('icons/comms48x48.ico', QtCore.QSize(48,48))
+        app_icon.addFile('icons/comms256x256.ico', QtCore.QSize(256,256))
+        
+        self.setWindowIcon(app_icon)
         self.show()
     
     def on_loginButton_pressed(self, *args):

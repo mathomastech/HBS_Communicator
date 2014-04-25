@@ -12,6 +12,7 @@ class GUI():
     LOGIN_GROUP_BOX = ""
     USERNAME_ENTRY = ""
     REMEMBER_LOGIN_CHECK = ""
+    ONLINE_LIST = ""
     # Command Buttons
     CENTCOM = ""
     OP_CMD = ""
