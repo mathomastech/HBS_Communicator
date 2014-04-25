@@ -23,43 +23,47 @@ class SSH():
         return log
 
 
-    def get_all_logs(ssh, user, tcp_host, tcp_port, online_users):
+    def get_all_logs(user, tcp_host, tcp_port):
         # Get remote logs for all channels and return to communicator.
-        users = []
         delta = []
+        prefix = "get_all_logs"
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-
         try:
             sock.connect((tcp_host, tcp_port))
-            data = user
+            data = prefix
             for i in range(0, len(GUI.CHANNELS)):
-                data += "," + GUI.CHANNELS[i][GUI.SERVER_LOG_PATH]
-            #data = data[:-1]
-            
+                data += "," + GUI.CHANNELS[i][GUI.SERVER_LOG_PATH]    
             sock.sendall(bytes(data + "\n", "utf-8"))
             received = str(sock.recv(1024),"utf-8")
+            data = received.rstrip().split(',')
+            for i in range(0,len(GUI.CHANNELS)):
+                if GUI.CHANNELS[i][GUI.LOCAL_TIME_STAMP] != data[i]:
+                    delta.append(GUI.CHANNELS[i][GUI.CHANNEL_NAME])
+                    GUI.CHANNELS[i][GUI.LOCAL_TIME_STAMP] = data[i]
+                    if not os.path.exists(GUI.LOGS):
+                        os.makedirs(GUI.LOGS)
+                    f = open(GUI.CHANNELS[i][GUI.LOCAL_LOG_PATH],'w')
+                    f.write(data[i])
+                    f.close()
+            return delta
         finally:
             sock.close()
         
-        data = received.rstrip().split(',')
-        for i in range(0,len(data)-len(GUI.CHANNELS)-1):
-            users.append(data[0])
-            data.pop(0)
-        data.pop(len(data)-1)
-        for i in range(0,len(GUI.CHANNELS)):
-            if GUI.CHANNELS[i][GUI.LOCAL_TIME_STAMP] != data[i]:
-                delta.append(GUI.CHANNELS[i][GUI.CHANNEL_NAME])
-                GUI.CHANNELS[i][GUI.LOCAL_TIME_STAMP] = data[i]
-                if not os.path.exists(GUI.LOGS):
-                    os.makedirs(GUI.LOGS)
-                f = open(GUI.CHANNELS[i][GUI.LOCAL_LOG_PATH],'w')
-                f.write(data[i])
-                f.close()
-        
-        if(users != online_users):
-            return delta, users
 
-        return delta, online_users
+    def whos_online(tcp_host, tcp_port, online_users, user):
+        users = []
+        prefix = "whos_online"
+        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        try:
+            sock.connect((tcp_host, tcp_port))
+            data = prefix + "," + user
+            sock.sendall(bytes(data + "\n", "utf-8"))
+            received = str(sock.recv(1024),"utf-8")
+            online = received.rstrip().split(',')
+            online.pop(len(online)-1)
+            return online
+        finally:
+            sock.close()
 
     def write_to_log(ssh,log_path,log):
         # Get and parse timestamp from server
