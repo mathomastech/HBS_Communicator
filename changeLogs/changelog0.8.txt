@@ -1,0 +1,6 @@
+Change Log:
+
+* See Who's Online
+* Massive Performance Improvements
+* Numerous bug fixes
+* and More!
