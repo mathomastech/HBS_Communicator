@@ -58,6 +58,7 @@ class Handler(QtGui.QMainWindow):
         GUI.PASSWORD_ENTRY = com.passwordEntry
         GUI.REMEMBER_LOGIN_CHECK = com.rememberLoginCheck
         GUI.ONLINE_LIST = com.onlineList
+        GUI.CHANNEL_TAB = com.channelNotebook
         # Disabled the Roster tab. 
         # Move this line into ui_communicator.py either manually or
         # through QTDesigner somehow. Qt Designer does not appear

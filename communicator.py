@@ -30,10 +30,13 @@ class Communicator:
     def check_user_permissions(channel):
         for i in range(0,len(GUI.CHANNELS)):
             if channel == GUI.CHANNELS[i][GUI.CHANNEL_NAME]:
-                for j in range(len(Communicator.USER_PERMISSIONS)):
-                    for k in range(len(GUI.CHANNELS[i][GUI.PERMISSIONS])):
-                        if Communicator.USER_PERMISSIONS[j] == GUI.CHANNELS[i][GUI.PERMISSIONS][k]:
-                            return True
+                if not GUI.CHANNELS[i][GUI.PERMISSIONS]:
+                    return True
+                else:
+                    for j in range(len(Communicator.USER_PERMISSIONS)):
+                        for k in range(len(GUI.CHANNELS[i][GUI.PERMISSIONS])):
+                            if Communicator.USER_PERMISSIONS[j] == GUI.CHANNELS[i][GUI.PERMISSIONS][k]:
+                                return True
         return False
     
     def enable_widgets():
@@ -81,8 +84,6 @@ class Communicator:
 
     def online_list():
         list = ""
-        #print(len(Communicator.ONLINE_USERS))
-        #print(Communicator.ONLINE_USERS)
         for i in range(0,len(Communicator.ONLINE_USERS)):
             list += Communicator.ONLINE_USERS[i] + '\n'
 
@@ -90,13 +91,13 @@ class Communicator:
 
     def populate_channel(log_path,roster_path):
         # Populate the channel with both logs and rosters
-        log = SSH.get_active_log(Communicator.SSH_CONNECTION, log_path)
+        log = SSH.get_active_log(Communicator.SSH_CONNECTION,log_path) #,Communicator.TCP_HOST, Communicator.TCP_PORT)
         Communicator.write_to_channel(log_path,log)
         if os.path.isfile(roster_path):
             Communicator.write_to_roster(roster_path)
         else:
             Communicator.write_to_roster_no_roster(roster_path)
-     
+    
     def switch_command_channel(channel):
         if Communicator.check_user_permissions(channel):
             for i in range(0,len(GUI.CHANNELS)):
@@ -104,6 +105,8 @@ class Communicator:
                     log_path = GUI.CHANNELS[i][GUI.SERVER_LOG_PATH]
                     roster_path = GUI.CHANNELS[i][GUI.SERVER_ROSTER_PATH]
                     GUI.CHANNELS[i][GUI.GUI_ELEMENT].setStyleSheet("color:black")
+                    index = GUI.CHANNEL_TAB.currentIndex()
+                    GUI.CHANNEL_TAB.tabBar().setTabTextColor(index, QtGui.QColor(0,0,0)) # Black
                     Communicator.populate_channel(log_path,roster_path)
                     Communicator.ACTIVE_CHANNEL = channel
         else: 
@@ -115,6 +118,8 @@ class Communicator:
                 log_path = GUI.CHANNELS[i][GUI.SERVER_LOG_PATH]
                 roster_path = GUI.CHANNELS[i][GUI.SERVER_ROSTER_PATH]
                 GUI.CHANNELS[i][GUI.GUI_ELEMENT].setStyleSheet("color:black")
+                index = GUI.CHANNEL_TAB.currentIndex()
+                GUI.CHANNEL_TAB.tabBar().setTabTextColor(index, QtGui.QColor(0,0,0)) # Black
                 Communicator.populate_channel(log_path,roster_path)
                 Communicator.ACTIVE_CHANNEL = channel
 
@@ -130,7 +135,12 @@ class Communicator:
         for i in range(0,len(Communicator.DELTA)):
             for j in range(0,len(GUI.CHANNELS)):
                 if(Communicator.DELTA[i][0] == GUI.CHANNELS[j][GUI.CHANNEL_NAME]):
-                    GUI.CHANNELS[j][GUI.GUI_ELEMENT].setStyleSheet("color:red")
+                    if Communicator.check_user_permissions(GUI.CHANNELS[j][GUI.CHANNEL_NAME]):
+                        GUI.CHANNELS[j][GUI.GUI_ELEMENT].setStyleSheet("color:red")
+                        if GUI.CHANNELS[j][GUI.CHANNEL_GROUP] == 'command':
+                            GUI.CHANNEL_TAB.tabBar().setTabTextColor(0, QtGui.QColor(255,0,0)) # Red
+                        elif GUI.CHANNELS[j][GUI.CHANNEL_GROUP] == 'general':
+                            GUI.CHANNEL_TAB.tabBar().setTabTextColor(1, QtGui.QColor(255,0,0)) # Red
         Communicator.DELTA = []
 
     def write_chat_to_channel():
@@ -138,8 +148,8 @@ class Communicator:
         chat_input = GUI.CHAT_ENTRY.text()
         if (chat_input != ""):
             log = Communicator.USER + ": " + chat_input
-            SSH.write_to_log(Communicator.SSH_CONNECTION,
-                                Communicator.ACTIVE_LOG_PATH, log)
+            SSH.write_to_log(Communicator.ACTIVE_LOG_PATH, log, 
+                                Communicator.TCP_HOST, Communicator.TCP_PORT)
             Communicator.update_active_channel()
             GUI.CHAT_ENTRY.setText("")
     

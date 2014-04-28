@@ -13,13 +13,57 @@ class SSH():
                     password=Config.c['SSH Password'])
         return ssh
 
-    def get_active_log(ssh,log_path):
+    def convert_to_bytes(no):
+        result = bytearray()
+        result.append(no & 255)
+        for i in range(3):
+            no = no >> 8
+            result.append(no & 255)
+        return result
+
+    def bytes_to_number(b):
+        # if Python2.x                  
+        # b = map(ord, b)
+        res = 0
+        for i in range(4):   
+            res += b[i] << (i*8)                     
+        return res
+
+    def get_active_log(ssh,log_path): #, tcp_host, tcp_port):
         # Get log for current channel and return to communicator.
+        '''
+        # Functioning code for TCP based log retrieving. Unfortunatelly it appears the performance
+        # over TCP is less than over SSH so until performance can be improved, SSH will be the 
+        # default method of retrieving logs
+        prefix = "get_active_log"
+        log = ""
+        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        socksize = 1024
+        try:
+            sock.connect((tcp_host, tcp_port))
+            # Create string to be sent to server
+            data = prefix + "," + log_path
+            sock.sendall(bytes(data + "\n", "utf-8"))
+            size = sock.recv(4)
+            size = SSH.bytes_to_number(size)
+            current_size = 0
+            buffer = b""
+            while current_size < size:
+                data = sock.recv(socksize)
+                #if not data:
+                #    break
+                if len(data) + current_size > size:
+                    data = data[:size-current_size]
+                log += data.decode(encoding='UTF-8')
+                current_size += len(data)
+        finally:
+            sock.close()
+        '''
         query = 'cat ' + log_path
         stdin, stdout, stderr = ssh.exec_command(query)
         log = stdout.readlines()
         log = ''.join(log)
-
+    
         return log
 
 
@@ -31,10 +75,12 @@ class SSH():
         try:
             sock.connect((tcp_host, tcp_port))
             data = prefix
+            # Create string to be sent to server
             for i in range(0, len(GUI.CHANNELS)):
                 data += "," + GUI.CHANNELS[i][GUI.SERVER_LOG_PATH]    
             sock.sendall(bytes(data + "\n", "utf-8"))
-            received = str(sock.recv(1024),"utf-8")
+            received = str(sock.recv(2048),"utf-8")
+            # Parse string recieved from server and compare timestamps
             data = received.rstrip().split(',')
             for i in range(0,len(GUI.CHANNELS)):
                 if GUI.CHANNELS[i][GUI.LOCAL_TIME_STAMP] != data[i]:
@@ -45,33 +91,37 @@ class SSH():
                     f = open(GUI.CHANNELS[i][GUI.LOCAL_LOG_PATH],'w')
                     f.write(data[i])
                     f.close()
+            # Return any updates that have occurred
             return delta
         finally:
             sock.close()
         
 
     def whos_online(tcp_host, tcp_port, online_users, user):
+        # Get a list of all currently logged in clients to the server
         users = []
         prefix = "whos_online"
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         try:
             sock.connect((tcp_host, tcp_port))
+            # Create string to be sent to server
             data = prefix + "," + user
             sock.sendall(bytes(data + "\n", "utf-8"))
             received = str(sock.recv(1024),"utf-8")
+            # Parse string recieved from server and return online list to worker for analysis
             online = received.rstrip().split(',')
             online.pop(len(online)-1)
             return online
         finally:
             sock.close()
 
-    def write_to_log(ssh,log_path,log):
-        # Get and parse timestamp from server
-        stdin,stdout,stderr = ssh.exec_command('date +"%H:%M:%S |"')
-        timestamp = stdout.readlines()
-        timestamp = timestamp[0]
-        timestamp = timestamp.rstrip()
-
-        # Write timestamp and log to appropriate file
-        query = 'echo "' + timestamp + ' ' + log + "\n" + '" >> ' + log_path
-        ssh.exec_command(query)
+    def write_to_log(log_path,log, tcp_host, tcp_port):
+        prefix = "new_post"
+        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        try:
+            sock.connect((tcp_host, tcp_port))
+            # Create string to be sent to server
+            data = prefix + "," + log_path + "," + log
+            sock.sendall(bytes(data + "\n", "utf-8"))
+        finally:
+            sock.close()
