@@ -31,8 +31,8 @@ class Server(socketserver.BaseRequestHandler):
                 log += self.argv[i] + ","
             log = log[:-1]
             ts = time.time()
-            st = datetime.datetime.fromtimestamp(ts).strftime('%H:%M:%S |')
-            log = st + ' ' + log + '\n\n'
+            st = datetime.datetime.fromtimestamp(ts).strftime('<< %m/%d | %H:%M:%S >>\n')
+            log = st + ' ' + log + '\n----------\n\n'
             f = open(log_path, 'a')
             f.write(log)
             f.close()
