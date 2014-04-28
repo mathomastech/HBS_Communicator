@@ -1,0 +1,9 @@
+Change Log:
+
+* Only channels that have new posts will light up when application is launched.
+* Delay of new posts showing up is now less than 2 seconds
+* Remember Login is now active!
+* Fixed spelling of "Privileges"
+* All channels do not light up on launch anymore (except for the very first launch)
+* Channels do not jump to the bottom anymore, except when there is a new log.
+* Delay between red channel indicator and new logs showing has been resolved.
