@@ -73,6 +73,9 @@ class Communicator:
             Communicator.load_local_logs()
             GUI.LOGIN_GROUP_BOX.resize(0,0)
             Communicator.populate_channel(GUI.WELCOME_LOG, GUI.WELCOME_LOG )
+            cursor = QtGui.QTextCursor(GUI.CHANNEL_DISPLAY.textCursor())
+            cursor.movePosition(QtGui.QTextCursor.Start)
+            GUI.CHANNEL_DISPLAY.setTextCursor(cursor) 
             Communicator.enable_widgets()
             if Communicator.REMEMBER_LOGIN: 
                 f = open('credentials.txt', 'w')
