@@ -95,7 +95,20 @@ class SSH():
             return delta
         finally:
             sock.close()
-        
+    '''
+    def get_all_rosters(tcp_host, tcp_port):
+        roster = []
+        prefix = "get_roster"
+        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        try:
+            sock.connect((tcp_host, tcp_port))
+            data = prefix
+            # Create string to be sent to server
+            sock.sendall(bytes(data + "\n", "utf-8"))
+            #received = str(sock.recv(2048),"utf-8")
+        finally:
+            sock.close()
+    '''
 
     def whos_online(tcp_host, tcp_port, online_users, user):
         # Get a list of all currently logged in clients to the server
