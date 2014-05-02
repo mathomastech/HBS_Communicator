@@ -141,75 +141,75 @@ class Handler(QtGui.QMainWindow):
     # Command Communication Channels
                     
     def on_centralCommandButton_clicked(self, *args):
-        Communicator.switch_command_channel("Central Command")
+        Communicator.switch_channel("Central Command")
         
     def on_operationsCommandButton_clicked(self, *args):
-        Communicator.switch_command_channel("Operations Command")
+        Communicator.switch_channel("Operations Command")
    
     def on_codCommandButton_clicked(self, *args):
-        Communicator.switch_command_channel("Call of Duty Command")
+        Communicator.switch_channel("Call of Duty Command")
  
     def on_tfCommandButton_clicked(self, *args):
-        Communicator.switch_command_channel("Titanfall Command")
+        Communicator.switch_channel("Titanfall Command")
     
     def on_lolCommandButton_clicked(self, *args):
-        Communicator.switch_command_channel("League of Legends Command")
+        Communicator.switch_channel("League of Legends Command")
 
     def on_gwCommandButton_clicked(self, *args):
-        Communicator.switch_command_channel("Guild Wars Command")
+        Communicator.switch_channel("Guild Wars Command")
     
     def on_wowCommandButton_clicked(self, *args):
-        Communicator.switch_command_channel("World of Warcraft Command")
+        Communicator.switch_channel("World of Warcraft Command")
 
     def on_tfGeneralButton_clicked(self, *args):
-        Communicator.switch_general_channel("Titanfall")
+        Communicator.switch_channel("Titanfall")
 
     def on_lolGeneralButton_clicked(self, *args):
-        Communicator.switch_general_channel("League of Legends")
+        Communicator.switch_channel("League of Legends")
     
     def on_mcCommandButton_clicked(self, *args):
-        Communicator.switch_command_channel("Minecraft Command")
+        Communicator.switch_channel("Minecraft Command")
     
     def on_dayzCommandButton_clicked(self, *args):
-        Communicator.switch_command_channel("DayZ Command")
+        Communicator.switch_channel("DayZ Command")
    
     def on_logisticsCommandButton_clicked(self, *args):
-        Communicator.switch_command_channel("Logistics Command")
+        Communicator.switch_channel("Logistics Command")
     
     def on_mpCommandButton_clicked(self, *args):
-        Communicator.switch_command_channel("Military Police")
+        Communicator.switch_channel("Military Police")
     
     def on_admissionsCommandButton_clicked(self, *args):
-        Communicator.switch_command_channel("Admissions")
+        Communicator.switch_channel("Admissions")
    
     def on_betaTestButton_clicked(self, *args):
-        Communicator.switch_general_channel("Beta Test")
+        Communicator.switch_channel("Beta Test")
     
     # General Communicator Channels
     
     def on_generalButton_clicked(self, *args):
-        Communicator.switch_general_channel("General")
+        Communicator.switch_channel("General")
 
     def on_codGeneralButton_clicked(self, *args):
-        Communicator.switch_general_channel("Call of Duty")
+        Communicator.switch_channel("Call of Duty")
 
     def on_tfGeneralButton_clicked(self, *args):
-        Communicator.switch_general_channel("Titanfall")
+        Communicator.switch_channel("Titanfall")
 
     def on_lolGeneralButton_clicked(self, *args):
-        Communicator.switch_general_channel("League of Legends")
+        Communicator.switch_channel("League of Legends")
     
     def on_gwGeneralButton_clicked(self, *args):
-        Communicator.switch_general_channel("Guild Wars")
+        Communicator.switch_channel("Guild Wars")
 
     def on_wowGeneralButton_clicked(self, *args):
-        Communicator.switch_general_channel("World of Warcraft")
+        Communicator.switch_channel("World of Warcraft")
 
     def on_mcGeneralButton_clicked(self, *args):
-        Communicator.switch_general_channel("Minecraft")
+        Communicator.switch_channel("Minecraft")
 
     def on_dayzGeneralButton_clicked(self, *args):
-        Communicator.switch_general_channel("DayZ")
+        Communicator.switch_channel("DayZ")
 
     def on_socialMediaButton_clicked(self, *args):
-        Communicator.switch_general_channel("Social Media")
+        Communicator.switch_channel("Social Media")

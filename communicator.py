@@ -119,7 +119,7 @@ class Communicator:
         Communicator.write_to_channel(log_path,log)
         Communicator.write_to_roster()
     
-    def switch_command_channel(channel):
+    def switch_channel(channel):
         # After user requests access to a channel, check his permissions and allow entry if 
         # permissions are acceptable.
         if Communicator.check_user_permissions(channel):
@@ -133,19 +133,6 @@ class Communicator:
                     Communicator.ACTIVE_CHANNEL = channel
         else: 
             Communicator.invalid_permissions()
-    
-    def switch_general_channel(channel):
-        # After user requests access to a channel, switch to channel
-
-        #### TO-DO: Replace this and "switch_command_channel" with "switch_channel". No need for duplicate code.
-        for i in range(0,len(GUI.CHANNELS)):
-            if GUI.CHANNELS[i][GUI.CHANNEL_NAME] == channel: 
-                log_path = GUI.CHANNELS[i][GUI.SERVER_LOG_PATH]
-                GUI.CHANNELS[i][GUI.GUI_ELEMENT].setStyleSheet("color:black")
-                index = GUI.CHANNEL_TAB.currentIndex()
-                GUI.CHANNEL_TAB.tabBar().setTabTextColor(index, QtGui.QColor(0,0,0)) # Black
-                Communicator.populate_channel(log_path)
-                Communicator.ACTIVE_CHANNEL = channel
 
     def update_active_channel():
         # Call this function to refresh the currently selected channel
