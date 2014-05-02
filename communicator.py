@@ -15,7 +15,6 @@ class Communicator:
     USER = ""
     USER_PERMISSIONS = []
     ACTIVE_LOG_PATH = ""
-    ACTIVE_ROSTER_PATH = ""
     SSH_CONNECTION = SSH.connect_to_ssh()
     REMEMBER_LOGIN = False   
     TCP_HOST = Config.c['TCP Host']
@@ -29,11 +28,14 @@ class Communicator:
         super(Communicator,self).__init__()
     
     def check_user_permissions(channel):
+        # Cycle through all channels and find the selected one
         for i in range(0,len(GUI.CHANNELS)):
             if channel == GUI.CHANNELS[i][GUI.CHANNEL_NAME]:
+                # If channel has no restrictions, allow access
                 if not GUI.CHANNELS[i][GUI.PERMISSIONS]:
                     return True
                 else:
+                    # Check user's permissions against channel permissions. Allow access if matching
                     for j in range(len(Communicator.USER_PERMISSIONS)):
                         for k in range(len(GUI.CHANNELS[i][GUI.PERMISSIONS])):
                             if Communicator.USER_PERMISSIONS[j] == GUI.CHANNELS[i][GUI.PERMISSIONS][k]:
@@ -41,6 +43,7 @@ class Communicator:
         return False
     
     def enable_widgets():
+        # After a successful login, enable all widgets on application.
         GUI.CHAT_ENTRY.setEnabled(True)
         GUI.SUBMIT_BTN.setEnabled(True)
         GUI.CHANNEL_NOTEBOOK.setEnabled(True)
@@ -52,6 +55,7 @@ class Communicator:
         GUI.CHANNEL_DISPLAY.setPlainText("You do not have sufficient privileges to view this channel. If you feel this is in error, please contact an administrator")
 
     def load_local_logs():
+        # Load users last online timestamps for each channel 
         for i in range(0,len(GUI.CHANNELS)):
             if(os.path.isfile(GUI.CHANNELS[i][GUI.LOCAL_LOG_PATH])):
                 f = open(GUI.CHANNELS[i][GUI.LOCAL_LOG_PATH],'r')
@@ -60,13 +64,9 @@ class Communicator:
                 f.close()
     
     def load_local_roster():
+        # Load rosters from database into application.
         roster = Roster.get_roster_raw()
 
-        '''
-        print(len(roster))
-        for i in range(0, len(roster)):
-            print(roster[i][1])
-        '''
         for i in range(0,len(roster)):
             for j in range(0,len(GUI.CHANNELS)):
                 for k in range(0,len(GUI.CHANNELS[j][GUI.ROSTER_GROUP_NAME])):
@@ -75,11 +75,6 @@ class Communicator:
                     if roster[i][2] == GUI.CHANNELS[j][GUI.ROSTER_GROUP_NAME][k]:
                         GUI.CHANNELS[j][GUI.ROSTER].append(roster[i])
                     
-        #for i in range(len(GUI.CHANNELS)):
-        #    print(GUI.CHANNELS[i][GUI.CHANNEL_NAME])
-        #    print(GUI.CHANNELS[i][GUI.ROSTER])
-        
-    
     def login(username,password):
         # Set user login and permissions
         username = username.strip()
@@ -95,11 +90,12 @@ class Communicator:
             Communicator.load_local_logs()
             Communicator.load_local_roster()
             GUI.LOGIN_GROUP_BOX.resize(0,0)
-            Communicator.populate_channel(GUI.WELCOME_LOG, GUI.WELCOME_LOG )
+            Communicator.populate_channel(GUI.WELCOME_LOG)
             cursor = QtGui.QTextCursor(GUI.CHANNEL_DISPLAY.textCursor())
             cursor.movePosition(QtGui.QTextCursor.Start)
             GUI.CHANNEL_DISPLAY.setTextCursor(cursor) 
             Communicator.enable_widgets()
+            # If user requests password remembers, write info out to file.
             if Communicator.REMEMBER_LOGIN: 
                 f = open('credentials.txt', 'w')
                 username = username.strip()
@@ -110,57 +106,67 @@ class Communicator:
 
 
     def online_list():
+        # Get a list of all currently logged in users
         list = ""
         for i in range(0,len(Communicator.ONLINE_USERS)):
             list += Communicator.ONLINE_USERS[i] + '\n'
 
         GUI.ONLINE_LIST.setPlainText(list)
 
-    def populate_channel(log_path,roster_path):
+    def populate_channel(log_path):
         # Populate the channel with both logs and rosters
         log = SSH.get_active_log(Communicator.SSH_CONNECTION,log_path) #,Communicator.TCP_HOST, Communicator.TCP_PORT)
         Communicator.write_to_channel(log_path,log)
-        Communicator.write_to_roster(roster_path)
+        Communicator.write_to_roster()
     
     def switch_command_channel(channel):
+        # After user requests access to a channel, check his permissions and allow entry if 
+        # permissions are acceptable.
         if Communicator.check_user_permissions(channel):
             for i in range(0,len(GUI.CHANNELS)):
                 if GUI.CHANNELS[i][GUI.CHANNEL_NAME] == channel: 
                     log_path = GUI.CHANNELS[i][GUI.SERVER_LOG_PATH]
-                    roster_path = GUI.CHANNELS[i][GUI.SERVER_ROSTER_PATH]
                     GUI.CHANNELS[i][GUI.GUI_ELEMENT].setStyleSheet("color:black")
                     index = GUI.CHANNEL_TAB.currentIndex()
                     GUI.CHANNEL_TAB.tabBar().setTabTextColor(index, QtGui.QColor(0,0,0)) # Black
-                    Communicator.populate_channel(log_path,roster_path)
+                    Communicator.populate_channel(log_path)
                     Communicator.ACTIVE_CHANNEL = channel
         else: 
             Communicator.invalid_permissions()
     
     def switch_general_channel(channel):
+        # After user requests access to a channel, switch to channel
+
+        #### TO-DO: Replace this and "switch_command_channel" with "switch_channel". No need for duplicate code.
         for i in range(0,len(GUI.CHANNELS)):
             if GUI.CHANNELS[i][GUI.CHANNEL_NAME] == channel: 
                 log_path = GUI.CHANNELS[i][GUI.SERVER_LOG_PATH]
-                roster_path = GUI.CHANNELS[i][GUI.SERVER_ROSTER_PATH]
                 GUI.CHANNELS[i][GUI.GUI_ELEMENT].setStyleSheet("color:black")
                 index = GUI.CHANNEL_TAB.currentIndex()
                 GUI.CHANNEL_TAB.tabBar().setTabTextColor(index, QtGui.QColor(0,0,0)) # Black
-                Communicator.populate_channel(log_path,roster_path)
+                Communicator.populate_channel(log_path)
                 Communicator.ACTIVE_CHANNEL = channel
 
     def update_active_channel():
         # Call this function to refresh the currently selected channel
-        Communicator.populate_channel(Communicator.ACTIVE_LOG_PATH,
-                            Communicator.ACTIVE_ROSTER_PATH)
+        Communicator.populate_channel(Communicator.ACTIVE_LOG_PATH)
     
     def update_channel(log_path):
-        Communicator.populate_channel(log_path,Communicator.ACTIVE_ROSTER_PATH)        
+        Communicator.populate_channel(log_path)        
 
     def update_selected_channels():  
+        # Show updates to channels and tabs with visual indicators as changes occur
+        # Cycle through all changed channels
         for i in range(0,len(Communicator.DELTA)):
             for j in range(0,len(GUI.CHANNELS)):
+                # Compare changed channels with all channels
                 if(Communicator.DELTA[i][0] == GUI.CHANNELS[j][GUI.CHANNEL_NAME]):
+                    # If a channel has changes, check to see if the channel is accessible by
+                    # currently logged in user. If so, visually indicate a change, otherwise
+                    # do not show any indicator.
                     if Communicator.check_user_permissions(GUI.CHANNELS[j][GUI.CHANNEL_NAME]):
                         GUI.CHANNELS[j][GUI.GUI_ELEMENT].setStyleSheet("color:red")
+                        # Visually indicate any tabs that also have new posts in channels
                         if GUI.CHANNELS[j][GUI.CHANNEL_GROUP] == 'command':
                             GUI.CHANNEL_TAB.tabBar().setTabTextColor(0, QtGui.QColor(255,0,0)) # Red
                         elif GUI.CHANNELS[j][GUI.CHANNEL_GROUP] == 'general':
@@ -186,7 +192,8 @@ class Communicator:
         cursor.movePosition(QtGui.QTextCursor.End)
         GUI.CHANNEL_DISPLAY.setTextCursor(cursor) 
 
-    def write_to_roster(current_roster_path):
+    def write_to_roster():
+        # Get rosters and apply them to all channels
         roster = ""
         for i in range(0,len(GUI.CHANNELS)):
             if GUI.CHANNELS[i][GUI.CHANNEL_NAME] == Communicator.ACTIVE_CHANNEL:
@@ -195,11 +202,6 @@ class Communicator:
 
         GUI.ROSTER_DISPLAY.setPlainText(roster)
     
-    def write_to_roster_no_roster(current_roster_path):
-        GUI.ROSTER_DISPLAY.setPlainText("There is currently no roster for this channel\n")
-        Communicator.ACTIVE_ROSTER_PATH = current_roster_path
-
-
 def main():
     app = QtGui.QApplication(sys.argv)
     hand = Handler()
