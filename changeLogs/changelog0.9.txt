@@ -1,6 +1,6 @@
 Version 0.9 Beta - Changelog
 
-
+* Rosters!
 * Command and General Tabs now indicate if there are unread messages.
 * Fixed bug where posts with a quotation mark (") would not log correctly
 * Fixed bug where channels that individuals did not have access to would still light up
