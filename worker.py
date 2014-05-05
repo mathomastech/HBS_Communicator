@@ -19,7 +19,6 @@ class Worker(QtCore.QThread):
                 self.update_all_channels()
         return
 
-
     def update_all_channels(self):
         if(Communicator.ACTIVE_LOG_PATH and
             Communicator.ACTIVE_LOG_PATH != "logs/welcomeMessage.txt"):

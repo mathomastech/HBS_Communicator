@@ -61,7 +61,7 @@ class GUI():
     ROSTER = 10
     CHANNELS = [
         ['Central Command',(LOG_PATH + 'centcom.txt'),(),(CENTCOM),[9,10],(""),(LOGS + 'centcom.txt'),('centcom.txt'),('command'),(["Central Command"]),([])],
-        ['Operations Command',(LOG_PATH + 'operationsCommand.txt'),(),(OP_CMD),[9,10],(""),(LOGS + 'operationsCommand.txt'),('operationsCommand.txt'),('command'),(["Operations Officer","Central Command Support Staff"]),([])],
+        ['Operations Command',(LOG_PATH + 'operationsCommand.txt'),(),(OP_CMD),[9,10],(""),(LOGS + 'operationsCommand.txt'),('operationsCommand.txt'),('command'),(["Operations Officer","Brigade Officer"]),([])],
         ['Call of Duty Command',(LOG_PATH + 'codCommand.txt'),(),(COD_CMD),[9,10,57],(""),(LOGS + 'codCommand.txt'),('codCommand.txt'),('command'),(["Call of Duty Ghosts", "Call of Duty Black Ops 2"]),([])],
         ['Titanfall Command',(LOG_PATH + 'tfCommand.txt'),(),(TF_CMD),[9,10,54],(""),(LOGS + 'tfCommand.txt'),('tfCommand.txt'),('command'),(["TitanFall"]),([])],
         ['League of Legends Command',(LOG_PATH + 'lolCommand.txt'),(),(LOL_CMD),[9,10,67],(""),(LOGS + 'lolCommand.txt'),('lolCommand.txt'),('command'),(["League of Legends"]),([])],
@@ -73,7 +73,7 @@ class GUI():
         ['Military Police',(LOG_PATH + 'mp.txt'),(),(MP_CMD),[9,10,58,17,18],(""),(LOGS + 'mp.txt'),('mp.txt'),('command'),(["Military Police Department"]),([])],
         ['Admissions',(LOG_PATH + 'admissions.txt'),(),(ADM),[9,10,58,16,56],(""),(LOGS + 'admissions.txt'),('admissions.txt'),('command'),(["Admissions Department"]),([])],
         ['Beta Test',(LOG_PATH + 'betaTest.txt'),(),(BETA),([]),(""),(LOGS + 'betaTest.txt'),('betaTest.txt'),('command'),(["Beta Test"]),([])],
-        ['General',(LOG_PATH + 'general.txt'),(),(GEN),([]),(""),(LOGS + 'general.txt'),('general.txt'),('general'),(["General"]),([])],
+        ['General',(LOG_PATH + 'general.txt'),(),(GEN),([]),(""),(LOGS + 'general.txt'),('general.txt'),('general'),([]),([])],
         ['Call of Duty',(LOG_PATH + 'cod.txt'),(),(COD),([]),(""),(LOGS + 'cod.txt'),('cod.txt'),('general'),(["Call of Duty Ghosts","Call of Duty Black Ops 2"]),([])],
         ['Titanfall',(LOG_PATH + 'tf.txt'), (),(TF),([]),(""),(LOGS + 'tf.txt'),('tf.txt'),('general'),(["TitanFall"]),([])],
         ['League of Legends',(LOG_PATH + 'lol.txt'),([]),(LOL),(),(""),(LOGS + 'lol.txt'),('lol.txt'),('general'),(["League of Legends"]),([])],

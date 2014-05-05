@@ -14,15 +14,16 @@ class Communicator:
     #Communicator Class Level Variables 
     USER = ""
     USER_PERMISSIONS = []
-    ACTIVE_LOG_PATH = ""
     SSH_CONNECTION = SSH.connect_to_ssh()
     REMEMBER_LOGIN = False   
     TCP_HOST = Config.c['TCP Host']
     TCP_PORT = Config.c['TCP Port']
     # Channel Update Variables
-    DELTA = []    
+    DELTA = []
     ONLINE_USERS = []
+    ROSTER = []
     ACTIVE_CHANNEL = ""
+    ACTIVE_LOG_PATH = ""
 
     def __init__(self):
         super(Communicator,self).__init__()
@@ -63,17 +64,17 @@ class Communicator:
                 GUI.CHANNELS[i][GUI.LOCAL_TIME_STAMP] = log
                 f.close()
     
-    def load_local_roster():
+    def load_local_rosters():
         # Load rosters from database into application.
-        roster = Roster.get_roster_raw()
+        Communicator.ROSTER = Roster.get_roster()
 
-        for i in range(0,len(roster)):
+        for i in range(0,len(Communicator.ROSTER)):
             for j in range(0,len(GUI.CHANNELS)):
                 for k in range(0,len(GUI.CHANNELS[j][GUI.ROSTER_GROUP_NAME])):
-                    if roster[i][0] == GUI.CHANNELS[j][GUI.ROSTER_GROUP_NAME][k]:
-                        GUI.CHANNELS[j][GUI.ROSTER].append(roster[i])
-                    if roster[i][2] == GUI.CHANNELS[j][GUI.ROSTER_GROUP_NAME][k]:
-                        GUI.CHANNELS[j][GUI.ROSTER].append(roster[i])
+                    if Communicator.ROSTER[i][0] == GUI.CHANNELS[j][GUI.ROSTER_GROUP_NAME][k]:
+                        GUI.CHANNELS[j][GUI.ROSTER].append(Communicator.ROSTER[i])
+                    if Communicator.ROSTER[i][2] == GUI.CHANNELS[j][GUI.ROSTER_GROUP_NAME][k]:
+                        GUI.CHANNELS[j][GUI.ROSTER].append(Communicator.ROSTER[i])
                     
     def login(username,password):
         # Set user login and permissions
@@ -88,7 +89,7 @@ class Communicator:
             Communicator.USER = username
             Communicator.USER_PERMISSIONS = userPermissions
             Communicator.load_local_logs()
-            Communicator.load_local_roster()
+            Communicator.load_local_rosters()
             GUI.LOGIN_GROUP_BOX.resize(0,0)
             Communicator.populate_channel(GUI.WELCOME_LOG)
             cursor = QtGui.QTextCursor(GUI.CHANNEL_DISPLAY.textCursor())
@@ -164,11 +165,13 @@ class Communicator:
         # Take chat box text and write it to channel and log.
         chat_input = GUI.CHAT_ENTRY.text()
         if (chat_input != ""):
-            log = Communicator.USER + ": " + chat_input
-            SSH.write_to_log(Communicator.ACTIVE_LOG_PATH, log, 
+            print(Communicator.ACTIVE_CHANNEL)
+            if(Communicator.ACTIVE_CHANNEL):
+                log = Communicator.USER + ": " + chat_input
+                SSH.write_to_log(Communicator.ACTIVE_LOG_PATH, log, 
                                 Communicator.TCP_HOST, Communicator.TCP_PORT)
-            Communicator.update_active_channel()
-            GUI.CHAT_ENTRY.setText("")
+                Communicator.update_active_channel()
+                GUI.CHAT_ENTRY.setText("")
     
     def write_to_channel(current_log_path,log):
         # Write log to the currently selected channel
