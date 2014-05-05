@@ -25,6 +25,7 @@ except AttributeError:
 
 class Ui_hbsCommunicator(object):
     def setupUi(self, hbsCommunicator):
+        
         hbsCommunicator.setObjectName(_fromUtf8("hbsCommunicator"))
         hbsCommunicator.setEnabled(True)
         hbsCommunicator.resize(805, 742)
