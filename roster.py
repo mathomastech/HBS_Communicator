@@ -26,7 +26,7 @@ class Roster:
 
     def get_roster_raw():
         Roster.establish_connection()
-        
+        Roster.ROSTER = []
         cur = Roster.DB.cursor()
         query = ("select game.gname, rank.rank, user.username \
                 from gbgraphi_vbulletin.clan_games as game, gbgraphi_vbulletin.clan_members_ranks as rank, gbgraphi_vbulletin.user as user, gbgraphi_vbulletin.clan_members_members as member \
