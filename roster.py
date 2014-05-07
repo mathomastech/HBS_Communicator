@@ -5,9 +5,9 @@ class Roster:
     DB = ""
     ROSTER = []
     SORT_ORDER = ['Commander in Chief','Deputy Commander in Chief','General of the Army','Operations Officer', 'Logistics Officer',
-            'Technical Expert Command Officer','Social Officer','Regulations Officer','General Administrative Officer',
-            'Brigade Officer','Chief of Staff','Directory of Financial Affairs','Director of Admissions','Director of Social Media',
-            'Awards Director','MP Commanding Officer', 'Editor In Chief','MP Executive Officer','Senior Admissions Officer',
+            'Technical Expert Command Officer','SocO Officer','Deputy OpsO', 'Deputy LogO','CIA','Regulations Officer','General Administrative Officer',
+            'Brigade Officer','MP Commanding Officer', 'MP Executive Officer', 'Senior MP','Director of Web Services','Director of Financial Affairs', 'Chief of Staff','Director of Entertainment', 'Director of Admissions','Director of Social Media',
+            'Awards Director', 'Editor In Chief','Senior Admissions Officer',
             'Titanfall Commanding Officer','Titanfall Executive Officer','Titanfall Chief Training Officer','CoD Commanding Officer',
             'CoD Executive Officer','CoD Chief Training Officer','DayZ Commanding Officer','DayZ Executive Officer','DayZ Chief Training Officer',
             'GW2 Commanding Officer','GW2 Executive Officer','GW2 Chief Training Officer','WoW Commanding Officer','WoW Executive Officer',
