@@ -132,9 +132,10 @@ class Communicator:
                     index = GUI.CHANNEL_TAB.currentIndex()
                     GUI.CHANNEL_TAB.tabBar().setTabTextColor(index, QtGui.QColor(0,0,0)) # Black
                     Communicator.populate_channel(log_path)
-                    Communicator.ACTIVE_CHANNEL = channel
         else: 
             Communicator.invalid_permissions()
+        Communicator.ACTIVE_CHANNEL = channel
+        Communicator.write_to_roster()
 
     def update_active_channel():
         # Call this function to refresh the currently selected channel
@@ -166,7 +167,6 @@ class Communicator:
         # Take chat box text and write it to channel and log.
         chat_input = GUI.CHAT_ENTRY.text()
         if (chat_input != ""):
-            print(Communicator.ACTIVE_CHANNEL)
             if(Communicator.ACTIVE_CHANNEL):
                 log = Communicator.USER + ": " + chat_input
                 SSH.write_to_log(Communicator.ACTIVE_LOG_PATH, log, 

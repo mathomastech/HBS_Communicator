@@ -27,6 +27,8 @@ class GUI():
     DAYZ_CMD = ""
     LOG_CMD = ""
     MP_CMD = ""
+    CS_CMD = ""
+    WS_CMD = ""
     ADM = ""
     BETA = ""
     
@@ -39,8 +41,11 @@ class GUI():
     WOW = ""
     MC = ""
     DAYZ = ""
+    CS = ""
+    WS = ""
     SM = ""
-
+    RAFFLE = ""
+    
     #Configurations
     LOGS = Config.LOGS
     LOG_PATH = Config.LOG_PATH
@@ -60,7 +65,7 @@ class GUI():
     ROSTER_GROUP_NAME = 9
     ROSTER = 10
     CHANNELS = [
-        ['Central Command',(LOG_PATH + 'centcom.txt'),(),(CENTCOM),[9,10],(""),(LOGS + 'centcom.txt'),('centcom.txt'),('command'),(["Central Command"]),([])],
+        ['Central Command',(LOG_PATH + 'centcom.txt'),(),(CENTCOM),[9],(""),(LOGS + 'centcom.txt'),('centcom.txt'),('command'),(["Central Command"]),([])],
         ['Operations Command',(LOG_PATH + 'operationsCommand.txt'),(),(OP_CMD),[9,10],(""),(LOGS + 'operationsCommand.txt'),('operationsCommand.txt'),('command'),(["Operations Officer","Brigade Officer"]),([])],
         ['Call of Duty Command',(LOG_PATH + 'codCommand.txt'),(),(COD_CMD),[9,10,57],(""),(LOGS + 'codCommand.txt'),('codCommand.txt'),('command'),(["Call of Duty Ghosts", "Call of Duty Black Ops 2"]),([])],
         ['Titanfall Command',(LOG_PATH + 'tfCommand.txt'),(),(TF_CMD),[9,10,54],(""),(LOGS + 'tfCommand.txt'),('tfCommand.txt'),('command'),(["TitanFall"]),([])],
@@ -69,7 +74,7 @@ class GUI():
         ['World of Warcraft Command',(LOG_PATH + 'wowCommand.txt'),(),(WOW_CMD),[9,10,63],(""),(LOGS + 'wowCommand.txt'),('wowCommand.txt'),('command'),(["World of Warcraft"]),([])],
         ['Minecraft Command',(LOG_PATH + 'mcCommand.txt'),(),(MC_CMD),[9,10,59],(""),(LOGS + 'mcCommand.txt'),('mcCommand.txt'),('command'),(["Minecraft"]),([])],
         ['DayZ Command',(LOG_PATH + 'dayzCommand.txt'),(),(DAYZ_CMD),[9,10,11],(""),(LOGS + 'dayzCommand.txt'),('dayzCommand.txt'),('command'),(["DayZ"]),([])],
-        ['Logistics Command',(LOG_PATH + 'logisticsCommand.txt'),(),(LOG_CMD),[9,10,58],(""),(LOGS + 'logisticsCommand.txt'),('logisticsCommand.txt'),('command'),(["Logistics Officer"]),([])],
+        ['Logistics Command',(LOG_PATH + 'logisticsCommand.txt'),(),(LOG_CMD),[9,10,18,56,58,68],(""),(LOGS + 'logisticsCommand.txt'),('logisticsCommand.txt'),('command'),(["Logistics Officer","MP Commanding Officer","MP Executive Officer","Director of Admissions","Chief of Staff","Awards Director","Regulations Officer","General Administrative Officer","Director of Financial Affairs","Director of Entertainment","Director of Social Media","Editor in Chief"]),([])],
         ['Military Police',(LOG_PATH + 'mp.txt'),(),(MP_CMD),[9,10,58,17,18],(""),(LOGS + 'mp.txt'),('mp.txt'),('command'),(["Military Police Department"]),([])],
         ['Admissions',(LOG_PATH + 'admissions.txt'),(),(ADM),[9,10,58,16,56],(""),(LOGS + 'admissions.txt'),('admissions.txt'),('command'),(["Admissions Department"]),([])],
         ['Beta Test',(LOG_PATH + 'betaTest.txt'),(),(BETA),([]),(""),(LOGS + 'betaTest.txt'),('betaTest.txt'),('command'),(["Beta Test"]),([])],
@@ -81,5 +86,10 @@ class GUI():
         ['World of Warcraft',(LOG_PATH + 'wow.txt'),([]),(WOW),(),(""),(LOGS + 'wow.txt'),('wow.txt'),('general'),(["World of Warcraft"]),([])],
         ['Minecraft',(LOG_PATH + 'mc.txt'),(),(MC),([]),(""),(LOGS + 'mc.txt'),('mc.txt'),('general'),(["Minecraft"]),([])],
         ['DayZ',(LOG_PATH + 'dayz.txt'),(),(DAYZ),([]),(""),(LOGS + 'dayz.txt'),('dayz.txt'),('general'),(["DayZ"]),([])],
-        ['Social Media',(LOG_PATH + 'sm.txt'),(),(SM),([]),(""),(LOGS + 'sm.txt'),('sm.txt'),('general'),(["Director of Social Media"]),([])]
+        ['Social Media',(LOG_PATH + 'sm.txt'),(),(SM),([]),(""),(LOGS + 'sm.txt'),('sm.txt'),('general'),(["SocO Officer","Director of Social Media"]),([])],
+        ['Raffle',(LOG_PATH + 'raffle.txt'),(),(RAFFLE),([]),(""),(LOGS + 'raffle.txt'),('raffle.txt'),('general'),([]),([])],
+        ['Counter Strike Command',(LOG_PATH + 'csCommand.txt'),(),(CS_CMD),([]),(""),(LOGS + 'csCommand.txt'),('csCommand.txt'),('command'),([]),([])],
+        ['Counter Strike',(LOG_PATH + 'cs.txt'),(),(CS),([]),(""),(LOGS + 'cs.txt'),('cs.txt'),('general'),([]),([])],
+        ['Wildstar Command',(LOG_PATH + 'wsCommand.txt'),(),(WS_CMD),([]),(""),(LOGS + 'ws.txt'),('wsCommand.txt'),('command'),([]),([])],
+        ['Wildstar',(LOG_PATH + 'ws.txt'),(),(WS),([]),(""),(LOGS + 'ws.txt'),('ws.txt'),('general'),([]),([])]
         ]

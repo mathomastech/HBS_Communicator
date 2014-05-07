@@ -80,7 +80,12 @@ class Handler(QtGui.QMainWindow):
         GUI.CHANNELS[19][GUI.GUI_ELEMENT] = com.mcGeneralButton
         GUI.CHANNELS[20][GUI.GUI_ELEMENT] = com.dayzGeneralButton
         GUI.CHANNELS[21][GUI.GUI_ELEMENT] = com.socialMediaButton
-    
+        GUI.CHANNELS[22][GUI.GUI_ELEMENT] = com.raffleButton
+        GUI.CHANNELS[23][GUI.GUI_ELEMENT] = com.csCommandButton
+        GUI.CHANNELS[24][GUI.GUI_ELEMENT] = com.csButton
+        GUI.CHANNELS[25][GUI.GUI_ELEMENT] = com.wsCommandButton
+        GUI.CHANNELS[26][GUI.GUI_ELEMENT] = com.wsButton
+
         if os.path.exists('credentials.txt'):
             f = open('credentials.txt', 'r')
             username = f.readline()
@@ -161,6 +166,12 @@ class Handler(QtGui.QMainWindow):
     
     def on_dayzCommandButton_clicked(self, *args):
         Communicator.switch_channel("DayZ Command")
+    
+    def on_csCommandButton_clicked(self, *args):
+        Communicator.switch_channel("Counter Strike Command")
+    
+    def on_wsCommandButton_clicked(self, *args):
+        Communicator.switch_channel("Wildstar Command")
    
     def on_logisticsCommandButton_clicked(self, *args):
         Communicator.switch_channel("Logistics Command")
@@ -178,7 +189,7 @@ class Handler(QtGui.QMainWindow):
     
     def on_generalButton_clicked(self, *args):
         Communicator.switch_channel("General")
-
+    
     def on_codGeneralButton_clicked(self, *args):
         Communicator.switch_channel("Call of Duty")
 
@@ -199,6 +210,16 @@ class Handler(QtGui.QMainWindow):
 
     def on_dayzGeneralButton_clicked(self, *args):
         Communicator.switch_channel("DayZ")
+    
+    def on_csButton_clicked(self, *args):
+        Communicator.switch_channel("Counter Strike")
+    
+    def on_wsButton_clicked(self, *args):
+        Communicator.switch_channel("Wildstar")
 
     def on_socialMediaButton_clicked(self, *args):
         Communicator.switch_channel("Social Media")
+    
+    def on_raffleButton_clicked(self, *args):
+        Communicator.switch_channel("Raffle")
+
