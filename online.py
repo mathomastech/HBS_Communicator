@@ -17,7 +17,7 @@ class Online():
 
     def remove():
         ts = time.time()
-        ts = ts-3
+        ts = ts-5
         removed = []
         for i in range(0,len(Online.users)):
             if Online.users[i][1] < ts:
