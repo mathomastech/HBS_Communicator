@@ -5,7 +5,7 @@ class Roster:
     DB = ""
     ROSTER = []
     SORT_ORDER = ['Commander in Chief','Deputy Commander in Chief','General of the Army','Operations Officer', 'Logistics Officer',
-            'Technical Expert Command Officer','Social Officer','Regulations Officer','General Administrative Officer',
+            'Technical Expert Command Officer','SocO Officer','Regulations Officer','General Administrative Officer',
             'Brigade Officer','Chief of Staff','Directory of Financial Affairs','Director of Admissions','Director of Social Media',
             'Awards Director','MP Commanding Officer', 'Editor In Chief','MP Executive Officer','Senior Admissions Officer',
             'Titanfall Commanding Officer','Titanfall Executive Officer','Titanfall Chief Training Officer','CoD Commanding Officer',
