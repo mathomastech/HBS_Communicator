@@ -65,9 +65,9 @@ class Communicator:
                 f.close()
     
     def load_local_rosters():
-        Communicator.ROSTER = SSH.get_all_rosters(Communicator.TCP_HOST, Communicator.TCP_PORT)
+        #Communicator.ROSTER = SSH.get_all_rosters(Communicator.TCP_HOST, Communicator.TCP_PORT)
         # Load rosters from database into application.
-        #Communicator.ROSTER = Roster.get_roster()
+        Communicator.ROSTER = Roster.get_roster()
 
         for i in range(0,len(Communicator.ROSTER)):
             for j in range(0,len(GUI.CHANNELS)):

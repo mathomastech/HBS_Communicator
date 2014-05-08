@@ -83,8 +83,8 @@ class Handler(QtGui.QMainWindow):
         GUI.CHANNELS[22][GUI.GUI_ELEMENT] = com.raffleButton
         GUI.CHANNELS[23][GUI.GUI_ELEMENT] = com.csCommandButton
         GUI.CHANNELS[24][GUI.GUI_ELEMENT] = com.csButton
-        GUI.CHANNELS[25][GUI.GUI_ELEMENT] = com.wsCommandButton
-        GUI.CHANNELS[26][GUI.GUI_ELEMENT] = com.wsButton
+        #GUI.CHANNELS[25][GUI.GUI_ELEMENT] = com.wsCommandButton
+        #GUI.CHANNELS[26][GUI.GUI_ELEMENT] = com.wsButton
 
         if os.path.exists('credentials.txt'):
             f = open('credentials.txt', 'r')

@@ -67,7 +67,7 @@ class GUI():
     CHANNELS = [
         ['Central Command',(LOG_PATH + 'centcom.txt'),(),(CENTCOM),[9],(""),(LOGS + 'centcom.txt'),('centcom.txt'),('command'),(["Central Command"]),([])],
         ['Operations Command',(LOG_PATH + 'operationsCommand.txt'),(),(OP_CMD),[9,10],(""),(LOGS + 'operationsCommand.txt'),('operationsCommand.txt'),('command'),(["Operations Officer","Brigade Officer"]),([])],
-        ['Call of Duty Command',(LOG_PATH + 'codCommand.txt'),(),(COD_CMD),[9,10,57],(""),(LOGS + 'codCommand.txt'),('codCommand.txt'),('command'),(["Call of Duty Ghosts", "Call of Duty Black Ops 2"]),([])],
+        ['Call of Duty Command',(LOG_PATH + 'codCommand.txt'),(),(COD_CMD),[9,10,57],(""),(LOGS + 'codCommand.txt'),('codCommand.txt'),('command'),(["Call of Duty Ghosts"]),([])],
         ['Titanfall Command',(LOG_PATH + 'tfCommand.txt'),(),(TF_CMD),[9,10,54],(""),(LOGS + 'tfCommand.txt'),('tfCommand.txt'),('command'),(["TitanFall"]),([])],
         ['League of Legends Command',(LOG_PATH + 'lolCommand.txt'),(),(LOL_CMD),[9,10,67],(""),(LOGS + 'lolCommand.txt'),('lolCommand.txt'),('command'),(["League of Legends"]),([])],
         ['Guild Wars Command',(LOG_PATH + 'gwCommand.txt'),(),(GW_CMD),[9,10,66],(""),(LOGS + 'gwCommand.txt'),('gwCommand.txt'),('command'),(["Guild Wars 2"]),([])],
@@ -88,8 +88,8 @@ class GUI():
         ['DayZ',(LOG_PATH + 'dayz.txt'),(),(DAYZ),([]),(""),(LOGS + 'dayz.txt'),('dayz.txt'),('general'),(["DayZ"]),([])],
         ['Social Media',(LOG_PATH + 'sm.txt'),(),(SM),([]),(""),(LOGS + 'sm.txt'),('sm.txt'),('general'),(["SocO Officer","Director of Social Media"]),([])],
         ['Raffle',(LOG_PATH + 'raffle.txt'),(),(RAFFLE),([]),(""),(LOGS + 'raffle.txt'),('raffle.txt'),('general'),([]),([])],
-        ['Counter Strike Command',(LOG_PATH + 'csCommand.txt'),(),(CS_CMD),([]),(""),(LOGS + 'csCommand.txt'),('csCommand.txt'),('command'),([]),([])],
-        ['Counter Strike',(LOG_PATH + 'cs.txt'),(),(CS),([]),(""),(LOGS + 'cs.txt'),('cs.txt'),('general'),([]),([])],
-        ['Wildstar Command',(LOG_PATH + 'wsCommand.txt'),(),(WS_CMD),([]),(""),(LOGS + 'ws.txt'),('wsCommand.txt'),('command'),([]),([])],
-        ['Wildstar',(LOG_PATH + 'ws.txt'),(),(WS),([]),(""),(LOGS + 'ws.txt'),('ws.txt'),('general'),([]),([])]
+        ['Counter Strike Command',(LOG_PATH + 'csCommand.txt'),(),(CS_CMD),([]),(""),(LOGS + 'csCommand.txt'),('csCommand.txt'),('command'),(["Counterstrike Global Offense"]),([])],
+        ['Counter Strike',(LOG_PATH + 'cs.txt'),(),(CS),([]),(""),(LOGS + 'cs.txt'),('cs.txt'),('general'),(["Counter Strike Global Offense"]),([])]#,
+        #['Wildstar Command',(LOG_PATH + 'wsCommand.txt'),(),(WS_CMD),([]),(""),(LOGS + 'wsCommand.txt'),('wsCommand.txt'),('command'),(["Wildstar"]),([])],
+        #['Wildstar',(LOG_PATH + 'ws.txt'),(),(WS),([]),(""),(LOGS + 'ws.txt'),('ws.txt'),('general'),(["Wildstar"]),([])]
         ]
