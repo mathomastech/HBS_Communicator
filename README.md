@@ -6,21 +6,6 @@ Crossplatform communicator app for the Hellbound Soldiers gaming community.
 
 -- Connects to a remote vbulletin database
 
--- Connects to a remote server via ssh
+-- Connects to a remote server via TCP and SSH
 
 -- Currently under development. Beta version has been released. 1.0 is under development
-
-
-Required Features and Fixes for 1.0
-
--- Improved performance and bug fixes to the Auto Refresh and Notify features
-
--- Remember Login
-
--- Bugs
-
--- In app upgrading
-
-Optional:
-
--- Admin Panel (?)
