@@ -621,7 +621,11 @@ p, li { white-space: pre-wrap; }
           <x>-1</x>
           <y>6</y>
           <width>146</width>
+<<<<<<< HEAD
           <height>440</height>
+=======
+          <height>381</height>
+>>>>>>> d522c21398dc9573c137a49aa634558a9cd97e64
          </rect>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -792,7 +796,35 @@ p, li { white-space: pre-wrap; }
          </item>
         </layout>
        </widget>
+<<<<<<< HEAD
       </widget>
+=======
+      </item>
+     </layout>
+    </item>
+    <item row="4" column="0" colspan="2">
+     <widget class="QLabel" name="announcementLabel">
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="text">
+       <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Cantarell'; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;HBS Communicator Version 0.9 - Beta&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Please report all bugs and features &lt;a href=&quot;http://hellboundsoldiers.org/forums/forumdisplay.php?150-HBS-COMMUNICATOR&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;here&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="indent">
+       <number>0</number>
+      </property>
+      <property name="openExternalLinks">
+       <bool>true</bool>
+      </property>
+>>>>>>> d522c21398dc9573c137a49aa634558a9cd97e64
      </widget>
     </item>
    </layout>

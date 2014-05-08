@@ -2,7 +2,11 @@
 
 # Form implementation generated from reading ui file 'ui_communicator_windows.ui'
 #
+<<<<<<< HEAD
 # Created: Wed May  7 15:53:02 2014
+=======
+# Created: Wed May  7 16:56:20 2014
+>>>>>>> d522c21398dc9573c137a49aa634558a9cd97e64
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -269,7 +273,11 @@ class Ui_hbsCommunicator(object):
         self.generalTab = QtGui.QWidget()
         self.generalTab.setObjectName(_fromUtf8("generalTab"))
         self.layoutWidget_2 = QtGui.QWidget(self.generalTab)
+<<<<<<< HEAD
         self.layoutWidget_2.setGeometry(QtCore.QRect(-1, 6, 146, 440))
+=======
+        self.layoutWidget_2.setGeometry(QtCore.QRect(-1, 6, 146, 381))
+>>>>>>> d522c21398dc9573c137a49aa634558a9cd97e64
         self.layoutWidget_2.setObjectName(_fromUtf8("layoutWidget_2"))
         self.verticalLayout_3 = QtGui.QVBoxLayout(self.layoutWidget_2)
         self.verticalLayout_3.setSpacing(6)
@@ -430,4 +438,23 @@ class Ui_hbsCommunicator(object):
         self.socialMediaButton.setText(_translate("hbsCommunicator", "Social Media", None))
         self.raffleButton.setText(_translate("hbsCommunicator", "Raffle", None))
         self.channelNotebook.setTabText(self.channelNotebook.indexOf(self.generalTab), _translate("hbsCommunicator", "General", None))
+<<<<<<< HEAD
+=======
+        self.passwordLabel.setText(_translate("hbsCommunicator", "Password:", None))
+        self.usernameLabel.setText(_translate("hbsCommunicator", "Username:", None))
+        self.loginButton.setText(_translate("hbsCommunicator", "Login", None))
+        self.loginStatusLabel.setText(_translate("hbsCommunicator", "Hint: Same as forum", None))
+        self.rememberLoginCheck.setText(_translate("hbsCommunicator", "Remember Login", None))
+        self.contentNotebook.setTabText(self.contentNotebook.indexOf(self.channelTab), _translate("hbsCommunicator", "Channel", None))
+        self.contentNotebook.setTabText(self.contentNotebook.indexOf(self.rosterTab), _translate("hbsCommunicator", "Roster", None))
+        self.onlineLabel.setText(_translate("hbsCommunicator", "Online", None))
+        self.refreshButton.setText(_translate("hbsCommunicator", "Refresh", None))
+        self.submitButton.setText(_translate("hbsCommunicator", "Submit", None))
+        self.announcementLabel.setText(_translate("hbsCommunicator", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'Cantarell\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">HBS Communicator Version 0.9 - Beta</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Please report all bugs and features <a href=\"http://hellboundsoldiers.org/forums/forumdisplay.php?150-HBS-COMMUNICATOR\"><span style=\" text-decoration: underline; color:#0000ff;\">here</span></a></p></body></html>", None))
+>>>>>>> d522c21398dc9573c137a49aa634558a9cd97e64
 
