@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1007</width>
-    <height>807</height>
+    <width>1005</width>
+    <height>648</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -77,7 +77,7 @@
               <x>-1</x>
               <y>-1</y>
               <width>681</width>
-              <height>391</height>
+              <height>451</height>
              </rect>
             </property>
             <property name="acceptDrops">
@@ -222,8 +222,8 @@
              <rect>
               <x>-1</x>
               <y>-1</y>
-              <width>621</width>
-              <height>391</height>
+              <width>681</width>
+              <height>451</height>
              </rect>
             </property>
             <property name="readOnly">
@@ -618,7 +618,7 @@ p, li { white-space: pre-wrap; }
        <widget class="QWidget" name="layoutWidget_2">
         <property name="geometry">
          <rect>
-          <x>-1</x>
+          <x>-5</x>
           <y>6</y>
           <width>146</width>
           <height>440</height>
@@ -802,8 +802,8 @@ p, li { white-space: pre-wrap; }
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1007</width>
-     <height>27</height>
+     <width>1005</width>
+     <height>21</height>
     </rect>
    </property>
   </widget>
