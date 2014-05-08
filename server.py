@@ -5,7 +5,6 @@ from roster import Roster
 class Server(socketserver.BaseRequestHandler):
     def handle(self):
         # self.request is the TCP socket connected to the client
-        time.sleep(.2)
         self.data = str(self.request.recv(1024),"utf-8")
         self.argv = self.data.rstrip().split(',')
         
