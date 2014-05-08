@@ -1,13 +1,15 @@
 Version 0.9 Beta - Changelog
 
 * Rosters!
+* Added channels for Counter Strike, Wildstar, and Raffles
 * Command and General Tabs now indicate if there are unread messages.
 * Fixed bug where posts with a quotation mark (") would not log correctly
 * Fixed bug where channels that individuals did not have access to would still light up
 * Converted several server conections over to TCP for performance improvements
 * Improved performance of the "Who's Online" feature
-* Various bug fixes
+* Dozens of small bug fixes
 
 Notes:
 If you are running 0.8, the Who's online (and other) feature will NOT work. I have
 restructured the way it works on the server making 0.8 and 0.9 not compatible.
+Please Upgrade immediately.
