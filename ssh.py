@@ -106,6 +106,7 @@ class SSH():
             # Create string to be sent to server
             sock.sendall(bytes(data + "\n", "utf-8"))
             received = str(sock.recv(8192),"utf-8")
+            print(received)
         finally:
             sock.close()
 
@@ -114,6 +115,7 @@ class SSH():
             for i in range(0,len(temp_roster)):
                 roster.append(temp_roster[i].split(','))
             roster.pop(len(roster)-1)
+            print(roster)
         return roster
 
     def whos_online(tcp_host, tcp_port, online_users, user):
