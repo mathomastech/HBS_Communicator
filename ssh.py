@@ -72,6 +72,7 @@ class SSH():
         delta = []
         prefix = "get_all_logs"
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        
         try:
             sock.connect((tcp_host, tcp_port))
             data = prefix
@@ -93,6 +94,8 @@ class SSH():
                     f.close()
             # Return any updates that have occurred
             return delta
+        except ConnectionRefusedError:
+            pass
         finally:
             sock.close()
    
@@ -106,7 +109,8 @@ class SSH():
             # Create string to be sent to server
             sock.sendall(bytes(data + "\n", "utf-8"))
             received = str(sock.recv(8192),"utf-8")
-            print(received)
+        except ConnectionRefusedError:
+            pass
         finally:
             sock.close()
 
@@ -133,6 +137,8 @@ class SSH():
             online = received.rstrip().split(',')
             online.pop(len(online)-1)
             return online
+        except ConnectionRefusedError:
+            pass
         finally:
             sock.close()
 
@@ -144,5 +150,7 @@ class SSH():
             # Create string to be sent to server
             data = prefix + "," + log_path + "," + log
             sock.sendall(bytes(data + "\n", "utf-8"))
+        except ConnectionRefusedError:
+            pass
         finally:
             sock.close()

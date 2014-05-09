@@ -23,7 +23,7 @@ class Worker(QtCore.QThread):
         if(Communicator.ACTIVE_LOG_PATH and
             Communicator.ACTIVE_LOG_PATH != "logs/welcomeMessage.txt"):
             delta = SSH.get_all_logs(Communicator.USER, Communicator.TCP_HOST, Communicator.TCP_PORT)
-            if delta:
+            if delta and delta != None:
                 Communicator.DELTA.append(delta)
                 self.channel_notification.emit()
                 for i in range(0,len(delta)):
@@ -33,7 +33,7 @@ class Worker(QtCore.QThread):
     
     def update_online_users(self): 
         users = SSH.whos_online(Communicator.TCP_HOST, Communicator.TCP_PORT, Communicator.ONLINE_USERS, Communicator.USER)
-        if users != Communicator.ONLINE_USERS:
+        if users != Communicator.ONLINE_USERS and users != None:
             Communicator.ONLINE_USERS = users
             self.update_online_list.emit()
         return
