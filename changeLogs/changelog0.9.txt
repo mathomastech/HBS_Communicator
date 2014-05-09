@@ -1,3 +1,7 @@
+Version 0.9.1 Beta Patch
+
+* Fixed TCP disconnect issue. Client will automatically reconnect to server when server becomes available.
+
 Version 0.9 Beta - Changelog
 
 * Rosters!
