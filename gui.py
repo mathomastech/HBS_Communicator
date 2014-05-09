@@ -88,7 +88,7 @@ class GUI():
         ['DayZ',(LOG_PATH + 'dayz.txt'),(),(DAYZ),([]),(""),(LOGS + 'dayz.txt'),('dayz.txt'),('general'),(["DayZ"]),([])],
         ['Social Media',(LOG_PATH + 'sm.txt'),(),(SM),([]),(""),(LOGS + 'sm.txt'),('sm.txt'),('general'),(["SocO Officer","Director of Social Media"]),([])],
         ['Raffle',(LOG_PATH + 'raffle.txt'),(),(RAFFLE),([]),(""),(LOGS + 'raffle.txt'),('raffle.txt'),('general'),([]),([])],
-        ['Counter Strike Command',(LOG_PATH + 'csCommand.txt'),(),(CS_CMD),([]),(""),(LOGS + 'csCommand.txt'),('csCommand.txt'),('command'),(["Counterstrike Global Offense"]),([])],
+        ['Counter Strike Command',(LOG_PATH + 'csCommand.txt'),(),(CS_CMD),([9,10]),(""),(LOGS + 'csCommand.txt'),('csCommand.txt'),('command'),(["Counterstrike Global Offense"]),([])],
         ['Counter Strike',(LOG_PATH + 'cs.txt'),(),(CS),([]),(""),(LOGS + 'cs.txt'),('cs.txt'),('general'),(["Counter Strike Global Offense"]),([])]#,
         #['Wildstar Command',(LOG_PATH + 'wsCommand.txt'),(),(WS_CMD),([]),(""),(LOGS + 'wsCommand.txt'),('wsCommand.txt'),('command'),(["Wildstar"]),([])],
         #['Wildstar',(LOG_PATH + 'ws.txt'),(),(WS),([]),(""),(LOGS + 'ws.txt'),('ws.txt'),('general'),(["Wildstar"]),([])]
