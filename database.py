@@ -40,14 +40,19 @@ class Database:
 
     def get_user_permissions(uname):
         cur = Database.DB.cursor()
-        query = ("SELECT usergroupid, membergroupids FROM gbgraphi_vbulletin.user WHERE user.username = '" + uname + "'")
+        query = ("select game.gname, rank.rank \
+                from gbgraphi_vbulletin.clan_games as game, gbgraphi_vbulletin.clan_members_ranks as rank, gbgraphi_vbulletin.user as user, gbgraphi_vbulletin.clan_members_members as member \
+                where user.userid = member.userid \
+                and rank.rid = member.rank \
+                and member.gid = game.gid \
+                and user.username = '" + uname + "'")
         cur.execute(query)
-        for (usergroupid, membergroupids) in cur:
-            perm = "{},{}".format(usergroupid,membergroupids)
-            permissionsTemp = perm.split(',')
-            permissions = [int(x) for x in permissionsTemp]
+        
+        for (gname, rank) in cur:
+            perm = "{},{}".format(gname,rank)
+            permissions = perm.split(',')
             return permissions
-    
+        
     def get_channel_permissions():
         Database.establish_connection()
         cur = Database.DB.cursor()

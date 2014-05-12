@@ -115,6 +115,10 @@ class SSH():
             received = str(sock.recv(8192),"utf-8")
         except ConnectionRefusedError:
             pass
+        except TimeoutError:
+            pass
+        except socket.gaierror:
+            pass
         finally:
             sock.close()
 
