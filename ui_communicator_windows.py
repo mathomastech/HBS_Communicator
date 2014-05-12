@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui_communicator_windows.ui'
 #
-# Created: Wed May  7 20:41:38 2014
+# Created: Sat May 10 09:56:20 2014
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -27,7 +27,7 @@ class Ui_hbsCommunicator(object):
     def setupUi(self, hbsCommunicator):
         hbsCommunicator.setObjectName(_fromUtf8("hbsCommunicator"))
         hbsCommunicator.setEnabled(True)
-        hbsCommunicator.resize(1005, 648)
+        hbsCommunicator.resize(1008, 648)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -340,7 +340,7 @@ class Ui_hbsCommunicator(object):
         self.formLayout.setWidget(2, QtGui.QFormLayout.LabelRole, self.channelNotebook)
         hbsCommunicator.setCentralWidget(self.centralwidget)
         self.menubar = QtGui.QMenuBar(hbsCommunicator)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 1005, 21))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 1008, 21))
         self.menubar.setObjectName(_fromUtf8("menubar"))
         hbsCommunicator.setMenuBar(self.menubar)
         self.statusbar = QtGui.QStatusBar(hbsCommunicator)
@@ -398,9 +398,9 @@ class Ui_hbsCommunicator(object):
         self.announcementLabel.setText(_translate("hbsCommunicator", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'Cantarell\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">HBS Communicator Version 0.9 - Beta</p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Please report all bugs and features <a href=\"http://hellboundsoldiers.org/forums/forumdisplay.php?150-HBS-COMMUNICATOR\"><span style=\" text-decoration: underline; color:#0000ff;\">here</span></a></p></body></html>", None))
+"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Cantarell\'; font-size:11pt;\">HBS Communicator Version 0.9.2 - Beta</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Cantarell\'; font-size:11pt;\">Please report all bugs and features </span><a href=\"http://hellboundsoldiers.org/forums/forumdisplay.php?150-HBS-COMMUNICATOR\"><span style=\" font-family:\'Cantarell\'; font-size:11pt; text-decoration: underline; color:#0000ff;\">here</span></a></p></body></html>", None))
         self.centralCommandButton.setText(_translate("hbsCommunicator", "Central Command", None))
         self.operationsCommandButton.setText(_translate("hbsCommunicator", "Operations", None))
         self.logisticsCommandButton.setText(_translate("hbsCommunicator", "Logistics", None))

@@ -96,6 +96,10 @@ class SSH():
             return delta
         except ConnectionRefusedError:
             pass
+        except TimeoutError:
+            pass
+        except socket.gaierror:
+            pass
         finally:
             sock.close()
    
@@ -139,6 +143,10 @@ class SSH():
             return online
         except ConnectionRefusedError:
             pass
+        except TimeoutError:
+            pass
+        except socket.gaierror:
+            pass
         finally:
             sock.close()
 
@@ -151,6 +159,10 @@ class SSH():
             data = prefix + "," + log_path + "," + log
             sock.sendall(bytes(data + "\n", "utf-8"))
         except ConnectionRefusedError:
+            pass
+        except TimeoutError:
+            pass
+        except socket.gaierror:
             pass
         finally:
             sock.close()

@@ -8,7 +8,7 @@ if sys.platform == "win32":
 
 setup(
         name = "Marc Thomas",
-        version = "0.9",
+        version = "0.9.2",
         description = "Clan HBS Communicator App",
         options = {"build_exe" : {"includes" : "atexit" }},
         executables = [Executable("communicator.py", base = base)]
