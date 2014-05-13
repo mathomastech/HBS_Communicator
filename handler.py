@@ -8,17 +8,14 @@ from communicator import Communicator
 from worker import Worker
 
 class Handler(QtGui.QMainWindow):
+    button_map = QtCore.pyqtSignal() 
+    signalMapper = QtCore.QSignalMapper()
 
     def __init__(self):
         super(Handler,self).__init__()
     # Handler Class Level Variables
         self.USERNAME_ENTRY = ""
         self.PASSWORD_ENTRY = ""
-        self.refresh_signal = QtCore.pyqtSignal()
-        self.channel_notification = QtCore.pyqtSignal()
-        self.update_online_list = QtCore.pyqtSignal()
-        self.signalMapper = QtCore.QSignalMapper()
-        self.button_map = QtCore.pyqtSignal() 
     
         # Threading
         QtCore.QThread.currentThread().setObjectName("MAIN")
@@ -36,6 +33,80 @@ class Handler(QtGui.QMainWindow):
         self.com.setupUi(self)
         self.USERNAME_ENTRY = self.com.usernameEntry
         self.PASSWORD_ENTRY = self.com.passwordEntry
+       
+        self.connect_elements()
+        self.connect_channels()
+        #self.generate_channels()
+
+        if os.path.exists('credentials.txt'):
+            f = open('credentials.txt', 'r')
+            username = f.readline()
+            password = f.readline()
+            Communicator.REMEMBER_LOGIN = True
+            GUI.REMEMBER_LOGIN_CHECK.setChecked(True)            
+            GUI.USERNAME_ENTRY.setText(username)
+            GUI.PASSWORD_ENTRY.setText(password) 
+       
+        # Set the application icon
+        self.app_icon = QtGui.QIcon()
+        self.app_icon.addFile('icons/comms16x16.ico', QtCore.QSize(16,16))
+        self.app_icon.addFile('icons/comms24x24.ico', QtCore.QSize(24,24))
+        self.app_icon.addFile('icons/comms32x32.ico', QtCore.QSize(32,32))
+        self.app_icon.addFile('icons/comms48x48.ico', QtCore.QSize(48,48))
+        self.app_icon.addFile('icons/comms256x256.ico', QtCore.QSize(256,256))
+        
+        self.setWindowIcon(self.app_icon)
+        self.show()
+   
+
+    def generate_channels(self): 
+        
+        for i in range(0,len(GUI.CHANNELS)):
+            self.button = QtGui.QPushButton(GUI.CHANNELS[i][GUI.CHANNEL_NAME])
+            self.signalMapper.setMapping(self.button, GUI.CHANNELS[i][GUI.CHANNEL_NAME])  
+            self.button.clicked.connect(self.signalMapper.map)
+            if GUI.CHANNELS[i][GUI.CHANNEL_GROUP] == "command":
+                self.com.commandLayout.addWidget(self.button)
+            elif GUI.CHANNELS[i][GUI.CHANNEL_GROUP] == "general": 
+                self.com.generalLayout.addWidget(self.button)
+
+        self.signalMapper.mapped.connect(self.button_map)  
+        self.button_map.connect(self.channel_clicked)
+
+ 
+    def channel_clicked(self, *args):
+        print("I got here!")
+        print(args)
+
+    def on_loginButton_pressed(self, *args):
+        username = self.USERNAME_ENTRY.text()
+        password = self.PASSWORD_ENTRY.text()
+        Communicator.login(username,password)
+
+    def on_submitButton_clicked(self, *args):
+        Communicator.write_chat_to_channel()
+
+    def on_chatEntry_returnPressed(self, *args):
+        self.on_submitButton_clicked(self, *args)
+
+    def on_passwordEntry_returnPressed(self, *args):
+        self.on_loginButton_pressed(self, *args)
+    
+    def on_usernameEntry_returnPressed(self, *args):
+        self.on_loginButton_pressed(self, *args)
+
+    #def on_usernameEntry_activate(self, *args):
+    #    Handler.on_loginButton_pressed(self, *args)
+
+    def on_rememberLoginCheck_stateChanged(self, *args):
+        self.flag = args
+        if self.flag[0] == 0:
+            Communicator.REMEMBER_LOGIN = False
+        else:
+            Communicator.REMEMBER_LOGIN = True
+
+
+    def connect_elements(self):
         GUI.CHANNEL_DISPLAY = self.com.channelDisplay
         GUI.CHAT_ENTRY = self.com.chatEntry
         GUI.SUBMIT_BTN = self.com.submitButton
@@ -59,8 +130,14 @@ class Handler(QtGui.QMainWindow):
         # only the notebook as a while.
         GUI.USERNAME_ENTRY.setFocus()
         GUI.CONTENT_NOTEBOOK.setTabEnabled(1, False)
+
+    # =---------------------------------------------------------------------=#
+    #    EVERYTHING FROM HERE DOWN IS BEING REPLACED BY generate_channels    #
+    #                                                                        #
+
+    def connect_channels(self):
+        #This is being replace with generate_channels
         # Command Buttons        
-        
         GUI.CHANNELS[0][GUI.GUI_ELEMENT] = self.com.centralCommandButton
         GUI.CHANNELS[1][GUI.GUI_ELEMENT] = self.com.operationsCommandButton
         GUI.CHANNELS[2][GUI.GUI_ELEMENT] = self.com.codCommandButton 
@@ -90,73 +167,6 @@ class Handler(QtGui.QMainWindow):
         GUI.CHANNELS[24][GUI.GUI_ELEMENT] = self.com.csButton
         #GUI.CHANNELS[25][GUI.GUI_ELEMENT] = self.com.wsCommandButton
         #GUI.CHANNELS[26][GUI.GUI_ELEMENT] = self.com.wsButton
-        
-        #self.generate_channels()
-
-        if os.path.exists('credentials.txt'):
-            f = open('credentials.txt', 'r')
-            username = f.readline()
-            password = f.readline()
-            Communicator.REMEMBER_LOGIN = True
-            GUI.REMEMBER_LOGIN_CHECK.setChecked(True)            
-            GUI.USERNAME_ENTRY.setText(username)
-            GUI.PASSWORD_ENTRY.setText(password) 
-        
-        self.app_icon = QtGui.QIcon()
-        self.app_icon.addFile('icons/comms16x16.ico', QtCore.QSize(16,16))
-        self.app_icon.addFile('icons/comms24x24.ico', QtCore.QSize(24,24))
-        self.app_icon.addFile('icons/comms32x32.ico', QtCore.QSize(32,32))
-        self.app_icon.addFile('icons/comms48x48.ico', QtCore.QSize(48,48))
-        self.app_icon.addFile('icons/comms256x256.ico', QtCore.QSize(256,256))
-        
-        self.setWindowIcon(self.app_icon)
-        self.show()
-   
-
-    def generate_channels(self):
-    
-        for i in range(0,len(GUI.CHANNELS)):
-            self.button = QtGui.QPushButton(GUI.CHANNELS[i][GUI.CHANNEL_NAME])
-            self.signalMapper.setMapping(self.button, GUI.CHANNELS[i][GUI.CHANNEL_NAME])  
-            self.button.clicked.connect(self.signalMapper.map)
-            if GUI.CHANNELS[i][GUI.CHANNEL_GROUP] == "command":
-                self.com.commandLayout.addWidget(self.button)
-            elif GUI.CHANNELS[i][GUI.CHANNEL_GROUP] == "general": 
-                self.com.generalLayout.addWidget(self.button)
-
-        self.signalMapper.mapped.connect(self.button_map)  
-        self.button_map.connect(self.channel_clicked)
-
-    def channel_clicked(channel):
-        print(channel)
-
-    def on_loginButton_pressed(self, *args):
-        username = self.USERNAME_ENTRY.text()
-        password = self.PASSWORD_ENTRY.text()
-        Communicator.login(username,password)
-
-    def on_submitButton_clicked(self, *args):
-        Communicator.write_chat_to_channel()
-
-    def on_chatEntry_returnPressed(self, *args):
-        self.on_submitButton_clicked(self, *args)
-
-    def on_passwordEntry_returnPressed(self, *args):
-        self.on_loginButton_pressed(self, *args)
-    
-    def on_usernameEntry_returnPressed(self, *args):
-        self.on_loginButton_pressed(self, *args)
-
-    #def on_usernameEntry_activate(self, *args):
-    #    Handler.on_loginButton_pressed(self, *args)
-
-    def on_rememberLoginCheck_stateChanged(self, *args):
-        self.flag = args
-        if self.flag[0] == 0:
-            Communicator.REMEMBER_LOGIN = False
-        else:
-            Communicator.REMEMBER_LOGIN = True
-
     # Command Communication Channels
              
     def on_centralCommandButton_clicked(self, *args):
