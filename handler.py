@@ -8,46 +8,50 @@ from communicator import Communicator
 from worker import Worker
 
 class Handler(QtGui.QMainWindow):
-    # Handler Class Level Variables
-    USERNAME_ENTRY = ""
-    PASSWORD_ENTRY = ""
-    refresh_signal = QtCore.pyqtSignal()
-    channel_notification = QtCore.pyqtSignal()
-    update_online_list = QtCore.pyqtSignal()
-    # Threading
-    QtCore.QThread.currentThread().setObjectName("MAIN")
-    thread = QtCore.QThread()
-    thread.name = "auto_refresh"
-   
-    worker = Worker()
-    worker.moveToThread(thread)
-    worker.start()
-    worker.refresh_signal.connect(Communicator.update_active_channel)
-    worker.channel_notification.connect(Communicator.update_selected_channels)
-    worker.update_online_list.connect(Communicator.online_list)
 
     def __init__(self):
         super(Handler,self).__init__()
-        com=Ui_hbsCommunicator()
-        com.setupUi(self)
-        Handler.USERNAME_ENTRY = com.usernameEntry
-        Handler.PASSWORD_ENTRY = com.passwordEntry
-        GUI.CHANNEL_DISPLAY = com.channelDisplay
-        GUI.CHAT_ENTRY = com.chatEntry
-        GUI.SUBMIT_BTN = com.submitButton
-        GUI.ROSTER_DISPLAY = com.rosterDisplay
-        GUI.LOGIN_STATUS_LABEL = com.loginStatusLabel
-        GUI.USER_BTN = com.userButton
-        GUI.REFRESH_BUTTON = com.refreshButton        
-        GUI.CHANNEL_NOTEBOOK = com.channelNotebook
-        GUI.CONTENT_NOTEBOOK = com.contentNotebook
-        GUI.ANNOUNCEMENT_LABEL = com.announcementLabel
-        GUI.LOGIN_GROUP_BOX = com.loginGroupBox
-        GUI.USERNAME_ENTRY = com.usernameEntry 
-        GUI.PASSWORD_ENTRY = com.passwordEntry
-        GUI.REMEMBER_LOGIN_CHECK = com.rememberLoginCheck
-        GUI.ONLINE_LIST = com.onlineList
-        GUI.CHANNEL_TAB = com.channelNotebook
+    # Handler Class Level Variables
+        self.USERNAME_ENTRY = ""
+        self.PASSWORD_ENTRY = ""
+        self.refresh_signal = QtCore.pyqtSignal()
+        self.channel_notification = QtCore.pyqtSignal()
+        self.update_online_list = QtCore.pyqtSignal()
+        self.signalMapper = QtCore.QSignalMapper()
+        self.button_map = QtCore.pyqtSignal() 
+    
+        # Threading
+        QtCore.QThread.currentThread().setObjectName("MAIN")
+        self.thread = QtCore.QThread()
+        self.thread.name = "auto_refresh"
+   
+        self.worker = Worker()
+        self.worker.moveToThread(self.thread)
+        self.worker.start()
+        self.worker.refresh_signal.connect(Communicator.update_active_channel)
+        self.worker.channel_notification.connect(Communicator.update_selected_channels)
+        self.worker.update_online_list.connect(Communicator.online_list)
+    
+        self.com=Ui_hbsCommunicator()
+        self.com.setupUi(self)
+        self.USERNAME_ENTRY = self.com.usernameEntry
+        self.PASSWORD_ENTRY = self.com.passwordEntry
+        GUI.CHANNEL_DISPLAY = self.com.channelDisplay
+        GUI.CHAT_ENTRY = self.com.chatEntry
+        GUI.SUBMIT_BTN = self.com.submitButton
+        GUI.ROSTER_DISPLAY = self.com.rosterDisplay
+        GUI.LOGIN_STATUS_LABEL = self.com.loginStatusLabel
+        GUI.USER_BTN = self.com.userButton
+        GUI.REFRESH_BUTTON = self.com.refreshButton        
+        GUI.CHANNEL_NOTEBOOK = self.com.channelNotebook
+        GUI.CONTENT_NOTEBOOK = self.com.contentNotebook
+        GUI.ANNOUNCEMENT_LABEL = self.com.announcementLabel
+        GUI.LOGIN_GROUP_BOX = self.com.loginGroupBox
+        GUI.USERNAME_ENTRY = self.com.usernameEntry 
+        GUI.PASSWORD_ENTRY = self.com.passwordEntry
+        GUI.REMEMBER_LOGIN_CHECK = self.com.rememberLoginCheck
+        GUI.ONLINE_LIST = self.com.onlineList
+        GUI.CHANNEL_TAB = self.com.channelNotebook
         # Disabled the Roster tab. 
         # Move this line into ui_communicator.py either manually or
         # through QTDesigner somehow. Qt Designer does not appear
@@ -56,35 +60,38 @@ class Handler(QtGui.QMainWindow):
         GUI.USERNAME_ENTRY.setFocus()
         GUI.CONTENT_NOTEBOOK.setTabEnabled(1, False)
         # Command Buttons        
-        GUI.CHANNELS[0][GUI.GUI_ELEMENT] = com.centralCommandButton
-        GUI.CHANNELS[1][GUI.GUI_ELEMENT] = com.operationsCommandButton
-        GUI.CHANNELS[2][GUI.GUI_ELEMENT] = com.codCommandButton 
-        GUI.CHANNELS[3][GUI.GUI_ELEMENT] = com.tfCommandButton
-        GUI.CHANNELS[4][GUI.GUI_ELEMENT] = com.lolCommandButton
-        GUI.CHANNELS[5][GUI.GUI_ELEMENT] = com.gwCommandButton
-        GUI.CHANNELS[6][GUI.GUI_ELEMENT] = com.wowCommandButton
-        GUI.CHANNELS[7][GUI.GUI_ELEMENT] = com.mcCommandButton
-        GUI.CHANNELS[8][GUI.GUI_ELEMENT] = com.dayzCommandButton
-        GUI.CHANNELS[9][GUI.GUI_ELEMENT] = com.logisticsCommandButton
-        GUI.CHANNELS[10][GUI.GUI_ELEMENT] = com.mpCommandButton
-        GUI.CHANNELS[11][GUI.GUI_ELEMENT] = com.admissionsCommandButton
-        GUI.CHANNELS[12][GUI.GUI_ELEMENT] = com.betaTestButton
+        
+        GUI.CHANNELS[0][GUI.GUI_ELEMENT] = self.com.centralCommandButton
+        GUI.CHANNELS[1][GUI.GUI_ELEMENT] = self.com.operationsCommandButton
+        GUI.CHANNELS[2][GUI.GUI_ELEMENT] = self.com.codCommandButton 
+        GUI.CHANNELS[3][GUI.GUI_ELEMENT] = self.com.tfCommandButton
+        GUI.CHANNELS[4][GUI.GUI_ELEMENT] = self.com.lolCommandButton
+        GUI.CHANNELS[5][GUI.GUI_ELEMENT] = self.com.gwCommandButton
+        GUI.CHANNELS[6][GUI.GUI_ELEMENT] = self.com.wowCommandButton
+        GUI.CHANNELS[7][GUI.GUI_ELEMENT] = self.com.mcCommandButton
+        GUI.CHANNELS[8][GUI.GUI_ELEMENT] = self.com.dayzCommandButton
+        GUI.CHANNELS[9][GUI.GUI_ELEMENT] = self.com.logisticsCommandButton
+        GUI.CHANNELS[10][GUI.GUI_ELEMENT] = self.com.mpCommandButton
+        GUI.CHANNELS[11][GUI.GUI_ELEMENT] = self.com.admissionsCommandButton
+        GUI.CHANNELS[12][GUI.GUI_ELEMENT] = self.com.betaTestButton
         
         # General Buttons
-        GUI.CHANNELS[13][GUI.GUI_ELEMENT] = com.generalButton
-        GUI.CHANNELS[14][GUI.GUI_ELEMENT] = com.codGeneralButton
-        GUI.CHANNELS[15][GUI.GUI_ELEMENT] = com.tfGeneralButton
-        GUI.CHANNELS[16][GUI.GUI_ELEMENT] = com.lolGeneralButton
-        GUI.CHANNELS[17][GUI.GUI_ELEMENT] = com.gwGeneralButton
-        GUI.CHANNELS[18][GUI.GUI_ELEMENT] = com.wowGeneralButton
-        GUI.CHANNELS[19][GUI.GUI_ELEMENT] = com.mcGeneralButton
-        GUI.CHANNELS[20][GUI.GUI_ELEMENT] = com.dayzGeneralButton
-        GUI.CHANNELS[21][GUI.GUI_ELEMENT] = com.socialMediaButton
-        GUI.CHANNELS[22][GUI.GUI_ELEMENT] = com.raffleButton
-        GUI.CHANNELS[23][GUI.GUI_ELEMENT] = com.csCommandButton
-        GUI.CHANNELS[24][GUI.GUI_ELEMENT] = com.csButton
-        #GUI.CHANNELS[25][GUI.GUI_ELEMENT] = com.wsCommandButton
-        #GUI.CHANNELS[26][GUI.GUI_ELEMENT] = com.wsButton
+        GUI.CHANNELS[13][GUI.GUI_ELEMENT] = self.com.generalButton
+        GUI.CHANNELS[14][GUI.GUI_ELEMENT] = self.com.codGeneralButton
+        GUI.CHANNELS[15][GUI.GUI_ELEMENT] = self.com.tfGeneralButton
+        GUI.CHANNELS[16][GUI.GUI_ELEMENT] = self.com.lolGeneralButton
+        GUI.CHANNELS[17][GUI.GUI_ELEMENT] = self.com.gwGeneralButton
+        GUI.CHANNELS[18][GUI.GUI_ELEMENT] = self.com.wowGeneralButton
+        GUI.CHANNELS[19][GUI.GUI_ELEMENT] = self.com.mcGeneralButton
+        GUI.CHANNELS[20][GUI.GUI_ELEMENT] = self.com.dayzGeneralButton
+        GUI.CHANNELS[21][GUI.GUI_ELEMENT] = self.com.socialMediaButton
+        GUI.CHANNELS[22][GUI.GUI_ELEMENT] = self.com.raffleButton
+        GUI.CHANNELS[23][GUI.GUI_ELEMENT] = self.com.csCommandButton
+        GUI.CHANNELS[24][GUI.GUI_ELEMENT] = self.com.csButton
+        #GUI.CHANNELS[25][GUI.GUI_ELEMENT] = self.com.wsCommandButton
+        #GUI.CHANNELS[26][GUI.GUI_ELEMENT] = self.com.wsButton
+        
+        #self.generate_channels()
 
         if os.path.exists('credentials.txt'):
             f = open('credentials.txt', 'r')
@@ -95,45 +102,63 @@ class Handler(QtGui.QMainWindow):
             GUI.USERNAME_ENTRY.setText(username)
             GUI.PASSWORD_ENTRY.setText(password) 
         
-        app_icon = QtGui.QIcon()
-        app_icon.addFile('icons/comms16x16.ico', QtCore.QSize(16,16))
-        app_icon.addFile('icons/comms24x24.ico', QtCore.QSize(24,24))
-        app_icon.addFile('icons/comms32x32.ico', QtCore.QSize(32,32))
-        app_icon.addFile('icons/comms48x48.ico', QtCore.QSize(48,48))
-        app_icon.addFile('icons/comms256x256.ico', QtCore.QSize(256,256))
+        self.app_icon = QtGui.QIcon()
+        self.app_icon.addFile('icons/comms16x16.ico', QtCore.QSize(16,16))
+        self.app_icon.addFile('icons/comms24x24.ico', QtCore.QSize(24,24))
+        self.app_icon.addFile('icons/comms32x32.ico', QtCore.QSize(32,32))
+        self.app_icon.addFile('icons/comms48x48.ico', QtCore.QSize(48,48))
+        self.app_icon.addFile('icons/comms256x256.ico', QtCore.QSize(256,256))
         
-        self.setWindowIcon(app_icon)
+        self.setWindowIcon(self.app_icon)
         self.show()
+   
+
+    def generate_channels(self):
     
+        for i in range(0,len(GUI.CHANNELS)):
+            self.button = QtGui.QPushButton(GUI.CHANNELS[i][GUI.CHANNEL_NAME])
+            self.signalMapper.setMapping(self.button, GUI.CHANNELS[i][GUI.CHANNEL_NAME])  
+            self.button.clicked.connect(self.signalMapper.map)
+            if GUI.CHANNELS[i][GUI.CHANNEL_GROUP] == "command":
+                self.com.commandLayout.addWidget(self.button)
+            elif GUI.CHANNELS[i][GUI.CHANNEL_GROUP] == "general": 
+                self.com.generalLayout.addWidget(self.button)
+
+        self.signalMapper.mapped.connect(self.button_map)  
+        self.button_map.connect(self.channel_clicked)
+
+    def channel_clicked(channel):
+        print(channel)
+
     def on_loginButton_pressed(self, *args):
-        username = Handler.USERNAME_ENTRY.text()
-        password = Handler.PASSWORD_ENTRY.text()
+        username = self.USERNAME_ENTRY.text()
+        password = self.PASSWORD_ENTRY.text()
         Communicator.login(username,password)
 
     def on_submitButton_clicked(self, *args):
         Communicator.write_chat_to_channel()
 
     def on_chatEntry_returnPressed(self, *args):
-        Handler.on_submitButton_clicked(self, *args)
+        self.on_submitButton_clicked(self, *args)
 
     def on_passwordEntry_returnPressed(self, *args):
-        Handler.on_loginButton_pressed(self, *args)
+        self.on_loginButton_pressed(self, *args)
     
     def on_usernameEntry_returnPressed(self, *args):
-        Handler.on_loginButton_pressed(self, *args)
+        self.on_loginButton_pressed(self, *args)
 
     #def on_usernameEntry_activate(self, *args):
     #    Handler.on_loginButton_pressed(self, *args)
 
     def on_rememberLoginCheck_stateChanged(self, *args):
-        flag = args
-        if flag[0] == 0:
+        self.flag = args
+        if self.flag[0] == 0:
             Communicator.REMEMBER_LOGIN = False
         else:
             Communicator.REMEMBER_LOGIN = True
 
     # Command Communication Channels
-                    
+             
     def on_centralCommandButton_clicked(self, *args):
         Communicator.switch_channel("Central Command")
         
@@ -222,4 +247,4 @@ class Handler(QtGui.QMainWindow):
     
     def on_raffleButton_clicked(self, *args):
         Communicator.switch_channel("Raffle")
-
+    
