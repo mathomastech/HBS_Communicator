@@ -1,4 +1,4 @@
-import sys, time, os.path
+import sys, time, os.path, functools
 from PyQt4 import QtGui, QtCore
 #from ui_communicator import Ui_hbsCommunicator
 from ui_communicator_windows import Ui_hbsCommunicator
@@ -8,12 +8,10 @@ from communicator import Communicator
 from worker import Worker
 
 class Handler(QtGui.QMainWindow):
-    button_map = QtCore.pyqtSignal() 
-    signalMapper = QtCore.QSignalMapper()
-
+    
     def __init__(self):
         super(Handler,self).__init__()
-    # Handler Class Level Variables
+        
         self.USERNAME_ENTRY = ""
         self.PASSWORD_ENTRY = ""
     
@@ -34,9 +32,12 @@ class Handler(QtGui.QMainWindow):
         self.USERNAME_ENTRY = self.com.usernameEntry
         self.PASSWORD_ENTRY = self.com.passwordEntry
        
+        #channels = generate_channels(self.com)
+        #channels.button_map.connect(self.channel_clicked)
+
         self.connect_elements()
-        self.connect_channels()
-        #self.generate_channels()
+        #self.connect_channels()
+        self.generate_channels()
 
         if os.path.exists('credentials.txt'):
             f = open('credentials.txt', 'r')
@@ -58,25 +59,21 @@ class Handler(QtGui.QMainWindow):
         self.setWindowIcon(self.app_icon)
         self.show()
    
-
     def generate_channels(self): 
         
         for i in range(0,len(GUI.CHANNELS)):
             self.button = QtGui.QPushButton(GUI.CHANNELS[i][GUI.CHANNEL_NAME])
-            self.signalMapper.setMapping(self.button, GUI.CHANNELS[i][GUI.CHANNEL_NAME])  
-            self.button.clicked.connect(self.signalMapper.map)
+            self.button.clicked.connect(functools.partial(self.channel_clicked,GUI.CHANNELS[i][GUI.CHANNEL_NAME]))
+            GUI.CHANNELS[i][GUI.GUI_ELEMENT] = self.button
+            self.button.setFlat(True)
+            self.button.setAutoDefault(True)
             if GUI.CHANNELS[i][GUI.CHANNEL_GROUP] == "command":
                 self.com.commandLayout.addWidget(self.button)
             elif GUI.CHANNELS[i][GUI.CHANNEL_GROUP] == "general": 
                 self.com.generalLayout.addWidget(self.button)
 
-        self.signalMapper.mapped.connect(self.button_map)  
-        self.button_map.connect(self.channel_clicked)
-
- 
-    def channel_clicked(self, *args):
-        print("I got here!")
-        print(args)
+    def channel_clicked(self,channel,flag):
+        Communicator.switch_channel(channel)
 
     def on_loginButton_pressed(self, *args):
         username = self.USERNAME_ENTRY.text()
@@ -257,4 +254,24 @@ class Handler(QtGui.QMainWindow):
     
     def on_raffleButton_clicked(self, *args):
         Communicator.switch_channel("Raffle")
-    
+   
+'''
+class generate_channels(QtGui.QMainWindow):
+    button_map = QtCore.pyqtSignal()
+
+    def __init__(self,com,parent=None):
+        super(generate_channels,self).__init__(parent)
+        signalMapper = QtCore.QSignalMapper()
+
+        for i in range(0,len(GUI.CHANNELS)):
+            button = QtGui.QPushButton(GUI.CHANNELS[i][GUI.CHANNEL_NAME])
+            signalMapper.setMapping(button,GUI.CHANNELS[i][GUI.CHANNEL_NAME])
+            button.clicked.connect(signalMapper.map)
+                    
+            if GUI.CHANNELS[i][GUI.CHANNEL_GROUP] == "command":
+                com.commandLayout.addWidget(button)
+            elif GUI.CHANNELS[i][GUI.CHANNEL_GROUP] == "general": 
+                com.generalLayout.addWidget(button)
+
+        signalMapper.mapped.connect(self.button_map)  
+'''
