@@ -1,7 +1,6 @@
 import sys, time, os.path
 from PyQt4 import QtGui, QtCore
-#from ui_communicator import Ui_hbsCommunicator
-from ui_communicator_windows import Ui_hbsCommunicator
+from ui_communicator import Ui_hbsCommunicator
 from PyQt4.Qt import QApplication
 from handler import *
 from gui import GUI
