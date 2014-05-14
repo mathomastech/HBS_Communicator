@@ -10,11 +10,11 @@
     <x>0</x>
     <y>0</y>
     <width>1008</width>
-    <height>807</height>
+    <height>813</height>
    </rect>
   </property>
   <property name="sizePolicy">
-   <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
+   <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
     <horstretch>0</horstretch>
     <verstretch>0</verstretch>
    </sizepolicy>
@@ -23,11 +23,14 @@
    <string>HBS Communicator</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QFormLayout" name="formLayout">
-    <property name="fieldGrowthPolicy">
-     <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
-    </property>
-    <item row="1" column="0">
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <layout class="QGridLayout" name="gridLayout_8">
+    <item row="0" column="0">
      <widget class="QPushButton" name="userButton">
       <property name="enabled">
        <bool>false</bool>
@@ -46,16 +49,28 @@
       </property>
      </widget>
     </item>
-    <item row="2" column="0">
+    <item row="1" column="0">
      <widget class="QTabWidget" name="channelNotebook">
       <property name="enabled">
        <bool>false</bool>
       </property>
       <property name="sizePolicy">
-       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+       <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
         <horstretch>0</horstretch>
         <verstretch>0</verstretch>
        </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>0</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>210</width>
+        <height>16777215</height>
+       </size>
       </property>
       <property name="tabPosition">
        <enum>QTabWidget::North</enum>
@@ -64,7 +79,7 @@
        <enum>QTabWidget::Rounded</enum>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <property name="elideMode">
        <enum>Qt::ElideNone</enum>
@@ -91,210 +106,6 @@
           <property name="leftMargin">
            <number>0</number>
           </property>
-          <item>
-           <widget class="QPushButton" name="centralCommandButton">
-            <property name="acceptDrops">
-             <bool>false</bool>
-            </property>
-            <property name="text">
-             <string>Central Command</string>
-            </property>
-            <property name="autoDefault">
-             <bool>true</bool>
-            </property>
-            <property name="default">
-             <bool>false</bool>
-            </property>
-            <property name="flat">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="operationsCommandButton">
-            <property name="text">
-             <string>Operations</string>
-            </property>
-            <property name="autoDefault">
-             <bool>true</bool>
-            </property>
-            <property name="default">
-             <bool>false</bool>
-            </property>
-            <property name="flat">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="logisticsCommandButton">
-            <property name="text">
-             <string>Logistics</string>
-            </property>
-            <property name="autoDefault">
-             <bool>true</bool>
-            </property>
-            <property name="flat">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="codCommandButton">
-            <property name="text">
-             <string>Call of Duty</string>
-            </property>
-            <property name="autoDefault">
-             <bool>true</bool>
-            </property>
-            <property name="flat">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="tfCommandButton">
-            <property name="text">
-             <string>Titanfall</string>
-            </property>
-            <property name="autoDefault">
-             <bool>true</bool>
-            </property>
-            <property name="flat">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="wowCommandButton">
-            <property name="text">
-             <string>World of Warcraft</string>
-            </property>
-            <property name="autoDefault">
-             <bool>true</bool>
-            </property>
-            <property name="flat">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="gwCommandButton">
-            <property name="text">
-             <string>Guild Wars</string>
-            </property>
-            <property name="autoDefault">
-             <bool>true</bool>
-            </property>
-            <property name="flat">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="dayzCommandButton">
-            <property name="text">
-             <string>DayZ</string>
-            </property>
-            <property name="autoDefault">
-             <bool>true</bool>
-            </property>
-            <property name="flat">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="lolCommandButton">
-            <property name="text">
-             <string>League of Legends</string>
-            </property>
-            <property name="autoDefault">
-             <bool>true</bool>
-            </property>
-            <property name="flat">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="mcCommandButton">
-            <property name="text">
-             <string>Minecraft</string>
-            </property>
-            <property name="autoDefault">
-             <bool>true</bool>
-            </property>
-            <property name="flat">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="mpCommandButton">
-            <property name="text">
-             <string>Military Police</string>
-            </property>
-            <property name="autoDefault">
-             <bool>true</bool>
-            </property>
-            <property name="flat">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="admissionsCommandButton">
-            <property name="text">
-             <string>Admissions</string>
-            </property>
-            <property name="autoDefault">
-             <bool>true</bool>
-            </property>
-            <property name="flat">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="csCommandButton">
-            <property name="text">
-             <string>Counter Strike</string>
-            </property>
-            <property name="autoDefault">
-             <bool>true</bool>
-            </property>
-            <property name="flat">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="wsCommandButton">
-            <property name="text">
-             <string>Wildstar</string>
-            </property>
-            <property name="autoDefault">
-             <bool>true</bool>
-            </property>
-            <property name="flat">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="betaTestButton">
-            <property name="text">
-             <string>Beta Testing</string>
-            </property>
-            <property name="autoDefault">
-             <bool>true</bool>
-            </property>
-            <property name="flat">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
          </layout>
         </item>
        </layout>
@@ -303,187 +114,15 @@
        <attribute name="title">
         <string>General</string>
        </attribute>
-       <widget class="QWidget" name="layoutWidget_2">
-        <property name="geometry">
-         <rect>
-          <x>-5</x>
-          <y>6</y>
-          <width>146</width>
-          <height>440</height>
-         </rect>
-        </property>
-        <layout class="QVBoxLayout" name="generalLayout">
-         <property name="spacing">
-          <number>6</number>
-         </property>
-         <property name="sizeConstraint">
-          <enum>QLayout::SetDefaultConstraint</enum>
-         </property>
-         <property name="leftMargin">
-          <number>0</number>
-         </property>
-         <item>
-          <widget class="QPushButton" name="generalButton">
-           <property name="text">
-            <string>General</string>
-           </property>
-           <property name="autoDefault">
-            <bool>true</bool>
-           </property>
-           <property name="flat">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="codGeneralButton">
-           <property name="text">
-            <string>Call of Duty</string>
-           </property>
-           <property name="autoDefault">
-            <bool>true</bool>
-           </property>
-           <property name="flat">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="tfGeneralButton">
-           <property name="text">
-            <string>Titanfall</string>
-           </property>
-           <property name="autoDefault">
-            <bool>true</bool>
-           </property>
-           <property name="flat">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="wowGeneralButton">
-           <property name="text">
-            <string>World of Warcraft</string>
-           </property>
-           <property name="autoDefault">
-            <bool>true</bool>
-           </property>
-           <property name="flat">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="gwGeneralButton">
-           <property name="text">
-            <string>Guild Wars</string>
-           </property>
-           <property name="autoDefault">
-            <bool>true</bool>
-           </property>
-           <property name="flat">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="dayzGeneralButton">
-           <property name="text">
-            <string>DayZ</string>
-           </property>
-           <property name="autoDefault">
-            <bool>true</bool>
-           </property>
-           <property name="flat">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="lolGeneralButton">
-           <property name="text">
-            <string>League of Legends</string>
-           </property>
-           <property name="autoDefault">
-            <bool>true</bool>
-           </property>
-           <property name="flat">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="mcGeneralButton">
-           <property name="text">
-            <string>Minecraft</string>
-           </property>
-           <property name="autoDefault">
-            <bool>true</bool>
-           </property>
-           <property name="flat">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="csButton">
-           <property name="text">
-            <string>Counter Strike</string>
-           </property>
-           <property name="autoDefault">
-            <bool>true</bool>
-           </property>
-           <property name="flat">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="wsButton">
-           <property name="text">
-            <string>Wildstar</string>
-           </property>
-           <property name="autoDefault">
-            <bool>true</bool>
-           </property>
-           <property name="flat">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="socialMediaButton">
-           <property name="text">
-            <string>Social Media</string>
-           </property>
-           <property name="autoDefault">
-            <bool>true</bool>
-           </property>
-           <property name="flat">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="raffleButton">
-           <property name="text">
-            <string>Raffle</string>
-           </property>
-           <property name="autoDefault">
-            <bool>true</bool>
-           </property>
-           <property name="flat">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
+       <layout class="QVBoxLayout" name="verticalLayout_6">
+        <item>
+         <layout class="QVBoxLayout" name="generalLayout"/>
+        </item>
+       </layout>
       </widget>
      </widget>
     </item>
-    <item row="2" column="1">
+    <item row="1" column="1">
      <layout class="QVBoxLayout" name="verticalLayout">
       <item>
        <layout class="QGridLayout" name="gridLayout_3">
@@ -505,167 +144,188 @@
            <bool>false</bool>
           </property>
           <widget class="QWidget" name="channelTab">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
            <attribute name="title">
             <string>Channel</string>
            </attribute>
-           <widget class="QPlainTextEdit" name="channelDisplay">
-            <property name="geometry">
-             <rect>
-              <x>-1</x>
-              <y>-1</y>
-              <width>681</width>
-              <height>451</height>
-             </rect>
-            </property>
-            <property name="acceptDrops">
-             <bool>false</bool>
-            </property>
-            <property name="autoFillBackground">
-             <bool>false</bool>
-            </property>
-            <property name="frameShape">
-             <enum>QFrame::NoFrame</enum>
-            </property>
-            <property name="frameShadow">
-             <enum>QFrame::Sunken</enum>
-            </property>
-            <property name="readOnly">
-             <bool>true</bool>
-            </property>
-            <property name="centerOnScroll">
-             <bool>false</bool>
-            </property>
-           </widget>
-           <widget class="QGroupBox" name="loginGroupBox">
-            <property name="geometry">
-             <rect>
-              <x>0</x>
-              <y>-1</y>
-              <width>591</width>
-              <height>391</height>
-             </rect>
-            </property>
-            <property name="flat">
-             <bool>true</bool>
-            </property>
-            <widget class="QGroupBox" name="gridGroupBox">
-             <property name="enabled">
-              <bool>true</bool>
-             </property>
-             <property name="geometry">
-              <rect>
-               <x>70</x>
-               <y>0</y>
-               <width>461</width>
-               <height>261</height>
-              </rect>
-             </property>
-             <property name="autoFillBackground">
-              <bool>false</bool>
-             </property>
-             <property name="flat">
-              <bool>true</bool>
-             </property>
-             <layout class="QGridLayout" name="gridLayout_2">
-              <item row="1" column="0">
-               <widget class="QLabel" name="passwordLabel">
-                <property name="text">
-                 <string>Password:</string>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="1">
-               <widget class="QLineEdit" name="usernameEntry">
-                <property name="enabled">
-                 <bool>true</bool>
-                </property>
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="1">
-               <widget class="QLineEdit" name="passwordEntry">
-                <property name="enabled">
-                 <bool>true</bool>
-                </property>
-                <property name="echoMode">
-                 <enum>QLineEdit::Password</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="0">
-               <widget class="QLabel" name="usernameLabel">
-                <property name="text">
-                 <string>Username:</string>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </widget>
-            <widget class="QPushButton" name="loginButton">
-             <property name="geometry">
-              <rect>
-               <x>310</x>
-               <y>295</y>
-               <width>211</width>
-               <height>31</height>
-              </rect>
-             </property>
-             <property name="text">
-              <string>Login</string>
-             </property>
-             <property name="autoDefault">
-              <bool>false</bool>
-             </property>
-            </widget>
-            <widget class="QLabel" name="loginStatusLabel">
-             <property name="geometry">
-              <rect>
-               <x>40</x>
-               <y>295</y>
-               <width>261</width>
-               <height>31</height>
-              </rect>
-             </property>
-             <property name="text">
-              <string>Hint: Same as forum</string>
-             </property>
-            </widget>
-            <widget class="QCheckBox" name="rememberLoginCheck">
-             <property name="enabled">
-              <bool>true</bool>
-             </property>
-             <property name="geometry">
-              <rect>
-               <x>373</x>
-               <y>340</y>
-               <width>141</width>
-               <height>26</height>
-              </rect>
-             </property>
-             <property name="text">
-              <string>Remember Login</string>
-             </property>
-            </widget>
-           </widget>
+           <layout class="QGridLayout" name="gridLayout_4">
+            <item row="0" column="1">
+             <widget class="QPlainTextEdit" name="channelDisplay">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="acceptDrops">
+               <bool>false</bool>
+              </property>
+              <property name="autoFillBackground">
+               <bool>false</bool>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::NoFrame</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Plain</enum>
+              </property>
+              <property name="readOnly">
+               <bool>true</bool>
+              </property>
+              <property name="centerOnScroll">
+               <bool>false</bool>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="0">
+             <widget class="QGroupBox" name="loginGroupBox">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="flat">
+               <bool>true</bool>
+              </property>
+              <widget class="QGroupBox" name="gridGroupBox">
+               <property name="enabled">
+                <bool>true</bool>
+               </property>
+               <property name="geometry">
+                <rect>
+                 <x>70</x>
+                 <y>0</y>
+                 <width>461</width>
+                 <height>261</height>
+                </rect>
+               </property>
+               <property name="autoFillBackground">
+                <bool>false</bool>
+               </property>
+               <property name="flat">
+                <bool>true</bool>
+               </property>
+               <layout class="QGridLayout" name="gridLayout_2">
+                <item row="1" column="0">
+                 <widget class="QLabel" name="passwordLabel">
+                  <property name="text">
+                   <string>Password:</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="1">
+                 <widget class="QLineEdit" name="usernameEntry">
+                  <property name="enabled">
+                   <bool>true</bool>
+                  </property>
+                  <property name="focusPolicy">
+                   <enum>Qt::StrongFocus</enum>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="1">
+                 <widget class="QLineEdit" name="passwordEntry">
+                  <property name="enabled">
+                   <bool>true</bool>
+                  </property>
+                  <property name="echoMode">
+                   <enum>QLineEdit::Password</enum>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="0">
+                 <widget class="QLabel" name="usernameLabel">
+                  <property name="text">
+                   <string>Username:</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+              <widget class="QPushButton" name="loginButton">
+               <property name="geometry">
+                <rect>
+                 <x>310</x>
+                 <y>295</y>
+                 <width>211</width>
+                 <height>31</height>
+                </rect>
+               </property>
+               <property name="text">
+                <string>Login</string>
+               </property>
+               <property name="autoDefault">
+                <bool>false</bool>
+               </property>
+              </widget>
+              <widget class="QLabel" name="loginStatusLabel">
+               <property name="geometry">
+                <rect>
+                 <x>40</x>
+                 <y>295</y>
+                 <width>261</width>
+                 <height>31</height>
+                </rect>
+               </property>
+               <property name="text">
+                <string>Hint: Same as forum</string>
+               </property>
+              </widget>
+              <widget class="QCheckBox" name="rememberLoginCheck">
+               <property name="enabled">
+                <bool>true</bool>
+               </property>
+               <property name="geometry">
+                <rect>
+                 <x>373</x>
+                 <y>340</y>
+                 <width>141</width>
+                 <height>26</height>
+                </rect>
+               </property>
+               <property name="text">
+                <string>Remember Login</string>
+               </property>
+              </widget>
+             </widget>
+            </item>
+           </layout>
           </widget>
           <widget class="QWidget" name="rosterTab">
            <attribute name="title">
             <string>Roster</string>
            </attribute>
-           <widget class="QPlainTextEdit" name="rosterDisplay">
+           <layout class="QGridLayout" name="gridLayout_6">
+            <item row="0" column="0">
+             <widget class="QPlainTextEdit" name="rosterDisplay">
+              <property name="frameShape">
+               <enum>QFrame::NoFrame</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Plain</enum>
+              </property>
+              <property name="readOnly">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+           </layout>
+           <widget class="QWidget" name="gridLayoutWidget">
             <property name="geometry">
              <rect>
-              <x>-1</x>
-              <y>-1</y>
-              <width>681</width>
-              <height>451</height>
+              <x>270</x>
+              <y>160</y>
+              <width>160</width>
+              <height>80</height>
              </rect>
             </property>
-            <property name="readOnly">
-             <bool>true</bool>
-            </property>
+            <layout class="QGridLayout" name="gridLayout_5"/>
            </widget>
           </widget>
          </widget>
@@ -673,7 +333,7 @@
         <item row="0" column="1">
          <widget class="QWidget" name="widget" native="true">
           <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
@@ -684,60 +344,53 @@
             <height>0</height>
            </size>
           </property>
-          <widget class="QPlainTextEdit" name="onlineList">
-           <property name="geometry">
-            <rect>
-             <x>0</x>
-             <y>20</y>
-             <width>148</width>
-             <height>511</height>
-            </rect>
-           </property>
-           <property name="acceptDrops">
-            <bool>false</bool>
-           </property>
-           <property name="autoFillBackground">
-            <bool>false</bool>
-           </property>
-           <property name="frameShape">
-            <enum>QFrame::NoFrame</enum>
-           </property>
-           <property name="frameShadow">
-            <enum>QFrame::Sunken</enum>
-           </property>
-           <property name="readOnly">
-            <bool>true</bool>
-           </property>
-           <property name="backgroundVisible">
-            <bool>false</bool>
-           </property>
-          </widget>
-          <widget class="QLabel" name="onlineLabel">
-           <property name="geometry">
-            <rect>
-             <x>4</x>
-             <y>-5</y>
-             <width>141</width>
-             <height>21</height>
-            </rect>
-           </property>
-           <property name="text">
-            <string>Online</string>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignCenter</set>
-           </property>
-          </widget>
-          <zorder>onlineList</zorder>
-          <zorder>onlineLabel</zorder>
-          <zorder>groupBox</zorder>
+          <property name="maximumSize">
+           <size>
+            <width>150</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_7">
+           <item row="0" column="0">
+            <widget class="QLabel" name="onlineLabel">
+             <property name="text">
+              <string>Online</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QPlainTextEdit" name="onlineList">
+             <property name="acceptDrops">
+              <bool>false</bool>
+             </property>
+             <property name="autoFillBackground">
+              <bool>false</bool>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::NoFrame</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Sunken</enum>
+             </property>
+             <property name="readOnly">
+              <bool>true</bool>
+             </property>
+             <property name="backgroundVisible">
+              <bool>false</bool>
+             </property>
+            </widget>
+           </item>
+          </layout>
          </widget>
         </item>
        </layout>
       </item>
      </layout>
     </item>
-    <item row="4" column="0">
+    <item row="2" column="0">
      <widget class="QPushButton" name="refreshButton">
       <property name="maximumSize">
        <size>
@@ -750,7 +403,7 @@
       </property>
      </widget>
     </item>
-    <item row="4" column="1">
+    <item row="2" column="1">
      <layout class="QHBoxLayout" name="submitLayout">
       <item>
        <widget class="QLineEdit" name="chatEntry">
@@ -774,8 +427,14 @@
       </item>
      </layout>
     </item>
-    <item row="5" column="0" colspan="2">
+    <item row="3" column="0" colspan="2">
      <widget class="QLabel" name="announcementLabel">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
       <property name="autoFillBackground">
        <bool>false</bool>
       </property>
@@ -783,9 +442,9 @@
        <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Cantarell'; font-size:11pt;&quot;&gt;HBS Communicator Version 0.9.2 - Beta&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Cantarell'; font-size:11pt;&quot;&gt;Please report all bugs and features &lt;/span&gt;&lt;a href=&quot;http://hellboundsoldiers.org/forums/forumdisplay.php?150-HBS-COMMUNICATOR&quot;&gt;&lt;span style=&quot; font-family:'Cantarell'; font-size:11pt; text-decoration: underline; color:#0000ff;&quot;&gt;here&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Cantarell'; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;HBS Communicator Version 0.10.0 - Beta&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Please report all bugs and features &lt;a href=&quot;http://hellboundsoldiers.org/forums/forumdisplay.php?150-HBS-COMMUNICATOR&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;here&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
@@ -817,34 +476,11 @@ p, li { white-space: pre-wrap; }
   <tabstop>passwordEntry</tabstop>
   <tabstop>loginButton</tabstop>
   <tabstop>channelNotebook</tabstop>
-  <tabstop>centralCommandButton</tabstop>
-  <tabstop>operationsCommandButton</tabstop>
-  <tabstop>logisticsCommandButton</tabstop>
-  <tabstop>codCommandButton</tabstop>
-  <tabstop>tfCommandButton</tabstop>
-  <tabstop>wowCommandButton</tabstop>
-  <tabstop>gwCommandButton</tabstop>
-  <tabstop>dayzCommandButton</tabstop>
-  <tabstop>lolCommandButton</tabstop>
-  <tabstop>mcCommandButton</tabstop>
-  <tabstop>mpCommandButton</tabstop>
-  <tabstop>admissionsCommandButton</tabstop>
-  <tabstop>betaTestButton</tabstop>
   <tabstop>chatEntry</tabstop>
   <tabstop>submitButton</tabstop>
   <tabstop>refreshButton</tabstop>
   <tabstop>rosterDisplay</tabstop>
   <tabstop>userButton</tabstop>
-  <tabstop>generalButton</tabstop>
-  <tabstop>codGeneralButton</tabstop>
-  <tabstop>tfGeneralButton</tabstop>
-  <tabstop>wowGeneralButton</tabstop>
-  <tabstop>gwGeneralButton</tabstop>
-  <tabstop>dayzGeneralButton</tabstop>
-  <tabstop>lolGeneralButton</tabstop>
-  <tabstop>channelDisplay</tabstop>
-  <tabstop>mcGeneralButton</tabstop>
-  <tabstop>socialMediaButton</tabstop>
  </tabstops>
  <resources/>
  <connections/>
