@@ -25,8 +25,8 @@ class Channels():
                 ['Counter Strike',([]),'general',["Counter Strike Global Offensive"]],
                 ['Minecraft Command',["Central Command","Minecraft Platoon Leader"],'command',["Minecraft"]],
                 ['Minecraft',[],'general',["Minecraft"]],
-                ['WildStar Command',["Central Command","WildStar Platoon Leader"],'command',["WildStar"]],
-                ['WildStar',[],'general',["WildStar"]],
+                #['WildStar Command',["Central Command","WildStar Platoon Leader"],'command',["WildStar"]],
+                #['WildStar',[],'general',["WildStar"]],
                 ['Social Media',[],'general',["SocO Officer","Director of Social Media"]],
                 ['Raffle',[],'general',[]],
                 ['Military Police',["Central Command","MP Commanding Officer","MP Executive Officer"],'command',["Military Police Department"]],
@@ -47,8 +47,6 @@ class Channels():
             roster_groups = roster_groups[:-1] 
         
             GUI.CHANNELS.append(self.generate_channel_info(channel,permissions,tab_group,roster_groups))
-    
-        print(GUI.CHANNELS[3])
     
     def generate_channel_info(self,channel,permissions,tab_group,roster_groups):
         chan_arr = []

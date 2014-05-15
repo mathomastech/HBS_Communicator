@@ -78,7 +78,7 @@ class SSH():
             data = prefix
             # Create string to be sent to server
             for i in range(0, len(GUI.CHANNELS)):
-                data += "," + GUI.CHANNELS[i][GUI.SERVER_LOG_PATH]    
+                data += "," + GUI.CHANNELS[i][GUI.CHANNEL_FILE]    
             sock.sendall(bytes(data + "\n", "utf-8"))
             received = str(sock.recv(4096),"utf-8")
             # Parse string recieved from server and compare timestamps

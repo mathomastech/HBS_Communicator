@@ -15,37 +15,6 @@ class GUI():
     ONLINE_LIST = ""
     CHANNEL_TAB = ""
 
-    # Command Buttons
-    CENTCOM = ""
-    OP_CMD = ""
-    COD_CMD = "" 
-    TF_CMD = ""
-    LOL_CMD = ""
-    GW_CMD = ""
-    WOW_CMD = ""
-    MC_CMD = ""
-    DAYZ_CMD = ""
-    LOG_CMD = ""
-    MP_CMD = ""
-    CS_CMD = ""
-    WS_CMD = ""
-    ADM = ""
-    BETA = ""
-    
-    # General Buttons
-    GEN = ""
-    COD = ""
-    TF = ""
-    LOL = ""
-    GW = ""
-    WOW = ""
-    MC = ""
-    DAYZ = ""
-    CS = ""
-    WS = ""
-    SM = ""
-    RAFFLE = ""
-    
     #Configurations
     LOGS = Config.LOGS
     LOG_PATH = Config.LOG_PATH
