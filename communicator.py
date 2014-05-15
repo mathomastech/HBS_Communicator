@@ -52,7 +52,19 @@ class Communicator:
         GUI.CHANNEL_NOTEBOOK.setEnabled(True)
         GUI.CONTENT_NOTEBOOK.setTabEnabled(1, True)
         GUI.USER_BTN.setEnabled(True)
-    
+   
+    def hide_login():
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Ignored, QtGui.QSizePolicy.Ignored)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(GUI.LOGIN_GROUP_BOX.sizePolicy().hasHeightForWidth())
+        GUI.LOGIN_GROUP_BOX.setSizePolicy(sizePolicy)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(GUI.CHANNEL_DISPLAY.sizePolicy().hasHeightForWidth())
+        GUI.CHANNEL_DISPLAY.setSizePolicy(sizePolicy)
+
     def invalid_permissions():
         # If user does not have appropriate permissions, print out message.
         GUI.CHANNEL_DISPLAY.setPlainText("You do not have sufficient privileges to view this channel. If you feel this is in error, please contact an administrator")
@@ -93,16 +105,7 @@ class Communicator:
             Communicator.USER_PERMISSIONS = userPermissions
             Communicator.load_local_logs()
             Communicator.load_local_rosters()
-            sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Ignored, QtGui.QSizePolicy.Ignored)
-            sizePolicy.setHorizontalStretch(0)
-            sizePolicy.setVerticalStretch(0)
-            sizePolicy.setHeightForWidth(GUI.LOGIN_GROUP_BOX.sizePolicy().hasHeightForWidth())
-            GUI.LOGIN_GROUP_BOX.setSizePolicy(sizePolicy)
-            sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding)
-            sizePolicy.setHorizontalStretch(0)
-            sizePolicy.setVerticalStretch(0)
-            sizePolicy.setHeightForWidth(GUI.CHANNEL_DISPLAY.sizePolicy().hasHeightForWidth())
-            GUI.CHANNEL_DISPLAY.setSizePolicy(sizePolicy)
+            Communicator.hide_login()
             Communicator.populate_channel(GUI.WELCOME_LOG)
             cursor = QtGui.QTextCursor(GUI.CHANNEL_DISPLAY.textCursor())
             cursor.movePosition(QtGui.QTextCursor.Start)
