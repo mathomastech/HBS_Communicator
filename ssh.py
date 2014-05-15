@@ -145,10 +145,11 @@ class SSH():
             # Create string to be sent to server
             data = prefix + "," + user
             sock.sendall(bytes(data + "\n", "utf-8"))
-            received = str(sock.recv(1024),"utf-8")
+            received = str(sock.recv(2048),"utf-8")
             # Parse string recieved from server and return online list to worker for analysis
             online = received.rstrip().split(',')
             online.pop(len(online)-1)
+            online.sort()
             return online
         except ConnectionRefusedError:
             pass

@@ -120,11 +120,11 @@ class Communicator:
 
     def online_list():
         # Get a list of all currently logged in users
-        list = ""
+        online = ""
         for i in range(0,len(Communicator.ONLINE_USERS)):
-            list += Communicator.ONLINE_USERS[i] + '\n'
-
-        GUI.ONLINE_LIST.setPlainText(list)
+            online += Communicator.ONLINE_USERS[i] + '\n'
+        
+        GUI.ONLINE_LIST.setPlainText(online)
 
     def populate_channel(log_path):
         # Populate the channel with both logs and rosters
