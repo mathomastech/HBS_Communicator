@@ -59,12 +59,17 @@ class Handler(QtGui.QMainWindow):
         self.show()
    
     def generate_channels(self): 
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(GUI.CHANNEL_DISPLAY.sizePolicy().hasHeightForWidth())
         
         for i in range(0,len(GUI.CHANNELS)):
             self.button = QtGui.QPushButton(GUI.CHANNELS[i][GUI.CHANNEL_NAME])
             self.button.clicked.connect(functools.partial(self.channel_clicked,GUI.CHANNELS[i][GUI.CHANNEL_NAME]))
             GUI.CHANNELS[i][GUI.GUI_ELEMENT] = self.button
             self.button.setFlat(True)
+            self.button.setSizePolicy(sizePolicy)
             self.button.setAutoDefault(True)
             if GUI.CHANNELS[i][GUI.CHANNEL_GROUP] == "command":
                 self.com.commandLayout.addWidget(self.button)
