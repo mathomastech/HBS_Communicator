@@ -51,7 +51,8 @@ class Server(socketserver.BaseRequestHandler):
                     log = infile.read(1024)
         
         elif self.argv[0] == "get_roster":
-            self.roster_arr = Roster.get_roster()
+            roster = Roster()
+            self.roster_arr = roster.get_roster()
             self.roster_str = ""
             for i in range(0,len(self.roster_arr)):
                 self.roster_str += self.roster_arr[i][0] + ',' + self.roster_arr[i][1] + ',' + self.roster_arr[i][2] + '/'
