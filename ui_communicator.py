@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'ui_communicator_windows.ui'
+# Form implementation generated from reading ui file 'ui_communicator.ui'
 #
-# Created: Wed May 14 14:30:35 2014
+# Created: Wed May 14 19:35:53 2014
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -29,8 +29,8 @@ class Ui_hbsCommunicator(object):
         hbsCommunicator.setEnabled(True)
         hbsCommunicator.resize(982, 639)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHorizontalStretch(1)
+        sizePolicy.setVerticalStretch(1)
         sizePolicy.setHeightForWidth(hbsCommunicator.sizePolicy().hasHeightForWidth())
         hbsCommunicator.setSizePolicy(sizePolicy)
         self.centralwidget = QtGui.QWidget(hbsCommunicator)
@@ -57,7 +57,7 @@ class Ui_hbsCommunicator(object):
         sizePolicy.setHeightForWidth(self.channelNotebook.sizePolicy().hasHeightForWidth())
         self.channelNotebook.setSizePolicy(sizePolicy)
         self.channelNotebook.setMinimumSize(QtCore.QSize(0, 0))
-        self.channelNotebook.setMaximumSize(QtCore.QSize(210, 16777215))
+        self.channelNotebook.setMaximumSize(QtCore.QSize(215, 16777215))
         self.channelNotebook.setTabPosition(QtGui.QTabWidget.North)
         self.channelNotebook.setTabShape(QtGui.QTabWidget.Rounded)
         self.channelNotebook.setElideMode(QtCore.Qt.ElideNone)
@@ -69,7 +69,7 @@ class Ui_hbsCommunicator(object):
         self.gridLayout = QtGui.QGridLayout(self.commandTab)
         self.gridLayout.setObjectName(_fromUtf8("gridLayout"))
         self.commandLayout = QtGui.QVBoxLayout()
-        self.commandLayout.setSpacing(6)
+        self.commandLayout.setSpacing(0)
         self.commandLayout.setSizeConstraint(QtGui.QLayout.SetDefaultConstraint)
         self.commandLayout.setContentsMargins(0, -1, -1, -1)
         self.commandLayout.setObjectName(_fromUtf8("commandLayout"))

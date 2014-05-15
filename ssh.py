@@ -80,7 +80,7 @@ class SSH():
             for i in range(0, len(GUI.CHANNELS)):
                 data += "," + GUI.CHANNELS[i][GUI.SERVER_LOG_PATH]    
             sock.sendall(bytes(data + "\n", "utf-8"))
-            received = str(sock.recv(2048),"utf-8")
+            received = str(sock.recv(4096),"utf-8")
             # Parse string recieved from server and compare timestamps
             data = received.rstrip().split(',')
             for i in range(0,len(GUI.CHANNELS)):
@@ -100,6 +100,8 @@ class SSH():
             pass
         except socket.gaierror:
             pass
+        except ConnectionResetError:
+            pass
         finally:
             sock.close()
    
@@ -107,6 +109,7 @@ class SSH():
         roster = []
         prefix = "get_roster"
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        received = ""
         try:
             sock.connect((tcp_host, tcp_port))
             data = prefix
@@ -119,6 +122,8 @@ class SSH():
             pass
         except socket.gaierror:
             pass
+        except ConnectionResetError:
+            pass
         finally:
             sock.close()
 
@@ -127,7 +132,7 @@ class SSH():
             for i in range(0,len(temp_roster)):
                 roster.append(temp_roster[i].split(','))
             roster.pop(len(roster)-1)
-            print(roster)
+            #print(roster)
         return roster
 
     def whos_online(tcp_host, tcp_port, online_users, user):
@@ -151,6 +156,8 @@ class SSH():
             pass
         except socket.gaierror:
             pass
+        except ConnectionResetError:
+            pass
         finally:
             sock.close()
 
@@ -167,6 +174,8 @@ class SSH():
         except TimeoutError:
             pass
         except socket.gaierror:
+            pass
+        except ConnectionResetError:
             pass
         finally:
             sock.close()
