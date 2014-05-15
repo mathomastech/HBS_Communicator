@@ -121,6 +121,7 @@ class Communicator:
     def online_list():
         # Get a list of all currently logged in users
         online = ""
+        
         for i in range(0,len(Communicator.ONLINE_USERS)):
             online += Communicator.ONLINE_USERS[i] + '\n'
         
