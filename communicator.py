@@ -8,6 +8,7 @@ from database import Database
 from ssh import SSH
 from roster import Roster
 from config import Config
+from channels import Channels
 
 class Communicator:
     #Communicator Class Level Variables 
@@ -32,7 +33,7 @@ class Communicator:
         for i in range(0,len(GUI.CHANNELS)):
             if channel == GUI.CHANNELS[i][GUI.CHANNEL_NAME]:
                 # If channel has no restrictions, allow access
-                if not GUI.CHANNELS[i][GUI.PERMISSIONS]:
+                if GUI.CHANNELS[i][GUI.PERMISSIONS][0] == "":
                     return True
                 else:
                     # Check if user is has any permissions at all.
@@ -205,6 +206,7 @@ class Communicator:
     
 def main():
     app = QtGui.QApplication(sys.argv)
+    channels = Channels()
     hand = Handler()
     com = Communicator()
     sys.exit(app.exec_())
