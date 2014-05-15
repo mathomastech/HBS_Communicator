@@ -122,6 +122,8 @@ class SSH():
             pass
         except socket.gaierror:
             pass
+        except ConnectionResetError:
+            pass
         finally:
             sock.close()
 
@@ -154,6 +156,8 @@ class SSH():
             pass
         except socket.gaierror:
             pass
+        except ConnectionResetError:
+            pass
         finally:
             sock.close()
 
@@ -170,6 +174,8 @@ class SSH():
         except TimeoutError:
             pass
         except socket.gaierror:
+            pass
+        except ConnectionResetError:
             pass
         finally:
             sock.close()
