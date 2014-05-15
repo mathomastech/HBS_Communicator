@@ -35,11 +35,13 @@ class Communicator:
                 if not GUI.CHANNELS[i][GUI.PERMISSIONS]:
                     return True
                 else:
+                    # Check if user is has any permissions at all.
+                    if Communicator.USER_PERMISSIONS:
                     # Check user's permissions against channel permissions. Allow access if matching
-                    for j in range(len(Communicator.USER_PERMISSIONS)):
-                        for k in range(len(GUI.CHANNELS[i][GUI.PERMISSIONS])):
-                            if Communicator.USER_PERMISSIONS[j] == GUI.CHANNELS[i][GUI.PERMISSIONS][k]:
-                                return True
+                        for j in range(len(Communicator.USER_PERMISSIONS)):
+                            for k in range(len(GUI.CHANNELS[i][GUI.PERMISSIONS])):
+                                if Communicator.USER_PERMISSIONS[j] == GUI.CHANNELS[i][GUI.PERMISSIONS][k]:
+                                    return True
         return False
     
     def enable_widgets():
@@ -64,9 +66,9 @@ class Communicator:
                 f.close()
     
     def load_local_rosters():
-        #Communicator.ROSTER = SSH.get_all_rosters(Communicator.TCP_HOST, Communicator.TCP_PORT)
+        Communicator.ROSTER = SSH.get_all_rosters(Communicator.TCP_HOST, Communicator.TCP_PORT)
         # Load rosters from database into application.
-        Communicator.ROSTER = Roster.get_roster()
+        #Communicator.ROSTER = Roster.get_roster()
 
         for i in range(0,len(Communicator.ROSTER)):
             for j in range(0,len(GUI.CHANNELS)):
