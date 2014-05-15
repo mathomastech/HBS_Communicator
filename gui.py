@@ -15,37 +15,6 @@ class GUI():
     ONLINE_LIST = ""
     CHANNEL_TAB = ""
 
-    # Command Buttons
-    CENTCOM = ""
-    OP_CMD = ""
-    COD_CMD = "" 
-    TF_CMD = ""
-    LOL_CMD = ""
-    GW_CMD = ""
-    WOW_CMD = ""
-    MC_CMD = ""
-    DAYZ_CMD = ""
-    LOG_CMD = ""
-    MP_CMD = ""
-    CS_CMD = ""
-    WS_CMD = ""
-    ADM = ""
-    BETA = ""
-    
-    # General Buttons
-    GEN = ""
-    COD = ""
-    TF = ""
-    LOL = ""
-    GW = ""
-    WOW = ""
-    MC = ""
-    DAYZ = ""
-    CS = ""
-    WS = ""
-    SM = ""
-    RAFFLE = ""
-    
     #Configurations
     LOGS = Config.LOGS
     LOG_PATH = Config.LOG_PATH
@@ -64,9 +33,13 @@ class GUI():
     CHANNEL_GROUP = 8
     ROSTER_GROUP_NAME = 9
     ROSTER = 10
+
+    CHANNELS = []
+
+    '''
     CHANNELS = [
         ['Central Command',(LOG_PATH + 'centcom.txt'),(),(CENTCOM),["Central Command"],(""),(LOGS + 'centcom.txt'),('centcom.txt'),('command'),(["Central Command"]),([])],
-        ['Operations Command',(LOG_PATH + 'operationsCommand.txt'),(),(OP_CMD),["Central Command"],(""),(LOGS + 'operationsCommand.txt'),('operationsCommand.txt'),('command'),(["Operations Officer","Brigade Officer"]),([])],
+        ['Operations Command',(LOG_PATH + 'operationsCommand.txt'),(),(OP_CMD),["Central Command","Operations Officer","Brigade Officer"],(""),(LOGS + 'operationsCommand.txt'),('operationsCommand.txt'),('command'),(["Operations Officer","Brigade Officer"]),([])],
         ['Logistics Command',(LOG_PATH + 'logisticsCommand.txt'),(),(LOG_CMD),["Central Command", "Regulations Officer", "General Administrative Officer","Chief of Staff","MP Commanding Officer","MP Executive Officer","Director of Admissions","Director of Social Media","Director of Awards"],(""),(LOGS + 'logisticsCommand.txt'),('logisticsCommand.txt'),('command'),(["Logistics Officer","MP Commanding Officer","MP Executive Officer","Director of Admissions","Chief of Staff","Director of Awards","Regulations Officer","General Administrative Officer","Director of Financial Affairs","Director of Entertainment","Director of Social Media","Editor in Chief"]),([])],
         ['General',(LOG_PATH + 'general.txt'),(),(GEN),([]),(""),(LOGS + 'general.txt'),('general.txt'),('general'),([]),([])],
         ['DayZ Command',(LOG_PATH + 'dayzCommand.txt'),(),(DAYZ_CMD),["Central Command","DayZ Commanding Officer","DayZ Executive Officer","DayZ Chief Training Officer"],(""),(LOGS + 'dayzCommand.txt'),('dayzCommand.txt'),('command'),(["DayZ"]),([])],
@@ -93,3 +66,4 @@ class GUI():
         ['Admissions',(LOG_PATH + 'admissions.txt'),(),(ADM),["Central Command","Admissions Department"],(""),(LOGS + 'admissions.txt'),('admissions.txt'),('command'),(["Admissions Department"]),([])],
         ['Beta Test',(LOG_PATH + 'betaTest.txt'),(),(BETA),([]),(""),(LOGS + 'betaTest.txt'),('betaTest.txt'),('command'),(["Beta Test"]),([])]
         ]
+    '''
