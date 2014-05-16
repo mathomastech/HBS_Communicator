@@ -129,7 +129,7 @@ class Communicator:
 
     def populate_channel(log_path):
         # Populate the channel with both logs and rosters
-        log = SSH.get_active_log(Communicator.SSH_CONNECTION,log_path) #,Communicator.TCP_HOST, Communicator.TCP_PORT)
+        log = SSH.get_active_log(Communicator.SSH_CONNECTION,log_path, Communicator.TCP_HOST, Communicator.TCP_PORT)
         Communicator.write_to_channel(log_path,log)
         Communicator.write_to_roster()
     

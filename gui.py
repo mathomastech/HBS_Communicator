@@ -19,7 +19,7 @@ class GUI():
     LOGS = Config.LOGS
     LOG_PATH = Config.LOG_PATH
     ROSTER_PATH = Config.ROSTER_PATH
-    WELCOME_LOG = LOG_PATH + "welcomeMessage.txt"
+    WELCOME_LOG = "welcomeMessage.txt"
     
     #Index Indicators
     CHANNEL_NAME = 0
