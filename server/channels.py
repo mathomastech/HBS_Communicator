@@ -1,14 +1,9 @@
-from config import Config
+#from config import Config
 
 class Channels():
 
-    channels = []
-    
-
-    def __init__(self):
-        super(Channels,self).__init__()
-         
-        lst = [["Central Command",["Central Command","Operations Command"],"command",["Central Command","Operations Command"]],
+    #channels = []
+    channel_data = [["Central Command",["Central Command"],"command",["Central Command"]],
                 ["Operations Command",["Central Command","Operations Officer","Brigade Officer"],"command",["Operations Officer","Brigade Officer"]],
                 ['Logistics Command',["Central Command", "Regulations Officer", "General Administrative Officer","Chief of Staff","MP Commanding Officer","MP Executive Officer","Director of Admissions","Director of Social Media","Director of Awards"],'command',["Logistics Officer","MP Commanding Officer","MP Executive Officer","Director of Admissions","Chief of Staff","Director of Awards","Regulations Officer","General Administrative Officer","Director of Financial Affairs","Director of Entertainment","Director of Social Media","Editor in Chief"]],
                 ['General',[],'general',[]],
@@ -36,7 +31,15 @@ class Channels():
                 ['Admissions',["Central Command","Admissions Department"],'command',["Admissions Department"]],
                 ['Beta Test',[],'command',["Beta Test"]]
                 ]
-        
+    
+
+    def __init__(self):
+        super(Channels,self).__init__()
+         
+
+    def get_list(self):
+        return self.channel_data
+'''        
         for i in range(0,len(lst)):
             channel = lst[i][0]
             permissions = ""
@@ -74,3 +77,4 @@ class Channels():
         chan_arr.append([])                                 #Roster
         
         return chan_arr
+'''

@@ -33,8 +33,27 @@ class Server(socketserver.BaseRequestHandler):
             self.request.sendall(bytes(self.time_stamps + "\n", "utf-8"))
         
         elif self.argv[0] == "get_channels":
-            channels = Channels()
-            print(channels.channels)
+            channels_raw = Channels()
+            self.channels = channels_raw.get_list()
+            self.channel_str = ""
+            for i in range(0,len(self.channels)):
+                self.channel_str += self.channels[i][0] + "/"
+                for j in range(0,len(self.channels[i][1])):
+                    self.channel_str += self.channels[i][1][j] + ","
+                if len(self.channels[i][1]) == 0:
+                    self.channel_str += "none,"
+                self.channel_str = self.channel_str[:-1]
+                self.channel_str += "/"
+                self.channel_str += self.channels[i][2] + "/"
+                for j in range(0,len(self.channels[i][3])):
+                    self.channel_str += self.channels[i][3][j] + ","
+                if len(self.channels[i][3]) == 0:
+                    self.channel_str += "none,"
+                self.channel_str = self.channel_str[:-1]
+                self.channel_str += "//"
+
+            self.channel_str = self.channel_str[:-2]
+            self.request.sendall(bytes(self.channel_str + "\n", "utf-8"))
 
         elif self.argv[0] == "get_roster":
             roster = Roster()
