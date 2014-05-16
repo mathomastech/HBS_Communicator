@@ -82,7 +82,7 @@ class Handler(QtGui.QMainWindow):
             if GUI.CHANNELS[i][GUI.CHANNEL_GROUP] == "command":
                 self.com.commandLayout.addWidget(self.button)
             elif GUI.CHANNELS[i][GUI.CHANNEL_GROUP] == "general": 
-                self.com.generalLayout.addWidget(self.button)
+                 self.com.generalLayout.addWidget(self.button)
 
     def channel_clicked(self,channel,flag):
         Communicator.switch_channel(channel)

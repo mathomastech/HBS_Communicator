@@ -8,7 +8,6 @@ from database import Database
 from ssh import SSH
 from roster import Roster
 from config import Config
-from channels import Channels
 
 class Communicator:
     #Communicator Class Level Variables 
@@ -34,7 +33,7 @@ class Communicator:
         for i in range(0,len(GUI.CHANNELS)):
             if channel == GUI.CHANNELS[i][GUI.CHANNEL_NAME]:
                 # If channel has no restrictions, allow access
-                if GUI.CHANNELS[i][GUI.PERMISSIONS][0] == "":
+                if GUI.CHANNELS[i][GUI.PERMISSIONS][0] == "none":
                     return True
                 else:
                     # Check if user is has any permissions at all.
@@ -143,8 +142,8 @@ class Communicator:
         # permissions are acceptable.
         if Communicator.check_user_permissions(channel):
             for i in range(0,len(GUI.CHANNELS)):
-                if GUI.CHANNELS[i][GUI.CHANNEL_NAME] == channel: 
-                    log_path = GUI.CHANNELS[i][GUI.SERVER_LOG_PATH]
+                if GUI.CHANNELS[i][GUI.CHANNEL_NAME] == channel:
+                    log_path = GUI.CHANNELS[i][GUI.CHANNEL_FILE]
                     GUI.CHANNELS[i][GUI.GUI_ELEMENT].setStyleSheet("color:black")
                     index = GUI.CHANNEL_TAB.currentIndex()
                     GUI.CHANNEL_TAB.tabBar().setTabTextColor(index, QtGui.QColor(0,0,0)) # Black
