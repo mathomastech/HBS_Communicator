@@ -6,7 +6,6 @@ from handler import *
 from gui import GUI
 from database import Database
 from ssh import SSH
-from roster import Roster
 from config import Config
 
 class Communicator:
@@ -79,12 +78,9 @@ class Communicator:
                 f.close()
     
     def load_local_rosters():
-        #Communicator.ROSTER = SSH.get_all_rosters(Communicator.TCP_HOST, Communicator.TCP_PORT)
+        Communicator.ROSTER = SSH.get_all_rosters(Communicator.TCP_HOST, Communicator.TCP_PORT)
         # Load rosters from database into application.
-        roster = Roster()
-        Communicator.ROSTER = roster.get_roster()
-
-        for i in range(0,len(Communicator.ROSTER)):
+        for i in range(0, len(Communicator.ROSTER)):
             for j in range(0,len(GUI.CHANNELS)):
                 for k in range(0,len(GUI.CHANNELS[j][GUI.ROSTER_GROUP_NAME])):
                     if Communicator.ROSTER[i][0] == GUI.CHANNELS[j][GUI.ROSTER_GROUP_NAME][k]:

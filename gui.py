@@ -42,7 +42,6 @@ class GUI():
         lower = lower.replace(" ", "")
         gui_element = lower.upper()
         filename = lower + ".txt"
-        roster_groups = roster_groups[0].split(",")
 
         chan_arr.append(channel[0])                         #Channel Name
         chan_arr.append("") #server_log_path)               #Server Log Path - Unused?
@@ -56,7 +55,7 @@ class GUI():
         chan_arr.append(roster_groups)                      #Roster Group
         chan_arr.append([])                                 #Roster
         GUI.CHANNELS.append(chan_arr)
-    
+
     '''
     CHANNELS = [
         ['Central Command',(LOG_PATH + 'centcom.txt'),(),(CENTCOM),["Central Command"],(""),(LOGS + 'centcom.txt'),('centcom.txt'),('command'),(["Central Command"]),([])],
