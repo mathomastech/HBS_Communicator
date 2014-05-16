@@ -59,6 +59,7 @@ class SSH():
         finally:
             sock.close()
         '''
+        log_path = Config.LOG_PATH + log_path
         query = 'cat ' + log_path
         stdin, stdout, stderr = ssh.exec_command(query)
         log = stdout.readlines()
@@ -132,7 +133,6 @@ class SSH():
             for i in range(0,len(temp_roster)):
                 roster.append(temp_roster[i].split(','))
             roster.pop(len(roster)-1)
-            #print(roster)
         return roster
 
     def get_channels(tcp_host, tcp_port):
@@ -155,7 +155,6 @@ class SSH():
                     data = channel_data[j].split(",")
                     channel_array.append(data)
                 channels.append(channel_array)
-            #print(channels)
             return channels
             
 
