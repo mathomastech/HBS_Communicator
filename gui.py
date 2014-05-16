@@ -23,16 +23,14 @@ class GUI():
     
     #Index Indicators
     CHANNEL_NAME = 0
-    SERVER_LOG_PATH = 1
-    #UNUSED INDEX = 2
-    GUI_ELEMENT = 3
-    PERMISSIONS = 4
+    PERMISSIONS = 1
+    GUI_ELEMENT = 2
+    CHANNEL_GROUP = 3
+    CHANNEL_FILE = 4
     LOCAL_TIME_STAMP = 5
     LOCAL_LOG_PATH = 6
-    CHANNEL_FILE = 7 
-    CHANNEL_GROUP = 8
-    ROSTER_GROUP_NAME = 9
-    ROSTER = 10
+    ROSTER_GROUP_NAME = 7
+    ROSTER = 8
 
     CHANNELS = []
 
@@ -43,17 +41,15 @@ class GUI():
         gui_element = lower.upper()
         filename = lower + ".txt"
 
-        chan_arr.append(channel[0])                         #Channel Name
-        chan_arr.append("") #server_log_path)               #Server Log Path - Unused?
-        chan_arr.append("")                                 #Unused Index
-        chan_arr.append("")                                 #GUI Elements
-        chan_arr.append(permissions)                        #Permissions
-        chan_arr.append("")                                 #Local Time Stamp
-        chan_arr.append(GUI.LOGS + filename)                #Local Log Path
-        chan_arr.append(filename)                           #Channel File
-        chan_arr.append(tab_group[0])                       #Tab Group
-        chan_arr.append(roster_groups)                      #Roster Group
-        chan_arr.append([])                                 #Roster
+        chan_arr.append(channel[0])                         # 0 Channel Name
+        chan_arr.append(permissions)                        # 1 Permissions
+        chan_arr.append("")                                 # 2 GUI Elements
+        chan_arr.append(tab_group[0])                       # 3 Tab Group
+        chan_arr.append(filename)                           # 4 Channel File
+        chan_arr.append("")                                 # 5 Local Time Stamp
+        chan_arr.append(GUI.LOGS + filename)                # 6 Local Log Path
+        chan_arr.append(roster_groups)                      # 7 Roster Group
+        chan_arr.append([])                                 # 8 Roster
         GUI.CHANNELS.append(chan_arr)
 
     '''
