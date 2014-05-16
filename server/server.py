@@ -1,4 +1,4 @@
-import os, sys, os.path, time, datetime, socketserver
+import os, sys, os.path, time, datetime, socketserver, struct
 from config import Config
 from online import Online
 from roster import Roster
@@ -30,7 +30,11 @@ class Server(socketserver.BaseRequestHandler):
                     f.close()
                 self.temp = os.stat(Config.c['LOG PATH'] + self.argv[i])
                 self.time_stamps += str(self.temp.st_mtime) + ","
-            self.request.sendall(bytes(self.time_stamps + "\n", "utf-8"))
+            
+            self.time_stamps = self.time_stamps.encode(encoding='UTF-8')
+            self.time_stamps = struct.pack('>I',len(self.time_stamps)) + self.time_stamps
+            self.request.sendall(self.time_stamps)
+            #self.request.sendall(bytes(self.time_stamps + "\n", "utf-8"))
         
         elif self.argv[0] == "get_channels":
             channels_raw = Channels()
@@ -61,7 +65,11 @@ class Server(socketserver.BaseRequestHandler):
             self.roster_str = ""
             for i in range(0,len(self.roster_arr)):
                 self.roster_str += self.roster_arr[i][0] + ',' + self.roster_arr[i][1] + ',' + self.roster_arr[i][2] + '/'
-            self.request.sendall(bytes(self.roster_str + "\n", "utf-8"))
+            
+            self.roster_str = self.roster_str.encode(encoding='UTF-8')
+            self.roster_str = struct.pack('>I',len(self.roster_str)) + self.roster_str
+            self.request.sendall(self.roster_str)
+            #self.request.sendall(bytes(self.roster_str + "\n", "utf-8"))
         
         elif self.argv[0] == "new_post":
             log_path = self.argv[1]
