@@ -13,51 +13,43 @@ class SSH():
                     password=Config.c['SSH Password'])
         return ssh
 
-    def convert_to_bytes(no):
-        result = bytearray()
-        result.append(no & 255)
-        for i in range(3):
-            no = no >> 8
-            result.append(no & 255)
-        return result
-
-    def bytes_to_number(b):
-        # if Python2.x                  
-        # b = map(ord, b)
-        res = 0
-        for i in range(4):   
-            res += b[i] << (i*8)                     
-        return res
-
-    def get_active_log(ssh,log_path): #, tcp_host, tcp_port):
+    def get_active_log(ssh,log_path, tcp_host, tcp_port):
         # Get log for current channel and return to communicator.
+        
         '''
-        # Functioning code for TCP based log retrieving. Unfortunatelly it appears the performance
-        # over TCP is less than over SSH so until performance can be improved, SSH will be the 
-        # default method of retrieving logs
+        # Non-Functioning code for TCP based log retrieving. Logs are recieved but the 
+        #            msglen = struct.unpack('>I', raw_msg_len)[0]
+        # line of code seems to increase the size dramatically. Causing log retrieval 
+        # to not occur 
+        
         prefix = "get_active_log"
-        log = ""
+        received = ""
+        log_path = Config.LOG_PATH + log_path
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        socksize = 1024
         try:
             sock.connect((tcp_host, tcp_port))
             # Create string to be sent to server
             data = prefix + "," + log_path
             sock.sendall(bytes(data + "\n", "utf-8"))
-            size = sock.recv(4)
-            size = SSH.bytes_to_number(size)
-            current_size = 0
-            buffer = b""
-            while current_size < size:
-                data = sock.recv(socksize)
-                #if not data:
-                #    break
-                if len(data) + current_size > size:
-                    data = data[:size-current_size]
-                log += data.decode(encoding='UTF-8')
-                current_size += len(data)
+            
+            raw_msg_len = SSH.recvall(sock,4)
+            if not raw_msg_len:
+                return None
+            msglen = struct.unpack('>I', raw_msg_len)[0]
+            received = SSH.recvall(sock,msglen)
+            print(received)
+            return received
+        except ConnectionRefusedError:
+            pass
+        except TimeoutError:
+            pass
+        except socket.gaierror:
+            pass
+        except ConnectionResetError:
+            pass
         finally:
             sock.close()
+
         '''
         log_path = Config.LOG_PATH + log_path
         query = 'cat ' + log_path
@@ -66,7 +58,7 @@ class SSH():
         log = ''.join(log)
     
         return log
-
+        
 
     def get_all_logs(tcp_host, tcp_port):
         # Get remote logs for all channels and return to communicator.
@@ -153,7 +145,11 @@ class SSH():
             data = prefix
             # Create string to be sent to server
             sock.sendall(bytes(data + "\n", "utf-8"))
-            received = str(sock.recv(8192),"utf-8")
+            raw_msg_len = SSH.recvall(sock,4)
+            if not raw_msg_len:
+                return None
+            msglen = struct.unpack('>I', raw_msg_len)[0]
+            received = str(SSH.recvall(sock,msglen),"utf-8")
             received = received[:-1]
             raw = received.split("//")
             channels = []
@@ -179,7 +175,6 @@ class SSH():
             sock.close()
 
     def recvall(sock,n):
-        #received = str(sock.recv(8192),"utf-8")
         data = bytearray()
         while len(data) < n:
             packet = sock.recv(n-len(data))
