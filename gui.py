@@ -37,21 +37,17 @@ class GUI():
     CHANNELS = []
 
     def generate_channel_info(channel,permissions,tab_group,roster_groups):
-
         chan_arr = []
-
         lower = channel[0].lower()
         lower = lower.replace(" ", "")
         gui_element = lower.upper()
         filename = lower + ".txt"
-        #server_log_path = Config.c['LOG PATH'] + filename
-        permissions = permissions[0].split(",")
         roster_groups = roster_groups[0].split(",")
 
         chan_arr.append(channel[0])                            #Channel Name
         chan_arr.append("") #server_log_path)               #Server Log Path - Unused?
         chan_arr.append("")                                 #Unused Index
-        chan_arr.append(gui_element[0])                        #GUI Element
+        chan_arr.append("")                        #GUI Elementd
         chan_arr.append(permissions)                        #Permissions
         chan_arr.append("")                                 #Local Time Stamp
         chan_arr.append(GUI.LOGS + filename)            #Local Log Path
@@ -60,8 +56,7 @@ class GUI():
         chan_arr.append(roster_groups)                      #Roster Group
         chan_arr.append([])                                 #Roster
         GUI.CHANNELS.append(chan_arr)
-        #print(chan_arr)
-        
+    
     '''
     CHANNELS = [
         ['Central Command',(LOG_PATH + 'centcom.txt'),(),(CENTCOM),["Central Command"],(""),(LOGS + 'centcom.txt'),('centcom.txt'),('command'),(["Central Command"]),([])],
