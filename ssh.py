@@ -1,7 +1,7 @@
 import paramiko
 from config import Config
 from gui import GUI
-import os.path, socket
+import os.path, socket, struct
 
 class SSH():
     def connect_to_ssh():
@@ -68,7 +68,7 @@ class SSH():
         return log
 
 
-    def get_all_logs(user, tcp_host, tcp_port):
+    def get_all_logs(tcp_host, tcp_port):
         # Get remote logs for all channels and return to communicator.
         delta = []
         prefix = "get_all_logs"
@@ -81,7 +81,11 @@ class SSH():
             for i in range(0, len(GUI.CHANNELS)):
                 data += "," + GUI.CHANNELS[i][GUI.CHANNEL_FILE]    
             sock.sendall(bytes(data + "\n", "utf-8"))
-            received = str(sock.recv(4096),"utf-8")
+            raw_msg_len = SSH.recvall(sock,4)
+            if not raw_msg_len:
+                return None
+            msglen = struct.unpack('>I', raw_msg_len)[0]
+            received = str(SSH.recvall(sock,msglen),"utf-8")
             # Parse string recieved from server and compare timestamps
             data = received.rstrip().split(',')
             for i in range(0,len(GUI.CHANNELS)):
@@ -116,7 +120,12 @@ class SSH():
             data = prefix
             # Create string to be sent to server
             sock.sendall(bytes(data + "\n", "utf-8"))
-            received = str(sock.recv(8192),"utf-8")
+
+            raw_msg_len = SSH.recvall(sock,4)
+            if not raw_msg_len:
+                return None
+            msglen = struct.unpack('>I', raw_msg_len)[0]
+            received = str(SSH.recvall(sock,msglen),"utf-8")
         except ConnectionRefusedError:
             pass
         except TimeoutError:
@@ -169,6 +178,16 @@ class SSH():
         finally:
             sock.close()
 
+    def recvall(sock,n):
+        #received = str(sock.recv(8192),"utf-8")
+        data = bytearray()
+        while len(data) < n:
+            packet = sock.recv(n-len(data))
+            if not packet:
+                return None
+            data += packet
+        return data
+
     def whos_online(tcp_host, tcp_port, online_users, user):
         # Get a list of all currently logged in clients to the server
         users = []
@@ -199,6 +218,7 @@ class SSH():
     def write_to_log(log_path,log, tcp_host, tcp_port):
         prefix = "new_post"
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        log_path = Config.LOG_PATH + log_path
         try:
             sock.connect((tcp_host, tcp_port))
             # Create string to be sent to server
