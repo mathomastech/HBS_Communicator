@@ -1,9 +1,10 @@
 import os, sys, os.path, time, datetime, socketserver
+from config import Config
 from online import Online
 from roster import Roster
+from channels import Channels
 
 class Server(socketserver.BaseRequestHandler):
-    LOG_PATH = "/home/hbs/communicator/logs/"
     def handle(self):
         # self.request is the TCP socket connected to the client
         self.data = str(self.request.recv(1024),"utf-8")
@@ -23,16 +24,17 @@ class Server(socketserver.BaseRequestHandler):
             self.time_stamps = ""
             for i in range(1,len(self.argv)):
                 self.temp = ""
-                if not os.path.exists(self.LOG_PATH + self.argv[i]):
-                    f = open(self.LOG_PATH + self.argv[i], 'w')
+                if not os.path.exists(Config.c['LOG PATH'] + self.argv[i]):
+                    f = open(Config.c['LOG PATH'] + self.argv[i], 'w')
                     f.write("Fresh Log\n\n")
                     f.close()
-                self.temp = os.stat(self.LOG_PATH + self.argv[i])
+                self.temp = os.stat(Config.c['LOG PATH'] + self.argv[i])
                 self.time_stamps += str(self.temp.st_mtime) + ","
             self.request.sendall(bytes(self.time_stamps + "\n", "utf-8"))
         
         elif self.argv[0] == "get_channels":
-            channels = Channels(self.LOG_PATH)
+            channels = Channels()
+            print(channels.channels)
 
         elif self.argv[0] == "get_roster":
             roster = Roster()
@@ -79,8 +81,8 @@ class Server(socketserver.BaseRequestHandler):
 
 
 if __name__ == "__main__":
-    #HOST, PORT = "0.0.0.0", 9998  #Production Server
-    HOST, PORT = "0.0.0.0", 8888 # Dev Server
+    
+    HOST, PORT = "0.0.0.0", Config.c['TCP PORT']
 
     # Create the server, binding to localhost on port 9999
     server = socketserver.TCPServer((HOST, PORT), Server)

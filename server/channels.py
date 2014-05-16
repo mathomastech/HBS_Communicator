@@ -1,4 +1,4 @@
-from gui import GUI
+from config import Config
 
 class Channels():
 
@@ -57,7 +57,7 @@ class Channels():
         lower = lower.replace(" ", "")
         gui_element = lower.upper()
         filename = lower + ".txt"
-        server_log_path = GUI.LOG_PATH + filename
+        server_log_path = Config.c['LOG PATH'] + filename
         permissions = permissions.split(",")
         roster_groups = roster_groups.split(",")
 
@@ -67,7 +67,7 @@ class Channels():
         chan_arr.append(gui_element)                        #GUI Element
         chan_arr.append(permissions)                        #Permissions
         chan_arr.append("")                                 #Local Time Stamp
-        chan_arr.append(GUI.LOGS + filename)                #Local Log Path
+        chan_arr.append(Config.c['LOG PATH'] + filename)                #Local Log Path
         chan_arr.append(filename)                           #Channel File
         chan_arr.append(tab_group)                          #Tab Group
         chan_arr.append(roster_groups)                      #Roster Group
