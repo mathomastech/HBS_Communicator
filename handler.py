@@ -25,6 +25,7 @@ class Handler(QtGui.QMainWindow):
         self.worker.refresh_signal.connect(Communicator.update_active_channel)
         self.worker.channel_notification.connect(Communicator.update_selected_channels)
         self.worker.update_online_list.connect(Communicator.online_list)
+        self.worker.channels_received.connect(self.generate_channels)
     
         self.com=Ui_hbsCommunicator()
         self.com.setupUi(self)
@@ -36,7 +37,7 @@ class Handler(QtGui.QMainWindow):
 
         self.connect_elements()
         #self.connect_channels()
-        self.generate_channels()
+        #self.generate_channels()
 
         if os.path.exists('credentials.txt'):
             f = open('credentials.txt', 'r')
@@ -58,7 +59,14 @@ class Handler(QtGui.QMainWindow):
         self.setWindowIcon(self.app_icon)
         self.show()
    
-    def generate_channels(self): 
+    def generate_channels(self):
+        for i in range(0,len(Communicator.CHANNEL_LIST)):
+            GUI.generate_channel_info(Communicator.CHANNEL_LIST[i][0],
+                                        Communicator.CHANNEL_LIST[i][1],
+                                        Communicator.CHANNEL_LIST[i][2],
+                                        Communicator.CHANNEL_LIST[i][3]
+                                     )
+
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)

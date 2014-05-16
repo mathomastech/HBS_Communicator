@@ -135,6 +135,41 @@ class SSH():
             #print(roster)
         return roster
 
+    def get_channels(tcp_host, tcp_port):
+        prefix ="get_channels"
+        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        received = ""
+        try:
+            sock.connect((tcp_host, tcp_port))
+            data = prefix
+            # Create string to be sent to server
+            sock.sendall(bytes(data + "\n", "utf-8"))
+            received = str(sock.recv(8192),"utf-8")
+            received = received[:-1]
+            raw = received.split("//")
+            channels = []
+            for i in range(0,len(raw)):
+                channel_array = []
+                channel_data = raw[i].split('/')
+                for j in range(0,len(channel_data)):
+                    data = channel_data[j].split(",")
+                    channel_array.append(data)
+                channels.append(channel_array)
+            #print(channels)
+            return channels
+            
+
+        except ConnectionRefusedError:
+            pass
+        except TimeoutError:
+            pass
+        except socket.gaierror:
+            pass
+        except ConnectionResetError:
+            pass
+        finally:
+            sock.close()
+
     def whos_online(tcp_host, tcp_port, online_users, user):
         # Get a list of all currently logged in clients to the server
         users = []

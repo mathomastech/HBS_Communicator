@@ -24,6 +24,7 @@ class Communicator:
     ROSTER = []
     ACTIVE_CHANNEL = ""
     ACTIVE_LOG_PATH = ""
+    CHANNEL_LIST = []
 
     def __init__(self):
         super(Communicator,self).__init__()
@@ -52,7 +53,7 @@ class Communicator:
         GUI.CHANNEL_NOTEBOOK.setEnabled(True)
         GUI.CONTENT_NOTEBOOK.setTabEnabled(1, True)
         GUI.USER_BTN.setEnabled(True)
-   
+  
     def hide_login():
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Ignored, QtGui.QSizePolicy.Ignored)
         sizePolicy.setHorizontalStretch(0)
@@ -79,9 +80,10 @@ class Communicator:
                 f.close()
     
     def load_local_rosters():
-        Communicator.ROSTER = SSH.get_all_rosters(Communicator.TCP_HOST, Communicator.TCP_PORT)
+        #Communicator.ROSTER = SSH.get_all_rosters(Communicator.TCP_HOST, Communicator.TCP_PORT)
         # Load rosters from database into application.
-        #Communicator.ROSTER = Roster.get_roster()
+        roster = Roster()
+        Communicator.ROSTER = roster.get_roster()
 
         for i in range(0,len(Communicator.ROSTER)):
             for j in range(0,len(GUI.CHANNELS)):
@@ -210,7 +212,6 @@ class Communicator:
     
 def main():
     app = QtGui.QApplication(sys.argv)
-    channels = Channels()
     hand = Handler()
     com = Communicator()
     sys.exit(app.exec_())

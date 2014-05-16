@@ -6,13 +6,20 @@ from gui import GUI
 
 class Worker(QtCore.QThread):
     refresh_signal = QtCore.pyqtSignal()
+    channels_received = QtCore.pyqtSignal()
     channel_notification = QtCore.pyqtSignal()
     update_online_list = QtCore.pyqtSignal()
 
     def __init__(self, parent=None):
         QtCore.QThread.__init__(self)
 
+    def get_channels(self):
+        Communicator.CHANNEL_LIST = SSH.get_channels(Communicator.TCP_HOST, Communicator.TCP_PORT)
+        self.channels_received.emit()
+
     def run (self):
+        while not Communicator.CHANNEL_LIST:
+            self.get_channels()
         while True:
             if Communicator.USER:
                 self.update_online_users()

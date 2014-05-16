@@ -36,42 +36,32 @@ class GUI():
 
     CHANNELS = []
 
-    def generate_channel_info(self,channel,permissions,tab_group,roster_groups):
+    def generate_channel_info(channel,permissions,tab_group,roster_groups):
 
         chan_arr = []
 
-        for i in range(0,len(lst)):
-            channel = lst[i][0]
-            permissions = ""
-            for j in range(0,len(lst[i][1])):
-                permissions += lst[i][1][j] + ","
-            permissions = permissions[:-1] 
-            tab_group = lst[i][2]
-            roster_groups = ""
-            for j in range(0,len(lst[i][3])):
-                roster_groups += lst[i][3][j] + ","
-            roster_groups = roster_groups[:-1] 
-        
-            lower = channel.lower()
-            lower = lower.replace(" ", "")
-            gui_element = lower.upper()
-            filename = lower + ".txt"
-            server_log_path = Config.c['LOG PATH'] + filename
-            permissions = permissions.split(",")
-            roster_groups = roster_groups.split(",")
+        lower = channel[0].lower()
+        lower = lower.replace(" ", "")
+        gui_element = lower.upper()
+        filename = lower + ".txt"
+        #server_log_path = Config.c['LOG PATH'] + filename
+        permissions = permissions[0].split(",")
+        roster_groups = roster_groups[0].split(",")
 
-            chan_arr.append(channel)                            #Channel Name
-            chan_arr.append(server_log_path)                    #Server Log Path
-            chan_arr.append("")                                 #Unused Index
-            chan_arr.append(gui_element)                        #GUI Element
-            chan_arr.append(permissions)                        #Permissions
-            chan_arr.append("")                                 #Local Time Stamp
-            chan_arr.append(Config.c['LOG PATH'] + filename)                #Local Log Path
-            chan_arr.append(filename)                           #Channel File
-            chan_arr.append(tab_group)                          #Tab Group
-            chan_arr.append(roster_groups)                      #Roster Group
-            chan_arr.append([])                                 #Roster
-            GUI.CHANNELS.append(chan_arr)
+        chan_arr.append(channel[0])                            #Channel Name
+        chan_arr.append("") #server_log_path)               #Server Log Path - Unused?
+        chan_arr.append("")                                 #Unused Index
+        chan_arr.append(gui_element[0])                        #GUI Element
+        chan_arr.append(permissions)                        #Permissions
+        chan_arr.append("")                                 #Local Time Stamp
+        chan_arr.append(GUI.LOGS + filename)            #Local Log Path
+        chan_arr.append(filename)                           #Channel File
+        chan_arr.append(tab_group[0])                          #Tab Group
+        chan_arr.append(roster_groups)                      #Roster Group
+        chan_arr.append([])                                 #Roster
+        GUI.CHANNELS.append(chan_arr)
+        #print(chan_arr)
+        
     '''
     CHANNELS = [
         ['Central Command',(LOG_PATH + 'centcom.txt'),(),(CENTCOM),["Central Command"],(""),(LOGS + 'centcom.txt'),('centcom.txt'),('command'),(["Central Command"]),([])],
