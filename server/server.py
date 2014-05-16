@@ -14,11 +14,12 @@ class Server(socketserver.BaseRequestHandler):
             log_path = self.argv[1]
             length = os.path.getsize(log_path)
             self.request.send(Server.convert_to_bytes(length))
-            with open(log_path, 'r') as infile:
-                log = infile.read(1024)
-                while log:
-                    self.request.sendall(bytes(log + "\n", "utf-8"))
-                    log = infile.read(1024)
+            
+            infile = open(log_path, 'r')
+            self.log = infile.read()
+            self.log = self.log.encode(encoding='UTF-8')
+            self.log = struct.pack('>I',len(self.log)) + self.log
+            self.request.sendall(self.log)
         
         elif self.argv[0] == "get_all_logs":
             self.time_stamps = ""
@@ -34,7 +35,6 @@ class Server(socketserver.BaseRequestHandler):
             self.time_stamps = self.time_stamps.encode(encoding='UTF-8')
             self.time_stamps = struct.pack('>I',len(self.time_stamps)) + self.time_stamps
             self.request.sendall(self.time_stamps)
-            #self.request.sendall(bytes(self.time_stamps + "\n", "utf-8"))
         
         elif self.argv[0] == "get_channels":
             channels_raw = Channels()
@@ -57,7 +57,11 @@ class Server(socketserver.BaseRequestHandler):
                 self.channel_str += "//"
 
             self.channel_str = self.channel_str[:-2]
-            self.request.sendall(bytes(self.channel_str + "\n", "utf-8"))
+            
+            self.channel_str = self.channel_str.encode(encoding='UTF-8')
+            self.channel_str = struct.pack('>I',len(self.channel_str)) + self.channel_str
+            self.request.sendall(self.channel_str)
+            #self.request.sendall(bytes(self.channel_str + "\n", "utf-8"))
 
         elif self.argv[0] == "get_roster":
             roster = Roster()
