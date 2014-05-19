@@ -19,3 +19,4 @@ Version 0.10.0 Beta
 * Automatically attempts to reconnect to server if connection is lost
 * Fixed bug were some channels would not light up with new notifications
 * Fixed bug where online users would disappear and immediately reappear
+* Lots more bug fixes and general improvements to stability
