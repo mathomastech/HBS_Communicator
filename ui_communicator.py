@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui_communicator.ui'
 #
-# Created: Wed May 14 19:35:53 2014
+# Created: Mon May 19 10:52:03 2014
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -196,18 +196,17 @@ class Ui_hbsCommunicator(object):
         self.gridLayout_7.setMargin(0)
         self.gridLayout_7.setObjectName(_fromUtf8("gridLayout_7"))
         self.onlineLabel = QtGui.QLabel(self.widget)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Preferred, QtGui.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.onlineLabel.sizePolicy().hasHeightForWidth())
+        self.onlineLabel.setSizePolicy(sizePolicy)
         self.onlineLabel.setAlignment(QtCore.Qt.AlignCenter)
         self.onlineLabel.setObjectName(_fromUtf8("onlineLabel"))
         self.gridLayout_7.addWidget(self.onlineLabel, 0, 0, 1, 1)
-        self.onlineList = QtGui.QPlainTextEdit(self.widget)
-        self.onlineList.setAcceptDrops(False)
-        self.onlineList.setAutoFillBackground(False)
-        self.onlineList.setFrameShape(QtGui.QFrame.NoFrame)
-        self.onlineList.setFrameShadow(QtGui.QFrame.Sunken)
-        self.onlineList.setReadOnly(True)
-        self.onlineList.setBackgroundVisible(False)
-        self.onlineList.setObjectName(_fromUtf8("onlineList"))
-        self.gridLayout_7.addWidget(self.onlineList, 1, 0, 1, 1)
+        self.onlineLayout = QtGui.QVBoxLayout()
+        self.onlineLayout.setObjectName(_fromUtf8("onlineLayout"))
+        self.gridLayout_7.addLayout(self.onlineLayout, 1, 0, 1, 1)
         self.gridLayout_3.addWidget(self.widget, 0, 1, 1, 1)
         self.verticalLayout.addLayout(self.gridLayout_3)
         self.gridLayout_8.addLayout(self.verticalLayout, 1, 1, 1, 1)
