@@ -140,7 +140,6 @@ class Handler(QtGui.QMainWindow):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(GUI.CHANNEL_DISPLAY.sizePolicy().hasHeightForWidth())
    
-        print(GUI.ONLINE_USERS)
         for i in range(0,len(GUI.ONLINE_USERS)):
             GUI.ONLINE_USERS[0].setVisible(False)
             GUI.ONLINE_LAYOUT.removeWidget(GUI.ONLINE_USERS[0])
