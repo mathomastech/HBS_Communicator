@@ -24,7 +24,7 @@ class Handler(QtGui.QMainWindow):
         self.worker.start()
         self.worker.refresh_signal.connect(Communicator.update_active_channel)
         self.worker.channel_notification.connect(Communicator.update_selected_channels)
-        self.worker.update_online_list.connect(Communicator.online_list)
+        self.worker.update_online_list.connect(self.online_list)
         self.worker.channels_received.connect(self.generate_channels)
     
         self.com=Ui_hbsCommunicator()
@@ -113,6 +113,21 @@ class Handler(QtGui.QMainWindow):
             Communicator.REMEMBER_LOGIN = False
         else:
             Communicator.REMEMBER_LOGIN = True
+    
+    def online_list(self):
+        # Get a list of all currently logged in users
+        
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(GUI.CHANNEL_DISPLAY.sizePolicy().hasHeightForWidth())
+        
+        for i in range(0,len(Communicator.ONLINE_USERS)):
+            self.button = QtGui.QPushButton(Communicator.ONLINE_USERS[i])
+            self.button.clicked.connect(functools.partial(self.channel_clicked,Communicator.ONLINE_USERS[i]))
+            self.button.setSizePolicy(sizePolicy)
+            self.button.setAutoDefault(True)
+            GUI.ONLINE_LAYOUT.addWidget(self.button)
 
 
     def connect_elements(self):
@@ -130,7 +145,7 @@ class Handler(QtGui.QMainWindow):
         GUI.USERNAME_ENTRY = self.com.usernameEntry 
         GUI.PASSWORD_ENTRY = self.com.passwordEntry
         GUI.REMEMBER_LOGIN_CHECK = self.com.rememberLoginCheck
-        GUI.ONLINE_LIST = self.com.onlineList
+        #GUI.ONLINE_LIST = self.com.onlineList
         GUI.CHANNEL_TAB = self.com.channelNotebook
         # Disabled the Roster tab. 
         # Move this line into ui_communicator.py either manually or
@@ -139,151 +154,4 @@ class Handler(QtGui.QMainWindow):
         # only the notebook as a while.
         GUI.USERNAME_ENTRY.setFocus()
         GUI.CONTENT_NOTEBOOK.setTabEnabled(1, False)
-
-    # =---------------------------------------------------------------------=#
-    #    EVERYTHING FROM HERE DOWN IS BEING REPLACED BY generate_channels    #
-    #                                                                        #
-
-    def connect_channels(self):
-        #This is being replace with generate_channels
-        # Command Buttons        
-        GUI.CHANNELS[0][GUI.GUI_ELEMENT] = self.com.centralCommandButton
-        GUI.CHANNELS[1][GUI.GUI_ELEMENT] = self.com.operationsCommandButton
-        GUI.CHANNELS[2][GUI.GUI_ELEMENT] = self.com.codCommandButton 
-        GUI.CHANNELS[3][GUI.GUI_ELEMENT] = self.com.tfCommandButton
-        GUI.CHANNELS[4][GUI.GUI_ELEMENT] = self.com.lolCommandButton
-        GUI.CHANNELS[5][GUI.GUI_ELEMENT] = self.com.gwCommandButton
-        GUI.CHANNELS[6][GUI.GUI_ELEMENT] = self.com.wowCommandButton
-        GUI.CHANNELS[7][GUI.GUI_ELEMENT] = self.com.mcCommandButton
-        GUI.CHANNELS[8][GUI.GUI_ELEMENT] = self.com.dayzCommandButton
-        GUI.CHANNELS[9][GUI.GUI_ELEMENT] = self.com.logisticsCommandButton
-        GUI.CHANNELS[10][GUI.GUI_ELEMENT] = self.com.mpCommandButton
-        GUI.CHANNELS[11][GUI.GUI_ELEMENT] = self.com.admissionsCommandButton
-        GUI.CHANNELS[12][GUI.GUI_ELEMENT] = self.com.betaTestButton
-        
-        # General Buttons
-        GUI.CHANNELS[13][GUI.GUI_ELEMENT] = self.com.generalButton
-        GUI.CHANNELS[14][GUI.GUI_ELEMENT] = self.com.codGeneralButton
-        GUI.CHANNELS[15][GUI.GUI_ELEMENT] = self.com.tfGeneralButton
-        GUI.CHANNELS[16][GUI.GUI_ELEMENT] = self.com.lolGeneralButton
-        GUI.CHANNELS[17][GUI.GUI_ELEMENT] = self.com.gwGeneralButton
-        GUI.CHANNELS[18][GUI.GUI_ELEMENT] = self.com.wowGeneralButton
-        GUI.CHANNELS[19][GUI.GUI_ELEMENT] = self.com.mcGeneralButton
-        GUI.CHANNELS[20][GUI.GUI_ELEMENT] = self.com.dayzGeneralButton
-        GUI.CHANNELS[21][GUI.GUI_ELEMENT] = self.com.socialMediaButton
-        GUI.CHANNELS[22][GUI.GUI_ELEMENT] = self.com.raffleButton
-        GUI.CHANNELS[23][GUI.GUI_ELEMENT] = self.com.csCommandButton
-        GUI.CHANNELS[24][GUI.GUI_ELEMENT] = self.com.csButton
-        #GUI.CHANNELS[25][GUI.GUI_ELEMENT] = self.com.wsCommandButton
-        #GUI.CHANNELS[26][GUI.GUI_ELEMENT] = self.com.wsButton
-    # Command Communication Channels
-             
-    def on_centralCommandButton_clicked(self, *args):
-        Communicator.switch_channel("Central Command")
-        
-    def on_operationsCommandButton_clicked(self, *args):
-        Communicator.switch_channel("Operations Command")
-   
-    def on_codCommandButton_clicked(self, *args):
-        Communicator.switch_channel("Call of Duty Command")
- 
-    def on_tfCommandButton_clicked(self, *args):
-        Communicator.switch_channel("Titanfall Command")
-    
-    def on_lolCommandButton_clicked(self, *args):
-        Communicator.switch_channel("League of Legends Command")
-
-    def on_gwCommandButton_clicked(self, *args):
-        Communicator.switch_channel("Guild Wars Command")
-    
-    def on_wowCommandButton_clicked(self, *args):
-        Communicator.switch_channel("World of Warcraft Command")
-
-    def on_tfGeneralButton_clicked(self, *args):
-        Communicator.switch_channel("Titanfall")
-
-    def on_lolGeneralButton_clicked(self, *args):
-        Communicator.switch_channel("League of Legends")
-    
-    def on_mcCommandButton_clicked(self, *args):
-        Communicator.switch_channel("Minecraft Command")
-    
-    def on_dayzCommandButton_clicked(self, *args):
-        Communicator.switch_channel("DayZ Command")
-    
-    def on_csCommandButton_clicked(self, *args):
-        Communicator.switch_channel("Counter Strike Command")
-    
-    def on_wsCommandButton_clicked(self, *args):
-        Communicator.switch_channel("Wildstar Command")
-   
-    def on_logisticsCommandButton_clicked(self, *args):
-        Communicator.switch_channel("Logistics Command")
-    
-    def on_mpCommandButton_clicked(self, *args):
-        Communicator.switch_channel("Military Police")
-    
-    def on_admissionsCommandButton_clicked(self, *args):
-        Communicator.switch_channel("Admissions")
-   
-    def on_betaTestButton_clicked(self, *args):
-        Communicator.switch_channel("Beta Test")
-    
-    # General Communicator Channels
-    
-    def on_generalButton_clicked(self, *args):
-        Communicator.switch_channel("General")
-    
-    def on_codGeneralButton_clicked(self, *args):
-        Communicator.switch_channel("Call of Duty")
-
-    def on_tfGeneralButton_clicked(self, *args):
-        Communicator.switch_channel("Titanfall")
-
-    def on_lolGeneralButton_clicked(self, *args):
-        Communicator.switch_channel("League of Legends")
-    
-    def on_gwGeneralButton_clicked(self, *args):
-        Communicator.switch_channel("Guild Wars")
-
-    def on_wowGeneralButton_clicked(self, *args):
-        Communicator.switch_channel("World of Warcraft")
-
-    def on_mcGeneralButton_clicked(self, *args):
-        Communicator.switch_channel("Minecraft")
-
-    def on_dayzGeneralButton_clicked(self, *args):
-        Communicator.switch_channel("DayZ")
-    
-    def on_csButton_clicked(self, *args):
-        Communicator.switch_channel("Counter Strike")
-    
-    def on_wsButton_clicked(self, *args):
-        Communicator.switch_channel("Wildstar")
-
-    def on_socialMediaButton_clicked(self, *args):
-        Communicator.switch_channel("Social Media")
-    
-    def on_raffleButton_clicked(self, *args):
-        Communicator.switch_channel("Raffle")
-   
-'''
-class generate_channels(QtGui.QMainWindow):
-    button_map = QtCore.pyqtSignal()
-
-    def __init__(self,com,parent=None):
-        super(generate_channels,self).__init__(parent)
-        signalMapper = QtCore.QSignalMapper()
-
-        for i in range(0,len(GUI.CHANNELS)):
-            button = QtGui.QPushButton(GUI.CHANNELS[i][GUI.CHANNEL_NAME])
-            signalMapper.setMapping(button,GUI.CHANNELS[i][GUI.CHANNEL_NAME])
-            button.clicked.connect(signalMapper.map)
-                    
-            if GUI.CHANNELS[i][GUI.CHANNEL_GROUP] == "command":
-                com.commandLayout.addWidget(button)
-            elif GUI.CHANNELS[i][GUI.CHANNEL_GROUP] == "general": 
-                com.generalLayout.addWidget(button)
-
-        signalMapper.mapped.connect(self.button_map)  
-'''
+        GUI.ONLINE_LAYOUT = self.com.onlineLayout
