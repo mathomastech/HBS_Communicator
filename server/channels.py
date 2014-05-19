@@ -4,6 +4,7 @@ class Channels():
 
     #channels = []
     channel_data = [["Central Command",["Central Command"],"command",["Central Command"]],
+                ["Central Command Support",["Central Command", "Central Command Support Staff"],"command",["Central Command Support Staff"]],
                 ["Operations Command",["Central Command","Operations Officer","Brigade Officer"],"command",["Operations Officer","Brigade Officer"]],
                 ['Logistics Command',["Central Command", "Regulations Officer", "General Administrative Officer","Chief of Staff","MP Commanding Officer","MP Executive Officer","Director of Admissions","Director of Social Media","Director of Awards"],'command',["Logistics Officer","MP Commanding Officer","MP Executive Officer","Director of Admissions","Chief of Staff","Director of Awards","Regulations Officer","General Administrative Officer","Director of Financial Affairs","Director of Entertainment","Director of Social Media","Editor in Chief"]],
                 ['General',[],'general',[]],
