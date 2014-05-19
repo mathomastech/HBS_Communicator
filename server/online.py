@@ -12,6 +12,7 @@ class Online():
         if flag == False:
             ts = time.time()
             Online.users.append([user,ts])
+            #Online.users.sort()
         Online.remove()
         return Online.users
 
@@ -21,6 +22,6 @@ class Online():
         removed = []
         for i in range(0,len(Online.users)):
             if Online.users[i][1] < ts:
-                removed.append(i) 
+                removed.append(i)
         for i in range(0,len(removed)):
-               Online.users.pop(i)
+               Online.users.pop(removed[i])
