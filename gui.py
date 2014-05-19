@@ -33,6 +33,7 @@ class GUI():
     ROSTER = 8
 
     CHANNELS = []
+    ONLINE_USERS = []
 
     def generate_channel_info(channel,permissions,tab_group,roster_groups):
         chan_arr = []
