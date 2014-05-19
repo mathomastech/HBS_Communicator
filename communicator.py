@@ -118,15 +118,15 @@ class Communicator:
                 os.remove('credentials.txt')
 
 
-    def online_list():
+    #def online_list():
         # Get a list of all currently logged in users
-        online = ""
+        #online = ""
         
-        for i in range(0,len(Communicator.ONLINE_USERS)):
-            online += Communicator.ONLINE_USERS[i] + '\n'
-        
-        GUI.ONLINE_LIST.setPlainText(online)
-
+        #for i in range(0,len(Communicator.ONLINE_USERS)):
+        #    online += Communicator.ONLINE_USERS[i] + '\n'
+        #
+        #GUI.ONLINE_LIST.setPlainText(online)
+    
     def populate_channel(log_path):
         # Populate the channel with both logs and rosters
         log = SSH.get_active_log(Communicator.SSH_CONNECTION,log_path, Communicator.TCP_HOST, Communicator.TCP_PORT)
