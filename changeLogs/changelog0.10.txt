@@ -1,5 +1,9 @@
 Version 0.10 Beta
 
-* Can now resize the communicator without losing visible text
 * Dynamically generated channels!
+	- This means I can add new channels without deploying a new version
+* Can now resize the communicator without losing visible text
+* Dynamically generated online user buttons
+* Fixed bug where online users would disappear and immediately reappear
 * Revamped how permissions are handled.
+* Windows and Linux version now source from the same UI files
