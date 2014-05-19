@@ -1,9 +1,21 @@
-Version 0.10 Beta
+Version 0.10.0 Beta
 
 * Dynamically generated channels!
 	- This means I can add new channels without deploying a new version
 * Can now resize the communicator without losing visible text
-* Dynamically generated online user buttons
-* Fixed bug where online users would disappear and immediately reappear
-* Revamped how permissions are handled.
+* Online user list has been visually revamped
+	- They are buttons now. Setting the ground work to be able to private
+	message indivuals in a future release
+* Completely Revamped how permissions are handled.
+	- I can now fix permissions for both channels and individuals without having to
+	release a new version.
 * Windows and Linux version now source from the same UI files
+	- Makes it easier to develop cross platform, and lays the foundation for
+	future platform support (OSX/Andoid/iPhone)
+* Network usage has been significantly reduced
+* Added central command support channel
+* Added Wildstar channels (for real this time)
+* Improved rosters!
+* Automatically attempts to reconnect to server if connection is lost
+* Fixed bug were some channels would not light up with new notifications
+* Fixed bug where online users would disappear and immediately reappear
