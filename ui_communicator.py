@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui_communicator.ui'
 #
-# Created: Mon May 19 10:52:03 2014
+# Created: Mon May 19 12:40:58 2014
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -248,7 +248,7 @@ class Ui_hbsCommunicator(object):
         hbsCommunicator.setStatusBar(self.statusbar)
 
         self.retranslateUi(hbsCommunicator)
-        self.channelNotebook.setCurrentIndex(0)
+        self.channelNotebook.setCurrentIndex(1)
         self.contentNotebook.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(hbsCommunicator)
         hbsCommunicator.setTabOrder(self.usernameEntry, self.passwordEntry)

@@ -135,17 +135,24 @@ class Handler(QtGui.QMainWindow):
     
     def online_list(self):
         # Get a list of all currently logged in users
-        
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(GUI.CHANNEL_DISPLAY.sizePolicy().hasHeightForWidth())
-        
+   
+        print(GUI.ONLINE_USERS)
+        for i in range(0,len(GUI.ONLINE_USERS)):
+            GUI.ONLINE_USERS[0].setVisible(False)
+            GUI.ONLINE_LAYOUT.removeWidget(GUI.ONLINE_USERS[0])
+            GUI.ONLINE_USERS.pop(0)
+
         for i in range(0,len(Communicator.ONLINE_USERS)):
             self.button = QtGui.QPushButton(Communicator.ONLINE_USERS[i])
             self.button.clicked.connect(functools.partial(self.channel_clicked,Communicator.ONLINE_USERS[i]))
             self.button.setSizePolicy(sizePolicy)
             self.button.setAutoDefault(True)
+            self.button.setEnabled(False)
+            GUI.ONLINE_USERS.append(self.button)
             GUI.ONLINE_LAYOUT.addWidget(self.button)
 
     def on_usernameEntry_returnPressed(self, *args):
