@@ -1,0 +1,56 @@
+In this document, you will find details regarding the visual design objectives as well as coding design practices to follow. Additionally, you will find a short description of the purpose of each file required to successfully run the communicator.
+
+Visual Design:
+
+* Minimum required visuals
+    * What this means. If you can do without a visual element, then don't put it there!
+* Maximum of 3 clicks/taps to reach objective
+    * Goal of 2 or less clicks/taps
+
+
+Code Design:
+* A function should complete no more than 1 task
+* Naming Conventions
+    * Global Variables
+        * Don't use them!
+    * Class level variables
+        * CLASS_VARIABLE
+    * local variables
+        * local_variable
+
+Files:
+
+Client Files:
+
+* setup.py
+    * Python setup file for handling the building of the app for Windows deployment
+* communicator.py
+    * Code related to the primary function of the communicator. Specifically displaying and writing of logs
+* handler.py
+    * Code related exclusively to handling the creation/destruction of GUI elements
+* gui.py
+    * Code to store the identities of the various GUI elements to be accessed by any other file
+* database.py
+    * Code for handling the database connectiong and SQL query's. This file wil be moved over to the server at some point
+* worker.py
+    * Code for handling background threads
+* ssh.py
+    * Code for handling the SSH and TCP connections to the remote server
+    * Note: Only one connection of SSH remains. All others have been moved to TCP. Upon completing the last conversion, the file will be renamed appropriately
+
+Server Files:
+
+* server.py
+    * Primary file that handles the retrieval of tcp connections, processes and returns via tcp data back to the client
+* channels.py
+    * Code to handle the creation of channels, including the names, permissions, and any other related channel details
+* online.py
+    * Code for handling the list of users currently logged into the communicator
+* roster.py
+    * Code for handling the connection to the database and retrieval of the rosters
+
+Other:
+
+* config.py
+    * Code for gaining access to various secure systems, such as the database and remote server
+    * This file is not made publically available as it contains sensitive information such as username and password connections to a database and server. However, upon release of version 1.0, I will make a template copy of this file available for developers who wish to fork a copy of this app for their own development.
