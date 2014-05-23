@@ -1,10 +1,11 @@
-import sys, time, os.path, functools
+import sys, time, os.path, functools, ctypes
 from PyQt4 import QtGui, QtCore
 from ui_communicator import Ui_hbsCommunicator
 from gui import GUI
 from config import Config
 from communicator import Communicator
 from worker import Worker
+
 
 class Handler(QtGui.QMainWindow):
     
@@ -56,6 +57,20 @@ class Handler(QtGui.QMainWindow):
         self.app_icon.addFile('icons/comms48x48.ico', QtCore.QSize(48,48))
         self.app_icon.addFile('icons/comms256x256.ico', QtCore.QSize(256,256))
         
+        self.app_icon.addFile('icons/comms16x16.png', QtCore.QSize(16,16))
+        self.app_icon.addFile('icons/comms24x24.png', QtCore.QSize(24,24))
+        self.app_icon.addFile('icons/comms32x32.png', QtCore.QSize(32,32))
+        self.app_icon.addFile('icons/comms48x48.png', QtCore.QSize(48,48))
+        self.app_icon.addFile('icons/comms256x256.png', QtCore.QSize(256,256))
+
+        if os.name=="nt":
+            myappid = 'mathomastech.comms.0.10.0'
+            ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(myappid)
+            self.tray_icon = QtGui.QSystemTrayIcon(self)
+            self.tray_icon.setIcon(self.app_icon)
+            self.tray_icon.setVisible(True)
+            self.tray_icon.show()
+     
         self.setWindowIcon(self.app_icon)
         self.show()
    

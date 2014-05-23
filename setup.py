@@ -11,6 +11,6 @@ setup(
         version = "0.10.0",
         description = "Clan HBS Communicator App",
         options = {"build_exe" : {"includes" : "atexit" }},
-        executables = [Executable("communicator.py", base = base)]
+        executables = [Executable("communicator.py", base = base, icon="icons/comms256x256.ico")]
 )
 
