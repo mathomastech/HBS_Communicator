@@ -1,0 +1,3 @@
+Version 0.11.0 Beta
+
+* Added application icon for Windows users
