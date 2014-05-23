@@ -4,14 +4,11 @@ Version 0.10.0 Beta
 	- This means I can add new channels without deploying a new version
 * Can now resize the communicator without losing visible text
 * Online user list has been visually revamped
-	- They are buttons now. Setting the ground work to be able to private
-	message indivuals in a future release
+	- They are buttons now. Setting the ground work to be able to private message indivuals in a future release
 * Completely Revamped how permissions are handled.
-	- I can now fix permissions for both channels and individuals without having to
-	release a new version.
+	- I can now fix permissions for both channels and individuals without having to release a new version.
 * Windows and Linux version now source from the same UI files
-	- Makes it easier to develop cross platform, and lays the foundation for
-	future platform support (OSX/Andoid/iPhone)
+	- Makes it easier to develop cross platform, and lays the foundation for future platform support (OSX/Andoid/iPhone)
 * Network usage has been significantly reduced
 * Added central command support channel
 * Added Wildstar channels (for real this time)
